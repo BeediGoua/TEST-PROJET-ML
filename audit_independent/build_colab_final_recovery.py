@@ -87,26 +87,34 @@ code(
     r'''
 import torch
 assert torch.cuda.is_available(), "B2 needs CUDA"
-# Bake recovery agent (Stage3+E2T); Stage3 historical stays local-only for reference
-agent_path = bake(outer_many=OUTER)
-print("baked", agent_path)
-# Load agents
-A = audit_mod.load("stage3")  # historical exec OK locally
-Bmod = H.load_mod(agent_path, "stage3_e2t_rec")
-# Force same model
-A.MODEL = Bmod.MODEL = "Qwen/Qwen2.5-Coder-1.5B-Instruct"
+import final_pre_test3_debug as D
+# MUST set env BEFORE loading E2T module (_force_fallback reads env at solve-time;
+# also disable Stage3 table rules explicitly — stock Stage3 has no flag)
 os.environ["DSH_FORCE_FALLBACK"] = "1"
 os.environ["DSH_OUTER_MANY"] = str(OUTER)
+agent_path = bake(outer_many=OUTER)
+print("baked", agent_path)
+A = audit_mod.load("stage3")
+D.disable_table_rules(A)
+A._rules_disabled = True
+Bmod = H.load_mod(agent_path, "stage3_e2t_rec")
+A.MODEL = Bmod.MODEL = "Qwen/Qwen2.5-Coder-1.5B-Instruct"
 agent_a = A.Agent()
 agent_b = Bmod.Agent()
 tables = table_tasks()
 TD_TABLES = tempfile.mkdtemp(prefix="final_tables_")
 fm = _materialize_all(tables, TD_TABLES)
-batch_tasks = []
-for t in tables:
-    tt = dict(t)
-    tt["files"] = fm[t["id"]]
-    batch_tasks.append(tt)
+batch_tasks = [{**t, "files": fm[t["id"]]} for t in tables]
+# Instrument first batch of 8 — must show deterministic=0, llm_live=8, gen time >> 0
+first = batch_tasks[:8]
+st_a = D.instrumented_solve(agent_a, A, first, "Stage3")
+st_b = D.instrumented_solve(agent_b, Bmod, first, "E2T")
+print("B2 instrument Stage3", {k: st_a[k] for k in st_a if k != "answers"})
+print("B2 instrument E2T", {k: st_b[k] for k in st_b if k != "answers"})
+assert st_a["deterministic_count"] == 0 and st_a["llm_live_count"] == 8, st_a
+assert st_b["deterministic_count"] == 0 and st_b["llm_live_count"] == 8, st_b
+assert st_a["greedy_generation_seconds"] > 1.0 and st_b["greedy_generation_seconds"] > 1.0, "B2 INVALID: no real LLM"
+# Full 80
 df_t, sum_t = H.run_solve_compare("Stage3", agent_a, "E2T", agent_b, batch_tasks, batch_size=8, force_fallback=True)
 df_t.to_csv(DIAG_OUT/"final_b2_tables.csv", index=False)
 print(sum_t)

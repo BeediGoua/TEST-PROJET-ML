@@ -41,7 +41,9 @@ BUDGET = float(os.environ.get("DSH_BUDGET", 29.0))  # secondes utilisées sur le
 DEBUG = bool(os.environ.get("DSH_DEBUG"))            # affiche les erreurs (local seulement)
 EXEC_TIMEOUT = 1.5     # secondes max par exécution de code généré
 OUTER_MANY = float(os.environ.get('DSH_OUTER_MANY', '7.5'))  # many-path envelope
-FORCE_FALLBACK = os.environ.get('DSH_FORCE_FALLBACK', '') == '1'  # skip table rules for recovery tests
+# Read env at solve-time (NOT import-time) so Colab can set DSH_FORCE_FALLBACK=1 after load.
+def _force_fallback():
+    return os.environ.get('DSH_FORCE_FALLBACK', '') == '1'
 
 MAX_NEW = 500          # PATCH 1: augmenté de 300 à 500 pour éviter les truncations
 NSAMP = int(os.environ.get("DSH_SAMPLES", 4))   # échantillons initiaux par tâche pour le vote
@@ -2975,7 +2977,7 @@ class Agent:
                             print(f"[debug] {t['id']} calcul déterministe -> {rv}")
                         prep.append(dict(id=t["id"], obj=t["objective"], dfs=dfs, msgs=None, c=[(rv, 100.0)], ok=False))
                         continue
-                if kind == "table" and not FORCE_FALLBACK:
+                if kind == "table" and not _force_fallback():
                     try:
                         rv = table_stat_rule(t["objective"], dfs, dico)
                     except Exception:

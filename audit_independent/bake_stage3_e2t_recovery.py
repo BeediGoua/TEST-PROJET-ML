@@ -57,7 +57,9 @@ def bake(outer_many: float = 7.5) -> Path:
         "EXEC_TIMEOUT = 1.5     # secondes max par exécution de code généré",
         "EXEC_TIMEOUT = 1.5     # secondes max par exécution de code généré\n"
         f"OUTER_MANY = float(os.environ.get('DSH_OUTER_MANY', '{outer_many}'))  # many-path envelope\n"
-        "FORCE_FALLBACK = os.environ.get('DSH_FORCE_FALLBACK', '') == '1'  # skip table rules for recovery tests\n",
+        "# Read env at solve-time (NOT import-time) so Colab can set DSH_FORCE_FALLBACK=1 after load.\n"
+        "def _force_fallback():\n"
+        "    return os.environ.get('DSH_FORCE_FALLBACK', '') == '1'\n",
     )
 
     # Skip table deterministic rules when FORCE_FALLBACK (B2)
@@ -65,7 +67,7 @@ def bake(outer_many: float = 7.5) -> Path:
         '                if kind == "table":\n'
         "                    try:\n"
         "                        rv = table_stat_rule(t[\"objective\"], dfs, dico)",
-        '                if kind == "table" and not FORCE_FALLBACK:\n'
+        '                if kind == "table" and not _force_fallback():\n'
         "                    try:\n"
         "                        rv = table_stat_rule(t[\"objective\"], dfs, dico)",
     )
