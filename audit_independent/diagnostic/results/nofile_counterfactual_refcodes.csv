@@ -1,0 +1,6 @@
+id,type,gold,stage3_val,stage3_ok,stage3_err,e2t_val,e2t_ok,classification,objective
+d_026,calc.dates,13.0,13.0,True,,13.0,True,EXECUTOR_OK_ON_CORRECT_CODE→losses_are_GENERATION_OR_CONTROL,"How many days are there from 15 April 2017 to April 28, 2017? Give a whole number."
+d_065,calc.arithmetic,6.0,6.0,True,,6.0,True,EXECUTOR_OK_ON_CORRECT_CODE→losses_are_GENERATION_OR_CONTROL,"Count the values strictly above 1.75 in this list: 2.48, 1.43, 1.791, 0.64, 2.9, 1.19, 0.47, 2.5, 1.26, 1.11, 0.7, 2.862, 2.56. Give a whole number."
+d_076,calc.dates,16.0,16.0,True,,16.0,True,EXECUTOR_OK_ON_CORRECT_CODE→losses_are_GENERATION_OR_CONTROL,"How many days are there from December 4, 2011 to December 19, 2011? Count both the first and the last day. The answer is an integer."
+d_143,calc.stats_inline,8.9,8.896347565152793,True,,8.896347565152793,True,EXECUTOR_OK_ON_CORRECT_CODE→losses_are_GENERATION_OR_CONTROL,"A runner logged these lap times over 4 laps: 6.8, 13.3, 26.6, 3.3 (seconds). What is their population standard deviation (divide by n)? Report it with 2 decimal"
+d_123,calc.integer,27.0,27.0,True,,27.0,True,EXECUTOR_OK_ON_CORRECT_CODE→losses_are_GENERATION_OR_CONTROL,What is the remainder of the division of 100338135 by 52? Give a whole number.
