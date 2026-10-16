@@ -25,7 +25,7 @@ def _ensure_e2t():
     return build_test1_e2t()
 
 
-def bake(outer_many: float = 7.5) -> Path:
+def bake(outer_many: float = 7.5, reserve_one_sample_default: bool = False) -> Path:
     e2t_path = _ensure_e2t()
     e2t = e2t_path.read_text(encoding="utf-8")
     stage3 = (HANDOFF / "STAGE3_SUBMITTED_92_5.py").read_text(encoding="utf-8")
@@ -97,11 +97,92 @@ def bake(outer_many: float = 7.5) -> Path:
         raise RuntimeError("cannot patch sample absorb loop")
     new_src = new_src.replace(old_absorb_loop, new_absorb_loop)
 
+    # P1 (opt-in via env; optional bake default ON for GO zip):
+    # reserve wall-time for ≥1 stochastic sample when still empty after greedy.
+    # Env: DSH_RESERVE_ONE_SAMPLE, DSH_SAMPLE_RESERVE=9.0. No prompt/model/rules/vote change.
+    _rs_default = "1" if reserve_one_sample_default else ""
+    old_repair_gen = (
+        "            try:\n"
+        "                gens = self.generate(msgs, 1, 0.0, max_new=MAX_NEW, max_time=min(8.0, left() - 2))\n"
+        "            except Exception:\n"
+        "                return\n"
+        "            for p, outs in zip(todo, gens):\n"
+        "                for o in outs:\n"
+        "                    if not absorb(p, o, 1.5):\n"
+        "                        return"
+    )
+    new_repair_gen = (
+        "            try:\n"
+        "                repair_cap = min(8.0, left() - 2)\n"
+        f"                if os.environ.get('DSH_RESERVE_ONE_SAMPLE', '{_rs_default}') == '1' and any(\n"
+        "                    p['ok'] and not p['c'] for p in prep\n"
+        "                ):\n"
+        "                    reserve = float(os.environ.get('DSH_SAMPLE_RESERVE', '9.0'))\n"
+        "                    if left() < reserve + 4.0:\n"
+        "                        return  # skip repair; protect sample budget\n"
+        "                    repair_cap = min(repair_cap, max(1.0, left() - reserve - 2.0))\n"
+        "                gens = self.generate(msgs, 1, 0.0, max_new=MAX_NEW, max_time=repair_cap)\n"
+        "            except Exception:\n"
+        "                return\n"
+        "            for p, outs in zip(todo, gens):\n"
+        "                for o in outs:\n"
+        "                    if not absorb(p, o, 1.5):\n"
+        "                        return"
+    )
+    if old_repair_gen not in new_src:
+        raise RuntimeError("cannot patch repair generate cap for P1")
+    new_src = new_src.replace(old_repair_gen, new_repair_gen)
+
+    old_sample_gate = (
+        "        t3 = time.time()\n"
+        "        if left() > 6:                             # OPTIMISATION 2: Vote adaptatif\n"
+        "            for p in prep:\n"
+        "                if not p[\"ok\"] or not p[\"c\"]:\n"
+        "                    continue\n"
+        "                # Si les précédentes passes (gloutonne/réparée) sont déjà d'accord, on arrête d'échantillonner cette tâche\n"
+        "                vals = [round(v, 4) for v, w in p[\"c\"] if v is not None]\n"
+        "                if len(vals) >= 2 and len(set(vals)) == 1:\n"
+        "                    p[\"ok\"] = False\n"
+        "                    \n"
+        "            nsamp_adapt = int(os.environ.get(\"DSH_SAMPLES_ADAPTIVE\", NSAMP))\n"
+        "            run_round(nsamp_adapt, 0.5, 1.0, MAX_NEW)"
+    )
+    new_sample_gate = (
+        "        t3 = time.time()\n"
+        "        _empty = [p for p in prep if p[\"ok\"] and not p[\"c\"]]\n"
+        "        _force_sample = (\n"
+        f"            os.environ.get(\"DSH_RESERVE_ONE_SAMPLE\", \"{_rs_default}\") == \"1\"\n"
+        "            and bool(_empty)\n"
+        "            and left() > 4.0\n"
+        "        )\n"
+        "        if left() > 6 or _force_sample:             # OPTIMISATION 2 + P1 reserve-one-sample\n"
+        "            for p in prep:\n"
+        "                if not p[\"ok\"] or not p[\"c\"]:\n"
+        "                    continue\n"
+        "                # Si les précédentes passes (gloutonne/réparée) sont déjà d'accord, on arrête d'échantillonner cette tâche\n"
+        "                vals = [round(v, 4) for v, w in p[\"c\"] if v is not None]\n"
+        "                if len(vals) >= 2 and len(set(vals)) == 1:\n"
+        "                    p[\"ok\"] = False\n"
+        "\n"
+        "            nsamp_adapt = int(os.environ.get(\"DSH_SAMPLES_ADAPTIVE\", NSAMP))\n"
+        "            if _force_sample and left() < 12.0:\n"
+        "                # Thin budget: one sample, prefer tasks still empty\n"
+        "                nsamp_adapt = 1\n"
+        "                for p in prep:\n"
+        "                    if p[\"ok\"] and p[\"c\"]:\n"
+        "                        p[\"ok\"] = False\n"
+        "            run_round(nsamp_adapt, 0.5, 1.0, MAX_NEW)"
+    )
+    if old_sample_gate not in new_src:
+        raise RuntimeError("cannot patch sample gate for P1")
+    new_src = new_src.replace(old_sample_gate, new_sample_gate)
+
     # Banner
     banner = (
         '"""STAGE3-COMPLIANT-RECOVERY (TEST3 candidate bake)\n\n'
         "Stage3 exact: model, prompts, rules, vote, BUDGET, NSAMP, MAX_NEW.\n"
         "ONLY change: compliant E2T executor (dsh + __dsh_pd + SIGALRM 1.5s/cand).\n"
+        "Optional control (env): DSH_RESERVE_ONE_SAMPLE=1 — reserve time for ≥1 sample if empty.\n"
         'No Qwen3 / new prompts / new rules / reject-zero / default=1.\n"""\n'
     )
     if new_src.lstrip().startswith('"""') or new_src.lstrip().startswith("#"):
@@ -135,7 +216,8 @@ def bake(outer_many: float = 7.5) -> Path:
 
     (OUT / "BAKE_META.txt").write_text(
         f"outer_many={outer_many}\nexec_upload_violation={rep.get('exec_upload_violation')}\n"
-        f"mismatch_count={rep.get('prompt_runtime_mismatch_count')}\n",
+        f"mismatch_count={rep.get('prompt_runtime_mismatch_count')}\n"
+        f"reserve_one_sample_default={reserve_one_sample_default}\n",
         encoding="utf-8",
     )
     return agent_path

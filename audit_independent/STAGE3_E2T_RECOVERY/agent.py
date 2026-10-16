@@ -2,6 +2,7 @@
 
 Stage3 exact: model, prompts, rules, vote, BUDGET, NSAMP, MAX_NEW.
 ONLY change: compliant E2T executor (dsh + __dsh_pd + SIGALRM 1.5s/cand).
+Optional control (env): DSH_RESERVE_ONE_SAMPLE=1 — reserve time for ≥1 sample if empty.
 No Qwen3 / new prompts / new rules / reject-zero / default=1.
 """
 """DS-Harness agent : le LLM n'écrit que du code, le système fait le reste.
@@ -3134,7 +3135,15 @@ class Agent:
                                                  f"{data_state}\nUse the observed dtypes, missing rates, and sample rows to fix the data logic (including joins/coercion), not only syntax.\n"
                                                  "Write the corrected program (code only, `answer` must be a finite number)."}])
             try:
-                gens = self.generate(msgs, 1, 0.0, max_new=MAX_NEW, max_time=min(8.0, left() - 2))
+                repair_cap = min(8.0, left() - 2)
+                if os.environ.get('DSH_RESERVE_ONE_SAMPLE', '') == '1' and any(
+                    p['ok'] and not p['c'] for p in prep
+                ):
+                    reserve = float(os.environ.get('DSH_SAMPLE_RESERVE', '9.0'))
+                    if left() < reserve + 4.0:
+                        return  # skip repair; protect sample budget
+                    repair_cap = min(repair_cap, max(1.0, left() - reserve - 2.0))
+                gens = self.generate(msgs, 1, 0.0, max_new=MAX_NEW, max_time=repair_cap)
             except Exception:
                 return
             for p, outs in zip(todo, gens):
@@ -3154,7 +3163,13 @@ class Agent:
         d2 = time.time() - t2
         
         t3 = time.time()
-        if left() > 6:                             # OPTIMISATION 2: Vote adaptatif
+        _empty = [p for p in prep if p["ok"] and not p["c"]]
+        _force_sample = (
+            os.environ.get("DSH_RESERVE_ONE_SAMPLE", "") == "1"
+            and bool(_empty)
+            and left() > 4.0
+        )
+        if left() > 6 or _force_sample:             # OPTIMISATION 2 + P1 reserve-one-sample
             for p in prep:
                 if not p["ok"] or not p["c"]:
                     continue
@@ -3162,8 +3177,14 @@ class Agent:
                 vals = [round(v, 4) for v, w in p["c"] if v is not None]
                 if len(vals) >= 2 and len(set(vals)) == 1:
                     p["ok"] = False
-                    
+
             nsamp_adapt = int(os.environ.get("DSH_SAMPLES_ADAPTIVE", NSAMP))
+            if _force_sample and left() < 12.0:
+                # Thin budget: one sample, prefer tasks still empty
+                nsamp_adapt = 1
+                for p in prep:
+                    if p["ok"] and p["c"]:
+                        p["ok"] = False
             run_round(nsamp_adapt, 0.5, 1.0, MAX_NEW) 
             
         print(f"[solve] prep {t_prep:.1f}s | glouton {d1:.1f}s | réparation {d2:.1f}s | échantillons "
