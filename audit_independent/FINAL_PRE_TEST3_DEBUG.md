@@ -2,6 +2,9 @@
 
 **Recommendation: `DO_NOT_SUBMIT`**
 
+Final No-files fix (P1 reserve-one-sample) measured: **FAIL** — E2T stayed 36/40 vs Stage3 39/40.  
+See `FINAL_NOFILES_FIX.md`. Recovery stopped. No further recovery phases.
+
 Pas de Qwen3 / nouveaux prompts / regex / règles. Diagnostic ciblé seulement.
 
 ---
