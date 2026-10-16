@@ -1,0 +1,26 @@
+agent,wrapper_alias_fix,mode,probe,ok,detail,contract_pass
+stage3,False,run_code,control,True,6.0,True
+stage3,False,run_code,import_pandas,True,6.0,True
+stage3,False,run_code,import_numpy,True,6.0,True
+stage3,False,run_code,syntax_error,True,None,True
+stage3,False,run_code,one_syntax_error_four_programs,True,"[6.0, None, 42.0, 9.0]",True
+test1,False,run_codes_many,control,True,[6.0],True
+test1,False,run_codes_many,import_pandas,False,[None],False
+test1,False,run_codes_many,import_numpy,True,[6.0],True
+test1,False,run_codes_many,syntax_error,True,[None],True
+test1,False,run_codes_many,one_syntax_error_four_programs,False,"[None, None, None, None]",False
+test2,False,run_code_batch,control,True,"[{""value"": 6.0, ""error"": """", ""state"": """"}]",True
+test2,False,run_code_batch,import_pandas,False,"[{""value"": null, ""error"": ""UnboundLocalError: cannot access local variable 'pd' where it is not associated with a value"", ""state"": """"}]",False
+test2,False,run_code_batch,import_numpy,True,"[{""value"": 6.0, ""error"": """", ""state"": """"}]",True
+test2,False,run_code_batch,syntax_error,True,"[{""value"": null, ""error"": ""SyntaxError: '(' was never closed (line 1)"", ""state"": """"}]",True
+test2,False,run_code_batch,one_syntax_error_four_programs,True,"[6.0, None, 42.0, 9.0]",True
+test2,True,run_code_batch,control,True,"[{""value"": 6.0, ""error"": """", ""state"": """"}]",True
+test2,True,run_code_batch,import_pandas,True,"[{""value"": 6.0, ""error"": """", ""state"": """"}]",True
+test2,True,run_code_batch,import_numpy,True,"[{""value"": 6.0, ""error"": """", ""state"": """"}]",True
+test2,True,run_code_batch,syntax_error,True,"[{""value"": null, ""error"": ""SyntaxError: '(' was never closed (line 1)"", ""state"": """"}]",True
+test2,True,run_code_batch,one_syntax_error_four_programs,True,"[6.0, None, 42.0, 9.0]",True
+faithful,False,run_codes_many,control,True,[6.0],True
+faithful,False,run_codes_many,import_pandas,True,[6.0],True
+faithful,False,run_codes_many,import_numpy,True,[6.0],True
+faithful,False,run_codes_many,syntax_error,True,[None],True
+faithful,False,run_codes_many,one_syntax_error_four_programs,True,"[6.0, None, 42.0, 9.0]",True

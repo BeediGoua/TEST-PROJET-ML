@@ -1,0 +1,11 @@
+config,family,n,covered,correct,wrong
+stage3_calc,calc,65,25,25,0
+stage3_hist,table,80,80,80,0
+test2_calc_hist,calc,65,25,25,0
+test2_calc_plus_safe,calc,65,65,65,0
+test2_full_keep0,table,80,80,80,0
+test2_full_reject0,table,80,80,80,0
+test2_hist_keep0,table,80,80,80,0
+test2_hist_plus_ext_reject0,table,80,80,80,0
+test2_hist_reject0,table,80,80,80,0
+shadow:same,table,80,80,0,0

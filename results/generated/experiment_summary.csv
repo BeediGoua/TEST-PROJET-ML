@@ -1,0 +1,8 @@
+agent,private_score,dev_covered,dev_correct,dev_wrong,prompt_runtime_mismatches,exec_upload_violation,explicit_covered,explicit_correct,explicit_wrong,independent_covered,independent_correct,independent_wrong,parenthetical_covered,parenthetical_correct,parenthetical_wrong,ood1_covered,ood1_correct,ood1_wrong,ood2_covered,ood2_correct,ood2_wrong,ood3_covered,ood3_correct,ood3_wrong,ood4_covered,ood4_correct,ood4_wrong,ood5_covered,ood5_correct,ood5_wrong
+stage3,92.5,140,140,0,3,True,25,25,0,25,25,0,25,25,0,0.0,0.0,0.0,20.0,20.0,0.0,8.0,0.0,8.0,,,,,,
+naive,,180,180,0,3,True,65,26,39,65,63,2,65,65,0,,,,,,,,,,,,,,,
+safe_pre_v7,,180,180,0,3,False,65,26,39,65,63,2,65,65,0,,,,,,,,,,,,,,,
+v7,,180,180,0,0,False,65,65,0,65,63,2,0,0,0,80.0,80.0,0.0,20.0,20.0,0.0,72.0,64.0,8.0,,,,,,
+v8,,180,180,0,0,False,65,65,0,65,65,0,65,65,0,80.0,80.0,0.0,20.0,20.0,0.0,72.0,64.0,8.0,,,,,,
+v9,,180,180,0,0,False,65,65,0,65,65,0,65,65,0,80.0,80.0,0.0,20.0,20.0,0.0,72.0,72.0,0.0,48.0,8.0,40.0,30.0,0.0,30.0
+v10,,180,180,0,0,False,65,65,0,65,65,0,65,65,0,80.0,80.0,0.0,20.0,20.0,0.0,72.0,72.0,0.0,8.0,8.0,0.0,0.0,0.0,0.0

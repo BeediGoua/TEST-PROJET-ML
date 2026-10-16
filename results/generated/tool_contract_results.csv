@@ -1,0 +1,8 @@
+agent_file,exec_upload_violation,sympy_prompt_runtime_mismatch,onehot_prompt_runtime_mismatch,no_imports_example_mismatch,prompt_runtime_mismatch_count
+stage3_92_5.py,True,True,True,True,3
+stage4_naive_nofiles.py,True,True,True,True,3
+stage4_safe_pre_v7.py,False,True,True,True,3
+stage4_candidate_v7.py,False,False,False,False,0
+stage4_best_local_v8.py,False,False,False,False,0
+stage4_best_local_v9.py,False,False,False,False,0
+stage4_best_local_v10.py,False,False,False,False,0

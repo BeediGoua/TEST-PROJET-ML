@@ -1,0 +1,411 @@
+{
+  "config": {
+    "model": "synthetic-smoke",
+    "synthetic": true,
+    "prompt_agent": "stage3",
+    "seed": 0,
+    "note": "NOT a Qwen cache — harness smoke only"
+  },
+  "rows": [
+    {
+      "id": "d_001",
+      "type": "table.filter",
+      "phase": "greedy",
+      "sample": 0,
+      "prompt": [],
+      "text": "",
+      "code": "answer = float(list(dfs.values())[0].select_dtypes('number').iloc[:,0].dropna().sum())",
+      "generation_batch_seconds": 0.0
+    },
+    {
+      "id": "d_001",
+      "type": "table.filter",
+      "phase": "samples",
+      "sample": 0,
+      "prompt": [],
+      "text": "",
+      "code": "import pandas as pd\nanswer = float(list(dfs.values())[0].select_dtypes('number').iloc[:,0].dropna().sum())",
+      "generation_batch_seconds": 0.0
+    },
+    {
+      "id": "d_001",
+      "type": "table.filter",
+      "phase": "samples",
+      "sample": 1,
+      "prompt": [],
+      "text": "",
+      "code": "import numpy as np\nanswer = float(list(dfs.values())[0].select_dtypes('number').iloc[:,0].dropna().sum())",
+      "generation_batch_seconds": 0.0
+    },
+    {
+      "id": "d_001",
+      "type": "table.filter",
+      "phase": "samples",
+      "sample": 2,
+      "prompt": [],
+      "text": "",
+      "code": "answer = (",
+      "generation_batch_seconds": 0.0
+    },
+    {
+      "id": "d_001",
+      "type": "table.filter",
+      "phase": "samples",
+      "sample": 3,
+      "prompt": [],
+      "text": "",
+      "code": "answer = 0",
+      "generation_batch_seconds": 0.0
+    },
+    {
+      "id": "d_005",
+      "type": "table.join",
+      "phase": "greedy",
+      "sample": 0,
+      "prompt": [],
+      "text": "",
+      "code": "answer = float(list(dfs.values())[0].select_dtypes('number').iloc[:,0].dropna().sum())",
+      "generation_batch_seconds": 0.0
+    },
+    {
+      "id": "d_005",
+      "type": "table.join",
+      "phase": "samples",
+      "sample": 0,
+      "prompt": [],
+      "text": "",
+      "code": "import pandas as pd\nanswer = float(list(dfs.values())[0].select_dtypes('number').iloc[:,0].dropna().sum())",
+      "generation_batch_seconds": 0.0
+    },
+    {
+      "id": "d_005",
+      "type": "table.join",
+      "phase": "samples",
+      "sample": 1,
+      "prompt": [],
+      "text": "",
+      "code": "import numpy as np\nanswer = float(list(dfs.values())[0].select_dtypes('number').iloc[:,0].dropna().sum())",
+      "generation_batch_seconds": 0.0
+    },
+    {
+      "id": "d_005",
+      "type": "table.join",
+      "phase": "samples",
+      "sample": 2,
+      "prompt": [],
+      "text": "",
+      "code": "answer = (",
+      "generation_batch_seconds": 0.0
+    },
+    {
+      "id": "d_005",
+      "type": "table.join",
+      "phase": "samples",
+      "sample": 3,
+      "prompt": [],
+      "text": "",
+      "code": "answer = 0",
+      "generation_batch_seconds": 0.0
+    },
+    {
+      "id": "d_006",
+      "type": "table.group",
+      "phase": "greedy",
+      "sample": 0,
+      "prompt": [],
+      "text": "",
+      "code": "answer = float(list(dfs.values())[0].select_dtypes('number').iloc[:,0].dropna().sum())",
+      "generation_batch_seconds": 0.0
+    },
+    {
+      "id": "d_006",
+      "type": "table.group",
+      "phase": "samples",
+      "sample": 0,
+      "prompt": [],
+      "text": "",
+      "code": "import pandas as pd\nanswer = float(list(dfs.values())[0].select_dtypes('number').iloc[:,0].dropna().sum())",
+      "generation_batch_seconds": 0.0
+    },
+    {
+      "id": "d_006",
+      "type": "table.group",
+      "phase": "samples",
+      "sample": 1,
+      "prompt": [],
+      "text": "",
+      "code": "import numpy as np\nanswer = float(list(dfs.values())[0].select_dtypes('number').iloc[:,0].dropna().sum())",
+      "generation_batch_seconds": 0.0
+    },
+    {
+      "id": "d_006",
+      "type": "table.group",
+      "phase": "samples",
+      "sample": 2,
+      "prompt": [],
+      "text": "",
+      "code": "answer = (",
+      "generation_batch_seconds": 0.0
+    },
+    {
+      "id": "d_006",
+      "type": "table.group",
+      "phase": "samples",
+      "sample": 3,
+      "prompt": [],
+      "text": "",
+      "code": "answer = 0",
+      "generation_batch_seconds": 0.0
+    },
+    {
+      "id": "d_009",
+      "type": "table.join",
+      "phase": "greedy",
+      "sample": 0,
+      "prompt": [],
+      "text": "",
+      "code": "answer = float(list(dfs.values())[0].select_dtypes('number').iloc[:,0].dropna().sum())",
+      "generation_batch_seconds": 0.0
+    },
+    {
+      "id": "d_009",
+      "type": "table.join",
+      "phase": "samples",
+      "sample": 0,
+      "prompt": [],
+      "text": "",
+      "code": "import pandas as pd\nanswer = float(list(dfs.values())[0].select_dtypes('number').iloc[:,0].dropna().sum())",
+      "generation_batch_seconds": 0.0
+    },
+    {
+      "id": "d_009",
+      "type": "table.join",
+      "phase": "samples",
+      "sample": 1,
+      "prompt": [],
+      "text": "",
+      "code": "import numpy as np\nanswer = float(list(dfs.values())[0].select_dtypes('number').iloc[:,0].dropna().sum())",
+      "generation_batch_seconds": 0.0
+    },
+    {
+      "id": "d_009",
+      "type": "table.join",
+      "phase": "samples",
+      "sample": 2,
+      "prompt": [],
+      "text": "",
+      "code": "answer = (",
+      "generation_batch_seconds": 0.0
+    },
+    {
+      "id": "d_009",
+      "type": "table.join",
+      "phase": "samples",
+      "sample": 3,
+      "prompt": [],
+      "text": "",
+      "code": "answer = 0",
+      "generation_batch_seconds": 0.0
+    },
+    {
+      "id": "d_011",
+      "type": "table.stat",
+      "phase": "greedy",
+      "sample": 0,
+      "prompt": [],
+      "text": "",
+      "code": "answer = float(list(dfs.values())[0].select_dtypes('number').iloc[:,0].dropna().sum())",
+      "generation_batch_seconds": 0.0
+    },
+    {
+      "id": "d_011",
+      "type": "table.stat",
+      "phase": "samples",
+      "sample": 0,
+      "prompt": [],
+      "text": "",
+      "code": "import pandas as pd\nanswer = float(list(dfs.values())[0].select_dtypes('number').iloc[:,0].dropna().sum())",
+      "generation_batch_seconds": 0.0
+    },
+    {
+      "id": "d_011",
+      "type": "table.stat",
+      "phase": "samples",
+      "sample": 1,
+      "prompt": [],
+      "text": "",
+      "code": "import numpy as np\nanswer = float(list(dfs.values())[0].select_dtypes('number').iloc[:,0].dropna().sum())",
+      "generation_batch_seconds": 0.0
+    },
+    {
+      "id": "d_011",
+      "type": "table.stat",
+      "phase": "samples",
+      "sample": 2,
+      "prompt": [],
+      "text": "",
+      "code": "answer = (",
+      "generation_batch_seconds": 0.0
+    },
+    {
+      "id": "d_011",
+      "type": "table.stat",
+      "phase": "samples",
+      "sample": 3,
+      "prompt": [],
+      "text": "",
+      "code": "answer = 0",
+      "generation_batch_seconds": 0.0
+    },
+    {
+      "id": "d_015",
+      "type": "table.derive",
+      "phase": "greedy",
+      "sample": 0,
+      "prompt": [],
+      "text": "",
+      "code": "answer = float(list(dfs.values())[0].select_dtypes('number').iloc[:,0].dropna().sum())",
+      "generation_batch_seconds": 0.0
+    },
+    {
+      "id": "d_015",
+      "type": "table.derive",
+      "phase": "samples",
+      "sample": 0,
+      "prompt": [],
+      "text": "",
+      "code": "import pandas as pd\nanswer = float(list(dfs.values())[0].select_dtypes('number').iloc[:,0].dropna().sum())",
+      "generation_batch_seconds": 0.0
+    },
+    {
+      "id": "d_015",
+      "type": "table.derive",
+      "phase": "samples",
+      "sample": 1,
+      "prompt": [],
+      "text": "",
+      "code": "import numpy as np\nanswer = float(list(dfs.values())[0].select_dtypes('number').iloc[:,0].dropna().sum())",
+      "generation_batch_seconds": 0.0
+    },
+    {
+      "id": "d_015",
+      "type": "table.derive",
+      "phase": "samples",
+      "sample": 2,
+      "prompt": [],
+      "text": "",
+      "code": "answer = (",
+      "generation_batch_seconds": 0.0
+    },
+    {
+      "id": "d_015",
+      "type": "table.derive",
+      "phase": "samples",
+      "sample": 3,
+      "prompt": [],
+      "text": "",
+      "code": "answer = 0",
+      "generation_batch_seconds": 0.0
+    },
+    {
+      "id": "d_016",
+      "type": "table.filter",
+      "phase": "greedy",
+      "sample": 0,
+      "prompt": [],
+      "text": "",
+      "code": "answer = float(list(dfs.values())[0].select_dtypes('number').iloc[:,0].dropna().sum())",
+      "generation_batch_seconds": 0.0
+    },
+    {
+      "id": "d_016",
+      "type": "table.filter",
+      "phase": "samples",
+      "sample": 0,
+      "prompt": [],
+      "text": "",
+      "code": "import pandas as pd\nanswer = float(list(dfs.values())[0].select_dtypes('number').iloc[:,0].dropna().sum())",
+      "generation_batch_seconds": 0.0
+    },
+    {
+      "id": "d_016",
+      "type": "table.filter",
+      "phase": "samples",
+      "sample": 1,
+      "prompt": [],
+      "text": "",
+      "code": "import numpy as np\nanswer = float(list(dfs.values())[0].select_dtypes('number').iloc[:,0].dropna().sum())",
+      "generation_batch_seconds": 0.0
+    },
+    {
+      "id": "d_016",
+      "type": "table.filter",
+      "phase": "samples",
+      "sample": 2,
+      "prompt": [],
+      "text": "",
+      "code": "answer = (",
+      "generation_batch_seconds": 0.0
+    },
+    {
+      "id": "d_016",
+      "type": "table.filter",
+      "phase": "samples",
+      "sample": 3,
+      "prompt": [],
+      "text": "",
+      "code": "answer = 0",
+      "generation_batch_seconds": 0.0
+    },
+    {
+      "id": "d_021",
+      "type": "table.filter",
+      "phase": "greedy",
+      "sample": 0,
+      "prompt": [],
+      "text": "",
+      "code": "answer = float(list(dfs.values())[0].select_dtypes('number').iloc[:,0].dropna().sum())",
+      "generation_batch_seconds": 0.0
+    },
+    {
+      "id": "d_021",
+      "type": "table.filter",
+      "phase": "samples",
+      "sample": 0,
+      "prompt": [],
+      "text": "",
+      "code": "import pandas as pd\nanswer = float(list(dfs.values())[0].select_dtypes('number').iloc[:,0].dropna().sum())",
+      "generation_batch_seconds": 0.0
+    },
+    {
+      "id": "d_021",
+      "type": "table.filter",
+      "phase": "samples",
+      "sample": 1,
+      "prompt": [],
+      "text": "",
+      "code": "import numpy as np\nanswer = float(list(dfs.values())[0].select_dtypes('number').iloc[:,0].dropna().sum())",
+      "generation_batch_seconds": 0.0
+    },
+    {
+      "id": "d_021",
+      "type": "table.filter",
+      "phase": "samples",
+      "sample": 2,
+      "prompt": [],
+      "text": "",
+      "code": "answer = (",
+      "generation_batch_seconds": 0.0
+    },
+    {
+      "id": "d_021",
+      "type": "table.filter",
+      "phase": "samples",
+      "sample": 3,
+      "prompt": [],
+      "text": "",
+      "code": "answer = 0",
+      "generation_batch_seconds": 0.0
+    }
+  ]
+}

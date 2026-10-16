@@ -1,0 +1,265 @@
+agent,wrapper_alias_fix,id,type,style,executable,value,error
+stage3,False,d_001,table.filter,no_import,True,780.0,
+stage3,False,d_001,table.filter,import_pandas,True,780.0,
+stage3,False,d_001,table.filter,import_numpy,True,780.0,
+stage3,False,d_001,table.filter,syntax_broken,False,,"SyntaxError: '(' was never closed (<string>, line 1)"
+stage3,False,d_016,table.filter,no_import,True,283878.0,
+stage3,False,d_016,table.filter,import_pandas,True,283878.0,
+stage3,False,d_016,table.filter,import_numpy,True,283878.0,
+stage3,False,d_016,table.filter,syntax_broken,False,,"SyntaxError: '(' was never closed (<string>, line 1)"
+stage3,False,d_032,table.group,no_import,True,2043041.0,
+stage3,False,d_032,table.group,import_pandas,True,2043041.0,
+stage3,False,d_032,table.group,import_numpy,True,2043041.0,
+stage3,False,d_032,table.group,syntax_broken,False,,"SyntaxError: '(' was never closed (<string>, line 1)"
+stage3,False,d_039,table.filter,no_import,True,3336.0,
+stage3,False,d_039,table.filter,import_pandas,True,3336.0,
+stage3,False,d_039,table.filter,import_numpy,True,3336.0,
+stage3,False,d_039,table.filter,syntax_broken,False,,"SyntaxError: '(' was never closed (<string>, line 1)"
+stage3,False,d_052,table.join,no_import,True,8580.0,
+stage3,False,d_052,table.join,import_pandas,True,8580.0,
+stage3,False,d_052,table.join,import_numpy,True,8580.0,
+stage3,False,d_052,table.join,syntax_broken,False,,"SyntaxError: '(' was never closed (<string>, line 1)"
+stage3,False,d_068,table.join,no_import,True,389945.0,
+stage3,False,d_068,table.join,import_pandas,True,389945.0,
+stage3,False,d_068,table.join,import_numpy,True,389945.0,
+stage3,False,d_068,table.join,syntax_broken,False,,"SyntaxError: '(' was never closed (<string>, line 1)"
+stage3,False,d_077,table.derive,no_import,True,3678.0,
+stage3,False,d_077,table.derive,import_pandas,True,3678.0,
+stage3,False,d_077,table.derive,import_numpy,True,3678.0,
+stage3,False,d_077,table.derive,syntax_broken,False,,"SyntaxError: '(' was never closed (<string>, line 1)"
+stage3,False,d_096,table.group,no_import,True,207276.0,
+stage3,False,d_096,table.group,import_pandas,True,207276.0,
+stage3,False,d_096,table.group,import_numpy,True,207276.0,
+stage3,False,d_096,table.group,syntax_broken,False,,"SyntaxError: '(' was never closed (<string>, line 1)"
+stage3,False,d_112,table.filter,no_import,True,131425.0,
+stage3,False,d_112,table.filter,import_pandas,True,131425.0,
+stage3,False,d_112,table.filter,import_numpy,True,131425.0,
+stage3,False,d_112,table.filter,syntax_broken,False,,"SyntaxError: '(' was never closed (<string>, line 1)"
+stage3,False,d_129,table.derive,no_import,True,216300.0,
+stage3,False,d_129,table.derive,import_pandas,True,216300.0,
+stage3,False,d_129,table.derive,import_numpy,True,216300.0,
+stage3,False,d_129,table.derive,syntax_broken,False,,"SyntaxError: '(' was never closed (<string>, line 1)"
+stage3,False,d_142,table.stat,no_import,True,266741.0,
+stage3,False,d_142,table.stat,import_pandas,True,266741.0,
+stage3,False,d_142,table.stat,import_numpy,True,266741.0,
+stage3,False,d_142,table.stat,syntax_broken,False,,"SyntaxError: '(' was never closed (<string>, line 1)"
+stage3,False,d_153,table.derive,no_import,True,11466.0,
+stage3,False,d_153,table.derive,import_pandas,True,11466.0,
+stage3,False,d_153,table.derive,import_numpy,True,11466.0,
+stage3,False,d_153,table.derive,syntax_broken,False,,"SyntaxError: '(' was never closed (<string>, line 1)"
+test1,False,d_001,table.filter,no_import,True,780.0,
+test1,False,d_001,table.filter,import_pandas,False,,
+test1,False,d_001,table.filter,import_numpy,True,780.0,
+test1,False,d_001,table.filter,syntax_broken,False,,
+test1,False,d_016,table.filter,no_import,True,283878.0,
+test1,False,d_016,table.filter,import_pandas,False,,
+test1,False,d_016,table.filter,import_numpy,True,283878.0,
+test1,False,d_016,table.filter,syntax_broken,False,,
+test1,False,d_032,table.group,no_import,True,2043041.0,
+test1,False,d_032,table.group,import_pandas,False,,
+test1,False,d_032,table.group,import_numpy,True,2043041.0,
+test1,False,d_032,table.group,syntax_broken,False,,
+test1,False,d_039,table.filter,no_import,True,3336.0,
+test1,False,d_039,table.filter,import_pandas,False,,
+test1,False,d_039,table.filter,import_numpy,True,3336.0,
+test1,False,d_039,table.filter,syntax_broken,False,,
+test1,False,d_052,table.join,no_import,True,8580.0,
+test1,False,d_052,table.join,import_pandas,False,,
+test1,False,d_052,table.join,import_numpy,True,8580.0,
+test1,False,d_052,table.join,syntax_broken,False,,
+test1,False,d_068,table.join,no_import,True,389945.0,
+test1,False,d_068,table.join,import_pandas,False,,
+test1,False,d_068,table.join,import_numpy,True,389945.0,
+test1,False,d_068,table.join,syntax_broken,False,,
+test1,False,d_077,table.derive,no_import,True,3678.0,
+test1,False,d_077,table.derive,import_pandas,False,,
+test1,False,d_077,table.derive,import_numpy,True,3678.0,
+test1,False,d_077,table.derive,syntax_broken,False,,
+test1,False,d_096,table.group,no_import,True,207276.0,
+test1,False,d_096,table.group,import_pandas,False,,
+test1,False,d_096,table.group,import_numpy,True,207276.0,
+test1,False,d_096,table.group,syntax_broken,False,,
+test1,False,d_112,table.filter,no_import,True,131425.0,
+test1,False,d_112,table.filter,import_pandas,False,,
+test1,False,d_112,table.filter,import_numpy,True,131425.0,
+test1,False,d_112,table.filter,syntax_broken,False,,
+test1,False,d_129,table.derive,no_import,True,216300.0,
+test1,False,d_129,table.derive,import_pandas,False,,
+test1,False,d_129,table.derive,import_numpy,True,216300.0,
+test1,False,d_129,table.derive,syntax_broken,False,,
+test1,False,d_142,table.stat,no_import,True,266741.0,
+test1,False,d_142,table.stat,import_pandas,False,,
+test1,False,d_142,table.stat,import_numpy,True,266741.0,
+test1,False,d_142,table.stat,syntax_broken,False,,
+test1,False,d_153,table.derive,no_import,True,11466.0,
+test1,False,d_153,table.derive,import_pandas,False,,
+test1,False,d_153,table.derive,import_numpy,True,11466.0,
+test1,False,d_153,table.derive,syntax_broken,False,,
+test2,False,d_001,table.filter,no_import,True,780.0,
+test2,False,d_001,table.filter,import_pandas,False,,UnboundLocalError: cannot access local variable 'pd' where it is not associated with a value
+test2,False,d_001,table.filter,import_numpy,True,780.0,
+test2,False,d_001,table.filter,syntax_broken,False,,SyntaxError: '(' was never closed (line 1)
+test2,False,d_016,table.filter,no_import,True,283878.0,
+test2,False,d_016,table.filter,import_pandas,False,,UnboundLocalError: cannot access local variable 'pd' where it is not associated with a value
+test2,False,d_016,table.filter,import_numpy,True,283878.0,
+test2,False,d_016,table.filter,syntax_broken,False,,SyntaxError: '(' was never closed (line 1)
+test2,False,d_032,table.group,no_import,True,2043041.0,
+test2,False,d_032,table.group,import_pandas,False,,UnboundLocalError: cannot access local variable 'pd' where it is not associated with a value
+test2,False,d_032,table.group,import_numpy,True,2043041.0,
+test2,False,d_032,table.group,syntax_broken,False,,SyntaxError: '(' was never closed (line 1)
+test2,False,d_039,table.filter,no_import,True,3336.0,
+test2,False,d_039,table.filter,import_pandas,False,,UnboundLocalError: cannot access local variable 'pd' where it is not associated with a value
+test2,False,d_039,table.filter,import_numpy,True,3336.0,
+test2,False,d_039,table.filter,syntax_broken,False,,SyntaxError: '(' was never closed (line 1)
+test2,False,d_052,table.join,no_import,True,8580.0,
+test2,False,d_052,table.join,import_pandas,False,,UnboundLocalError: cannot access local variable 'pd' where it is not associated with a value
+test2,False,d_052,table.join,import_numpy,True,8580.0,
+test2,False,d_052,table.join,syntax_broken,False,,SyntaxError: '(' was never closed (line 1)
+test2,False,d_068,table.join,no_import,True,389945.0,
+test2,False,d_068,table.join,import_pandas,False,,UnboundLocalError: cannot access local variable 'pd' where it is not associated with a value
+test2,False,d_068,table.join,import_numpy,True,389945.0,
+test2,False,d_068,table.join,syntax_broken,False,,SyntaxError: '(' was never closed (line 1)
+test2,False,d_077,table.derive,no_import,True,3678.0,
+test2,False,d_077,table.derive,import_pandas,False,,UnboundLocalError: cannot access local variable 'pd' where it is not associated with a value
+test2,False,d_077,table.derive,import_numpy,True,3678.0,
+test2,False,d_077,table.derive,syntax_broken,False,,SyntaxError: '(' was never closed (line 1)
+test2,False,d_096,table.group,no_import,True,207276.0,
+test2,False,d_096,table.group,import_pandas,False,,UnboundLocalError: cannot access local variable 'pd' where it is not associated with a value
+test2,False,d_096,table.group,import_numpy,True,207276.0,
+test2,False,d_096,table.group,syntax_broken,False,,SyntaxError: '(' was never closed (line 1)
+test2,False,d_112,table.filter,no_import,True,131425.0,
+test2,False,d_112,table.filter,import_pandas,False,,UnboundLocalError: cannot access local variable 'pd' where it is not associated with a value
+test2,False,d_112,table.filter,import_numpy,True,131425.0,
+test2,False,d_112,table.filter,syntax_broken,False,,SyntaxError: '(' was never closed (line 1)
+test2,False,d_129,table.derive,no_import,True,216300.0,
+test2,False,d_129,table.derive,import_pandas,False,,UnboundLocalError: cannot access local variable 'pd' where it is not associated with a value
+test2,False,d_129,table.derive,import_numpy,True,216300.0,
+test2,False,d_129,table.derive,syntax_broken,False,,SyntaxError: '(' was never closed (line 1)
+test2,False,d_142,table.stat,no_import,True,266741.0,
+test2,False,d_142,table.stat,import_pandas,False,,UnboundLocalError: cannot access local variable 'pd' where it is not associated with a value
+test2,False,d_142,table.stat,import_numpy,True,266741.0,
+test2,False,d_142,table.stat,syntax_broken,False,,SyntaxError: '(' was never closed (line 1)
+test2,False,d_153,table.derive,no_import,True,11466.0,
+test2,False,d_153,table.derive,import_pandas,False,,UnboundLocalError: cannot access local variable 'pd' where it is not associated with a value
+test2,False,d_153,table.derive,import_numpy,True,11466.0,
+test2,False,d_153,table.derive,syntax_broken,False,,SyntaxError: '(' was never closed (line 1)
+test2,True,d_001,table.filter,no_import,True,780.0,
+test2,True,d_001,table.filter,import_pandas,True,780.0,
+test2,True,d_001,table.filter,import_numpy,True,780.0,
+test2,True,d_001,table.filter,syntax_broken,False,,SyntaxError: '(' was never closed (line 1)
+test2,True,d_016,table.filter,no_import,True,283878.0,
+test2,True,d_016,table.filter,import_pandas,True,283878.0,
+test2,True,d_016,table.filter,import_numpy,True,283878.0,
+test2,True,d_016,table.filter,syntax_broken,False,,SyntaxError: '(' was never closed (line 1)
+test2,True,d_032,table.group,no_import,True,2043041.0,
+test2,True,d_032,table.group,import_pandas,True,2043041.0,
+test2,True,d_032,table.group,import_numpy,True,2043041.0,
+test2,True,d_032,table.group,syntax_broken,False,,SyntaxError: '(' was never closed (line 1)
+test2,True,d_039,table.filter,no_import,True,3336.0,
+test2,True,d_039,table.filter,import_pandas,True,3336.0,
+test2,True,d_039,table.filter,import_numpy,True,3336.0,
+test2,True,d_039,table.filter,syntax_broken,False,,SyntaxError: '(' was never closed (line 1)
+test2,True,d_052,table.join,no_import,True,8580.0,
+test2,True,d_052,table.join,import_pandas,True,8580.0,
+test2,True,d_052,table.join,import_numpy,True,8580.0,
+test2,True,d_052,table.join,syntax_broken,False,,SyntaxError: '(' was never closed (line 1)
+test2,True,d_068,table.join,no_import,True,389945.0,
+test2,True,d_068,table.join,import_pandas,True,389945.0,
+test2,True,d_068,table.join,import_numpy,True,389945.0,
+test2,True,d_068,table.join,syntax_broken,False,,SyntaxError: '(' was never closed (line 1)
+test2,True,d_077,table.derive,no_import,True,3678.0,
+test2,True,d_077,table.derive,import_pandas,True,3678.0,
+test2,True,d_077,table.derive,import_numpy,True,3678.0,
+test2,True,d_077,table.derive,syntax_broken,False,,SyntaxError: '(' was never closed (line 1)
+test2,True,d_096,table.group,no_import,True,207276.0,
+test2,True,d_096,table.group,import_pandas,True,207276.0,
+test2,True,d_096,table.group,import_numpy,True,207276.0,
+test2,True,d_096,table.group,syntax_broken,False,,SyntaxError: '(' was never closed (line 1)
+test2,True,d_112,table.filter,no_import,True,131425.0,
+test2,True,d_112,table.filter,import_pandas,True,131425.0,
+test2,True,d_112,table.filter,import_numpy,True,131425.0,
+test2,True,d_112,table.filter,syntax_broken,False,,SyntaxError: '(' was never closed (line 1)
+test2,True,d_129,table.derive,no_import,True,216300.0,
+test2,True,d_129,table.derive,import_pandas,True,216300.0,
+test2,True,d_129,table.derive,import_numpy,True,216300.0,
+test2,True,d_129,table.derive,syntax_broken,False,,SyntaxError: '(' was never closed (line 1)
+test2,True,d_142,table.stat,no_import,True,266741.0,
+test2,True,d_142,table.stat,import_pandas,True,266741.0,
+test2,True,d_142,table.stat,import_numpy,True,266741.0,
+test2,True,d_142,table.stat,syntax_broken,False,,SyntaxError: '(' was never closed (line 1)
+test2,True,d_153,table.derive,no_import,True,11466.0,
+test2,True,d_153,table.derive,import_pandas,True,11466.0,
+test2,True,d_153,table.derive,import_numpy,True,11466.0,
+test2,True,d_153,table.derive,syntax_broken,False,,SyntaxError: '(' was never closed (line 1)
+faithful,False,d_001,table.filter,no_import,True,780.0,
+faithful,False,d_001,table.filter,import_pandas,True,780.0,
+faithful,False,d_001,table.filter,import_numpy,True,780.0,
+faithful,False,d_001,table.filter,syntax_broken,False,,"Traceback (most recent call last):
+  File ""C:\Users\GOUA\AppData\Local\Temp\dsh_local_q59nrxie\_runner.py"", line 5, in <module>
+    exec(compile(open(""solution.py"").read(), ""solution.py"", ""exec""), ns)"
+faithful,False,d_016,table.filter,no_import,True,283878.0,
+faithful,False,d_016,table.filter,import_pandas,True,283878.0,
+faithful,False,d_016,table.filter,import_numpy,True,283878.0,
+faithful,False,d_016,table.filter,syntax_broken,False,,"Traceback (most recent call last):
+  File ""C:\Users\GOUA\AppData\Local\Temp\dsh_local_og6kwmuf\_runner.py"", line 5, in <module>
+    exec(compile(open(""solution.py"").read(), ""solution.py"", ""exec""), ns)"
+faithful,False,d_032,table.group,no_import,True,2043041.0,
+faithful,False,d_032,table.group,import_pandas,True,2043041.0,
+faithful,False,d_032,table.group,import_numpy,True,2043041.0,
+faithful,False,d_032,table.group,syntax_broken,False,,"Traceback (most recent call last):
+  File ""C:\Users\GOUA\AppData\Local\Temp\dsh_local_19kuu91z\_runner.py"", line 5, in <module>
+    exec(compile(open(""solution.py"").read(), ""solution.py"", ""exec""), ns)"
+faithful,False,d_039,table.filter,no_import,True,3336.0,
+faithful,False,d_039,table.filter,import_pandas,True,3336.0,
+faithful,False,d_039,table.filter,import_numpy,True,3336.0,
+faithful,False,d_039,table.filter,syntax_broken,False,,"Traceback (most recent call last):
+  File ""C:\Users\GOUA\AppData\Local\Temp\dsh_local_kw5btmo1\_runner.py"", line 5, in <module>
+    exec(compile(open(""solution.py"").read(), ""solution.py"", ""exec""), ns)"
+faithful,False,d_052,table.join,no_import,True,8580.0,
+faithful,False,d_052,table.join,import_pandas,True,8580.0,
+faithful,False,d_052,table.join,import_numpy,True,8580.0,
+faithful,False,d_052,table.join,syntax_broken,False,,"Traceback (most recent call last):
+  File ""C:\Users\GOUA\AppData\Local\Temp\dsh_local_tapguim0\_runner.py"", line 5, in <module>
+    exec(compile(open(""solution.py"").read(), ""solution.py"", ""exec""), ns)"
+faithful,False,d_068,table.join,no_import,True,389945.0,
+faithful,False,d_068,table.join,import_pandas,True,389945.0,
+faithful,False,d_068,table.join,import_numpy,True,389945.0,
+faithful,False,d_068,table.join,syntax_broken,False,,"Traceback (most recent call last):
+  File ""C:\Users\GOUA\AppData\Local\Temp\dsh_local_0xwkpdph\_runner.py"", line 5, in <module>
+    exec(compile(open(""solution.py"").read(), ""solution.py"", ""exec""), ns)"
+faithful,False,d_077,table.derive,no_import,True,3678.0,
+faithful,False,d_077,table.derive,import_pandas,True,3678.0,
+faithful,False,d_077,table.derive,import_numpy,True,3678.0,
+faithful,False,d_077,table.derive,syntax_broken,False,,"Traceback (most recent call last):
+  File ""C:\Users\GOUA\AppData\Local\Temp\dsh_local_9_jx55s9\_runner.py"", line 5, in <module>
+    exec(compile(open(""solution.py"").read(), ""solution.py"", ""exec""), ns)"
+faithful,False,d_096,table.group,no_import,True,207276.0,
+faithful,False,d_096,table.group,import_pandas,True,207276.0,
+faithful,False,d_096,table.group,import_numpy,True,207276.0,
+faithful,False,d_096,table.group,syntax_broken,False,,"Traceback (most recent call last):
+  File ""C:\Users\GOUA\AppData\Local\Temp\dsh_local_m9v4p218\_runner.py"", line 5, in <module>
+    exec(compile(open(""solution.py"").read(), ""solution.py"", ""exec""), ns)"
+faithful,False,d_112,table.filter,no_import,True,131425.0,
+faithful,False,d_112,table.filter,import_pandas,True,131425.0,
+faithful,False,d_112,table.filter,import_numpy,True,131425.0,
+faithful,False,d_112,table.filter,syntax_broken,False,,"Traceback (most recent call last):
+  File ""C:\Users\GOUA\AppData\Local\Temp\dsh_local_pqclvtxi\_runner.py"", line 5, in <module>
+    exec(compile(open(""solution.py"").read(), ""solution.py"", ""exec""), ns)"
+faithful,False,d_129,table.derive,no_import,True,216300.0,
+faithful,False,d_129,table.derive,import_pandas,True,216300.0,
+faithful,False,d_129,table.derive,import_numpy,True,216300.0,
+faithful,False,d_129,table.derive,syntax_broken,False,,"Traceback (most recent call last):
+  File ""C:\Users\GOUA\AppData\Local\Temp\dsh_local_rnwpzbv7\_runner.py"", line 5, in <module>
+    exec(compile(open(""solution.py"").read(), ""solution.py"", ""exec""), ns)"
+faithful,False,d_142,table.stat,no_import,True,266741.0,
+faithful,False,d_142,table.stat,import_pandas,True,266741.0,
+faithful,False,d_142,table.stat,import_numpy,True,266741.0,
+faithful,False,d_142,table.stat,syntax_broken,False,,"Traceback (most recent call last):
+  File ""C:\Users\GOUA\AppData\Local\Temp\dsh_local_e3pec_t_\_runner.py"", line 5, in <module>
+    exec(compile(open(""solution.py"").read(), ""solution.py"", ""exec""), ns)"
+faithful,False,d_153,table.derive,no_import,True,11466.0,
+faithful,False,d_153,table.derive,import_pandas,True,11466.0,
+faithful,False,d_153,table.derive,import_numpy,True,11466.0,
+faithful,False,d_153,table.derive,syntax_broken,False,,"Traceback (most recent call last):
+  File ""C:\Users\GOUA\AppData\Local\Temp\dsh_local_me50zd8r\_runner.py"", line 5, in <module>
+    exec(compile(open(""solution.py"").read(), ""solution.py"", ""exec""), ns)"

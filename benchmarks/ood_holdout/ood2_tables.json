@@ -1,0 +1,1342 @@
+[
+  {
+    "id": "h2_001",
+    "objective": "Using facts.csv, compute the 10% trimmed mean of the primary measurement: sort the non-missing values, remove floor(10% of n) observations from each tail, then take the mean. Round to 2 decimals.",
+    "files": {
+      "facts.csv": "x,y,w,grp,label,year\n47.79,30.12,2.93,C,DELTAY,2024\n49.49,26.09,4.12,B,DELTAX,2024\n26.72,17.86,3.62,A,GAMMAY,2022\n69.45,31.83,2.3,A,BETAZ,2024\n49.73,22.92,2.03,A,ALPHAZ,2023\n45.25,37.67,2.86,B,BETAZ,2021\n62.06,30.41,1.03,A,BETAX,2022\n46.87,23.36,4.89,C,DELTAY,2023\n53.93,27.23,2.39,A,BETAX,2022\n52.5,29.55,1.82,B,GAMMAZ,2023\n31.22,29.77,2.43,B,DELTAX,2023\n52.56,36.89,3.25,A,BETAX,2021\n40.94,25.98,4.69,C,ALPHAY,2023\n43.17,31.81,3.12,B,DELTAX,2022\n71.9,35.29,0.82,A,BETAZ,2021\n29.11,35.2,0.64,C,GAMMAX,2025\n16.37,11.28,1.27,B,DELTAX,2024\n56.23,33.23,3.89,C,ALPHAX,2025\n51.89,26.13,1.21,A,ALPHAX,2022\n49.46,18.04,1.81,B,ALPHAZ,2021\n47.67,25.94,4.75,A,GAMMAY,2022\n67.98,24.84,1.4,C,DELTAZ,2021\n66.17,34.78,3.27,A,BETAY,2025\n57.28,35.13,1.48,C,DELTAY,2025\n39.49,22.26,2.95,A,BETAZ,2022\n23.52,13.43,4.3,A,BETAY,2023\n43.03,27.39,1.7,B,ALPHAZ,2021\n59.32,26.21,0.51,C,BETAY,2022\n",
+      "data_dictionary.csv": "file,column,description,unit\nfacts.csv,x,\"Primary measurement\",unit\nfacts.csv,y,\"Secondary measurement\",unit\nfacts.csv,w,\"Observation weight\",unitless\nfacts.csv,grp,\"Segment label\",\nfacts.csv,label,\"Record label\",\nfacts.csv,year,\"Observation year\",year\n"
+    },
+    "answer": 48.74416666666667,
+    "tol": 0.015,
+    "type": "table.holdout_trimmed_mean"
+  },
+  {
+    "id": "h2_002",
+    "objective": "What is the sample coefficient of variation of the primary measurement in facts.csv, defined as 100 times the sample standard deviation (ddof=1) divided by the mean? Round to 2 decimals.",
+    "files": {
+      "facts.csv": "x,y,w,grp,label,year\n47.79,30.12,2.93,C,DELTAY,2024\n49.49,26.09,4.12,B,DELTAX,2024\n26.72,17.86,3.62,A,GAMMAY,2022\n69.45,31.83,2.3,A,BETAZ,2024\n49.73,22.92,2.03,A,ALPHAZ,2023\n45.25,37.67,2.86,B,BETAZ,2021\n62.06,30.41,1.03,A,BETAX,2022\n46.87,23.36,4.89,C,DELTAY,2023\n53.93,27.23,2.39,A,BETAX,2022\n52.5,29.55,1.82,B,GAMMAZ,2023\n31.22,29.77,2.43,B,DELTAX,2023\n52.56,36.89,3.25,A,BETAX,2021\n40.94,25.98,4.69,C,ALPHAY,2023\n43.17,31.81,3.12,B,DELTAX,2022\n71.9,35.29,0.82,A,BETAZ,2021\n29.11,35.2,0.64,C,GAMMAX,2025\n16.37,11.28,1.27,B,DELTAX,2024\n56.23,33.23,3.89,C,ALPHAX,2025\n51.89,26.13,1.21,A,ALPHAX,2022\n49.46,18.04,1.81,B,ALPHAZ,2021\n47.67,25.94,4.75,A,GAMMAY,2022\n67.98,24.84,1.4,C,DELTAZ,2021\n66.17,34.78,3.27,A,BETAY,2025\n57.28,35.13,1.48,C,DELTAY,2025\n39.49,22.26,2.95,A,BETAZ,2022\n23.52,13.43,4.3,A,BETAY,2023\n43.03,27.39,1.7,B,ALPHAZ,2021\n59.32,26.21,0.51,C,BETAY,2022\n",
+      "data_dictionary.csv": "file,column,description,unit\nfacts.csv,x,\"Primary measurement\",unit\nfacts.csv,y,\"Secondary measurement\",unit\nfacts.csv,w,\"Observation weight\",unitless\nfacts.csv,grp,\"Segment label\",\nfacts.csv,label,\"Record label\",\nfacts.csv,year,\"Observation year\",year\n"
+    },
+    "answer": 28.78076249431163,
+    "tol": 0.015,
+    "type": "table.holdout_coef_variation"
+  },
+  {
+    "id": "h2_003",
+    "objective": "What is the 90th percentile of the primary measurement in facts.csv using linear interpolation? Round to 2 decimals.",
+    "files": {
+      "facts.csv": "x,y,w,grp,label,year\n47.79,30.12,2.93,C,DELTAY,2024\n49.49,26.09,4.12,B,DELTAX,2024\n26.72,17.86,3.62,A,GAMMAY,2022\n69.45,31.83,2.3,A,BETAZ,2024\n49.73,22.92,2.03,A,ALPHAZ,2023\n45.25,37.67,2.86,B,BETAZ,2021\n62.06,30.41,1.03,A,BETAX,2022\n46.87,23.36,4.89,C,DELTAY,2023\n53.93,27.23,2.39,A,BETAX,2022\n52.5,29.55,1.82,B,GAMMAZ,2023\n31.22,29.77,2.43,B,DELTAX,2023\n52.56,36.89,3.25,A,BETAX,2021\n40.94,25.98,4.69,C,ALPHAY,2023\n43.17,31.81,3.12,B,DELTAX,2022\n71.9,35.29,0.82,A,BETAZ,2021\n29.11,35.2,0.64,C,GAMMAX,2025\n16.37,11.28,1.27,B,DELTAX,2024\n56.23,33.23,3.89,C,ALPHAX,2025\n51.89,26.13,1.21,A,ALPHAX,2022\n49.46,18.04,1.81,B,ALPHAZ,2021\n47.67,25.94,4.75,A,GAMMAY,2022\n67.98,24.84,1.4,C,DELTAZ,2021\n66.17,34.78,3.27,A,BETAY,2025\n57.28,35.13,1.48,C,DELTAY,2025\n39.49,22.26,2.95,A,BETAZ,2022\n23.52,13.43,4.3,A,BETAY,2023\n43.03,27.39,1.7,B,ALPHAZ,2021\n59.32,26.21,0.51,C,BETAY,2022\n",
+      "data_dictionary.csv": "file,column,description,unit\nfacts.csv,x,\"Primary measurement\",unit\nfacts.csv,y,\"Secondary measurement\",unit\nfacts.csv,w,\"Observation weight\",unitless\nfacts.csv,grp,\"Segment label\",\nfacts.csv,label,\"Record label\",\nfacts.csv,year,\"Observation year\",year\n"
+    },
+    "answer": 66.71300000000001,
+    "tol": 0.015,
+    "type": "table.holdout_p90"
+  },
+  {
+    "id": "h2_004",
+    "objective": "What percentage of records in facts.csv have primary measurement strictly greater than 49.48? Round to 2 decimals.",
+    "files": {
+      "facts.csv": "x,y,w,grp,label,year\n47.79,30.12,2.93,C,DELTAY,2024\n49.49,26.09,4.12,B,DELTAX,2024\n26.72,17.86,3.62,A,GAMMAY,2022\n69.45,31.83,2.3,A,BETAZ,2024\n49.73,22.92,2.03,A,ALPHAZ,2023\n45.25,37.67,2.86,B,BETAZ,2021\n62.06,30.41,1.03,A,BETAX,2022\n46.87,23.36,4.89,C,DELTAY,2023\n53.93,27.23,2.39,A,BETAX,2022\n52.5,29.55,1.82,B,GAMMAZ,2023\n31.22,29.77,2.43,B,DELTAX,2023\n52.56,36.89,3.25,A,BETAX,2021\n40.94,25.98,4.69,C,ALPHAY,2023\n43.17,31.81,3.12,B,DELTAX,2022\n71.9,35.29,0.82,A,BETAZ,2021\n29.11,35.2,0.64,C,GAMMAX,2025\n16.37,11.28,1.27,B,DELTAX,2024\n56.23,33.23,3.89,C,ALPHAX,2025\n51.89,26.13,1.21,A,ALPHAX,2022\n49.46,18.04,1.81,B,ALPHAZ,2021\n47.67,25.94,4.75,A,GAMMAY,2022\n67.98,24.84,1.4,C,DELTAZ,2021\n66.17,34.78,3.27,A,BETAY,2025\n57.28,35.13,1.48,C,DELTAY,2025\n39.49,22.26,2.95,A,BETAZ,2022\n23.52,13.43,4.3,A,BETAY,2023\n43.03,27.39,1.7,B,ALPHAZ,2021\n59.32,26.21,0.51,C,BETAY,2022\n",
+      "data_dictionary.csv": "file,column,description,unit\nfacts.csv,x,\"Primary measurement\",unit\nfacts.csv,y,\"Secondary measurement\",unit\nfacts.csv,w,\"Observation weight\",unitless\nfacts.csv,grp,\"Segment label\",\nfacts.csv,label,\"Record label\",\nfacts.csv,year,\"Observation year\",year\n"
+    },
+    "answer": 50.0,
+    "tol": 0.015,
+    "type": "table.holdout_prop_above"
+  },
+  {
+    "id": "h2_005",
+    "objective": "Compute the median absolute deviation of the primary measurement in facts.csv, defined as median(|x - median(x)|), without any scaling constant. Round to 2 decimals.",
+    "files": {
+      "facts.csv": "x,y,w,grp,label,year\n47.79,30.12,2.93,C,DELTAY,2024\n49.49,26.09,4.12,B,DELTAX,2024\n26.72,17.86,3.62,A,GAMMAY,2022\n69.45,31.83,2.3,A,BETAZ,2024\n49.73,22.92,2.03,A,ALPHAZ,2023\n45.25,37.67,2.86,B,BETAZ,2021\n62.06,30.41,1.03,A,BETAX,2022\n46.87,23.36,4.89,C,DELTAY,2023\n53.93,27.23,2.39,A,BETAX,2022\n52.5,29.55,1.82,B,GAMMAZ,2023\n31.22,29.77,2.43,B,DELTAX,2023\n52.56,36.89,3.25,A,BETAX,2021\n40.94,25.98,4.69,C,ALPHAY,2023\n43.17,31.81,3.12,B,DELTAX,2022\n71.9,35.29,0.82,A,BETAZ,2021\n29.11,35.2,0.64,C,GAMMAX,2025\n16.37,11.28,1.27,B,DELTAX,2024\n56.23,33.23,3.89,C,ALPHAX,2025\n51.89,26.13,1.21,A,ALPHAX,2022\n49.46,18.04,1.81,B,ALPHAZ,2021\n47.67,25.94,4.75,A,GAMMAY,2022\n67.98,24.84,1.4,C,DELTAZ,2021\n66.17,34.78,3.27,A,BETAY,2025\n57.28,35.13,1.48,C,DELTAY,2025\n39.49,22.26,2.95,A,BETAZ,2022\n23.52,13.43,4.3,A,BETAY,2023\n43.03,27.39,1.7,B,ALPHAZ,2021\n59.32,26.21,0.51,C,BETAY,2022\n",
+      "data_dictionary.csv": "file,column,description,unit\nfacts.csv,x,\"Primary measurement\",unit\nfacts.csv,y,\"Secondary measurement\",unit\nfacts.csv,w,\"Observation weight\",unitless\nfacts.csv,grp,\"Segment label\",\nfacts.csv,label,\"Record label\",\nfacts.csv,year,\"Observation year\",year\n"
+    },
+    "answer": 7.279999999999998,
+    "tol": 0.015,
+    "type": "table.holdout_mad"
+  },
+  {
+    "id": "h2_006",
+    "objective": "What is the median primary measurement for segment 'A' minus the median primary measurement for segment 'B' in facts.csv? Round to 2 decimals.",
+    "files": {
+      "facts.csv": "x,y,w,grp,label,year\n47.79,30.12,2.93,C,DELTAY,2024\n49.49,26.09,4.12,B,DELTAX,2024\n26.72,17.86,3.62,A,GAMMAY,2022\n69.45,31.83,2.3,A,BETAZ,2024\n49.73,22.92,2.03,A,ALPHAZ,2023\n45.25,37.67,2.86,B,BETAZ,2021\n62.06,30.41,1.03,A,BETAX,2022\n46.87,23.36,4.89,C,DELTAY,2023\n53.93,27.23,2.39,A,BETAX,2022\n52.5,29.55,1.82,B,GAMMAZ,2023\n31.22,29.77,2.43,B,DELTAX,2023\n52.56,36.89,3.25,A,BETAX,2021\n40.94,25.98,4.69,C,ALPHAY,2023\n43.17,31.81,3.12,B,DELTAX,2022\n71.9,35.29,0.82,A,BETAZ,2021\n29.11,35.2,0.64,C,GAMMAX,2025\n16.37,11.28,1.27,B,DELTAX,2024\n56.23,33.23,3.89,C,ALPHAX,2025\n51.89,26.13,1.21,A,ALPHAX,2022\n49.46,18.04,1.81,B,ALPHAZ,2021\n47.67,25.94,4.75,A,GAMMAY,2022\n67.98,24.84,1.4,C,DELTAZ,2021\n66.17,34.78,3.27,A,BETAY,2025\n57.28,35.13,1.48,C,DELTAY,2025\n39.49,22.26,2.95,A,BETAZ,2022\n23.52,13.43,4.3,A,BETAY,2023\n43.03,27.39,1.7,B,ALPHAZ,2021\n59.32,26.21,0.51,C,BETAY,2022\n",
+      "data_dictionary.csv": "file,column,description,unit\nfacts.csv,x,\"Primary measurement\",unit\nfacts.csv,y,\"Secondary measurement\",unit\nfacts.csv,w,\"Observation weight\",unitless\nfacts.csv,grp,\"Segment label\",\nfacts.csv,label,\"Record label\",\nfacts.csv,year,\"Observation year\",year\n"
+    },
+    "answer": 8.015,
+    "tol": 0.015,
+    "type": "table.holdout_group_median_diff"
+  },
+  {
+    "id": "h2_007",
+    "objective": "How many records in facts.csv have a record label that ends with 'X'? Give a whole number.",
+    "files": {
+      "facts.csv": "x,y,w,grp,label,year\n47.79,30.12,2.93,C,DELTAY,2024\n49.49,26.09,4.12,B,DELTAX,2024\n26.72,17.86,3.62,A,GAMMAY,2022\n69.45,31.83,2.3,A,BETAZ,2024\n49.73,22.92,2.03,A,ALPHAZ,2023\n45.25,37.67,2.86,B,BETAZ,2021\n62.06,30.41,1.03,A,BETAX,2022\n46.87,23.36,4.89,C,DELTAY,2023\n53.93,27.23,2.39,A,BETAX,2022\n52.5,29.55,1.82,B,GAMMAZ,2023\n31.22,29.77,2.43,B,DELTAX,2023\n52.56,36.89,3.25,A,BETAX,2021\n40.94,25.98,4.69,C,ALPHAY,2023\n43.17,31.81,3.12,B,DELTAX,2022\n71.9,35.29,0.82,A,BETAZ,2021\n29.11,35.2,0.64,C,GAMMAX,2025\n16.37,11.28,1.27,B,DELTAX,2024\n56.23,33.23,3.89,C,ALPHAX,2025\n51.89,26.13,1.21,A,ALPHAX,2022\n49.46,18.04,1.81,B,ALPHAZ,2021\n47.67,25.94,4.75,A,GAMMAY,2022\n67.98,24.84,1.4,C,DELTAZ,2021\n66.17,34.78,3.27,A,BETAY,2025\n57.28,35.13,1.48,C,DELTAY,2025\n39.49,22.26,2.95,A,BETAZ,2022\n23.52,13.43,4.3,A,BETAY,2023\n43.03,27.39,1.7,B,ALPHAZ,2021\n59.32,26.21,0.51,C,BETAY,2022\n",
+      "data_dictionary.csv": "file,column,description,unit\nfacts.csv,x,\"Primary measurement\",unit\nfacts.csv,y,\"Secondary measurement\",unit\nfacts.csv,w,\"Observation weight\",unitless\nfacts.csv,grp,\"Segment label\",\nfacts.csv,label,\"Record label\",\nfacts.csv,year,\"Observation year\",year\n"
+    },
+    "answer": 10.0,
+    "tol": 1e-06,
+    "type": "table.holdout_string_suffix"
+  },
+  {
+    "id": "h2_008",
+    "objective": "Compute the sum of the primary measurement divided by the sum of the secondary measurement over all records in facts.csv. Round to 3 decimals.",
+    "files": {
+      "facts.csv": "x,y,w,grp,label,year\n47.79,30.12,2.93,C,DELTAY,2024\n49.49,26.09,4.12,B,DELTAX,2024\n26.72,17.86,3.62,A,GAMMAY,2022\n69.45,31.83,2.3,A,BETAZ,2024\n49.73,22.92,2.03,A,ALPHAZ,2023\n45.25,37.67,2.86,B,BETAZ,2021\n62.06,30.41,1.03,A,BETAX,2022\n46.87,23.36,4.89,C,DELTAY,2023\n53.93,27.23,2.39,A,BETAX,2022\n52.5,29.55,1.82,B,GAMMAZ,2023\n31.22,29.77,2.43,B,DELTAX,2023\n52.56,36.89,3.25,A,BETAX,2021\n40.94,25.98,4.69,C,ALPHAY,2023\n43.17,31.81,3.12,B,DELTAX,2022\n71.9,35.29,0.82,A,BETAZ,2021\n29.11,35.2,0.64,C,GAMMAX,2025\n16.37,11.28,1.27,B,DELTAX,2024\n56.23,33.23,3.89,C,ALPHAX,2025\n51.89,26.13,1.21,A,ALPHAX,2022\n49.46,18.04,1.81,B,ALPHAZ,2021\n47.67,25.94,4.75,A,GAMMAY,2022\n67.98,24.84,1.4,C,DELTAZ,2021\n66.17,34.78,3.27,A,BETAY,2025\n57.28,35.13,1.48,C,DELTAY,2025\n39.49,22.26,2.95,A,BETAZ,2022\n23.52,13.43,4.3,A,BETAY,2023\n43.03,27.39,1.7,B,ALPHAZ,2021\n59.32,26.21,0.51,C,BETAY,2022\n",
+      "data_dictionary.csv": "file,column,description,unit\nfacts.csv,x,\"Primary measurement\",unit\nfacts.csv,y,\"Secondary measurement\",unit\nfacts.csv,w,\"Observation weight\",unitless\nfacts.csv,grp,\"Segment label\",\nfacts.csv,label,\"Record label\",\nfacts.csv,year,\"Observation year\",year\n"
+    },
+    "answer": 1.7532181044326793,
+    "tol": 0.0015,
+    "type": "table.holdout_ratio_sums"
+  },
+  {
+    "id": "h2_009",
+    "objective": "Among records whose segment label is 'A', compute the Pearson correlation between the primary measurement and the secondary measurement. Round to 3 decimals.",
+    "files": {
+      "facts.csv": "x,y,w,grp,label,year\n47.79,30.12,2.93,C,DELTAY,2024\n49.49,26.09,4.12,B,DELTAX,2024\n26.72,17.86,3.62,A,GAMMAY,2022\n69.45,31.83,2.3,A,BETAZ,2024\n49.73,22.92,2.03,A,ALPHAZ,2023\n45.25,37.67,2.86,B,BETAZ,2021\n62.06,30.41,1.03,A,BETAX,2022\n46.87,23.36,4.89,C,DELTAY,2023\n53.93,27.23,2.39,A,BETAX,2022\n52.5,29.55,1.82,B,GAMMAZ,2023\n31.22,29.77,2.43,B,DELTAX,2023\n52.56,36.89,3.25,A,BETAX,2021\n40.94,25.98,4.69,C,ALPHAY,2023\n43.17,31.81,3.12,B,DELTAX,2022\n71.9,35.29,0.82,A,BETAZ,2021\n29.11,35.2,0.64,C,GAMMAX,2025\n16.37,11.28,1.27,B,DELTAX,2024\n56.23,33.23,3.89,C,ALPHAX,2025\n51.89,26.13,1.21,A,ALPHAX,2022\n49.46,18.04,1.81,B,ALPHAZ,2021\n47.67,25.94,4.75,A,GAMMAY,2022\n67.98,24.84,1.4,C,DELTAZ,2021\n66.17,34.78,3.27,A,BETAY,2025\n57.28,35.13,1.48,C,DELTAY,2025\n39.49,22.26,2.95,A,BETAZ,2022\n23.52,13.43,4.3,A,BETAY,2023\n43.03,27.39,1.7,B,ALPHAZ,2021\n59.32,26.21,0.51,C,BETAY,2022\n",
+      "data_dictionary.csv": "file,column,description,unit\nfacts.csv,x,\"Primary measurement\",unit\nfacts.csv,y,\"Secondary measurement\",unit\nfacts.csv,w,\"Observation weight\",unitless\nfacts.csv,grp,\"Segment label\",\nfacts.csv,label,\"Record label\",\nfacts.csv,year,\"Observation year\",year\n"
+    },
+    "answer": 0.8906778724383465,
+    "tol": 0.0015,
+    "type": "table.holdout_filtered_corr"
+  },
+  {
+    "id": "h2_010",
+    "objective": "For each observation year in facts.csv, compute the median primary measurement. Which year has the largest median? Return the year as an integer.",
+    "files": {
+      "facts.csv": "x,y,w,grp,label,year\n47.79,30.12,2.93,C,DELTAY,2024\n49.49,26.09,4.12,B,DELTAX,2024\n26.72,17.86,3.62,A,GAMMAY,2022\n69.45,31.83,2.3,A,BETAZ,2024\n49.73,22.92,2.03,A,ALPHAZ,2023\n45.25,37.67,2.86,B,BETAZ,2021\n62.06,30.41,1.03,A,BETAX,2022\n46.87,23.36,4.89,C,DELTAY,2023\n53.93,27.23,2.39,A,BETAX,2022\n52.5,29.55,1.82,B,GAMMAZ,2023\n31.22,29.77,2.43,B,DELTAX,2023\n52.56,36.89,3.25,A,BETAX,2021\n40.94,25.98,4.69,C,ALPHAY,2023\n43.17,31.81,3.12,B,DELTAX,2022\n71.9,35.29,0.82,A,BETAZ,2021\n29.11,35.2,0.64,C,GAMMAX,2025\n16.37,11.28,1.27,B,DELTAX,2024\n56.23,33.23,3.89,C,ALPHAX,2025\n51.89,26.13,1.21,A,ALPHAX,2022\n49.46,18.04,1.81,B,ALPHAZ,2021\n47.67,25.94,4.75,A,GAMMAY,2022\n67.98,24.84,1.4,C,DELTAZ,2021\n66.17,34.78,3.27,A,BETAY,2025\n57.28,35.13,1.48,C,DELTAY,2025\n39.49,22.26,2.95,A,BETAZ,2022\n23.52,13.43,4.3,A,BETAY,2023\n43.03,27.39,1.7,B,ALPHAZ,2021\n59.32,26.21,0.51,C,BETAY,2022\n",
+      "data_dictionary.csv": "file,column,description,unit\nfacts.csv,x,\"Primary measurement\",unit\nfacts.csv,y,\"Secondary measurement\",unit\nfacts.csv,w,\"Observation weight\",unitless\nfacts.csv,grp,\"Segment label\",\nfacts.csv,label,\"Record label\",\nfacts.csv,year,\"Observation year\",year\n"
+    },
+    "answer": 2025.0,
+    "tol": 1e-06,
+    "type": "table.holdout_year_max_median"
+  },
+  {
+    "id": "h2_011",
+    "objective": "Join events.csv to entities.csv using the entity identifier. How many event rows belong to entities whose entity segment is 'North'? Give a whole number.",
+    "files": {
+      "events.csv": "eid,entity,value\n1,E01,18.95\n2,E06,25.92\n3,E11,27.95\n4,E00,29.72\n5,E09,20.07\n6,E10,23.87\n7,E06,33.21\n8,E09,27.97\n9,E08,16.58\n10,E04,25.42\n11,E07,17.51\n12,E04,24.99\n13,E07,23.48\n14,E08,40.05\n15,E02,15.5\n16,E05,20.19\n17,E10,10.74\n18,E04,27.34\n19,E02,18.91\n20,E03,40.07\n21,E05,26.67\n22,E01,13.76\n23,E09,11.74\n24,E01,9.23\n25,E11,28.96\n26,E04,24.98\n27,E04,22.11\n28,E04,33.33\n29,E06,24.46\n30,E03,24.09\n31,E11,23.9\n32,E03,25.68\n33,E03,18.31\n34,E06,23.54\n35,E09,5.89\n36,E00,37.89\n",
+      "entities.csv": "entity,segment,weight\nE00,South,3.61\nE01,North,0.65\nE02,South,2.81\nE03,North,1.57\nE04,South,2.29\nE05,North,3.19\nE06,South,1.93\nE07,North,2.42\nE08,North,3.92\nE09,South,3.98\nE10,North,2.88\nE11,South,1.8\n",
+      "data_dictionary.csv": "file,column,description,unit\nevents.csv,eid,\"Event identifier\",\nevents.csv,entity,\"Entity identifier\",\nevents.csv,value,\"Event value\",unit\nentities.csv,entity,\"Entity identifier\",\nentities.csv,segment,\"Entity segment\",\nentities.csv,weight,\"Entity weight\",unitless\n"
+    },
+    "answer": 15.0,
+    "tol": 1e-06,
+    "type": "table.holdout_join_count"
+  },
+  {
+    "id": "h2_012",
+    "objective": "Join events.csv to entities.csv using the entity identifier. For event rows belonging to entities whose entity segment is 'South', compute the weighted mean of event value using entity weight as the weight. Round to 2 decimals.",
+    "files": {
+      "events.csv": "eid,entity,value\n1,E01,18.95\n2,E06,25.92\n3,E11,27.95\n4,E00,29.72\n5,E09,20.07\n6,E10,23.87\n7,E06,33.21\n8,E09,27.97\n9,E08,16.58\n10,E04,25.42\n11,E07,17.51\n12,E04,24.99\n13,E07,23.48\n14,E08,40.05\n15,E02,15.5\n16,E05,20.19\n17,E10,10.74\n18,E04,27.34\n19,E02,18.91\n20,E03,40.07\n21,E05,26.67\n22,E01,13.76\n23,E09,11.74\n24,E01,9.23\n25,E11,28.96\n26,E04,24.98\n27,E04,22.11\n28,E04,33.33\n29,E06,24.46\n30,E03,24.09\n31,E11,23.9\n32,E03,25.68\n33,E03,18.31\n34,E06,23.54\n35,E09,5.89\n36,E00,37.89\n",
+      "entities.csv": "entity,segment,weight\nE00,South,3.61\nE01,North,0.65\nE02,South,2.81\nE03,North,1.57\nE04,South,2.29\nE05,North,3.19\nE06,South,1.93\nE07,North,2.42\nE08,North,3.92\nE09,South,3.98\nE10,North,2.88\nE11,South,1.8\n",
+      "data_dictionary.csv": "file,column,description,unit\nevents.csv,eid,\"Event identifier\",\nevents.csv,entity,\"Entity identifier\",\nevents.csv,value,\"Event value\",unit\nentities.csv,entity,\"Entity identifier\",\nentities.csv,segment,\"Entity segment\",\nentities.csv,weight,\"Entity weight\",unitless\n"
+    },
+    "answer": 23.670604099244876,
+    "tol": 0.015,
+    "type": "table.holdout_join_weighted_mean"
+  },
+  {
+    "id": "h2_013",
+    "objective": "Using facts.csv, compute the 10% trimmed mean of the primary measurement: sort the non-missing values, remove floor(10% of n) observations from each tail, then take the mean. Round to 2 decimals.",
+    "files": {
+      "facts.csv": "x,y,w,grp,label,year\n37.07,23.88,3.89,B,DELTAZ,2023\n39.07,29.41,4.32,C,DELTAY,2025\n38.98,24.31,3.91,B,DELTAX,2025\n52.83,25.53,1.93,B,DELTAZ,2024\n74.25,41.05,4.66,A,GAMMAZ,2023\n41.91,24.84,4.55,A,BETAY,2021\n33.51,14.45,3.07,C,ALPHAX,2024\n26.15,13.68,4.6,A,GAMMAZ,2025\n37.82,22.29,4.91,B,ALPHAX,2024\n31.39,2.6,4.6,B,BETAZ,2024\n33.99,21.37,4.73,C,GAMMAY,2023\n50.33,42.62,1.12,A,ALPHAX,2021\n58.62,25.77,3.64,B,DELTAX,2022\n51.16,42.52,4.71,A,DELTAY,2023\n57.34,42.2,0.99,C,BETAZ,2023\n51.51,21.67,2.99,A,DELTAY,2024\n49.08,23.55,3.75,C,BETAX,2023\n36.88,18.13,4.52,A,DELTAZ,2021\n49.37,35.43,2.61,C,ALPHAY,2022\n56.68,26.06,4.94,B,DELTAX,2022\n56.0,39.87,1.67,B,DELTAY,2025\n49.15,45.81,3.91,A,GAMMAX,2022\n63.63,42.93,1.17,A,ALPHAY,2025\n35.11,23.43,4.24,B,BETAX,2023\n29.21,26.24,2.3,B,DELTAY,2021\n19.47,20.76,0.94,B,ALPHAY,2023\n28.88,19.91,4.22,C,GAMMAX,2023\n41.96,26.67,2.98,C,DELTAX,2025\n",
+      "data_dictionary.csv": "file,column,description,unit\nfacts.csv,x,\"Primary measurement\",unit\nfacts.csv,y,\"Secondary measurement\",unit\nfacts.csv,w,\"Observation weight\",unitless\nfacts.csv,grp,\"Segment label\",\nfacts.csv,label,\"Record label\",\nfacts.csv,year,\"Observation year\",year\n"
+    },
+    "answer": 43.66041666666666,
+    "tol": 0.015,
+    "type": "table.holdout_trimmed_mean"
+  },
+  {
+    "id": "h2_014",
+    "objective": "What is the sample coefficient of variation of the primary measurement in facts.csv, defined as 100 times the sample standard deviation (ddof=1) divided by the mean? Round to 2 decimals.",
+    "files": {
+      "facts.csv": "x,y,w,grp,label,year\n37.07,23.88,3.89,B,DELTAZ,2023\n39.07,29.41,4.32,C,DELTAY,2025\n38.98,24.31,3.91,B,DELTAX,2025\n52.83,25.53,1.93,B,DELTAZ,2024\n74.25,41.05,4.66,A,GAMMAZ,2023\n41.91,24.84,4.55,A,BETAY,2021\n33.51,14.45,3.07,C,ALPHAX,2024\n26.15,13.68,4.6,A,GAMMAZ,2025\n37.82,22.29,4.91,B,ALPHAX,2024\n31.39,2.6,4.6,B,BETAZ,2024\n33.99,21.37,4.73,C,GAMMAY,2023\n50.33,42.62,1.12,A,ALPHAX,2021\n58.62,25.77,3.64,B,DELTAX,2022\n51.16,42.52,4.71,A,DELTAY,2023\n57.34,42.2,0.99,C,BETAZ,2023\n51.51,21.67,2.99,A,DELTAY,2024\n49.08,23.55,3.75,C,BETAX,2023\n36.88,18.13,4.52,A,DELTAZ,2021\n49.37,35.43,2.61,C,ALPHAY,2022\n56.68,26.06,4.94,B,DELTAX,2022\n56.0,39.87,1.67,B,DELTAY,2025\n49.15,45.81,3.91,A,GAMMAX,2022\n63.63,42.93,1.17,A,ALPHAY,2025\n35.11,23.43,4.24,B,BETAX,2023\n29.21,26.24,2.3,B,DELTAY,2021\n19.47,20.76,0.94,B,ALPHAY,2023\n28.88,19.91,4.22,C,GAMMAX,2023\n41.96,26.67,2.98,C,DELTAX,2025\n",
+      "data_dictionary.csv": "file,column,description,unit\nfacts.csv,x,\"Primary measurement\",unit\nfacts.csv,y,\"Secondary measurement\",unit\nfacts.csv,w,\"Observation weight\",unitless\nfacts.csv,grp,\"Segment label\",\nfacts.csv,label,\"Record label\",\nfacts.csv,year,\"Observation year\",year\n"
+    },
+    "answer": 28.74540138578478,
+    "tol": 0.015,
+    "type": "table.holdout_coef_variation"
+  },
+  {
+    "id": "h2_015",
+    "objective": "What is the 90th percentile of the primary measurement in facts.csv using linear interpolation? Round to 2 decimals.",
+    "files": {
+      "facts.csv": "x,y,w,grp,label,year\n37.07,23.88,3.89,B,DELTAZ,2023\n39.07,29.41,4.32,C,DELTAY,2025\n38.98,24.31,3.91,B,DELTAX,2025\n52.83,25.53,1.93,B,DELTAZ,2024\n74.25,41.05,4.66,A,GAMMAZ,2023\n41.91,24.84,4.55,A,BETAY,2021\n33.51,14.45,3.07,C,ALPHAX,2024\n26.15,13.68,4.6,A,GAMMAZ,2025\n37.82,22.29,4.91,B,ALPHAX,2024\n31.39,2.6,4.6,B,BETAZ,2024\n33.99,21.37,4.73,C,GAMMAY,2023\n50.33,42.62,1.12,A,ALPHAX,2021\n58.62,25.77,3.64,B,DELTAX,2022\n51.16,42.52,4.71,A,DELTAY,2023\n57.34,42.2,0.99,C,BETAZ,2023\n51.51,21.67,2.99,A,DELTAY,2024\n49.08,23.55,3.75,C,BETAX,2023\n36.88,18.13,4.52,A,DELTAZ,2021\n49.37,35.43,2.61,C,ALPHAY,2022\n56.68,26.06,4.94,B,DELTAX,2022\n56.0,39.87,1.67,B,DELTAY,2025\n49.15,45.81,3.91,A,GAMMAX,2022\n63.63,42.93,1.17,A,ALPHAY,2025\n35.11,23.43,4.24,B,BETAX,2023\n29.21,26.24,2.3,B,DELTAY,2021\n19.47,20.76,0.94,B,ALPHAY,2023\n28.88,19.91,4.22,C,GAMMAX,2023\n41.96,26.67,2.98,C,DELTAX,2025\n",
+      "data_dictionary.csv": "file,column,description,unit\nfacts.csv,x,\"Primary measurement\",unit\nfacts.csv,y,\"Secondary measurement\",unit\nfacts.csv,w,\"Observation weight\",unitless\nfacts.csv,grp,\"Segment label\",\nfacts.csv,label,\"Record label\",\nfacts.csv,year,\"Observation year\",year\n"
+    },
+    "answer": 57.724000000000004,
+    "tol": 0.015,
+    "type": "table.holdout_p90"
+  },
+  {
+    "id": "h2_016",
+    "objective": "What percentage of records in facts.csv have primary measurement strictly greater than 41.94? Round to 2 decimals.",
+    "files": {
+      "facts.csv": "x,y,w,grp,label,year\n37.07,23.88,3.89,B,DELTAZ,2023\n39.07,29.41,4.32,C,DELTAY,2025\n38.98,24.31,3.91,B,DELTAX,2025\n52.83,25.53,1.93,B,DELTAZ,2024\n74.25,41.05,4.66,A,GAMMAZ,2023\n41.91,24.84,4.55,A,BETAY,2021\n33.51,14.45,3.07,C,ALPHAX,2024\n26.15,13.68,4.6,A,GAMMAZ,2025\n37.82,22.29,4.91,B,ALPHAX,2024\n31.39,2.6,4.6,B,BETAZ,2024\n33.99,21.37,4.73,C,GAMMAY,2023\n50.33,42.62,1.12,A,ALPHAX,2021\n58.62,25.77,3.64,B,DELTAX,2022\n51.16,42.52,4.71,A,DELTAY,2023\n57.34,42.2,0.99,C,BETAZ,2023\n51.51,21.67,2.99,A,DELTAY,2024\n49.08,23.55,3.75,C,BETAX,2023\n36.88,18.13,4.52,A,DELTAZ,2021\n49.37,35.43,2.61,C,ALPHAY,2022\n56.68,26.06,4.94,B,DELTAX,2022\n56.0,39.87,1.67,B,DELTAY,2025\n49.15,45.81,3.91,A,GAMMAX,2022\n63.63,42.93,1.17,A,ALPHAY,2025\n35.11,23.43,4.24,B,BETAX,2023\n29.21,26.24,2.3,B,DELTAY,2021\n19.47,20.76,0.94,B,ALPHAY,2023\n28.88,19.91,4.22,C,GAMMAX,2023\n41.96,26.67,2.98,C,DELTAX,2025\n",
+      "data_dictionary.csv": "file,column,description,unit\nfacts.csv,x,\"Primary measurement\",unit\nfacts.csv,y,\"Secondary measurement\",unit\nfacts.csv,w,\"Observation weight\",unitless\nfacts.csv,grp,\"Segment label\",\nfacts.csv,label,\"Record label\",\nfacts.csv,year,\"Observation year\",year\n"
+    },
+    "answer": 50.0,
+    "tol": 0.015,
+    "type": "table.holdout_prop_above"
+  },
+  {
+    "id": "h2_017",
+    "objective": "Compute the median absolute deviation of the primary measurement in facts.csv, defined as median(|x - median(x)|), without any scaling constant. Round to 2 decimals.",
+    "files": {
+      "facts.csv": "x,y,w,grp,label,year\n37.07,23.88,3.89,B,DELTAZ,2023\n39.07,29.41,4.32,C,DELTAY,2025\n38.98,24.31,3.91,B,DELTAX,2025\n52.83,25.53,1.93,B,DELTAZ,2024\n74.25,41.05,4.66,A,GAMMAZ,2023\n41.91,24.84,4.55,A,BETAY,2021\n33.51,14.45,3.07,C,ALPHAX,2024\n26.15,13.68,4.6,A,GAMMAZ,2025\n37.82,22.29,4.91,B,ALPHAX,2024\n31.39,2.6,4.6,B,BETAZ,2024\n33.99,21.37,4.73,C,GAMMAY,2023\n50.33,42.62,1.12,A,ALPHAX,2021\n58.62,25.77,3.64,B,DELTAX,2022\n51.16,42.52,4.71,A,DELTAY,2023\n57.34,42.2,0.99,C,BETAZ,2023\n51.51,21.67,2.99,A,DELTAY,2024\n49.08,23.55,3.75,C,BETAX,2023\n36.88,18.13,4.52,A,DELTAZ,2021\n49.37,35.43,2.61,C,ALPHAY,2022\n56.68,26.06,4.94,B,DELTAX,2022\n56.0,39.87,1.67,B,DELTAY,2025\n49.15,45.81,3.91,A,GAMMAX,2022\n63.63,42.93,1.17,A,ALPHAY,2025\n35.11,23.43,4.24,B,BETAX,2023\n29.21,26.24,2.3,B,DELTAY,2021\n19.47,20.76,0.94,B,ALPHAY,2023\n28.88,19.91,4.22,C,GAMMAX,2023\n41.96,26.67,2.98,C,DELTAX,2025\n",
+      "data_dictionary.csv": "file,column,description,unit\nfacts.csv,x,\"Primary measurement\",unit\nfacts.csv,y,\"Secondary measurement\",unit\nfacts.csv,w,\"Observation weight\",unitless\nfacts.csv,grp,\"Segment label\",\nfacts.csv,label,\"Record label\",\nfacts.csv,year,\"Observation year\",year\n"
+    },
+    "answer": 8.825,
+    "tol": 0.015,
+    "type": "table.holdout_mad"
+  },
+  {
+    "id": "h2_018",
+    "objective": "What is the median primary measurement for segment 'A' minus the median primary measurement for segment 'B' in facts.csv? Round to 2 decimals.",
+    "files": {
+      "facts.csv": "x,y,w,grp,label,year\n37.07,23.88,3.89,B,DELTAZ,2023\n39.07,29.41,4.32,C,DELTAY,2025\n38.98,24.31,3.91,B,DELTAX,2025\n52.83,25.53,1.93,B,DELTAZ,2024\n74.25,41.05,4.66,A,GAMMAZ,2023\n41.91,24.84,4.55,A,BETAY,2021\n33.51,14.45,3.07,C,ALPHAX,2024\n26.15,13.68,4.6,A,GAMMAZ,2025\n37.82,22.29,4.91,B,ALPHAX,2024\n31.39,2.6,4.6,B,BETAZ,2024\n33.99,21.37,4.73,C,GAMMAY,2023\n50.33,42.62,1.12,A,ALPHAX,2021\n58.62,25.77,3.64,B,DELTAX,2022\n51.16,42.52,4.71,A,DELTAY,2023\n57.34,42.2,0.99,C,BETAZ,2023\n51.51,21.67,2.99,A,DELTAY,2024\n49.08,23.55,3.75,C,BETAX,2023\n36.88,18.13,4.52,A,DELTAZ,2021\n49.37,35.43,2.61,C,ALPHAY,2022\n56.68,26.06,4.94,B,DELTAX,2022\n56.0,39.87,1.67,B,DELTAY,2025\n49.15,45.81,3.91,A,GAMMAX,2022\n63.63,42.93,1.17,A,ALPHAY,2025\n35.11,23.43,4.24,B,BETAX,2023\n29.21,26.24,2.3,B,DELTAY,2021\n19.47,20.76,0.94,B,ALPHAY,2023\n28.88,19.91,4.22,C,GAMMAX,2023\n41.96,26.67,2.98,C,DELTAX,2025\n",
+      "data_dictionary.csv": "file,column,description,unit\nfacts.csv,x,\"Primary measurement\",unit\nfacts.csv,y,\"Secondary measurement\",unit\nfacts.csv,w,\"Observation weight\",unitless\nfacts.csv,grp,\"Segment label\",\nfacts.csv,label,\"Record label\",\nfacts.csv,year,\"Observation year\",year\n"
+    },
+    "answer": 12.509999999999998,
+    "tol": 0.015,
+    "type": "table.holdout_group_median_diff"
+  },
+  {
+    "id": "h2_019",
+    "objective": "How many records in facts.csv have a record label that ends with 'X'? Give a whole number.",
+    "files": {
+      "facts.csv": "x,y,w,grp,label,year\n37.07,23.88,3.89,B,DELTAZ,2023\n39.07,29.41,4.32,C,DELTAY,2025\n38.98,24.31,3.91,B,DELTAX,2025\n52.83,25.53,1.93,B,DELTAZ,2024\n74.25,41.05,4.66,A,GAMMAZ,2023\n41.91,24.84,4.55,A,BETAY,2021\n33.51,14.45,3.07,C,ALPHAX,2024\n26.15,13.68,4.6,A,GAMMAZ,2025\n37.82,22.29,4.91,B,ALPHAX,2024\n31.39,2.6,4.6,B,BETAZ,2024\n33.99,21.37,4.73,C,GAMMAY,2023\n50.33,42.62,1.12,A,ALPHAX,2021\n58.62,25.77,3.64,B,DELTAX,2022\n51.16,42.52,4.71,A,DELTAY,2023\n57.34,42.2,0.99,C,BETAZ,2023\n51.51,21.67,2.99,A,DELTAY,2024\n49.08,23.55,3.75,C,BETAX,2023\n36.88,18.13,4.52,A,DELTAZ,2021\n49.37,35.43,2.61,C,ALPHAY,2022\n56.68,26.06,4.94,B,DELTAX,2022\n56.0,39.87,1.67,B,DELTAY,2025\n49.15,45.81,3.91,A,GAMMAX,2022\n63.63,42.93,1.17,A,ALPHAY,2025\n35.11,23.43,4.24,B,BETAX,2023\n29.21,26.24,2.3,B,DELTAY,2021\n19.47,20.76,0.94,B,ALPHAY,2023\n28.88,19.91,4.22,C,GAMMAX,2023\n41.96,26.67,2.98,C,DELTAX,2025\n",
+      "data_dictionary.csv": "file,column,description,unit\nfacts.csv,x,\"Primary measurement\",unit\nfacts.csv,y,\"Secondary measurement\",unit\nfacts.csv,w,\"Observation weight\",unitless\nfacts.csv,grp,\"Segment label\",\nfacts.csv,label,\"Record label\",\nfacts.csv,year,\"Observation year\",year\n"
+    },
+    "answer": 11.0,
+    "tol": 1e-06,
+    "type": "table.holdout_string_suffix"
+  },
+  {
+    "id": "h2_020",
+    "objective": "Compute the sum of the primary measurement divided by the sum of the secondary measurement over all records in facts.csv. Round to 3 decimals.",
+    "files": {
+      "facts.csv": "x,y,w,grp,label,year\n37.07,23.88,3.89,B,DELTAZ,2023\n39.07,29.41,4.32,C,DELTAY,2025\n38.98,24.31,3.91,B,DELTAX,2025\n52.83,25.53,1.93,B,DELTAZ,2024\n74.25,41.05,4.66,A,GAMMAZ,2023\n41.91,24.84,4.55,A,BETAY,2021\n33.51,14.45,3.07,C,ALPHAX,2024\n26.15,13.68,4.6,A,GAMMAZ,2025\n37.82,22.29,4.91,B,ALPHAX,2024\n31.39,2.6,4.6,B,BETAZ,2024\n33.99,21.37,4.73,C,GAMMAY,2023\n50.33,42.62,1.12,A,ALPHAX,2021\n58.62,25.77,3.64,B,DELTAX,2022\n51.16,42.52,4.71,A,DELTAY,2023\n57.34,42.2,0.99,C,BETAZ,2023\n51.51,21.67,2.99,A,DELTAY,2024\n49.08,23.55,3.75,C,BETAX,2023\n36.88,18.13,4.52,A,DELTAZ,2021\n49.37,35.43,2.61,C,ALPHAY,2022\n56.68,26.06,4.94,B,DELTAX,2022\n56.0,39.87,1.67,B,DELTAY,2025\n49.15,45.81,3.91,A,GAMMAX,2022\n63.63,42.93,1.17,A,ALPHAY,2025\n35.11,23.43,4.24,B,BETAX,2023\n29.21,26.24,2.3,B,DELTAY,2021\n19.47,20.76,0.94,B,ALPHAY,2023\n28.88,19.91,4.22,C,GAMMAX,2023\n41.96,26.67,2.98,C,DELTAX,2025\n",
+      "data_dictionary.csv": "file,column,description,unit\nfacts.csv,x,\"Primary measurement\",unit\nfacts.csv,y,\"Secondary measurement\",unit\nfacts.csv,w,\"Observation weight\",unitless\nfacts.csv,grp,\"Segment label\",\nfacts.csv,label,\"Record label\",\nfacts.csv,year,\"Observation year\",year\n"
+    },
+    "answer": 1.6054525541735118,
+    "tol": 0.0015,
+    "type": "table.holdout_ratio_sums"
+  },
+  {
+    "id": "h2_021",
+    "objective": "Among records whose segment label is 'A', compute the Pearson correlation between the primary measurement and the secondary measurement. Round to 3 decimals.",
+    "files": {
+      "facts.csv": "x,y,w,grp,label,year\n37.07,23.88,3.89,B,DELTAZ,2023\n39.07,29.41,4.32,C,DELTAY,2025\n38.98,24.31,3.91,B,DELTAX,2025\n52.83,25.53,1.93,B,DELTAZ,2024\n74.25,41.05,4.66,A,GAMMAZ,2023\n41.91,24.84,4.55,A,BETAY,2021\n33.51,14.45,3.07,C,ALPHAX,2024\n26.15,13.68,4.6,A,GAMMAZ,2025\n37.82,22.29,4.91,B,ALPHAX,2024\n31.39,2.6,4.6,B,BETAZ,2024\n33.99,21.37,4.73,C,GAMMAY,2023\n50.33,42.62,1.12,A,ALPHAX,2021\n58.62,25.77,3.64,B,DELTAX,2022\n51.16,42.52,4.71,A,DELTAY,2023\n57.34,42.2,0.99,C,BETAZ,2023\n51.51,21.67,2.99,A,DELTAY,2024\n49.08,23.55,3.75,C,BETAX,2023\n36.88,18.13,4.52,A,DELTAZ,2021\n49.37,35.43,2.61,C,ALPHAY,2022\n56.68,26.06,4.94,B,DELTAX,2022\n56.0,39.87,1.67,B,DELTAY,2025\n49.15,45.81,3.91,A,GAMMAX,2022\n63.63,42.93,1.17,A,ALPHAY,2025\n35.11,23.43,4.24,B,BETAX,2023\n29.21,26.24,2.3,B,DELTAY,2021\n19.47,20.76,0.94,B,ALPHAY,2023\n28.88,19.91,4.22,C,GAMMAX,2023\n41.96,26.67,2.98,C,DELTAX,2025\n",
+      "data_dictionary.csv": "file,column,description,unit\nfacts.csv,x,\"Primary measurement\",unit\nfacts.csv,y,\"Secondary measurement\",unit\nfacts.csv,w,\"Observation weight\",unitless\nfacts.csv,grp,\"Segment label\",\nfacts.csv,label,\"Record label\",\nfacts.csv,year,\"Observation year\",year\n"
+    },
+    "answer": 0.7232688090719279,
+    "tol": 0.0015,
+    "type": "table.holdout_filtered_corr"
+  },
+  {
+    "id": "h2_022",
+    "objective": "For each observation year in facts.csv, compute the median primary measurement. Which year has the largest median? Return the year as an integer.",
+    "files": {
+      "facts.csv": "x,y,w,grp,label,year\n37.07,23.88,3.89,B,DELTAZ,2023\n39.07,29.41,4.32,C,DELTAY,2025\n38.98,24.31,3.91,B,DELTAX,2025\n52.83,25.53,1.93,B,DELTAZ,2024\n74.25,41.05,4.66,A,GAMMAZ,2023\n41.91,24.84,4.55,A,BETAY,2021\n33.51,14.45,3.07,C,ALPHAX,2024\n26.15,13.68,4.6,A,GAMMAZ,2025\n37.82,22.29,4.91,B,ALPHAX,2024\n31.39,2.6,4.6,B,BETAZ,2024\n33.99,21.37,4.73,C,GAMMAY,2023\n50.33,42.62,1.12,A,ALPHAX,2021\n58.62,25.77,3.64,B,DELTAX,2022\n51.16,42.52,4.71,A,DELTAY,2023\n57.34,42.2,0.99,C,BETAZ,2023\n51.51,21.67,2.99,A,DELTAY,2024\n49.08,23.55,3.75,C,BETAX,2023\n36.88,18.13,4.52,A,DELTAZ,2021\n49.37,35.43,2.61,C,ALPHAY,2022\n56.68,26.06,4.94,B,DELTAX,2022\n56.0,39.87,1.67,B,DELTAY,2025\n49.15,45.81,3.91,A,GAMMAX,2022\n63.63,42.93,1.17,A,ALPHAY,2025\n35.11,23.43,4.24,B,BETAX,2023\n29.21,26.24,2.3,B,DELTAY,2021\n19.47,20.76,0.94,B,ALPHAY,2023\n28.88,19.91,4.22,C,GAMMAX,2023\n41.96,26.67,2.98,C,DELTAX,2025\n",
+      "data_dictionary.csv": "file,column,description,unit\nfacts.csv,x,\"Primary measurement\",unit\nfacts.csv,y,\"Secondary measurement\",unit\nfacts.csv,w,\"Observation weight\",unitless\nfacts.csv,grp,\"Segment label\",\nfacts.csv,label,\"Record label\",\nfacts.csv,year,\"Observation year\",year\n"
+    },
+    "answer": 2022.0,
+    "tol": 1e-06,
+    "type": "table.holdout_year_max_median"
+  },
+  {
+    "id": "h2_023",
+    "objective": "Join events.csv to entities.csv using the entity identifier. How many event rows belong to entities whose entity segment is 'North'? Give a whole number.",
+    "files": {
+      "events.csv": "eid,entity,value\n1,E01,12.21\n2,E05,17.61\n3,E05,18.19\n4,E11,34.18\n5,E07,30.51\n6,E07,19.0\n7,E07,33.72\n8,E09,35.27\n9,E05,9.04\n10,E06,21.57\n11,E01,16.2\n12,E08,28.95\n13,E07,26.56\n14,E03,11.37\n15,E11,37.37\n16,E09,26.12\n17,E08,29.39\n18,E05,25.16\n19,E04,22.79\n20,E05,19.83\n21,E08,35.2\n22,E10,15.83\n23,E01,54.56\n24,E03,21.62\n25,E00,24.65\n26,E00,22.96\n27,E03,18.34\n28,E06,27.48\n29,E00,24.33\n30,E01,29.02\n31,E08,27.65\n32,E01,30.79\n33,E08,13.69\n34,E10,32.42\n35,E04,17.2\n36,E06,36.41\n",
+      "entities.csv": "entity,segment,weight\nE00,North,2.08\nE01,North,2.41\nE02,South,2.63\nE03,South,2.36\nE04,South,1.23\nE05,North,3.49\nE06,North,2.89\nE07,North,1.96\nE08,South,0.56\nE09,North,2.96\nE10,North,3.85\nE11,South,0.89\n",
+      "data_dictionary.csv": "file,column,description,unit\nevents.csv,eid,\"Event identifier\",\nevents.csv,entity,\"Entity identifier\",\nevents.csv,value,\"Event value\",unit\nentities.csv,entity,\"Entity identifier\",\nentities.csv,segment,\"Entity segment\",\nentities.csv,weight,\"Entity weight\",unitless\n"
+    },
+    "answer": 24.0,
+    "tol": 1e-06,
+    "type": "table.holdout_join_count"
+  },
+  {
+    "id": "h2_024",
+    "objective": "Join events.csv to entities.csv using the entity identifier. For event rows belonging to entities whose entity segment is 'South', compute the weighted mean of event value using entity weight as the weight. Round to 2 decimals.",
+    "files": {
+      "events.csv": "eid,entity,value\n1,E01,12.21\n2,E05,17.61\n3,E05,18.19\n4,E11,34.18\n5,E07,30.51\n6,E07,19.0\n7,E07,33.72\n8,E09,35.27\n9,E05,9.04\n10,E06,21.57\n11,E01,16.2\n12,E08,28.95\n13,E07,26.56\n14,E03,11.37\n15,E11,37.37\n16,E09,26.12\n17,E08,29.39\n18,E05,25.16\n19,E04,22.79\n20,E05,19.83\n21,E08,35.2\n22,E10,15.83\n23,E01,54.56\n24,E03,21.62\n25,E00,24.65\n26,E00,22.96\n27,E03,18.34\n28,E06,27.48\n29,E00,24.33\n30,E01,29.02\n31,E08,27.65\n32,E01,30.79\n33,E08,13.69\n34,E10,32.42\n35,E04,17.2\n36,E06,36.41\n",
+      "entities.csv": "entity,segment,weight\nE00,North,2.08\nE01,North,2.41\nE02,South,2.63\nE03,South,2.36\nE04,South,1.23\nE05,North,3.49\nE06,North,2.89\nE07,North,1.96\nE08,South,0.56\nE09,North,2.96\nE10,North,3.85\nE11,South,0.89\n",
+      "data_dictionary.csv": "file,column,description,unit\nevents.csv,eid,\"Event identifier\",\nevents.csv,entity,\"Entity identifier\",\nevents.csv,value,\"Event value\",unit\nentities.csv,entity,\"Entity identifier\",\nentities.csv,segment,\"Entity segment\",\nentities.csv,weight,\"Entity weight\",unitless\n"
+    },
+    "answer": 21.922011331444757,
+    "tol": 0.015,
+    "type": "table.holdout_join_weighted_mean"
+  },
+  {
+    "id": "h2_025",
+    "objective": "Using facts.csv, compute the 10% trimmed mean of the primary measurement: sort the non-missing values, remove floor(10% of n) observations from each tail, then take the mean. Round to 2 decimals.",
+    "files": {
+      "facts.csv": "x,y,w,grp,label,year\n50.02,24.91,1.04,A,GAMMAX,2025\n54.21,35.8,4.77,A,ALPHAY,2022\n48.47,27.65,1.62,A,DELTAZ,2023\n57.58,33.46,1.64,B,ALPHAZ,2024\n28.98,19.51,4.73,B,ALPHAY,2021\n24.14,19.47,1.97,C,DELTAY,2022\n47.95,37.93,2.27,C,BETAZ,2021\n32.9,22.22,4.42,A,ALPHAZ,2024\n45.99,28.14,1.29,C,BETAY,2025\n43.49,29.85,1.51,A,ALPHAX,2024\n75.86,46.23,0.81,B,DELTAX,2023\n75.8,39.0,3.79,C,DELTAX,2021\n57.03,27.81,0.65,C,DELTAX,2021\n17.56,10.1,2.45,B,DELTAY,2023\n50.66,35.99,2.78,A,ALPHAY,2023\n52.56,39.3,4.91,A,DELTAY,2022\n69.21,44.94,3.44,A,BETAY,2022\n48.49,29.51,0.76,A,GAMMAY,2022\n37.07,26.2,4.15,B,DELTAZ,2022\n40.87,9.73,2.41,A,ALPHAZ,2022\n32.38,7.67,2.47,A,ALPHAZ,2025\n45.63,33.22,3.76,A,DELTAY,2023\n21.51,21.35,4.41,C,DELTAZ,2023\n51.99,21.86,1.78,A,ALPHAZ,2022\n48.05,31.57,3.65,B,DELTAY,2022\n22.63,36.45,3.98,B,GAMMAY,2023\n62.09,22.15,4.71,C,BETAZ,2024\n60.64,37.45,4.88,A,ALPHAX,2024\n",
+      "data_dictionary.csv": "file,column,description,unit\nfacts.csv,x,\"Primary measurement\",unit\nfacts.csv,y,\"Secondary measurement\",unit\nfacts.csv,w,\"Observation weight\",unitless\nfacts.csv,grp,\"Segment label\",\nfacts.csv,label,\"Record label\",\nfacts.csv,year,\"Observation year\",year\n"
+    },
+    "answer": 46.37625,
+    "tol": 0.015,
+    "type": "table.holdout_trimmed_mean"
+  },
+  {
+    "id": "h2_026",
+    "objective": "What is the sample coefficient of variation of the primary measurement in facts.csv, defined as 100 times the sample standard deviation (ddof=1) divided by the mean? Round to 2 decimals.",
+    "files": {
+      "facts.csv": "x,y,w,grp,label,year\n50.02,24.91,1.04,A,GAMMAX,2025\n54.21,35.8,4.77,A,ALPHAY,2022\n48.47,27.65,1.62,A,DELTAZ,2023\n57.58,33.46,1.64,B,ALPHAZ,2024\n28.98,19.51,4.73,B,ALPHAY,2021\n24.14,19.47,1.97,C,DELTAY,2022\n47.95,37.93,2.27,C,BETAZ,2021\n32.9,22.22,4.42,A,ALPHAZ,2024\n45.99,28.14,1.29,C,BETAY,2025\n43.49,29.85,1.51,A,ALPHAX,2024\n75.86,46.23,0.81,B,DELTAX,2023\n75.8,39.0,3.79,C,DELTAX,2021\n57.03,27.81,0.65,C,DELTAX,2021\n17.56,10.1,2.45,B,DELTAY,2023\n50.66,35.99,2.78,A,ALPHAY,2023\n52.56,39.3,4.91,A,DELTAY,2022\n69.21,44.94,3.44,A,BETAY,2022\n48.49,29.51,0.76,A,GAMMAY,2022\n37.07,26.2,4.15,B,DELTAZ,2022\n40.87,9.73,2.41,A,ALPHAZ,2022\n32.38,7.67,2.47,A,ALPHAZ,2025\n45.63,33.22,3.76,A,DELTAY,2023\n21.51,21.35,4.41,C,DELTAZ,2023\n51.99,21.86,1.78,A,ALPHAZ,2022\n48.05,31.57,3.65,B,DELTAY,2022\n22.63,36.45,3.98,B,GAMMAY,2023\n62.09,22.15,4.71,C,BETAZ,2024\n60.64,37.45,4.88,A,ALPHAX,2024\n",
+      "data_dictionary.csv": "file,column,description,unit\nfacts.csv,x,\"Primary measurement\",unit\nfacts.csv,y,\"Secondary measurement\",unit\nfacts.csv,w,\"Observation weight\",unitless\nfacts.csv,grp,\"Segment label\",\nfacts.csv,label,\"Record label\",\nfacts.csv,year,\"Observation year\",year\n"
+    },
+    "answer": 33.154955188343884,
+    "tol": 0.015,
+    "type": "table.holdout_coef_variation"
+  },
+  {
+    "id": "h2_027",
+    "objective": "What is the 90th percentile of the primary measurement in facts.csv using linear interpolation? Round to 2 decimals.",
+    "files": {
+      "facts.csv": "x,y,w,grp,label,year\n50.02,24.91,1.04,A,GAMMAX,2025\n54.21,35.8,4.77,A,ALPHAY,2022\n48.47,27.65,1.62,A,DELTAZ,2023\n57.58,33.46,1.64,B,ALPHAZ,2024\n28.98,19.51,4.73,B,ALPHAY,2021\n24.14,19.47,1.97,C,DELTAY,2022\n47.95,37.93,2.27,C,BETAZ,2021\n32.9,22.22,4.42,A,ALPHAZ,2024\n45.99,28.14,1.29,C,BETAY,2025\n43.49,29.85,1.51,A,ALPHAX,2024\n75.86,46.23,0.81,B,DELTAX,2023\n75.8,39.0,3.79,C,DELTAX,2021\n57.03,27.81,0.65,C,DELTAX,2021\n17.56,10.1,2.45,B,DELTAY,2023\n50.66,35.99,2.78,A,ALPHAY,2023\n52.56,39.3,4.91,A,DELTAY,2022\n69.21,44.94,3.44,A,BETAY,2022\n48.49,29.51,0.76,A,GAMMAY,2022\n37.07,26.2,4.15,B,DELTAZ,2022\n40.87,9.73,2.41,A,ALPHAZ,2022\n32.38,7.67,2.47,A,ALPHAZ,2025\n45.63,33.22,3.76,A,DELTAY,2023\n21.51,21.35,4.41,C,DELTAZ,2023\n51.99,21.86,1.78,A,ALPHAZ,2022\n48.05,31.57,3.65,B,DELTAY,2022\n22.63,36.45,3.98,B,GAMMAY,2023\n62.09,22.15,4.71,C,BETAZ,2024\n60.64,37.45,4.88,A,ALPHAX,2024\n",
+      "data_dictionary.csv": "file,column,description,unit\nfacts.csv,x,\"Primary measurement\",unit\nfacts.csv,y,\"Secondary measurement\",unit\nfacts.csv,w,\"Observation weight\",unitless\nfacts.csv,grp,\"Segment label\",\nfacts.csv,label,\"Record label\",\nfacts.csv,year,\"Observation year\",year\n"
+    },
+    "answer": 64.226,
+    "tol": 0.015,
+    "type": "table.holdout_p90"
+  },
+  {
+    "id": "h2_028",
+    "objective": "What percentage of records in facts.csv have primary measurement strictly greater than 48.26? Round to 2 decimals.",
+    "files": {
+      "facts.csv": "x,y,w,grp,label,year\n50.02,24.91,1.04,A,GAMMAX,2025\n54.21,35.8,4.77,A,ALPHAY,2022\n48.47,27.65,1.62,A,DELTAZ,2023\n57.58,33.46,1.64,B,ALPHAZ,2024\n28.98,19.51,4.73,B,ALPHAY,2021\n24.14,19.47,1.97,C,DELTAY,2022\n47.95,37.93,2.27,C,BETAZ,2021\n32.9,22.22,4.42,A,ALPHAZ,2024\n45.99,28.14,1.29,C,BETAY,2025\n43.49,29.85,1.51,A,ALPHAX,2024\n75.86,46.23,0.81,B,DELTAX,2023\n75.8,39.0,3.79,C,DELTAX,2021\n57.03,27.81,0.65,C,DELTAX,2021\n17.56,10.1,2.45,B,DELTAY,2023\n50.66,35.99,2.78,A,ALPHAY,2023\n52.56,39.3,4.91,A,DELTAY,2022\n69.21,44.94,3.44,A,BETAY,2022\n48.49,29.51,0.76,A,GAMMAY,2022\n37.07,26.2,4.15,B,DELTAZ,2022\n40.87,9.73,2.41,A,ALPHAZ,2022\n32.38,7.67,2.47,A,ALPHAZ,2025\n45.63,33.22,3.76,A,DELTAY,2023\n21.51,21.35,4.41,C,DELTAZ,2023\n51.99,21.86,1.78,A,ALPHAZ,2022\n48.05,31.57,3.65,B,DELTAY,2022\n22.63,36.45,3.98,B,GAMMAY,2023\n62.09,22.15,4.71,C,BETAZ,2024\n60.64,37.45,4.88,A,ALPHAX,2024\n",
+      "data_dictionary.csv": "file,column,description,unit\nfacts.csv,x,\"Primary measurement\",unit\nfacts.csv,y,\"Secondary measurement\",unit\nfacts.csv,w,\"Observation weight\",unitless\nfacts.csv,grp,\"Segment label\",\nfacts.csv,label,\"Record label\",\nfacts.csv,year,\"Observation year\",year\n"
+    },
+    "answer": 50.0,
+    "tol": 0.015,
+    "type": "table.holdout_prop_above"
+  },
+  {
+    "id": "h2_029",
+    "objective": "Compute the median absolute deviation of the primary measurement in facts.csv, defined as median(|x - median(x)|), without any scaling constant. Round to 2 decimals.",
+    "files": {
+      "facts.csv": "x,y,w,grp,label,year\n50.02,24.91,1.04,A,GAMMAX,2025\n54.21,35.8,4.77,A,ALPHAY,2022\n48.47,27.65,1.62,A,DELTAZ,2023\n57.58,33.46,1.64,B,ALPHAZ,2024\n28.98,19.51,4.73,B,ALPHAY,2021\n24.14,19.47,1.97,C,DELTAY,2022\n47.95,37.93,2.27,C,BETAZ,2021\n32.9,22.22,4.42,A,ALPHAZ,2024\n45.99,28.14,1.29,C,BETAY,2025\n43.49,29.85,1.51,A,ALPHAX,2024\n75.86,46.23,0.81,B,DELTAX,2023\n75.8,39.0,3.79,C,DELTAX,2021\n57.03,27.81,0.65,C,DELTAX,2021\n17.56,10.1,2.45,B,DELTAY,2023\n50.66,35.99,2.78,A,ALPHAY,2023\n52.56,39.3,4.91,A,DELTAY,2022\n69.21,44.94,3.44,A,BETAY,2022\n48.49,29.51,0.76,A,GAMMAY,2022\n37.07,26.2,4.15,B,DELTAZ,2022\n40.87,9.73,2.41,A,ALPHAZ,2022\n32.38,7.67,2.47,A,ALPHAZ,2025\n45.63,33.22,3.76,A,DELTAY,2023\n21.51,21.35,4.41,C,DELTAZ,2023\n51.99,21.86,1.78,A,ALPHAZ,2022\n48.05,31.57,3.65,B,DELTAY,2022\n22.63,36.45,3.98,B,GAMMAY,2023\n62.09,22.15,4.71,C,BETAZ,2024\n60.64,37.45,4.88,A,ALPHAX,2024\n",
+      "data_dictionary.csv": "file,column,description,unit\nfacts.csv,x,\"Primary measurement\",unit\nfacts.csv,y,\"Secondary measurement\",unit\nfacts.csv,w,\"Observation weight\",unitless\nfacts.csv,grp,\"Segment label\",\nfacts.csv,label,\"Record label\",\nfacts.csv,year,\"Observation year\",year\n"
+    },
+    "answer": 9.045000000000002,
+    "tol": 0.015,
+    "type": "table.holdout_mad"
+  },
+  {
+    "id": "h2_030",
+    "objective": "What is the median primary measurement for segment 'A' minus the median primary measurement for segment 'B' in facts.csv? Round to 2 decimals.",
+    "files": {
+      "facts.csv": "x,y,w,grp,label,year\n50.02,24.91,1.04,A,GAMMAX,2025\n54.21,35.8,4.77,A,ALPHAY,2022\n48.47,27.65,1.62,A,DELTAZ,2023\n57.58,33.46,1.64,B,ALPHAZ,2024\n28.98,19.51,4.73,B,ALPHAY,2021\n24.14,19.47,1.97,C,DELTAY,2022\n47.95,37.93,2.27,C,BETAZ,2021\n32.9,22.22,4.42,A,ALPHAZ,2024\n45.99,28.14,1.29,C,BETAY,2025\n43.49,29.85,1.51,A,ALPHAX,2024\n75.86,46.23,0.81,B,DELTAX,2023\n75.8,39.0,3.79,C,DELTAX,2021\n57.03,27.81,0.65,C,DELTAX,2021\n17.56,10.1,2.45,B,DELTAY,2023\n50.66,35.99,2.78,A,ALPHAY,2023\n52.56,39.3,4.91,A,DELTAY,2022\n69.21,44.94,3.44,A,BETAY,2022\n48.49,29.51,0.76,A,GAMMAY,2022\n37.07,26.2,4.15,B,DELTAZ,2022\n40.87,9.73,2.41,A,ALPHAZ,2022\n32.38,7.67,2.47,A,ALPHAZ,2025\n45.63,33.22,3.76,A,DELTAY,2023\n21.51,21.35,4.41,C,DELTAZ,2023\n51.99,21.86,1.78,A,ALPHAZ,2022\n48.05,31.57,3.65,B,DELTAY,2022\n22.63,36.45,3.98,B,GAMMAY,2023\n62.09,22.15,4.71,C,BETAZ,2024\n60.64,37.45,4.88,A,ALPHAX,2024\n",
+      "data_dictionary.csv": "file,column,description,unit\nfacts.csv,x,\"Primary measurement\",unit\nfacts.csv,y,\"Secondary measurement\",unit\nfacts.csv,w,\"Observation weight\",unitless\nfacts.csv,grp,\"Segment label\",\nfacts.csv,label,\"Record label\",\nfacts.csv,year,\"Observation year\",year\n"
+    },
+    "answer": 12.185000000000002,
+    "tol": 0.015,
+    "type": "table.holdout_group_median_diff"
+  },
+  {
+    "id": "h2_031",
+    "objective": "How many records in facts.csv have a record label that ends with 'X'? Give a whole number.",
+    "files": {
+      "facts.csv": "x,y,w,grp,label,year\n50.02,24.91,1.04,A,GAMMAX,2025\n54.21,35.8,4.77,A,ALPHAY,2022\n48.47,27.65,1.62,A,DELTAZ,2023\n57.58,33.46,1.64,B,ALPHAZ,2024\n28.98,19.51,4.73,B,ALPHAY,2021\n24.14,19.47,1.97,C,DELTAY,2022\n47.95,37.93,2.27,C,BETAZ,2021\n32.9,22.22,4.42,A,ALPHAZ,2024\n45.99,28.14,1.29,C,BETAY,2025\n43.49,29.85,1.51,A,ALPHAX,2024\n75.86,46.23,0.81,B,DELTAX,2023\n75.8,39.0,3.79,C,DELTAX,2021\n57.03,27.81,0.65,C,DELTAX,2021\n17.56,10.1,2.45,B,DELTAY,2023\n50.66,35.99,2.78,A,ALPHAY,2023\n52.56,39.3,4.91,A,DELTAY,2022\n69.21,44.94,3.44,A,BETAY,2022\n48.49,29.51,0.76,A,GAMMAY,2022\n37.07,26.2,4.15,B,DELTAZ,2022\n40.87,9.73,2.41,A,ALPHAZ,2022\n32.38,7.67,2.47,A,ALPHAZ,2025\n45.63,33.22,3.76,A,DELTAY,2023\n21.51,21.35,4.41,C,DELTAZ,2023\n51.99,21.86,1.78,A,ALPHAZ,2022\n48.05,31.57,3.65,B,DELTAY,2022\n22.63,36.45,3.98,B,GAMMAY,2023\n62.09,22.15,4.71,C,BETAZ,2024\n60.64,37.45,4.88,A,ALPHAX,2024\n",
+      "data_dictionary.csv": "file,column,description,unit\nfacts.csv,x,\"Primary measurement\",unit\nfacts.csv,y,\"Secondary measurement\",unit\nfacts.csv,w,\"Observation weight\",unitless\nfacts.csv,grp,\"Segment label\",\nfacts.csv,label,\"Record label\",\nfacts.csv,year,\"Observation year\",year\n"
+    },
+    "answer": 6.0,
+    "tol": 1e-06,
+    "type": "table.holdout_string_suffix"
+  },
+  {
+    "id": "h2_032",
+    "objective": "Compute the sum of the primary measurement divided by the sum of the secondary measurement over all records in facts.csv. Round to 3 decimals.",
+    "files": {
+      "facts.csv": "x,y,w,grp,label,year\n50.02,24.91,1.04,A,GAMMAX,2025\n54.21,35.8,4.77,A,ALPHAY,2022\n48.47,27.65,1.62,A,DELTAZ,2023\n57.58,33.46,1.64,B,ALPHAZ,2024\n28.98,19.51,4.73,B,ALPHAY,2021\n24.14,19.47,1.97,C,DELTAY,2022\n47.95,37.93,2.27,C,BETAZ,2021\n32.9,22.22,4.42,A,ALPHAZ,2024\n45.99,28.14,1.29,C,BETAY,2025\n43.49,29.85,1.51,A,ALPHAX,2024\n75.86,46.23,0.81,B,DELTAX,2023\n75.8,39.0,3.79,C,DELTAX,2021\n57.03,27.81,0.65,C,DELTAX,2021\n17.56,10.1,2.45,B,DELTAY,2023\n50.66,35.99,2.78,A,ALPHAY,2023\n52.56,39.3,4.91,A,DELTAY,2022\n69.21,44.94,3.44,A,BETAY,2022\n48.49,29.51,0.76,A,GAMMAY,2022\n37.07,26.2,4.15,B,DELTAZ,2022\n40.87,9.73,2.41,A,ALPHAZ,2022\n32.38,7.67,2.47,A,ALPHAZ,2025\n45.63,33.22,3.76,A,DELTAY,2023\n21.51,21.35,4.41,C,DELTAZ,2023\n51.99,21.86,1.78,A,ALPHAZ,2022\n48.05,31.57,3.65,B,DELTAY,2022\n22.63,36.45,3.98,B,GAMMAY,2023\n62.09,22.15,4.71,C,BETAZ,2024\n60.64,37.45,4.88,A,ALPHAX,2024\n",
+      "data_dictionary.csv": "file,column,description,unit\nfacts.csv,x,\"Primary measurement\",unit\nfacts.csv,y,\"Secondary measurement\",unit\nfacts.csv,w,\"Observation weight\",unitless\nfacts.csv,grp,\"Segment label\",\nfacts.csv,label,\"Record label\",\nfacts.csv,year,\"Observation year\",year\n"
+    },
+    "answer": 1.6307803920097061,
+    "tol": 0.0015,
+    "type": "table.holdout_ratio_sums"
+  },
+  {
+    "id": "h2_033",
+    "objective": "Among records whose segment label is 'A', compute the Pearson correlation between the primary measurement and the secondary measurement. Round to 3 decimals.",
+    "files": {
+      "facts.csv": "x,y,w,grp,label,year\n50.02,24.91,1.04,A,GAMMAX,2025\n54.21,35.8,4.77,A,ALPHAY,2022\n48.47,27.65,1.62,A,DELTAZ,2023\n57.58,33.46,1.64,B,ALPHAZ,2024\n28.98,19.51,4.73,B,ALPHAY,2021\n24.14,19.47,1.97,C,DELTAY,2022\n47.95,37.93,2.27,C,BETAZ,2021\n32.9,22.22,4.42,A,ALPHAZ,2024\n45.99,28.14,1.29,C,BETAY,2025\n43.49,29.85,1.51,A,ALPHAX,2024\n75.86,46.23,0.81,B,DELTAX,2023\n75.8,39.0,3.79,C,DELTAX,2021\n57.03,27.81,0.65,C,DELTAX,2021\n17.56,10.1,2.45,B,DELTAY,2023\n50.66,35.99,2.78,A,ALPHAY,2023\n52.56,39.3,4.91,A,DELTAY,2022\n69.21,44.94,3.44,A,BETAY,2022\n48.49,29.51,0.76,A,GAMMAY,2022\n37.07,26.2,4.15,B,DELTAZ,2022\n40.87,9.73,2.41,A,ALPHAZ,2022\n32.38,7.67,2.47,A,ALPHAZ,2025\n45.63,33.22,3.76,A,DELTAY,2023\n21.51,21.35,4.41,C,DELTAZ,2023\n51.99,21.86,1.78,A,ALPHAZ,2022\n48.05,31.57,3.65,B,DELTAY,2022\n22.63,36.45,3.98,B,GAMMAY,2023\n62.09,22.15,4.71,C,BETAZ,2024\n60.64,37.45,4.88,A,ALPHAX,2024\n",
+      "data_dictionary.csv": "file,column,description,unit\nfacts.csv,x,\"Primary measurement\",unit\nfacts.csv,y,\"Secondary measurement\",unit\nfacts.csv,w,\"Observation weight\",unitless\nfacts.csv,grp,\"Segment label\",\nfacts.csv,label,\"Record label\",\nfacts.csv,year,\"Observation year\",year\n"
+    },
+    "answer": 0.7953367602133014,
+    "tol": 0.0015,
+    "type": "table.holdout_filtered_corr"
+  },
+  {
+    "id": "h2_034",
+    "objective": "For each observation year in facts.csv, compute the median primary measurement. Which year has the largest median? Return the year as an integer.",
+    "files": {
+      "facts.csv": "x,y,w,grp,label,year\n50.02,24.91,1.04,A,GAMMAX,2025\n54.21,35.8,4.77,A,ALPHAY,2022\n48.47,27.65,1.62,A,DELTAZ,2023\n57.58,33.46,1.64,B,ALPHAZ,2024\n28.98,19.51,4.73,B,ALPHAY,2021\n24.14,19.47,1.97,C,DELTAY,2022\n47.95,37.93,2.27,C,BETAZ,2021\n32.9,22.22,4.42,A,ALPHAZ,2024\n45.99,28.14,1.29,C,BETAY,2025\n43.49,29.85,1.51,A,ALPHAX,2024\n75.86,46.23,0.81,B,DELTAX,2023\n75.8,39.0,3.79,C,DELTAX,2021\n57.03,27.81,0.65,C,DELTAX,2021\n17.56,10.1,2.45,B,DELTAY,2023\n50.66,35.99,2.78,A,ALPHAY,2023\n52.56,39.3,4.91,A,DELTAY,2022\n69.21,44.94,3.44,A,BETAY,2022\n48.49,29.51,0.76,A,GAMMAY,2022\n37.07,26.2,4.15,B,DELTAZ,2022\n40.87,9.73,2.41,A,ALPHAZ,2022\n32.38,7.67,2.47,A,ALPHAZ,2025\n45.63,33.22,3.76,A,DELTAY,2023\n21.51,21.35,4.41,C,DELTAZ,2023\n51.99,21.86,1.78,A,ALPHAZ,2022\n48.05,31.57,3.65,B,DELTAY,2022\n22.63,36.45,3.98,B,GAMMAY,2023\n62.09,22.15,4.71,C,BETAZ,2024\n60.64,37.45,4.88,A,ALPHAX,2024\n",
+      "data_dictionary.csv": "file,column,description,unit\nfacts.csv,x,\"Primary measurement\",unit\nfacts.csv,y,\"Secondary measurement\",unit\nfacts.csv,w,\"Observation weight\",unitless\nfacts.csv,grp,\"Segment label\",\nfacts.csv,label,\"Record label\",\nfacts.csv,year,\"Observation year\",year\n"
+    },
+    "answer": 2024.0,
+    "tol": 1e-06,
+    "type": "table.holdout_year_max_median"
+  },
+  {
+    "id": "h2_035",
+    "objective": "Join events.csv to entities.csv using the entity identifier. How many event rows belong to entities whose entity segment is 'North'? Give a whole number.",
+    "files": {
+      "events.csv": "eid,entity,value\n1,E07,3.29\n2,E04,37.33\n3,E04,15.43\n4,E04,14.36\n5,E10,8.89\n6,E10,17.76\n7,E05,18.51\n8,E03,29.51\n9,E01,28.41\n10,E01,24.2\n11,E04,22.02\n12,E11,23.46\n13,E02,21.48\n14,E11,22.2\n15,E04,18.5\n16,E06,30.42\n17,E06,16.91\n18,E00,22.54\n19,E02,22.58\n20,E09,30.87\n21,E07,22.9\n22,E05,26.01\n23,E03,16.97\n24,E04,25.17\n25,E03,15.61\n26,E00,13.15\n27,E05,29.65\n28,E00,32.56\n29,E02,18.48\n30,E02,26.99\n31,E05,25.07\n32,E02,17.48\n33,E04,27.81\n34,E03,18.37\n35,E10,15.67\n36,E11,22.03\n",
+      "entities.csv": "entity,segment,weight\nE00,South,0.66\nE01,South,0.53\nE02,South,1.12\nE03,South,2.31\nE04,South,2.7\nE05,South,2.85\nE06,South,3.86\nE07,North,1.59\nE08,South,3.41\nE09,North,1.45\nE10,North,0.82\nE11,South,1.8\n",
+      "data_dictionary.csv": "file,column,description,unit\nevents.csv,eid,\"Event identifier\",\nevents.csv,entity,\"Entity identifier\",\nevents.csv,value,\"Event value\",unit\nentities.csv,entity,\"Entity identifier\",\nentities.csv,segment,\"Entity segment\",\nentities.csv,weight,\"Entity weight\",unitless\n"
+    },
+    "answer": 6.0,
+    "tol": 1e-06,
+    "type": "table.holdout_join_count"
+  },
+  {
+    "id": "h2_036",
+    "objective": "Join events.csv to entities.csv using the entity identifier. For event rows belonging to entities whose entity segment is 'South', compute the weighted mean of event value using entity weight as the weight. Round to 2 decimals.",
+    "files": {
+      "events.csv": "eid,entity,value\n1,E07,3.29\n2,E04,37.33\n3,E04,15.43\n4,E04,14.36\n5,E10,8.89\n6,E10,17.76\n7,E05,18.51\n8,E03,29.51\n9,E01,28.41\n10,E01,24.2\n11,E04,22.02\n12,E11,23.46\n13,E02,21.48\n14,E11,22.2\n15,E04,18.5\n16,E06,30.42\n17,E06,16.91\n18,E00,22.54\n19,E02,22.58\n20,E09,30.87\n21,E07,22.9\n22,E05,26.01\n23,E03,16.97\n24,E04,25.17\n25,E03,15.61\n26,E00,13.15\n27,E05,29.65\n28,E00,32.56\n29,E02,18.48\n30,E02,26.99\n31,E05,25.07\n32,E02,17.48\n33,E04,27.81\n34,E03,18.37\n35,E10,15.67\n36,E11,22.03\n",
+      "entities.csv": "entity,segment,weight\nE00,South,0.66\nE01,South,0.53\nE02,South,1.12\nE03,South,2.31\nE04,South,2.7\nE05,South,2.85\nE06,South,3.86\nE07,North,1.59\nE08,South,3.41\nE09,North,1.45\nE10,North,0.82\nE11,South,1.8\n",
+      "data_dictionary.csv": "file,column,description,unit\nevents.csv,eid,\"Event identifier\",\nevents.csv,entity,\"Entity identifier\",\nevents.csv,value,\"Event value\",unit\nentities.csv,entity,\"Entity identifier\",\nentities.csv,segment,\"Entity segment\",\nentities.csv,weight,\"Entity weight\",unitless\n"
+    },
+    "answer": 22.83337520391517,
+    "tol": 0.015,
+    "type": "table.holdout_join_weighted_mean"
+  },
+  {
+    "id": "h2_037",
+    "objective": "Using facts.csv, compute the 10% trimmed mean of the primary measurement: sort the non-missing values, remove floor(10% of n) observations from each tail, then take the mean. Round to 2 decimals.",
+    "files": {
+      "facts.csv": "x,y,w,grp,label,year\n72.11,50.53,4.23,A,BETAZ,2025\n69.08,46.06,2.14,B,GAMMAY,2024\n36.5,36.13,4.56,A,GAMMAY,2023\n48.7,39.98,1.66,C,ALPHAX,2024\n65.44,39.88,2.76,C,GAMMAX,2021\n41.78,31.33,3.28,A,DELTAZ,2021\n77.4,41.77,3.96,C,BETAY,2021\n28.71,35.44,4.89,C,DELTAX,2022\n28.7,38.13,4.44,B,ALPHAY,2021\n53.45,36.87,3.17,B,BETAZ,2021\n24.17,23.28,4.26,B,ALPHAY,2022\n54.52,32.73,3.67,C,ALPHAZ,2021\n56.0,25.78,1.83,B,ALPHAZ,2024\n54.19,35.43,1.31,A,GAMMAZ,2024\n58.78,34.36,4.15,C,DELTAX,2022\n34.88,11.27,1.0,B,BETAX,2024\n62.83,42.55,1.54,C,DELTAZ,2024\n47.57,25.6,4.49,B,BETAY,2023\n59.72,32.58,1.81,C,GAMMAZ,2025\n59.27,38.28,3.12,A,ALPHAY,2021\n57.35,26.56,0.57,A,GAMMAZ,2024\n32.73,29.7,3.08,A,ALPHAZ,2023\n40.89,28.58,0.51,B,GAMMAX,2022\n69.98,41.39,1.23,B,GAMMAX,2022\n31.66,12.89,1.23,C,GAMMAX,2025\n59.07,23.86,3.88,A,GAMMAX,2025\n49.25,25.68,2.73,B,DELTAZ,2021\n31.55,14.82,4.07,B,ALPHAY,2021\n",
+      "data_dictionary.csv": "file,column,description,unit\nfacts.csv,x,\"Primary measurement\",unit\nfacts.csv,y,\"Secondary measurement\",unit\nfacts.csv,w,\"Observation weight\",unitless\nfacts.csv,grp,\"Segment label\",\nfacts.csv,label,\"Record label\",\nfacts.csv,year,\"Observation year\",year\n"
+    },
+    "answer": 50.1625,
+    "tol": 0.015,
+    "type": "table.holdout_trimmed_mean"
+  },
+  {
+    "id": "h2_038",
+    "objective": "What is the sample coefficient of variation of the primary measurement in facts.csv, defined as 100 times the sample standard deviation (ddof=1) divided by the mean? Round to 2 decimals.",
+    "files": {
+      "facts.csv": "x,y,w,grp,label,year\n72.11,50.53,4.23,A,BETAZ,2025\n69.08,46.06,2.14,B,GAMMAY,2024\n36.5,36.13,4.56,A,GAMMAY,2023\n48.7,39.98,1.66,C,ALPHAX,2024\n65.44,39.88,2.76,C,GAMMAX,2021\n41.78,31.33,3.28,A,DELTAZ,2021\n77.4,41.77,3.96,C,BETAY,2021\n28.71,35.44,4.89,C,DELTAX,2022\n28.7,38.13,4.44,B,ALPHAY,2021\n53.45,36.87,3.17,B,BETAZ,2021\n24.17,23.28,4.26,B,ALPHAY,2022\n54.52,32.73,3.67,C,ALPHAZ,2021\n56.0,25.78,1.83,B,ALPHAZ,2024\n54.19,35.43,1.31,A,GAMMAZ,2024\n58.78,34.36,4.15,C,DELTAX,2022\n34.88,11.27,1.0,B,BETAX,2024\n62.83,42.55,1.54,C,DELTAZ,2024\n47.57,25.6,4.49,B,BETAY,2023\n59.72,32.58,1.81,C,GAMMAZ,2025\n59.27,38.28,3.12,A,ALPHAY,2021\n57.35,26.56,0.57,A,GAMMAZ,2024\n32.73,29.7,3.08,A,ALPHAZ,2023\n40.89,28.58,0.51,B,GAMMAX,2022\n69.98,41.39,1.23,B,GAMMAX,2022\n31.66,12.89,1.23,C,GAMMAX,2025\n59.07,23.86,3.88,A,GAMMAX,2025\n49.25,25.68,2.73,B,DELTAZ,2021\n31.55,14.82,4.07,B,ALPHAY,2021\n",
+      "data_dictionary.csv": "file,column,description,unit\nfacts.csv,x,\"Primary measurement\",unit\nfacts.csv,y,\"Secondary measurement\",unit\nfacts.csv,w,\"Observation weight\",unitless\nfacts.csv,grp,\"Segment label\",\nfacts.csv,label,\"Record label\",\nfacts.csv,year,\"Observation year\",year\n"
+    },
+    "answer": 29.688184994346607,
+    "tol": 0.015,
+    "type": "table.holdout_coef_variation"
+  },
+  {
+    "id": "h2_039",
+    "objective": "What is the 90th percentile of the primary measurement in facts.csv using linear interpolation? Round to 2 decimals.",
+    "files": {
+      "facts.csv": "x,y,w,grp,label,year\n72.11,50.53,4.23,A,BETAZ,2025\n69.08,46.06,2.14,B,GAMMAY,2024\n36.5,36.13,4.56,A,GAMMAY,2023\n48.7,39.98,1.66,C,ALPHAX,2024\n65.44,39.88,2.76,C,GAMMAX,2021\n41.78,31.33,3.28,A,DELTAZ,2021\n77.4,41.77,3.96,C,BETAY,2021\n28.71,35.44,4.89,C,DELTAX,2022\n28.7,38.13,4.44,B,ALPHAY,2021\n53.45,36.87,3.17,B,BETAZ,2021\n24.17,23.28,4.26,B,ALPHAY,2022\n54.52,32.73,3.67,C,ALPHAZ,2021\n56.0,25.78,1.83,B,ALPHAZ,2024\n54.19,35.43,1.31,A,GAMMAZ,2024\n58.78,34.36,4.15,C,DELTAX,2022\n34.88,11.27,1.0,B,BETAX,2024\n62.83,42.55,1.54,C,DELTAZ,2024\n47.57,25.6,4.49,B,BETAY,2023\n59.72,32.58,1.81,C,GAMMAZ,2025\n59.27,38.28,3.12,A,ALPHAY,2021\n57.35,26.56,0.57,A,GAMMAZ,2024\n32.73,29.7,3.08,A,ALPHAZ,2023\n40.89,28.58,0.51,B,GAMMAX,2022\n69.98,41.39,1.23,B,GAMMAX,2022\n31.66,12.89,1.23,C,GAMMAX,2025\n59.07,23.86,3.88,A,GAMMAX,2025\n49.25,25.68,2.73,B,DELTAZ,2021\n31.55,14.82,4.07,B,ALPHAY,2021\n",
+      "data_dictionary.csv": "file,column,description,unit\nfacts.csv,x,\"Primary measurement\",unit\nfacts.csv,y,\"Secondary measurement\",unit\nfacts.csv,w,\"Observation weight\",unitless\nfacts.csv,grp,\"Segment label\",\nfacts.csv,label,\"Record label\",\nfacts.csv,year,\"Observation year\",year\n"
+    },
+    "answer": 69.35,
+    "tol": 0.015,
+    "type": "table.holdout_p90"
+  },
+  {
+    "id": "h2_040",
+    "objective": "What percentage of records in facts.csv have primary measurement strictly greater than 53.82? Round to 2 decimals.",
+    "files": {
+      "facts.csv": "x,y,w,grp,label,year\n72.11,50.53,4.23,A,BETAZ,2025\n69.08,46.06,2.14,B,GAMMAY,2024\n36.5,36.13,4.56,A,GAMMAY,2023\n48.7,39.98,1.66,C,ALPHAX,2024\n65.44,39.88,2.76,C,GAMMAX,2021\n41.78,31.33,3.28,A,DELTAZ,2021\n77.4,41.77,3.96,C,BETAY,2021\n28.71,35.44,4.89,C,DELTAX,2022\n28.7,38.13,4.44,B,ALPHAY,2021\n53.45,36.87,3.17,B,BETAZ,2021\n24.17,23.28,4.26,B,ALPHAY,2022\n54.52,32.73,3.67,C,ALPHAZ,2021\n56.0,25.78,1.83,B,ALPHAZ,2024\n54.19,35.43,1.31,A,GAMMAZ,2024\n58.78,34.36,4.15,C,DELTAX,2022\n34.88,11.27,1.0,B,BETAX,2024\n62.83,42.55,1.54,C,DELTAZ,2024\n47.57,25.6,4.49,B,BETAY,2023\n59.72,32.58,1.81,C,GAMMAZ,2025\n59.27,38.28,3.12,A,ALPHAY,2021\n57.35,26.56,0.57,A,GAMMAZ,2024\n32.73,29.7,3.08,A,ALPHAZ,2023\n40.89,28.58,0.51,B,GAMMAX,2022\n69.98,41.39,1.23,B,GAMMAX,2022\n31.66,12.89,1.23,C,GAMMAX,2025\n59.07,23.86,3.88,A,GAMMAX,2025\n49.25,25.68,2.73,B,DELTAZ,2021\n31.55,14.82,4.07,B,ALPHAY,2021\n",
+      "data_dictionary.csv": "file,column,description,unit\nfacts.csv,x,\"Primary measurement\",unit\nfacts.csv,y,\"Secondary measurement\",unit\nfacts.csv,w,\"Observation weight\",unitless\nfacts.csv,grp,\"Segment label\",\nfacts.csv,label,\"Record label\",\nfacts.csv,year,\"Observation year\",year\n"
+    },
+    "answer": 50.0,
+    "tol": 0.015,
+    "type": "table.holdout_prop_above"
+  },
+  {
+    "id": "h2_041",
+    "objective": "Compute the median absolute deviation of the primary measurement in facts.csv, defined as median(|x - median(x)|), without any scaling constant. Round to 2 decimals.",
+    "files": {
+      "facts.csv": "x,y,w,grp,label,year\n72.11,50.53,4.23,A,BETAZ,2025\n69.08,46.06,2.14,B,GAMMAY,2024\n36.5,36.13,4.56,A,GAMMAY,2023\n48.7,39.98,1.66,C,ALPHAX,2024\n65.44,39.88,2.76,C,GAMMAX,2021\n41.78,31.33,3.28,A,DELTAZ,2021\n77.4,41.77,3.96,C,BETAY,2021\n28.71,35.44,4.89,C,DELTAX,2022\n28.7,38.13,4.44,B,ALPHAY,2021\n53.45,36.87,3.17,B,BETAZ,2021\n24.17,23.28,4.26,B,ALPHAY,2022\n54.52,32.73,3.67,C,ALPHAZ,2021\n56.0,25.78,1.83,B,ALPHAZ,2024\n54.19,35.43,1.31,A,GAMMAZ,2024\n58.78,34.36,4.15,C,DELTAX,2022\n34.88,11.27,1.0,B,BETAX,2024\n62.83,42.55,1.54,C,DELTAZ,2024\n47.57,25.6,4.49,B,BETAY,2023\n59.72,32.58,1.81,C,GAMMAZ,2025\n59.27,38.28,3.12,A,ALPHAY,2021\n57.35,26.56,0.57,A,GAMMAZ,2024\n32.73,29.7,3.08,A,ALPHAZ,2023\n40.89,28.58,0.51,B,GAMMAX,2022\n69.98,41.39,1.23,B,GAMMAX,2022\n31.66,12.89,1.23,C,GAMMAX,2025\n59.07,23.86,3.88,A,GAMMAX,2025\n49.25,25.68,2.73,B,DELTAZ,2021\n31.55,14.82,4.07,B,ALPHAY,2021\n",
+      "data_dictionary.csv": "file,column,description,unit\nfacts.csv,x,\"Primary measurement\",unit\nfacts.csv,y,\"Secondary measurement\",unit\nfacts.csv,w,\"Observation weight\",unitless\nfacts.csv,grp,\"Segment label\",\nfacts.csv,label,\"Record label\",\nfacts.csv,year,\"Observation year\",year\n"
+    },
+    "answer": 11.829999999999998,
+    "tol": 0.015,
+    "type": "table.holdout_mad"
+  },
+  {
+    "id": "h2_042",
+    "objective": "What is the median primary measurement for segment 'A' minus the median primary measurement for segment 'B' in facts.csv? Round to 2 decimals.",
+    "files": {
+      "facts.csv": "x,y,w,grp,label,year\n72.11,50.53,4.23,A,BETAZ,2025\n69.08,46.06,2.14,B,GAMMAY,2024\n36.5,36.13,4.56,A,GAMMAY,2023\n48.7,39.98,1.66,C,ALPHAX,2024\n65.44,39.88,2.76,C,GAMMAX,2021\n41.78,31.33,3.28,A,DELTAZ,2021\n77.4,41.77,3.96,C,BETAY,2021\n28.71,35.44,4.89,C,DELTAX,2022\n28.7,38.13,4.44,B,ALPHAY,2021\n53.45,36.87,3.17,B,BETAZ,2021\n24.17,23.28,4.26,B,ALPHAY,2022\n54.52,32.73,3.67,C,ALPHAZ,2021\n56.0,25.78,1.83,B,ALPHAZ,2024\n54.19,35.43,1.31,A,GAMMAZ,2024\n58.78,34.36,4.15,C,DELTAX,2022\n34.88,11.27,1.0,B,BETAX,2024\n62.83,42.55,1.54,C,DELTAZ,2024\n47.57,25.6,4.49,B,BETAY,2023\n59.72,32.58,1.81,C,GAMMAZ,2025\n59.27,38.28,3.12,A,ALPHAY,2021\n57.35,26.56,0.57,A,GAMMAZ,2024\n32.73,29.7,3.08,A,ALPHAZ,2023\n40.89,28.58,0.51,B,GAMMAX,2022\n69.98,41.39,1.23,B,GAMMAX,2022\n31.66,12.89,1.23,C,GAMMAX,2025\n59.07,23.86,3.88,A,GAMMAX,2025\n49.25,25.68,2.73,B,DELTAZ,2021\n31.55,14.82,4.07,B,ALPHAY,2021\n",
+      "data_dictionary.csv": "file,column,description,unit\nfacts.csv,x,\"Primary measurement\",unit\nfacts.csv,y,\"Secondary measurement\",unit\nfacts.csv,w,\"Observation weight\",unitless\nfacts.csv,grp,\"Segment label\",\nfacts.csv,label,\"Record label\",\nfacts.csv,year,\"Observation year\",year\n"
+    },
+    "answer": 8.199999999999996,
+    "tol": 0.015,
+    "type": "table.holdout_group_median_diff"
+  },
+  {
+    "id": "h2_043",
+    "objective": "How many records in facts.csv have a record label that ends with 'X'? Give a whole number.",
+    "files": {
+      "facts.csv": "x,y,w,grp,label,year\n72.11,50.53,4.23,A,BETAZ,2025\n69.08,46.06,2.14,B,GAMMAY,2024\n36.5,36.13,4.56,A,GAMMAY,2023\n48.7,39.98,1.66,C,ALPHAX,2024\n65.44,39.88,2.76,C,GAMMAX,2021\n41.78,31.33,3.28,A,DELTAZ,2021\n77.4,41.77,3.96,C,BETAY,2021\n28.71,35.44,4.89,C,DELTAX,2022\n28.7,38.13,4.44,B,ALPHAY,2021\n53.45,36.87,3.17,B,BETAZ,2021\n24.17,23.28,4.26,B,ALPHAY,2022\n54.52,32.73,3.67,C,ALPHAZ,2021\n56.0,25.78,1.83,B,ALPHAZ,2024\n54.19,35.43,1.31,A,GAMMAZ,2024\n58.78,34.36,4.15,C,DELTAX,2022\n34.88,11.27,1.0,B,BETAX,2024\n62.83,42.55,1.54,C,DELTAZ,2024\n47.57,25.6,4.49,B,BETAY,2023\n59.72,32.58,1.81,C,GAMMAZ,2025\n59.27,38.28,3.12,A,ALPHAY,2021\n57.35,26.56,0.57,A,GAMMAZ,2024\n32.73,29.7,3.08,A,ALPHAZ,2023\n40.89,28.58,0.51,B,GAMMAX,2022\n69.98,41.39,1.23,B,GAMMAX,2022\n31.66,12.89,1.23,C,GAMMAX,2025\n59.07,23.86,3.88,A,GAMMAX,2025\n49.25,25.68,2.73,B,DELTAZ,2021\n31.55,14.82,4.07,B,ALPHAY,2021\n",
+      "data_dictionary.csv": "file,column,description,unit\nfacts.csv,x,\"Primary measurement\",unit\nfacts.csv,y,\"Secondary measurement\",unit\nfacts.csv,w,\"Observation weight\",unitless\nfacts.csv,grp,\"Segment label\",\nfacts.csv,label,\"Record label\",\nfacts.csv,year,\"Observation year\",year\n"
+    },
+    "answer": 9.0,
+    "tol": 1e-06,
+    "type": "table.holdout_string_suffix"
+  },
+  {
+    "id": "h2_044",
+    "objective": "Compute the sum of the primary measurement divided by the sum of the secondary measurement over all records in facts.csv. Round to 3 decimals.",
+    "files": {
+      "facts.csv": "x,y,w,grp,label,year\n72.11,50.53,4.23,A,BETAZ,2025\n69.08,46.06,2.14,B,GAMMAY,2024\n36.5,36.13,4.56,A,GAMMAY,2023\n48.7,39.98,1.66,C,ALPHAX,2024\n65.44,39.88,2.76,C,GAMMAX,2021\n41.78,31.33,3.28,A,DELTAZ,2021\n77.4,41.77,3.96,C,BETAY,2021\n28.71,35.44,4.89,C,DELTAX,2022\n28.7,38.13,4.44,B,ALPHAY,2021\n53.45,36.87,3.17,B,BETAZ,2021\n24.17,23.28,4.26,B,ALPHAY,2022\n54.52,32.73,3.67,C,ALPHAZ,2021\n56.0,25.78,1.83,B,ALPHAZ,2024\n54.19,35.43,1.31,A,GAMMAZ,2024\n58.78,34.36,4.15,C,DELTAX,2022\n34.88,11.27,1.0,B,BETAX,2024\n62.83,42.55,1.54,C,DELTAZ,2024\n47.57,25.6,4.49,B,BETAY,2023\n59.72,32.58,1.81,C,GAMMAZ,2025\n59.27,38.28,3.12,A,ALPHAY,2021\n57.35,26.56,0.57,A,GAMMAZ,2024\n32.73,29.7,3.08,A,ALPHAZ,2023\n40.89,28.58,0.51,B,GAMMAX,2022\n69.98,41.39,1.23,B,GAMMAX,2022\n31.66,12.89,1.23,C,GAMMAX,2025\n59.07,23.86,3.88,A,GAMMAX,2025\n49.25,25.68,2.73,B,DELTAZ,2021\n31.55,14.82,4.07,B,ALPHAY,2021\n",
+      "data_dictionary.csv": "file,column,description,unit\nfacts.csv,x,\"Primary measurement\",unit\nfacts.csv,y,\"Secondary measurement\",unit\nfacts.csv,w,\"Observation weight\",unitless\nfacts.csv,grp,\"Segment label\",\nfacts.csv,label,\"Record label\",\nfacts.csv,year,\"Observation year\",year\n"
+    },
+    "answer": 1.560002662347747,
+    "tol": 0.0015,
+    "type": "table.holdout_ratio_sums"
+  },
+  {
+    "id": "h2_045",
+    "objective": "Among records whose segment label is 'A', compute the Pearson correlation between the primary measurement and the secondary measurement. Round to 3 decimals.",
+    "files": {
+      "facts.csv": "x,y,w,grp,label,year\n72.11,50.53,4.23,A,BETAZ,2025\n69.08,46.06,2.14,B,GAMMAY,2024\n36.5,36.13,4.56,A,GAMMAY,2023\n48.7,39.98,1.66,C,ALPHAX,2024\n65.44,39.88,2.76,C,GAMMAX,2021\n41.78,31.33,3.28,A,DELTAZ,2021\n77.4,41.77,3.96,C,BETAY,2021\n28.71,35.44,4.89,C,DELTAX,2022\n28.7,38.13,4.44,B,ALPHAY,2021\n53.45,36.87,3.17,B,BETAZ,2021\n24.17,23.28,4.26,B,ALPHAY,2022\n54.52,32.73,3.67,C,ALPHAZ,2021\n56.0,25.78,1.83,B,ALPHAZ,2024\n54.19,35.43,1.31,A,GAMMAZ,2024\n58.78,34.36,4.15,C,DELTAX,2022\n34.88,11.27,1.0,B,BETAX,2024\n62.83,42.55,1.54,C,DELTAZ,2024\n47.57,25.6,4.49,B,BETAY,2023\n59.72,32.58,1.81,C,GAMMAZ,2025\n59.27,38.28,3.12,A,ALPHAY,2021\n57.35,26.56,0.57,A,GAMMAZ,2024\n32.73,29.7,3.08,A,ALPHAZ,2023\n40.89,28.58,0.51,B,GAMMAX,2022\n69.98,41.39,1.23,B,GAMMAX,2022\n31.66,12.89,1.23,C,GAMMAX,2025\n59.07,23.86,3.88,A,GAMMAX,2025\n49.25,25.68,2.73,B,DELTAZ,2021\n31.55,14.82,4.07,B,ALPHAY,2021\n",
+      "data_dictionary.csv": "file,column,description,unit\nfacts.csv,x,\"Primary measurement\",unit\nfacts.csv,y,\"Secondary measurement\",unit\nfacts.csv,w,\"Observation weight\",unitless\nfacts.csv,grp,\"Segment label\",\nfacts.csv,label,\"Record label\",\nfacts.csv,year,\"Observation year\",year\n"
+    },
+    "answer": 0.4271063401817314,
+    "tol": 0.0015,
+    "type": "table.holdout_filtered_corr"
+  },
+  {
+    "id": "h2_046",
+    "objective": "For each observation year in facts.csv, compute the median primary measurement. Which year has the largest median? Return the year as an integer.",
+    "files": {
+      "facts.csv": "x,y,w,grp,label,year\n72.11,50.53,4.23,A,BETAZ,2025\n69.08,46.06,2.14,B,GAMMAY,2024\n36.5,36.13,4.56,A,GAMMAY,2023\n48.7,39.98,1.66,C,ALPHAX,2024\n65.44,39.88,2.76,C,GAMMAX,2021\n41.78,31.33,3.28,A,DELTAZ,2021\n77.4,41.77,3.96,C,BETAY,2021\n28.71,35.44,4.89,C,DELTAX,2022\n28.7,38.13,4.44,B,ALPHAY,2021\n53.45,36.87,3.17,B,BETAZ,2021\n24.17,23.28,4.26,B,ALPHAY,2022\n54.52,32.73,3.67,C,ALPHAZ,2021\n56.0,25.78,1.83,B,ALPHAZ,2024\n54.19,35.43,1.31,A,GAMMAZ,2024\n58.78,34.36,4.15,C,DELTAX,2022\n34.88,11.27,1.0,B,BETAX,2024\n62.83,42.55,1.54,C,DELTAZ,2024\n47.57,25.6,4.49,B,BETAY,2023\n59.72,32.58,1.81,C,GAMMAZ,2025\n59.27,38.28,3.12,A,ALPHAY,2021\n57.35,26.56,0.57,A,GAMMAZ,2024\n32.73,29.7,3.08,A,ALPHAZ,2023\n40.89,28.58,0.51,B,GAMMAX,2022\n69.98,41.39,1.23,B,GAMMAX,2022\n31.66,12.89,1.23,C,GAMMAX,2025\n59.07,23.86,3.88,A,GAMMAX,2025\n49.25,25.68,2.73,B,DELTAZ,2021\n31.55,14.82,4.07,B,ALPHAY,2021\n",
+      "data_dictionary.csv": "file,column,description,unit\nfacts.csv,x,\"Primary measurement\",unit\nfacts.csv,y,\"Secondary measurement\",unit\nfacts.csv,w,\"Observation weight\",unitless\nfacts.csv,grp,\"Segment label\",\nfacts.csv,label,\"Record label\",\nfacts.csv,year,\"Observation year\",year\n"
+    },
+    "answer": 2025.0,
+    "tol": 1e-06,
+    "type": "table.holdout_year_max_median"
+  },
+  {
+    "id": "h2_047",
+    "objective": "Join events.csv to entities.csv using the entity identifier. How many event rows belong to entities whose entity segment is 'North'? Give a whole number.",
+    "files": {
+      "events.csv": "eid,entity,value\n1,E06,26.26\n2,E10,30.15\n3,E02,23.85\n4,E08,19.6\n5,E04,10.53\n6,E11,18.06\n7,E11,19.39\n8,E00,34.83\n9,E06,35.91\n10,E03,18.15\n11,E10,23.9\n12,E02,18.64\n13,E09,25.67\n14,E08,27.48\n15,E04,15.55\n16,E06,27.27\n17,E08,22.59\n18,E04,23.26\n19,E10,17.66\n20,E02,21.69\n21,E07,29.26\n22,E08,17.79\n23,E03,23.55\n24,E06,19.57\n25,E00,18.86\n26,E01,28.64\n27,E06,28.92\n28,E06,26.36\n29,E09,33.46\n30,E05,39.79\n31,E08,16.47\n32,E06,32.5\n33,E02,43.88\n34,E04,13.82\n35,E04,35.01\n36,E02,29.74\n",
+      "entities.csv": "entity,segment,weight\nE00,North,3.89\nE01,North,2.83\nE02,South,1.29\nE03,South,1.74\nE04,North,2.73\nE05,North,2.58\nE06,South,3.83\nE07,South,2.11\nE08,North,1.12\nE09,North,3.16\nE10,South,3.36\nE11,North,3.13\n",
+      "data_dictionary.csv": "file,column,description,unit\nevents.csv,eid,\"Event identifier\",\nevents.csv,entity,\"Entity identifier\",\nevents.csv,value,\"Event value\",unit\nentities.csv,entity,\"Entity identifier\",\nentities.csv,segment,\"Entity segment\",\nentities.csv,weight,\"Entity weight\",unitless\n"
+    },
+    "answer": 18.0,
+    "tol": 1e-06,
+    "type": "table.holdout_join_count"
+  },
+  {
+    "id": "h2_048",
+    "objective": "Join events.csv to entities.csv using the entity identifier. For event rows belonging to entities whose entity segment is 'South', compute the weighted mean of event value using entity weight as the weight. Round to 2 decimals.",
+    "files": {
+      "events.csv": "eid,entity,value\n1,E06,26.26\n2,E10,30.15\n3,E02,23.85\n4,E08,19.6\n5,E04,10.53\n6,E11,18.06\n7,E11,19.39\n8,E00,34.83\n9,E06,35.91\n10,E03,18.15\n11,E10,23.9\n12,E02,18.64\n13,E09,25.67\n14,E08,27.48\n15,E04,15.55\n16,E06,27.27\n17,E08,22.59\n18,E04,23.26\n19,E10,17.66\n20,E02,21.69\n21,E07,29.26\n22,E08,17.79\n23,E03,23.55\n24,E06,19.57\n25,E00,18.86\n26,E01,28.64\n27,E06,28.92\n28,E06,26.36\n29,E09,33.46\n30,E05,39.79\n31,E08,16.47\n32,E06,32.5\n33,E02,43.88\n34,E04,13.82\n35,E04,35.01\n36,E02,29.74\n",
+      "entities.csv": "entity,segment,weight\nE00,North,3.89\nE01,North,2.83\nE02,South,1.29\nE03,South,1.74\nE04,North,2.73\nE05,North,2.58\nE06,South,3.83\nE07,South,2.11\nE08,North,1.12\nE09,North,3.16\nE10,South,3.36\nE11,North,3.13\n",
+      "data_dictionary.csv": "file,column,description,unit\nevents.csv,eid,\"Event identifier\",\nevents.csv,entity,\"Entity identifier\",\nevents.csv,value,\"Event value\",unit\nentities.csv,entity,\"Entity identifier\",\nentities.csv,segment,\"Entity segment\",\nentities.csv,weight,\"Entity weight\",unitless\n"
+    },
+    "answer": 26.705699979562638,
+    "tol": 0.015,
+    "type": "table.holdout_join_weighted_mean"
+  },
+  {
+    "id": "h2_049",
+    "objective": "Using facts.csv, compute the 10% trimmed mean of the primary measurement: sort the non-missing values, remove floor(10% of n) observations from each tail, then take the mean. Round to 2 decimals.",
+    "files": {
+      "facts.csv": "x,y,w,grp,label,year\n56.19,11.9,1.84,C,DELTAZ,2023\n60.78,35.15,4.99,A,DELTAX,2024\n68.33,32.09,1.12,C,ALPHAY,2023\n42.64,32.1,3.9,B,GAMMAX,2021\n46.04,21.76,0.59,C,BETAY,2023\n35.15,26.65,3.11,A,BETAZ,2024\n56.74,21.63,3.51,C,BETAX,2021\n46.72,30.47,3.54,C,ALPHAX,2021\n37.53,10.68,1.79,B,GAMMAZ,2022\n49.83,28.62,2.83,A,ALPHAX,2025\n36.58,23.3,3.74,C,GAMMAX,2024\n35.72,32.36,5.0,C,GAMMAY,2023\n73.28,28.26,4.89,B,DELTAZ,2022\n67.21,36.67,3.72,C,BETAY,2025\n21.6,25.14,1.1,A,GAMMAY,2021\n51.57,29.75,3.91,B,ALPHAZ,2021\n52.11,31.52,3.39,A,BETAY,2023\n55.77,22.88,1.83,B,ALPHAZ,2021\n46.32,21.58,1.81,C,GAMMAY,2023\n42.08,28.95,4.79,C,GAMMAZ,2025\n63.84,37.46,4.59,C,BETAZ,2023\n53.64,19.5,4.41,B,BETAY,2025\n65.53,31.22,1.23,B,ALPHAX,2021\n48.43,41.71,1.45,B,DELTAZ,2022\n53.43,29.63,4.96,B,ALPHAY,2021\n68.12,37.99,1.0,B,DELTAY,2023\n55.59,38.84,3.1,C,ALPHAY,2022\n53.73,31.12,2.33,C,DELTAX,2023\n",
+      "data_dictionary.csv": "file,column,description,unit\nfacts.csv,x,\"Primary measurement\",unit\nfacts.csv,y,\"Secondary measurement\",unit\nfacts.csv,w,\"Observation weight\",unitless\nfacts.csv,grp,\"Segment label\",\nfacts.csv,label,\"Record label\",\nfacts.csv,year,\"Observation year\",year\n"
+    },
+    "answer": 51.92249999999999,
+    "tol": 0.015,
+    "type": "table.holdout_trimmed_mean"
+  },
+  {
+    "id": "h2_050",
+    "objective": "What is the sample coefficient of variation of the primary measurement in facts.csv, defined as 100 times the sample standard deviation (ddof=1) divided by the mean? Round to 2 decimals.",
+    "files": {
+      "facts.csv": "x,y,w,grp,label,year\n56.19,11.9,1.84,C,DELTAZ,2023\n60.78,35.15,4.99,A,DELTAX,2024\n68.33,32.09,1.12,C,ALPHAY,2023\n42.64,32.1,3.9,B,GAMMAX,2021\n46.04,21.76,0.59,C,BETAY,2023\n35.15,26.65,3.11,A,BETAZ,2024\n56.74,21.63,3.51,C,BETAX,2021\n46.72,30.47,3.54,C,ALPHAX,2021\n37.53,10.68,1.79,B,GAMMAZ,2022\n49.83,28.62,2.83,A,ALPHAX,2025\n36.58,23.3,3.74,C,GAMMAX,2024\n35.72,32.36,5.0,C,GAMMAY,2023\n73.28,28.26,4.89,B,DELTAZ,2022\n67.21,36.67,3.72,C,BETAY,2025\n21.6,25.14,1.1,A,GAMMAY,2021\n51.57,29.75,3.91,B,ALPHAZ,2021\n52.11,31.52,3.39,A,BETAY,2023\n55.77,22.88,1.83,B,ALPHAZ,2021\n46.32,21.58,1.81,C,GAMMAY,2023\n42.08,28.95,4.79,C,GAMMAZ,2025\n63.84,37.46,4.59,C,BETAZ,2023\n53.64,19.5,4.41,B,BETAY,2025\n65.53,31.22,1.23,B,ALPHAX,2021\n48.43,41.71,1.45,B,DELTAZ,2022\n53.43,29.63,4.96,B,ALPHAY,2021\n68.12,37.99,1.0,B,DELTAY,2023\n55.59,38.84,3.1,C,ALPHAY,2022\n53.73,31.12,2.33,C,DELTAX,2023\n",
+      "data_dictionary.csv": "file,column,description,unit\nfacts.csv,x,\"Primary measurement\",unit\nfacts.csv,y,\"Secondary measurement\",unit\nfacts.csv,w,\"Observation weight\",unitless\nfacts.csv,grp,\"Segment label\",\nfacts.csv,label,\"Record label\",\nfacts.csv,year,\"Observation year\",year\n"
+    },
+    "answer": 23.29883275454385,
+    "tol": 0.015,
+    "type": "table.holdout_coef_variation"
+  },
+  {
+    "id": "h2_051",
+    "objective": "What is the 90th percentile of the primary measurement in facts.csv using linear interpolation? Round to 2 decimals.",
+    "files": {
+      "facts.csv": "x,y,w,grp,label,year\n56.19,11.9,1.84,C,DELTAZ,2023\n60.78,35.15,4.99,A,DELTAX,2024\n68.33,32.09,1.12,C,ALPHAY,2023\n42.64,32.1,3.9,B,GAMMAX,2021\n46.04,21.76,0.59,C,BETAY,2023\n35.15,26.65,3.11,A,BETAZ,2024\n56.74,21.63,3.51,C,BETAX,2021\n46.72,30.47,3.54,C,ALPHAX,2021\n37.53,10.68,1.79,B,GAMMAZ,2022\n49.83,28.62,2.83,A,ALPHAX,2025\n36.58,23.3,3.74,C,GAMMAX,2024\n35.72,32.36,5.0,C,GAMMAY,2023\n73.28,28.26,4.89,B,DELTAZ,2022\n67.21,36.67,3.72,C,BETAY,2025\n21.6,25.14,1.1,A,GAMMAY,2021\n51.57,29.75,3.91,B,ALPHAZ,2021\n52.11,31.52,3.39,A,BETAY,2023\n55.77,22.88,1.83,B,ALPHAZ,2021\n46.32,21.58,1.81,C,GAMMAY,2023\n42.08,28.95,4.79,C,GAMMAZ,2025\n63.84,37.46,4.59,C,BETAZ,2023\n53.64,19.5,4.41,B,BETAY,2025\n65.53,31.22,1.23,B,ALPHAX,2021\n48.43,41.71,1.45,B,DELTAZ,2022\n53.43,29.63,4.96,B,ALPHAY,2021\n68.12,37.99,1.0,B,DELTAY,2023\n55.59,38.84,3.1,C,ALPHAY,2022\n53.73,31.12,2.33,C,DELTAX,2023\n",
+      "data_dictionary.csv": "file,column,description,unit\nfacts.csv,x,\"Primary measurement\",unit\nfacts.csv,y,\"Secondary measurement\",unit\nfacts.csv,w,\"Observation weight\",unitless\nfacts.csv,grp,\"Segment label\",\nfacts.csv,label,\"Record label\",\nfacts.csv,year,\"Observation year\",year\n"
+    },
+    "answer": 67.483,
+    "tol": 0.015,
+    "type": "table.holdout_p90"
+  },
+  {
+    "id": "h2_052",
+    "objective": "What percentage of records in facts.csv have primary measurement strictly greater than 52.77? Round to 2 decimals.",
+    "files": {
+      "facts.csv": "x,y,w,grp,label,year\n56.19,11.9,1.84,C,DELTAZ,2023\n60.78,35.15,4.99,A,DELTAX,2024\n68.33,32.09,1.12,C,ALPHAY,2023\n42.64,32.1,3.9,B,GAMMAX,2021\n46.04,21.76,0.59,C,BETAY,2023\n35.15,26.65,3.11,A,BETAZ,2024\n56.74,21.63,3.51,C,BETAX,2021\n46.72,30.47,3.54,C,ALPHAX,2021\n37.53,10.68,1.79,B,GAMMAZ,2022\n49.83,28.62,2.83,A,ALPHAX,2025\n36.58,23.3,3.74,C,GAMMAX,2024\n35.72,32.36,5.0,C,GAMMAY,2023\n73.28,28.26,4.89,B,DELTAZ,2022\n67.21,36.67,3.72,C,BETAY,2025\n21.6,25.14,1.1,A,GAMMAY,2021\n51.57,29.75,3.91,B,ALPHAZ,2021\n52.11,31.52,3.39,A,BETAY,2023\n55.77,22.88,1.83,B,ALPHAZ,2021\n46.32,21.58,1.81,C,GAMMAY,2023\n42.08,28.95,4.79,C,GAMMAZ,2025\n63.84,37.46,4.59,C,BETAZ,2023\n53.64,19.5,4.41,B,BETAY,2025\n65.53,31.22,1.23,B,ALPHAX,2021\n48.43,41.71,1.45,B,DELTAZ,2022\n53.43,29.63,4.96,B,ALPHAY,2021\n68.12,37.99,1.0,B,DELTAY,2023\n55.59,38.84,3.1,C,ALPHAY,2022\n53.73,31.12,2.33,C,DELTAX,2023\n",
+      "data_dictionary.csv": "file,column,description,unit\nfacts.csv,x,\"Primary measurement\",unit\nfacts.csv,y,\"Secondary measurement\",unit\nfacts.csv,w,\"Observation weight\",unitless\nfacts.csv,grp,\"Segment label\",\nfacts.csv,label,\"Record label\",\nfacts.csv,year,\"Observation year\",year\n"
+    },
+    "answer": 50.0,
+    "tol": 0.015,
+    "type": "table.holdout_prop_above"
+  },
+  {
+    "id": "h2_053",
+    "objective": "Compute the median absolute deviation of the primary measurement in facts.csv, defined as median(|x - median(x)|), without any scaling constant. Round to 2 decimals.",
+    "files": {
+      "facts.csv": "x,y,w,grp,label,year\n56.19,11.9,1.84,C,DELTAZ,2023\n60.78,35.15,4.99,A,DELTAX,2024\n68.33,32.09,1.12,C,ALPHAY,2023\n42.64,32.1,3.9,B,GAMMAX,2021\n46.04,21.76,0.59,C,BETAY,2023\n35.15,26.65,3.11,A,BETAZ,2024\n56.74,21.63,3.51,C,BETAX,2021\n46.72,30.47,3.54,C,ALPHAX,2021\n37.53,10.68,1.79,B,GAMMAZ,2022\n49.83,28.62,2.83,A,ALPHAX,2025\n36.58,23.3,3.74,C,GAMMAX,2024\n35.72,32.36,5.0,C,GAMMAY,2023\n73.28,28.26,4.89,B,DELTAZ,2022\n67.21,36.67,3.72,C,BETAY,2025\n21.6,25.14,1.1,A,GAMMAY,2021\n51.57,29.75,3.91,B,ALPHAZ,2021\n52.11,31.52,3.39,A,BETAY,2023\n55.77,22.88,1.83,B,ALPHAZ,2021\n46.32,21.58,1.81,C,GAMMAY,2023\n42.08,28.95,4.79,C,GAMMAZ,2025\n63.84,37.46,4.59,C,BETAZ,2023\n53.64,19.5,4.41,B,BETAY,2025\n65.53,31.22,1.23,B,ALPHAX,2021\n48.43,41.71,1.45,B,DELTAZ,2022\n53.43,29.63,4.96,B,ALPHAY,2021\n68.12,37.99,1.0,B,DELTAY,2023\n55.59,38.84,3.1,C,ALPHAY,2022\n53.73,31.12,2.33,C,DELTAX,2023\n",
+      "data_dictionary.csv": "file,column,description,unit\nfacts.csv,x,\"Primary measurement\",unit\nfacts.csv,y,\"Secondary measurement\",unit\nfacts.csv,w,\"Observation weight\",unitless\nfacts.csv,grp,\"Segment label\",\nfacts.csv,label,\"Record label\",\nfacts.csv,year,\"Observation year\",year\n"
+    },
+    "answer": 7.370000000000001,
+    "tol": 0.015,
+    "type": "table.holdout_mad"
+  },
+  {
+    "id": "h2_054",
+    "objective": "What is the median primary measurement for segment 'A' minus the median primary measurement for segment 'B' in facts.csv? Round to 2 decimals.",
+    "files": {
+      "facts.csv": "x,y,w,grp,label,year\n56.19,11.9,1.84,C,DELTAZ,2023\n60.78,35.15,4.99,A,DELTAX,2024\n68.33,32.09,1.12,C,ALPHAY,2023\n42.64,32.1,3.9,B,GAMMAX,2021\n46.04,21.76,0.59,C,BETAY,2023\n35.15,26.65,3.11,A,BETAZ,2024\n56.74,21.63,3.51,C,BETAX,2021\n46.72,30.47,3.54,C,ALPHAX,2021\n37.53,10.68,1.79,B,GAMMAZ,2022\n49.83,28.62,2.83,A,ALPHAX,2025\n36.58,23.3,3.74,C,GAMMAX,2024\n35.72,32.36,5.0,C,GAMMAY,2023\n73.28,28.26,4.89,B,DELTAZ,2022\n67.21,36.67,3.72,C,BETAY,2025\n21.6,25.14,1.1,A,GAMMAY,2021\n51.57,29.75,3.91,B,ALPHAZ,2021\n52.11,31.52,3.39,A,BETAY,2023\n55.77,22.88,1.83,B,ALPHAZ,2021\n46.32,21.58,1.81,C,GAMMAY,2023\n42.08,28.95,4.79,C,GAMMAZ,2025\n63.84,37.46,4.59,C,BETAZ,2023\n53.64,19.5,4.41,B,BETAY,2025\n65.53,31.22,1.23,B,ALPHAX,2021\n48.43,41.71,1.45,B,DELTAZ,2022\n53.43,29.63,4.96,B,ALPHAY,2021\n68.12,37.99,1.0,B,DELTAY,2023\n55.59,38.84,3.1,C,ALPHAY,2022\n53.73,31.12,2.33,C,DELTAX,2023\n",
+      "data_dictionary.csv": "file,column,description,unit\nfacts.csv,x,\"Primary measurement\",unit\nfacts.csv,y,\"Secondary measurement\",unit\nfacts.csv,w,\"Observation weight\",unitless\nfacts.csv,grp,\"Segment label\",\nfacts.csv,label,\"Record label\",\nfacts.csv,year,\"Observation year\",year\n"
+    },
+    "answer": -3.7049999999999983,
+    "tol": 0.015,
+    "type": "table.holdout_group_median_diff"
+  },
+  {
+    "id": "h2_055",
+    "objective": "How many records in facts.csv have a record label that ends with 'X'? Give a whole number.",
+    "files": {
+      "facts.csv": "x,y,w,grp,label,year\n56.19,11.9,1.84,C,DELTAZ,2023\n60.78,35.15,4.99,A,DELTAX,2024\n68.33,32.09,1.12,C,ALPHAY,2023\n42.64,32.1,3.9,B,GAMMAX,2021\n46.04,21.76,0.59,C,BETAY,2023\n35.15,26.65,3.11,A,BETAZ,2024\n56.74,21.63,3.51,C,BETAX,2021\n46.72,30.47,3.54,C,ALPHAX,2021\n37.53,10.68,1.79,B,GAMMAZ,2022\n49.83,28.62,2.83,A,ALPHAX,2025\n36.58,23.3,3.74,C,GAMMAX,2024\n35.72,32.36,5.0,C,GAMMAY,2023\n73.28,28.26,4.89,B,DELTAZ,2022\n67.21,36.67,3.72,C,BETAY,2025\n21.6,25.14,1.1,A,GAMMAY,2021\n51.57,29.75,3.91,B,ALPHAZ,2021\n52.11,31.52,3.39,A,BETAY,2023\n55.77,22.88,1.83,B,ALPHAZ,2021\n46.32,21.58,1.81,C,GAMMAY,2023\n42.08,28.95,4.79,C,GAMMAZ,2025\n63.84,37.46,4.59,C,BETAZ,2023\n53.64,19.5,4.41,B,BETAY,2025\n65.53,31.22,1.23,B,ALPHAX,2021\n48.43,41.71,1.45,B,DELTAZ,2022\n53.43,29.63,4.96,B,ALPHAY,2021\n68.12,37.99,1.0,B,DELTAY,2023\n55.59,38.84,3.1,C,ALPHAY,2022\n53.73,31.12,2.33,C,DELTAX,2023\n",
+      "data_dictionary.csv": "file,column,description,unit\nfacts.csv,x,\"Primary measurement\",unit\nfacts.csv,y,\"Secondary measurement\",unit\nfacts.csv,w,\"Observation weight\",unitless\nfacts.csv,grp,\"Segment label\",\nfacts.csv,label,\"Record label\",\nfacts.csv,year,\"Observation year\",year\n"
+    },
+    "answer": 8.0,
+    "tol": 1e-06,
+    "type": "table.holdout_string_suffix"
+  },
+  {
+    "id": "h2_056",
+    "objective": "Compute the sum of the primary measurement divided by the sum of the secondary measurement over all records in facts.csv. Round to 3 decimals.",
+    "files": {
+      "facts.csv": "x,y,w,grp,label,year\n56.19,11.9,1.84,C,DELTAZ,2023\n60.78,35.15,4.99,A,DELTAX,2024\n68.33,32.09,1.12,C,ALPHAY,2023\n42.64,32.1,3.9,B,GAMMAX,2021\n46.04,21.76,0.59,C,BETAY,2023\n35.15,26.65,3.11,A,BETAZ,2024\n56.74,21.63,3.51,C,BETAX,2021\n46.72,30.47,3.54,C,ALPHAX,2021\n37.53,10.68,1.79,B,GAMMAZ,2022\n49.83,28.62,2.83,A,ALPHAX,2025\n36.58,23.3,3.74,C,GAMMAX,2024\n35.72,32.36,5.0,C,GAMMAY,2023\n73.28,28.26,4.89,B,DELTAZ,2022\n67.21,36.67,3.72,C,BETAY,2025\n21.6,25.14,1.1,A,GAMMAY,2021\n51.57,29.75,3.91,B,ALPHAZ,2021\n52.11,31.52,3.39,A,BETAY,2023\n55.77,22.88,1.83,B,ALPHAZ,2021\n46.32,21.58,1.81,C,GAMMAY,2023\n42.08,28.95,4.79,C,GAMMAZ,2025\n63.84,37.46,4.59,C,BETAZ,2023\n53.64,19.5,4.41,B,BETAY,2025\n65.53,31.22,1.23,B,ALPHAX,2021\n48.43,41.71,1.45,B,DELTAZ,2022\n53.43,29.63,4.96,B,ALPHAY,2021\n68.12,37.99,1.0,B,DELTAY,2023\n55.59,38.84,3.1,C,ALPHAY,2022\n53.73,31.12,2.33,C,DELTAX,2023\n",
+      "data_dictionary.csv": "file,column,description,unit\nfacts.csv,x,\"Primary measurement\",unit\nfacts.csv,y,\"Secondary measurement\",unit\nfacts.csv,w,\"Observation weight\",unitless\nfacts.csv,grp,\"Segment label\",\nfacts.csv,label,\"Record label\",\nfacts.csv,year,\"Observation year\",year\n"
+    },
+    "answer": 1.8080432578573837,
+    "tol": 0.0015,
+    "type": "table.holdout_ratio_sums"
+  },
+  {
+    "id": "h2_057",
+    "objective": "Among records whose segment label is 'A', compute the Pearson correlation between the primary measurement and the secondary measurement. Round to 3 decimals.",
+    "files": {
+      "facts.csv": "x,y,w,grp,label,year\n56.19,11.9,1.84,C,DELTAZ,2023\n60.78,35.15,4.99,A,DELTAX,2024\n68.33,32.09,1.12,C,ALPHAY,2023\n42.64,32.1,3.9,B,GAMMAX,2021\n46.04,21.76,0.59,C,BETAY,2023\n35.15,26.65,3.11,A,BETAZ,2024\n56.74,21.63,3.51,C,BETAX,2021\n46.72,30.47,3.54,C,ALPHAX,2021\n37.53,10.68,1.79,B,GAMMAZ,2022\n49.83,28.62,2.83,A,ALPHAX,2025\n36.58,23.3,3.74,C,GAMMAX,2024\n35.72,32.36,5.0,C,GAMMAY,2023\n73.28,28.26,4.89,B,DELTAZ,2022\n67.21,36.67,3.72,C,BETAY,2025\n21.6,25.14,1.1,A,GAMMAY,2021\n51.57,29.75,3.91,B,ALPHAZ,2021\n52.11,31.52,3.39,A,BETAY,2023\n55.77,22.88,1.83,B,ALPHAZ,2021\n46.32,21.58,1.81,C,GAMMAY,2023\n42.08,28.95,4.79,C,GAMMAZ,2025\n63.84,37.46,4.59,C,BETAZ,2023\n53.64,19.5,4.41,B,BETAY,2025\n65.53,31.22,1.23,B,ALPHAX,2021\n48.43,41.71,1.45,B,DELTAZ,2022\n53.43,29.63,4.96,B,ALPHAY,2021\n68.12,37.99,1.0,B,DELTAY,2023\n55.59,38.84,3.1,C,ALPHAY,2022\n53.73,31.12,2.33,C,DELTAX,2023\n",
+      "data_dictionary.csv": "file,column,description,unit\nfacts.csv,x,\"Primary measurement\",unit\nfacts.csv,y,\"Secondary measurement\",unit\nfacts.csv,w,\"Observation weight\",unitless\nfacts.csv,grp,\"Segment label\",\nfacts.csv,label,\"Record label\",\nfacts.csv,year,\"Observation year\",year\n"
+    },
+    "answer": 0.9237251119516043,
+    "tol": 0.0015,
+    "type": "table.holdout_filtered_corr"
+  },
+  {
+    "id": "h2_058",
+    "objective": "For each observation year in facts.csv, compute the median primary measurement. Which year has the largest median? Return the year as an integer.",
+    "files": {
+      "facts.csv": "x,y,w,grp,label,year\n56.19,11.9,1.84,C,DELTAZ,2023\n60.78,35.15,4.99,A,DELTAX,2024\n68.33,32.09,1.12,C,ALPHAY,2023\n42.64,32.1,3.9,B,GAMMAX,2021\n46.04,21.76,0.59,C,BETAY,2023\n35.15,26.65,3.11,A,BETAZ,2024\n56.74,21.63,3.51,C,BETAX,2021\n46.72,30.47,3.54,C,ALPHAX,2021\n37.53,10.68,1.79,B,GAMMAZ,2022\n49.83,28.62,2.83,A,ALPHAX,2025\n36.58,23.3,3.74,C,GAMMAX,2024\n35.72,32.36,5.0,C,GAMMAY,2023\n73.28,28.26,4.89,B,DELTAZ,2022\n67.21,36.67,3.72,C,BETAY,2025\n21.6,25.14,1.1,A,GAMMAY,2021\n51.57,29.75,3.91,B,ALPHAZ,2021\n52.11,31.52,3.39,A,BETAY,2023\n55.77,22.88,1.83,B,ALPHAZ,2021\n46.32,21.58,1.81,C,GAMMAY,2023\n42.08,28.95,4.79,C,GAMMAZ,2025\n63.84,37.46,4.59,C,BETAZ,2023\n53.64,19.5,4.41,B,BETAY,2025\n65.53,31.22,1.23,B,ALPHAX,2021\n48.43,41.71,1.45,B,DELTAZ,2022\n53.43,29.63,4.96,B,ALPHAY,2021\n68.12,37.99,1.0,B,DELTAY,2023\n55.59,38.84,3.1,C,ALPHAY,2022\n53.73,31.12,2.33,C,DELTAX,2023\n",
+      "data_dictionary.csv": "file,column,description,unit\nfacts.csv,x,\"Primary measurement\",unit\nfacts.csv,y,\"Secondary measurement\",unit\nfacts.csv,w,\"Observation weight\",unitless\nfacts.csv,grp,\"Segment label\",\nfacts.csv,label,\"Record label\",\nfacts.csv,year,\"Observation year\",year\n"
+    },
+    "answer": 2023.0,
+    "tol": 1e-06,
+    "type": "table.holdout_year_max_median"
+  },
+  {
+    "id": "h2_059",
+    "objective": "Join events.csv to entities.csv using the entity identifier. How many event rows belong to entities whose entity segment is 'North'? Give a whole number.",
+    "files": {
+      "events.csv": "eid,entity,value\n1,E06,32.57\n2,E08,16.85\n3,E09,31.62\n4,E09,17.59\n5,E07,16.22\n6,E04,21.45\n7,E08,23.6\n8,E03,16.52\n9,E03,19.2\n10,E06,17.02\n11,E00,27.48\n12,E08,28.13\n13,E00,23.81\n14,E09,15.58\n15,E08,26.63\n16,E06,18.78\n17,E08,34.43\n18,E08,35.58\n19,E04,28.47\n20,E00,24.71\n21,E09,23.72\n22,E11,25.24\n23,E07,33.42\n24,E05,16.74\n25,E07,17.26\n26,E08,35.28\n27,E08,24.63\n28,E04,34.93\n29,E03,9.23\n30,E07,30.5\n31,E04,22.87\n32,E05,24.41\n33,E07,15.44\n34,E05,17.89\n35,E01,22.04\n36,E05,15.98\n",
+      "entities.csv": "entity,segment,weight\nE00,North,2.77\nE01,South,2.04\nE02,South,2.23\nE03,North,1.3\nE04,South,2.09\nE05,South,0.74\nE06,South,1.95\nE07,South,3.37\nE08,North,2.36\nE09,South,3.5\nE10,South,1.21\nE11,North,1.67\n",
+      "data_dictionary.csv": "file,column,description,unit\nevents.csv,eid,\"Event identifier\",\nevents.csv,entity,\"Entity identifier\",\nevents.csv,value,\"Event value\",unit\nentities.csv,entity,\"Entity identifier\",\nentities.csv,segment,\"Entity segment\",\nentities.csv,weight,\"Entity weight\",unitless\n"
+    },
+    "answer": 15.0,
+    "tol": 1e-06,
+    "type": "table.holdout_join_count"
+  },
+  {
+    "id": "h2_060",
+    "objective": "Join events.csv to entities.csv using the entity identifier. For event rows belonging to entities whose entity segment is 'South', compute the weighted mean of event value using entity weight as the weight. Round to 2 decimals.",
+    "files": {
+      "events.csv": "eid,entity,value\n1,E06,32.57\n2,E08,16.85\n3,E09,31.62\n4,E09,17.59\n5,E07,16.22\n6,E04,21.45\n7,E08,23.6\n8,E03,16.52\n9,E03,19.2\n10,E06,17.02\n11,E00,27.48\n12,E08,28.13\n13,E00,23.81\n14,E09,15.58\n15,E08,26.63\n16,E06,18.78\n17,E08,34.43\n18,E08,35.58\n19,E04,28.47\n20,E00,24.71\n21,E09,23.72\n22,E11,25.24\n23,E07,33.42\n24,E05,16.74\n25,E07,17.26\n26,E08,35.28\n27,E08,24.63\n28,E04,34.93\n29,E03,9.23\n30,E07,30.5\n31,E04,22.87\n32,E05,24.41\n33,E07,15.44\n34,E05,17.89\n35,E01,22.04\n36,E05,15.98\n",
+      "entities.csv": "entity,segment,weight\nE00,North,2.77\nE01,South,2.04\nE02,South,2.23\nE03,North,1.3\nE04,South,2.09\nE05,South,0.74\nE06,South,1.95\nE07,South,3.37\nE08,North,2.36\nE09,South,3.5\nE10,South,1.21\nE11,North,1.67\n",
+      "data_dictionary.csv": "file,column,description,unit\nevents.csv,eid,\"Event identifier\",\nevents.csv,entity,\"Entity identifier\",\nevents.csv,value,\"Event value\",unit\nentities.csv,entity,\"Entity identifier\",\nentities.csv,segment,\"Entity segment\",\nentities.csv,weight,\"Entity weight\",unitless\n"
+    },
+    "answer": 22.95222732720735,
+    "tol": 0.015,
+    "type": "table.holdout_join_weighted_mean"
+  },
+  {
+    "id": "h2_061",
+    "objective": "Using facts.csv, compute the 10% trimmed mean of the primary measurement: sort the non-missing values, remove floor(10% of n) observations from each tail, then take the mean. Round to 2 decimals.",
+    "files": {
+      "facts.csv": "x,y,w,grp,label,year\n52.0,22.48,4.57,A,DELTAZ,2024\n49.81,33.05,2.06,A,DELTAY,2021\n62.22,43.61,3.13,C,ALPHAX,2025\n53.25,31.72,2.25,C,DELTAZ,2022\n40.24,28.27,2.79,B,ALPHAY,2021\n55.25,21.28,1.86,B,DELTAX,2024\n50.75,28.92,2.37,B,DELTAY,2021\n21.54,13.52,2.95,A,ALPHAZ,2023\n57.46,28.42,3.88,B,DELTAX,2023\n51.78,20.69,3.36,B,GAMMAZ,2023\n59.17,46.32,0.54,B,GAMMAZ,2022\n62.21,35.35,3.25,B,ALPHAZ,2022\n64.88,54.48,3.31,A,BETAZ,2024\n41.93,27.33,4.04,C,DELTAZ,2023\n48.01,32.3,0.83,B,DELTAZ,2022\n49.52,30.28,3.62,C,GAMMAX,2022\n39.14,15.68,0.83,B,ALPHAX,2024\n45.15,26.71,2.62,B,BETAZ,2021\n49.89,26.53,2.33,A,DELTAY,2024\n9.89,7.45,2.37,B,DELTAY,2025\n56.35,20.97,2.49,C,GAMMAZ,2025\n58.37,30.46,1.43,A,BETAX,2025\n30.95,18.72,1.2,C,ALPHAX,2021\n64.5,43.55,4.08,A,ALPHAZ,2025\n41.5,18.14,0.64,C,BETAZ,2022\n43.36,33.72,2.34,B,DELTAX,2023\n31.75,22.36,2.29,A,ALPHAY,2022\n37.79,21.31,1.8,C,GAMMAY,2022\n",
+      "data_dictionary.csv": "file,column,description,unit\nfacts.csv,x,\"Primary measurement\",unit\nfacts.csv,y,\"Secondary measurement\",unit\nfacts.csv,w,\"Observation weight\",unitless\nfacts.csv,grp,\"Segment label\",\nfacts.csv,label,\"Record label\",\nfacts.csv,year,\"Observation year\",year\n"
+    },
+    "answer": 48.66041666666667,
+    "tol": 0.015,
+    "type": "table.holdout_trimmed_mean"
+  },
+  {
+    "id": "h2_062",
+    "objective": "What is the sample coefficient of variation of the primary measurement in facts.csv, defined as 100 times the sample standard deviation (ddof=1) divided by the mean? Round to 2 decimals.",
+    "files": {
+      "facts.csv": "x,y,w,grp,label,year\n52.0,22.48,4.57,A,DELTAZ,2024\n49.81,33.05,2.06,A,DELTAY,2021\n62.22,43.61,3.13,C,ALPHAX,2025\n53.25,31.72,2.25,C,DELTAZ,2022\n40.24,28.27,2.79,B,ALPHAY,2021\n55.25,21.28,1.86,B,DELTAX,2024\n50.75,28.92,2.37,B,DELTAY,2021\n21.54,13.52,2.95,A,ALPHAZ,2023\n57.46,28.42,3.88,B,DELTAX,2023\n51.78,20.69,3.36,B,GAMMAZ,2023\n59.17,46.32,0.54,B,GAMMAZ,2022\n62.21,35.35,3.25,B,ALPHAZ,2022\n64.88,54.48,3.31,A,BETAZ,2024\n41.93,27.33,4.04,C,DELTAZ,2023\n48.01,32.3,0.83,B,DELTAZ,2022\n49.52,30.28,3.62,C,GAMMAX,2022\n39.14,15.68,0.83,B,ALPHAX,2024\n45.15,26.71,2.62,B,BETAZ,2021\n49.89,26.53,2.33,A,DELTAY,2024\n9.89,7.45,2.37,B,DELTAY,2025\n56.35,20.97,2.49,C,GAMMAZ,2025\n58.37,30.46,1.43,A,BETAX,2025\n30.95,18.72,1.2,C,ALPHAX,2021\n64.5,43.55,4.08,A,ALPHAZ,2025\n41.5,18.14,0.64,C,BETAZ,2022\n43.36,33.72,2.34,B,DELTAX,2023\n31.75,22.36,2.29,A,ALPHAY,2022\n37.79,21.31,1.8,C,GAMMAY,2022\n",
+      "data_dictionary.csv": "file,column,description,unit\nfacts.csv,x,\"Primary measurement\",unit\nfacts.csv,y,\"Secondary measurement\",unit\nfacts.csv,w,\"Observation weight\",unitless\nfacts.csv,grp,\"Segment label\",\nfacts.csv,label,\"Record label\",\nfacts.csv,year,\"Observation year\",year\n"
+    },
+    "answer": 27.298417906522694,
+    "tol": 0.015,
+    "type": "table.holdout_coef_variation"
+  },
+  {
+    "id": "h2_063",
+    "objective": "What is the 90th percentile of the primary measurement in facts.csv using linear interpolation? Round to 2 decimals.",
+    "files": {
+      "facts.csv": "x,y,w,grp,label,year\n52.0,22.48,4.57,A,DELTAZ,2024\n49.81,33.05,2.06,A,DELTAY,2021\n62.22,43.61,3.13,C,ALPHAX,2025\n53.25,31.72,2.25,C,DELTAZ,2022\n40.24,28.27,2.79,B,ALPHAY,2021\n55.25,21.28,1.86,B,DELTAX,2024\n50.75,28.92,2.37,B,DELTAY,2021\n21.54,13.52,2.95,A,ALPHAZ,2023\n57.46,28.42,3.88,B,DELTAX,2023\n51.78,20.69,3.36,B,GAMMAZ,2023\n59.17,46.32,0.54,B,GAMMAZ,2022\n62.21,35.35,3.25,B,ALPHAZ,2022\n64.88,54.48,3.31,A,BETAZ,2024\n41.93,27.33,4.04,C,DELTAZ,2023\n48.01,32.3,0.83,B,DELTAZ,2022\n49.52,30.28,3.62,C,GAMMAX,2022\n39.14,15.68,0.83,B,ALPHAX,2024\n45.15,26.71,2.62,B,BETAZ,2021\n49.89,26.53,2.33,A,DELTAY,2024\n9.89,7.45,2.37,B,DELTAY,2025\n56.35,20.97,2.49,C,GAMMAZ,2025\n58.37,30.46,1.43,A,BETAX,2025\n30.95,18.72,1.2,C,ALPHAX,2021\n64.5,43.55,4.08,A,ALPHAZ,2025\n41.5,18.14,0.64,C,BETAZ,2022\n43.36,33.72,2.34,B,DELTAX,2023\n31.75,22.36,2.29,A,ALPHAY,2022\n37.79,21.31,1.8,C,GAMMAY,2022\n",
+      "data_dictionary.csv": "file,column,description,unit\nfacts.csv,x,\"Primary measurement\",unit\nfacts.csv,y,\"Secondary measurement\",unit\nfacts.csv,w,\"Observation weight\",unitless\nfacts.csv,grp,\"Segment label\",\nfacts.csv,label,\"Record label\",\nfacts.csv,year,\"Observation year\",year\n"
+    },
+    "answer": 62.213,
+    "tol": 0.015,
+    "type": "table.holdout_p90"
+  },
+  {
+    "id": "h2_064",
+    "objective": "What percentage of records in facts.csv have primary measurement strictly greater than 49.85? Round to 2 decimals.",
+    "files": {
+      "facts.csv": "x,y,w,grp,label,year\n52.0,22.48,4.57,A,DELTAZ,2024\n49.81,33.05,2.06,A,DELTAY,2021\n62.22,43.61,3.13,C,ALPHAX,2025\n53.25,31.72,2.25,C,DELTAZ,2022\n40.24,28.27,2.79,B,ALPHAY,2021\n55.25,21.28,1.86,B,DELTAX,2024\n50.75,28.92,2.37,B,DELTAY,2021\n21.54,13.52,2.95,A,ALPHAZ,2023\n57.46,28.42,3.88,B,DELTAX,2023\n51.78,20.69,3.36,B,GAMMAZ,2023\n59.17,46.32,0.54,B,GAMMAZ,2022\n62.21,35.35,3.25,B,ALPHAZ,2022\n64.88,54.48,3.31,A,BETAZ,2024\n41.93,27.33,4.04,C,DELTAZ,2023\n48.01,32.3,0.83,B,DELTAZ,2022\n49.52,30.28,3.62,C,GAMMAX,2022\n39.14,15.68,0.83,B,ALPHAX,2024\n45.15,26.71,2.62,B,BETAZ,2021\n49.89,26.53,2.33,A,DELTAY,2024\n9.89,7.45,2.37,B,DELTAY,2025\n56.35,20.97,2.49,C,GAMMAZ,2025\n58.37,30.46,1.43,A,BETAX,2025\n30.95,18.72,1.2,C,ALPHAX,2021\n64.5,43.55,4.08,A,ALPHAZ,2025\n41.5,18.14,0.64,C,BETAZ,2022\n43.36,33.72,2.34,B,DELTAX,2023\n31.75,22.36,2.29,A,ALPHAY,2022\n37.79,21.31,1.8,C,GAMMAY,2022\n",
+      "data_dictionary.csv": "file,column,description,unit\nfacts.csv,x,\"Primary measurement\",unit\nfacts.csv,y,\"Secondary measurement\",unit\nfacts.csv,w,\"Observation weight\",unitless\nfacts.csv,grp,\"Segment label\",\nfacts.csv,label,\"Record label\",\nfacts.csv,year,\"Observation year\",year\n"
+    },
+    "answer": 50.0,
+    "tol": 0.015,
+    "type": "table.holdout_prop_above"
+  },
+  {
+    "id": "h2_065",
+    "objective": "Compute the median absolute deviation of the primary measurement in facts.csv, defined as median(|x - median(x)|), without any scaling constant. Round to 2 decimals.",
+    "files": {
+      "facts.csv": "x,y,w,grp,label,year\n52.0,22.48,4.57,A,DELTAZ,2024\n49.81,33.05,2.06,A,DELTAY,2021\n62.22,43.61,3.13,C,ALPHAX,2025\n53.25,31.72,2.25,C,DELTAZ,2022\n40.24,28.27,2.79,B,ALPHAY,2021\n55.25,21.28,1.86,B,DELTAX,2024\n50.75,28.92,2.37,B,DELTAY,2021\n21.54,13.52,2.95,A,ALPHAZ,2023\n57.46,28.42,3.88,B,DELTAX,2023\n51.78,20.69,3.36,B,GAMMAZ,2023\n59.17,46.32,0.54,B,GAMMAZ,2022\n62.21,35.35,3.25,B,ALPHAZ,2022\n64.88,54.48,3.31,A,BETAZ,2024\n41.93,27.33,4.04,C,DELTAZ,2023\n48.01,32.3,0.83,B,DELTAZ,2022\n49.52,30.28,3.62,C,GAMMAX,2022\n39.14,15.68,0.83,B,ALPHAX,2024\n45.15,26.71,2.62,B,BETAZ,2021\n49.89,26.53,2.33,A,DELTAY,2024\n9.89,7.45,2.37,B,DELTAY,2025\n56.35,20.97,2.49,C,GAMMAZ,2025\n58.37,30.46,1.43,A,BETAX,2025\n30.95,18.72,1.2,C,ALPHAX,2021\n64.5,43.55,4.08,A,ALPHAZ,2025\n41.5,18.14,0.64,C,BETAZ,2022\n43.36,33.72,2.34,B,DELTAX,2023\n31.75,22.36,2.29,A,ALPHAY,2022\n37.79,21.31,1.8,C,GAMMAY,2022\n",
+      "data_dictionary.csv": "file,column,description,unit\nfacts.csv,x,\"Primary measurement\",unit\nfacts.csv,y,\"Secondary measurement\",unit\nfacts.csv,w,\"Observation weight\",unitless\nfacts.csv,grp,\"Segment label\",\nfacts.csv,label,\"Record label\",\nfacts.csv,year,\"Observation year\",year\n"
+    },
+    "answer": 8.135000000000002,
+    "tol": 0.015,
+    "type": "table.holdout_mad"
+  },
+  {
+    "id": "h2_066",
+    "objective": "What is the median primary measurement for segment 'A' minus the median primary measurement for segment 'B' in facts.csv? Round to 2 decimals.",
+    "files": {
+      "facts.csv": "x,y,w,grp,label,year\n52.0,22.48,4.57,A,DELTAZ,2024\n49.81,33.05,2.06,A,DELTAY,2021\n62.22,43.61,3.13,C,ALPHAX,2025\n53.25,31.72,2.25,C,DELTAZ,2022\n40.24,28.27,2.79,B,ALPHAY,2021\n55.25,21.28,1.86,B,DELTAX,2024\n50.75,28.92,2.37,B,DELTAY,2021\n21.54,13.52,2.95,A,ALPHAZ,2023\n57.46,28.42,3.88,B,DELTAX,2023\n51.78,20.69,3.36,B,GAMMAZ,2023\n59.17,46.32,0.54,B,GAMMAZ,2022\n62.21,35.35,3.25,B,ALPHAZ,2022\n64.88,54.48,3.31,A,BETAZ,2024\n41.93,27.33,4.04,C,DELTAZ,2023\n48.01,32.3,0.83,B,DELTAZ,2022\n49.52,30.28,3.62,C,GAMMAX,2022\n39.14,15.68,0.83,B,ALPHAX,2024\n45.15,26.71,2.62,B,BETAZ,2021\n49.89,26.53,2.33,A,DELTAY,2024\n9.89,7.45,2.37,B,DELTAY,2025\n56.35,20.97,2.49,C,GAMMAZ,2025\n58.37,30.46,1.43,A,BETAX,2025\n30.95,18.72,1.2,C,ALPHAX,2021\n64.5,43.55,4.08,A,ALPHAZ,2025\n41.5,18.14,0.64,C,BETAZ,2022\n43.36,33.72,2.34,B,DELTAX,2023\n31.75,22.36,2.29,A,ALPHAY,2022\n37.79,21.31,1.8,C,GAMMAY,2022\n",
+      "data_dictionary.csv": "file,column,description,unit\nfacts.csv,x,\"Primary measurement\",unit\nfacts.csv,y,\"Secondary measurement\",unit\nfacts.csv,w,\"Observation weight\",unitless\nfacts.csv,grp,\"Segment label\",\nfacts.csv,label,\"Record label\",\nfacts.csv,year,\"Observation year\",year\n"
+    },
+    "answer": 1.5650000000000048,
+    "tol": 0.015,
+    "type": "table.holdout_group_median_diff"
+  },
+  {
+    "id": "h2_067",
+    "objective": "How many records in facts.csv have a record label that ends with 'X'? Give a whole number.",
+    "files": {
+      "facts.csv": "x,y,w,grp,label,year\n52.0,22.48,4.57,A,DELTAZ,2024\n49.81,33.05,2.06,A,DELTAY,2021\n62.22,43.61,3.13,C,ALPHAX,2025\n53.25,31.72,2.25,C,DELTAZ,2022\n40.24,28.27,2.79,B,ALPHAY,2021\n55.25,21.28,1.86,B,DELTAX,2024\n50.75,28.92,2.37,B,DELTAY,2021\n21.54,13.52,2.95,A,ALPHAZ,2023\n57.46,28.42,3.88,B,DELTAX,2023\n51.78,20.69,3.36,B,GAMMAZ,2023\n59.17,46.32,0.54,B,GAMMAZ,2022\n62.21,35.35,3.25,B,ALPHAZ,2022\n64.88,54.48,3.31,A,BETAZ,2024\n41.93,27.33,4.04,C,DELTAZ,2023\n48.01,32.3,0.83,B,DELTAZ,2022\n49.52,30.28,3.62,C,GAMMAX,2022\n39.14,15.68,0.83,B,ALPHAX,2024\n45.15,26.71,2.62,B,BETAZ,2021\n49.89,26.53,2.33,A,DELTAY,2024\n9.89,7.45,2.37,B,DELTAY,2025\n56.35,20.97,2.49,C,GAMMAZ,2025\n58.37,30.46,1.43,A,BETAX,2025\n30.95,18.72,1.2,C,ALPHAX,2021\n64.5,43.55,4.08,A,ALPHAZ,2025\n41.5,18.14,0.64,C,BETAZ,2022\n43.36,33.72,2.34,B,DELTAX,2023\n31.75,22.36,2.29,A,ALPHAY,2022\n37.79,21.31,1.8,C,GAMMAY,2022\n",
+      "data_dictionary.csv": "file,column,description,unit\nfacts.csv,x,\"Primary measurement\",unit\nfacts.csv,y,\"Secondary measurement\",unit\nfacts.csv,w,\"Observation weight\",unitless\nfacts.csv,grp,\"Segment label\",\nfacts.csv,label,\"Record label\",\nfacts.csv,year,\"Observation year\",year\n"
+    },
+    "answer": 8.0,
+    "tol": 1e-06,
+    "type": "table.holdout_string_suffix"
+  },
+  {
+    "id": "h2_068",
+    "objective": "Compute the sum of the primary measurement divided by the sum of the secondary measurement over all records in facts.csv. Round to 3 decimals.",
+    "files": {
+      "facts.csv": "x,y,w,grp,label,year\n52.0,22.48,4.57,A,DELTAZ,2024\n49.81,33.05,2.06,A,DELTAY,2021\n62.22,43.61,3.13,C,ALPHAX,2025\n53.25,31.72,2.25,C,DELTAZ,2022\n40.24,28.27,2.79,B,ALPHAY,2021\n55.25,21.28,1.86,B,DELTAX,2024\n50.75,28.92,2.37,B,DELTAY,2021\n21.54,13.52,2.95,A,ALPHAZ,2023\n57.46,28.42,3.88,B,DELTAX,2023\n51.78,20.69,3.36,B,GAMMAZ,2023\n59.17,46.32,0.54,B,GAMMAZ,2022\n62.21,35.35,3.25,B,ALPHAZ,2022\n64.88,54.48,3.31,A,BETAZ,2024\n41.93,27.33,4.04,C,DELTAZ,2023\n48.01,32.3,0.83,B,DELTAZ,2022\n49.52,30.28,3.62,C,GAMMAX,2022\n39.14,15.68,0.83,B,ALPHAX,2024\n45.15,26.71,2.62,B,BETAZ,2021\n49.89,26.53,2.33,A,DELTAY,2024\n9.89,7.45,2.37,B,DELTAY,2025\n56.35,20.97,2.49,C,GAMMAZ,2025\n58.37,30.46,1.43,A,BETAX,2025\n30.95,18.72,1.2,C,ALPHAX,2021\n64.5,43.55,4.08,A,ALPHAZ,2025\n41.5,18.14,0.64,C,BETAZ,2022\n43.36,33.72,2.34,B,DELTAX,2023\n31.75,22.36,2.29,A,ALPHAY,2022\n37.79,21.31,1.8,C,GAMMAY,2022\n",
+      "data_dictionary.csv": "file,column,description,unit\nfacts.csv,x,\"Primary measurement\",unit\nfacts.csv,y,\"Secondary measurement\",unit\nfacts.csv,w,\"Observation weight\",unitless\nfacts.csv,grp,\"Segment label\",\nfacts.csv,label,\"Record label\",\nfacts.csv,year,\"Observation year\",year\n"
+    },
+    "answer": 1.695541206196881,
+    "tol": 0.0015,
+    "type": "table.holdout_ratio_sums"
+  },
+  {
+    "id": "h2_069",
+    "objective": "Among records whose segment label is 'A', compute the Pearson correlation between the primary measurement and the secondary measurement. Round to 3 decimals.",
+    "files": {
+      "facts.csv": "x,y,w,grp,label,year\n52.0,22.48,4.57,A,DELTAZ,2024\n49.81,33.05,2.06,A,DELTAY,2021\n62.22,43.61,3.13,C,ALPHAX,2025\n53.25,31.72,2.25,C,DELTAZ,2022\n40.24,28.27,2.79,B,ALPHAY,2021\n55.25,21.28,1.86,B,DELTAX,2024\n50.75,28.92,2.37,B,DELTAY,2021\n21.54,13.52,2.95,A,ALPHAZ,2023\n57.46,28.42,3.88,B,DELTAX,2023\n51.78,20.69,3.36,B,GAMMAZ,2023\n59.17,46.32,0.54,B,GAMMAZ,2022\n62.21,35.35,3.25,B,ALPHAZ,2022\n64.88,54.48,3.31,A,BETAZ,2024\n41.93,27.33,4.04,C,DELTAZ,2023\n48.01,32.3,0.83,B,DELTAZ,2022\n49.52,30.28,3.62,C,GAMMAX,2022\n39.14,15.68,0.83,B,ALPHAX,2024\n45.15,26.71,2.62,B,BETAZ,2021\n49.89,26.53,2.33,A,DELTAY,2024\n9.89,7.45,2.37,B,DELTAY,2025\n56.35,20.97,2.49,C,GAMMAZ,2025\n58.37,30.46,1.43,A,BETAX,2025\n30.95,18.72,1.2,C,ALPHAX,2021\n64.5,43.55,4.08,A,ALPHAZ,2025\n41.5,18.14,0.64,C,BETAZ,2022\n43.36,33.72,2.34,B,DELTAX,2023\n31.75,22.36,2.29,A,ALPHAY,2022\n37.79,21.31,1.8,C,GAMMAY,2022\n",
+      "data_dictionary.csv": "file,column,description,unit\nfacts.csv,x,\"Primary measurement\",unit\nfacts.csv,y,\"Secondary measurement\",unit\nfacts.csv,w,\"Observation weight\",unitless\nfacts.csv,grp,\"Segment label\",\nfacts.csv,label,\"Record label\",\nfacts.csv,year,\"Observation year\",year\n"
+    },
+    "answer": 0.8338766110390164,
+    "tol": 0.0015,
+    "type": "table.holdout_filtered_corr"
+  },
+  {
+    "id": "h2_070",
+    "objective": "For each observation year in facts.csv, compute the median primary measurement. Which year has the largest median? Return the year as an integer.",
+    "files": {
+      "facts.csv": "x,y,w,grp,label,year\n52.0,22.48,4.57,A,DELTAZ,2024\n49.81,33.05,2.06,A,DELTAY,2021\n62.22,43.61,3.13,C,ALPHAX,2025\n53.25,31.72,2.25,C,DELTAZ,2022\n40.24,28.27,2.79,B,ALPHAY,2021\n55.25,21.28,1.86,B,DELTAX,2024\n50.75,28.92,2.37,B,DELTAY,2021\n21.54,13.52,2.95,A,ALPHAZ,2023\n57.46,28.42,3.88,B,DELTAX,2023\n51.78,20.69,3.36,B,GAMMAZ,2023\n59.17,46.32,0.54,B,GAMMAZ,2022\n62.21,35.35,3.25,B,ALPHAZ,2022\n64.88,54.48,3.31,A,BETAZ,2024\n41.93,27.33,4.04,C,DELTAZ,2023\n48.01,32.3,0.83,B,DELTAZ,2022\n49.52,30.28,3.62,C,GAMMAX,2022\n39.14,15.68,0.83,B,ALPHAX,2024\n45.15,26.71,2.62,B,BETAZ,2021\n49.89,26.53,2.33,A,DELTAY,2024\n9.89,7.45,2.37,B,DELTAY,2025\n56.35,20.97,2.49,C,GAMMAZ,2025\n58.37,30.46,1.43,A,BETAX,2025\n30.95,18.72,1.2,C,ALPHAX,2021\n64.5,43.55,4.08,A,ALPHAZ,2025\n41.5,18.14,0.64,C,BETAZ,2022\n43.36,33.72,2.34,B,DELTAX,2023\n31.75,22.36,2.29,A,ALPHAY,2022\n37.79,21.31,1.8,C,GAMMAY,2022\n",
+      "data_dictionary.csv": "file,column,description,unit\nfacts.csv,x,\"Primary measurement\",unit\nfacts.csv,y,\"Secondary measurement\",unit\nfacts.csv,w,\"Observation weight\",unitless\nfacts.csv,grp,\"Segment label\",\nfacts.csv,label,\"Record label\",\nfacts.csv,year,\"Observation year\",year\n"
+    },
+    "answer": 2025.0,
+    "tol": 1e-06,
+    "type": "table.holdout_year_max_median"
+  },
+  {
+    "id": "h2_071",
+    "objective": "Join events.csv to entities.csv using the entity identifier. How many event rows belong to entities whose entity segment is 'North'? Give a whole number.",
+    "files": {
+      "events.csv": "eid,entity,value\n1,E05,29.45\n2,E05,26.4\n3,E07,23.95\n4,E04,24.72\n5,E06,20.14\n6,E11,23.73\n7,E10,33.7\n8,E09,26.74\n9,E08,30.98\n10,E11,18.64\n11,E04,24.88\n12,E01,26.46\n13,E02,36.67\n14,E09,18.73\n15,E07,19.38\n16,E07,26.03\n17,E10,13.22\n18,E01,28.04\n19,E04,25.22\n20,E06,19.4\n21,E07,22.12\n22,E04,13.24\n23,E05,35.49\n24,E08,31.11\n25,E04,4.54\n26,E08,20.55\n27,E00,30.51\n28,E02,27.51\n29,E08,35.62\n30,E07,35.36\n31,E01,25.98\n32,E01,12.94\n33,E03,17.96\n34,E11,12.61\n35,E01,21.37\n36,E06,39.72\n",
+      "entities.csv": "entity,segment,weight\nE00,North,2.44\nE01,North,2.28\nE02,South,3.11\nE03,South,0.72\nE04,North,1.44\nE05,South,1.98\nE06,North,1.88\nE07,South,1.23\nE08,South,2.39\nE09,South,0.51\nE10,North,2.9\nE11,South,1.63\n",
+      "data_dictionary.csv": "file,column,description,unit\nevents.csv,eid,\"Event identifier\",\nevents.csv,entity,\"Entity identifier\",\nevents.csv,value,\"Event value\",unit\nentities.csv,entity,\"Entity identifier\",\nentities.csv,segment,\"Entity segment\",\nentities.csv,weight,\"Entity weight\",unitless\n"
+    },
+    "answer": 16.0,
+    "tol": 1e-06,
+    "type": "table.holdout_join_count"
+  },
+  {
+    "id": "h2_072",
+    "objective": "Join events.csv to entities.csv using the entity identifier. For event rows belonging to entities whose entity segment is 'South', compute the weighted mean of event value using entity weight as the weight. Round to 2 decimals.",
+    "files": {
+      "events.csv": "eid,entity,value\n1,E05,29.45\n2,E05,26.4\n3,E07,23.95\n4,E04,24.72\n5,E06,20.14\n6,E11,23.73\n7,E10,33.7\n8,E09,26.74\n9,E08,30.98\n10,E11,18.64\n11,E04,24.88\n12,E01,26.46\n13,E02,36.67\n14,E09,18.73\n15,E07,19.38\n16,E07,26.03\n17,E10,13.22\n18,E01,28.04\n19,E04,25.22\n20,E06,19.4\n21,E07,22.12\n22,E04,13.24\n23,E05,35.49\n24,E08,31.11\n25,E04,4.54\n26,E08,20.55\n27,E00,30.51\n28,E02,27.51\n29,E08,35.62\n30,E07,35.36\n31,E01,25.98\n32,E01,12.94\n33,E03,17.96\n34,E11,12.61\n35,E01,21.37\n36,E06,39.72\n",
+      "entities.csv": "entity,segment,weight\nE00,North,2.44\nE01,North,2.28\nE02,South,3.11\nE03,South,0.72\nE04,North,1.44\nE05,South,1.98\nE06,North,1.88\nE07,South,1.23\nE08,South,2.39\nE09,South,0.51\nE10,North,2.9\nE11,South,1.63\n",
+      "data_dictionary.csv": "file,column,description,unit\nevents.csv,eid,\"Event identifier\",\nevents.csv,entity,\"Entity identifier\",\nevents.csv,value,\"Event value\",unit\nentities.csv,entity,\"Entity identifier\",\nentities.csv,segment,\"Entity segment\",\nentities.csv,weight,\"Entity weight\",unitless\n"
+    },
+    "answer": 27.386837681159417,
+    "tol": 0.015,
+    "type": "table.holdout_join_weighted_mean"
+  },
+  {
+    "id": "h2_073",
+    "objective": "Using facts.csv, compute the 10% trimmed mean of the primary measurement: sort the non-missing values, remove floor(10% of n) observations from each tail, then take the mean. Round to 2 decimals.",
+    "files": {
+      "facts.csv": "x,y,w,grp,label,year\n57.58,32.24,0.5,B,GAMMAX,2024\n73.6,37.04,4.03,A,GAMMAZ,2025\n58.84,35.11,3.57,B,DELTAY,2024\n61.38,36.66,2.21,A,BETAX,2022\n65.17,35.19,3.85,B,BETAY,2024\n58.59,34.38,0.83,B,ALPHAY,2023\n62.48,43.7,2.03,B,ALPHAX,2023\n70.98,46.75,4.86,B,DELTAY,2022\n50.33,24.0,3.16,A,DELTAZ,2025\n48.56,33.56,4.49,A,ALPHAZ,2023\n55.23,17.32,3.1,B,ALPHAZ,2025\n55.33,26.52,2.23,B,DELTAZ,2024\n35.24,25.67,3.48,C,BETAY,2023\n60.7,19.75,1.19,A,ALPHAZ,2025\n61.49,31.69,4.62,A,BETAX,2024\n57.13,36.74,1.58,B,DELTAZ,2025\n45.09,25.6,4.06,C,ALPHAX,2023\n56.27,36.21,1.9,B,ALPHAZ,2021\n77.4,34.64,3.27,B,DELTAY,2025\n40.63,16.14,2.61,B,GAMMAX,2021\n50.9,26.7,3.32,B,ALPHAZ,2022\n44.58,25.01,2.69,B,DELTAY,2024\n59.68,34.19,4.36,A,ALPHAX,2025\n49.55,18.13,3.58,B,DELTAZ,2022\n65.09,39.97,3.91,A,ALPHAY,2021\n38.44,26.69,2.85,C,ALPHAZ,2023\n43.21,29.49,3.4,C,DELTAX,2021\n64.89,29.96,4.83,C,ALPHAY,2021\n",
+      "data_dictionary.csv": "file,column,description,unit\nfacts.csv,x,\"Primary measurement\",unit\nfacts.csv,y,\"Secondary measurement\",unit\nfacts.csv,w,\"Observation weight\",unitless\nfacts.csv,grp,\"Segment label\",\nfacts.csv,label,\"Record label\",\nfacts.csv,year,\"Observation year\",year\n"
+    },
+    "answer": 55.98666666666666,
+    "tol": 0.015,
+    "type": "table.holdout_trimmed_mean"
+  },
+  {
+    "id": "h2_074",
+    "objective": "What is the sample coefficient of variation of the primary measurement in facts.csv, defined as 100 times the sample standard deviation (ddof=1) divided by the mean? Round to 2 decimals.",
+    "files": {
+      "facts.csv": "x,y,w,grp,label,year\n57.58,32.24,0.5,B,GAMMAX,2024\n73.6,37.04,4.03,A,GAMMAZ,2025\n58.84,35.11,3.57,B,DELTAY,2024\n61.38,36.66,2.21,A,BETAX,2022\n65.17,35.19,3.85,B,BETAY,2024\n58.59,34.38,0.83,B,ALPHAY,2023\n62.48,43.7,2.03,B,ALPHAX,2023\n70.98,46.75,4.86,B,DELTAY,2022\n50.33,24.0,3.16,A,DELTAZ,2025\n48.56,33.56,4.49,A,ALPHAZ,2023\n55.23,17.32,3.1,B,ALPHAZ,2025\n55.33,26.52,2.23,B,DELTAZ,2024\n35.24,25.67,3.48,C,BETAY,2023\n60.7,19.75,1.19,A,ALPHAZ,2025\n61.49,31.69,4.62,A,BETAX,2024\n57.13,36.74,1.58,B,DELTAZ,2025\n45.09,25.6,4.06,C,ALPHAX,2023\n56.27,36.21,1.9,B,ALPHAZ,2021\n77.4,34.64,3.27,B,DELTAY,2025\n40.63,16.14,2.61,B,GAMMAX,2021\n50.9,26.7,3.32,B,ALPHAZ,2022\n44.58,25.01,2.69,B,DELTAY,2024\n59.68,34.19,4.36,A,ALPHAX,2025\n49.55,18.13,3.58,B,DELTAZ,2022\n65.09,39.97,3.91,A,ALPHAY,2021\n38.44,26.69,2.85,C,ALPHAZ,2023\n43.21,29.49,3.4,C,DELTAX,2021\n64.89,29.96,4.83,C,ALPHAY,2021\n",
+      "data_dictionary.csv": "file,column,description,unit\nfacts.csv,x,\"Primary measurement\",unit\nfacts.csv,y,\"Secondary measurement\",unit\nfacts.csv,w,\"Observation weight\",unitless\nfacts.csv,grp,\"Segment label\",\nfacts.csv,label,\"Record label\",\nfacts.csv,year,\"Observation year\",year\n"
+    },
+    "answer": 18.623112413179495,
+    "tol": 0.015,
+    "type": "table.holdout_coef_variation"
+  },
+  {
+    "id": "h2_075",
+    "objective": "What is the 90th percentile of the primary measurement in facts.csv using linear interpolation? Round to 2 decimals.",
+    "files": {
+      "facts.csv": "x,y,w,grp,label,year\n57.58,32.24,0.5,B,GAMMAX,2024\n73.6,37.04,4.03,A,GAMMAZ,2025\n58.84,35.11,3.57,B,DELTAY,2024\n61.38,36.66,2.21,A,BETAX,2022\n65.17,35.19,3.85,B,BETAY,2024\n58.59,34.38,0.83,B,ALPHAY,2023\n62.48,43.7,2.03,B,ALPHAX,2023\n70.98,46.75,4.86,B,DELTAY,2022\n50.33,24.0,3.16,A,DELTAZ,2025\n48.56,33.56,4.49,A,ALPHAZ,2023\n55.23,17.32,3.1,B,ALPHAZ,2025\n55.33,26.52,2.23,B,DELTAZ,2024\n35.24,25.67,3.48,C,BETAY,2023\n60.7,19.75,1.19,A,ALPHAZ,2025\n61.49,31.69,4.62,A,BETAX,2024\n57.13,36.74,1.58,B,DELTAZ,2025\n45.09,25.6,4.06,C,ALPHAX,2023\n56.27,36.21,1.9,B,ALPHAZ,2021\n77.4,34.64,3.27,B,DELTAY,2025\n40.63,16.14,2.61,B,GAMMAX,2021\n50.9,26.7,3.32,B,ALPHAZ,2022\n44.58,25.01,2.69,B,DELTAY,2024\n59.68,34.19,4.36,A,ALPHAX,2025\n49.55,18.13,3.58,B,DELTAZ,2022\n65.09,39.97,3.91,A,ALPHAY,2021\n38.44,26.69,2.85,C,ALPHAZ,2023\n43.21,29.49,3.4,C,DELTAX,2021\n64.89,29.96,4.83,C,ALPHAY,2021\n",
+      "data_dictionary.csv": "file,column,description,unit\nfacts.csv,x,\"Primary measurement\",unit\nfacts.csv,y,\"Secondary measurement\",unit\nfacts.csv,w,\"Observation weight\",unitless\nfacts.csv,grp,\"Segment label\",\nfacts.csv,label,\"Record label\",\nfacts.csv,year,\"Observation year\",year\n"
+    },
+    "answer": 66.91300000000001,
+    "tol": 0.015,
+    "type": "table.holdout_p90"
+  },
+  {
+    "id": "h2_076",
+    "objective": "What percentage of records in facts.csv have primary measurement strictly greater than 57.36? Round to 2 decimals.",
+    "files": {
+      "facts.csv": "x,y,w,grp,label,year\n57.58,32.24,0.5,B,GAMMAX,2024\n73.6,37.04,4.03,A,GAMMAZ,2025\n58.84,35.11,3.57,B,DELTAY,2024\n61.38,36.66,2.21,A,BETAX,2022\n65.17,35.19,3.85,B,BETAY,2024\n58.59,34.38,0.83,B,ALPHAY,2023\n62.48,43.7,2.03,B,ALPHAX,2023\n70.98,46.75,4.86,B,DELTAY,2022\n50.33,24.0,3.16,A,DELTAZ,2025\n48.56,33.56,4.49,A,ALPHAZ,2023\n55.23,17.32,3.1,B,ALPHAZ,2025\n55.33,26.52,2.23,B,DELTAZ,2024\n35.24,25.67,3.48,C,BETAY,2023\n60.7,19.75,1.19,A,ALPHAZ,2025\n61.49,31.69,4.62,A,BETAX,2024\n57.13,36.74,1.58,B,DELTAZ,2025\n45.09,25.6,4.06,C,ALPHAX,2023\n56.27,36.21,1.9,B,ALPHAZ,2021\n77.4,34.64,3.27,B,DELTAY,2025\n40.63,16.14,2.61,B,GAMMAX,2021\n50.9,26.7,3.32,B,ALPHAZ,2022\n44.58,25.01,2.69,B,DELTAY,2024\n59.68,34.19,4.36,A,ALPHAX,2025\n49.55,18.13,3.58,B,DELTAZ,2022\n65.09,39.97,3.91,A,ALPHAY,2021\n38.44,26.69,2.85,C,ALPHAZ,2023\n43.21,29.49,3.4,C,DELTAX,2021\n64.89,29.96,4.83,C,ALPHAY,2021\n",
+      "data_dictionary.csv": "file,column,description,unit\nfacts.csv,x,\"Primary measurement\",unit\nfacts.csv,y,\"Secondary measurement\",unit\nfacts.csv,w,\"Observation weight\",unitless\nfacts.csv,grp,\"Segment label\",\nfacts.csv,label,\"Record label\",\nfacts.csv,year,\"Observation year\",year\n"
+    },
+    "answer": 50.0,
+    "tol": 0.015,
+    "type": "table.holdout_prop_above"
+  },
+  {
+    "id": "h2_077",
+    "objective": "Compute the median absolute deviation of the primary measurement in facts.csv, defined as median(|x - median(x)|), without any scaling constant. Round to 2 decimals.",
+    "files": {
+      "facts.csv": "x,y,w,grp,label,year\n57.58,32.24,0.5,B,GAMMAX,2024\n73.6,37.04,4.03,A,GAMMAZ,2025\n58.84,35.11,3.57,B,DELTAY,2024\n61.38,36.66,2.21,A,BETAX,2022\n65.17,35.19,3.85,B,BETAY,2024\n58.59,34.38,0.83,B,ALPHAY,2023\n62.48,43.7,2.03,B,ALPHAX,2023\n70.98,46.75,4.86,B,DELTAY,2022\n50.33,24.0,3.16,A,DELTAZ,2025\n48.56,33.56,4.49,A,ALPHAZ,2023\n55.23,17.32,3.1,B,ALPHAZ,2025\n55.33,26.52,2.23,B,DELTAZ,2024\n35.24,25.67,3.48,C,BETAY,2023\n60.7,19.75,1.19,A,ALPHAZ,2025\n61.49,31.69,4.62,A,BETAX,2024\n57.13,36.74,1.58,B,DELTAZ,2025\n45.09,25.6,4.06,C,ALPHAX,2023\n56.27,36.21,1.9,B,ALPHAZ,2021\n77.4,34.64,3.27,B,DELTAY,2025\n40.63,16.14,2.61,B,GAMMAX,2021\n50.9,26.7,3.32,B,ALPHAZ,2022\n44.58,25.01,2.69,B,DELTAY,2024\n59.68,34.19,4.36,A,ALPHAX,2025\n49.55,18.13,3.58,B,DELTAZ,2022\n65.09,39.97,3.91,A,ALPHAY,2021\n38.44,26.69,2.85,C,ALPHAZ,2023\n43.21,29.49,3.4,C,DELTAX,2021\n64.89,29.96,4.83,C,ALPHAY,2021\n",
+      "data_dictionary.csv": "file,column,description,unit\nfacts.csv,x,\"Primary measurement\",unit\nfacts.csv,y,\"Secondary measurement\",unit\nfacts.csv,w,\"Observation weight\",unitless\nfacts.csv,grp,\"Segment label\",\nfacts.csv,label,\"Record label\",\nfacts.csv,year,\"Observation year\",year\n"
+    },
+    "answer": 7.280000000000001,
+    "tol": 0.015,
+    "type": "table.holdout_mad"
+  },
+  {
+    "id": "h2_078",
+    "objective": "What is the median primary measurement for segment 'A' minus the median primary measurement for segment 'B' in facts.csv? Round to 2 decimals.",
+    "files": {
+      "facts.csv": "x,y,w,grp,label,year\n57.58,32.24,0.5,B,GAMMAX,2024\n73.6,37.04,4.03,A,GAMMAZ,2025\n58.84,35.11,3.57,B,DELTAY,2024\n61.38,36.66,2.21,A,BETAX,2022\n65.17,35.19,3.85,B,BETAY,2024\n58.59,34.38,0.83,B,ALPHAY,2023\n62.48,43.7,2.03,B,ALPHAX,2023\n70.98,46.75,4.86,B,DELTAY,2022\n50.33,24.0,3.16,A,DELTAZ,2025\n48.56,33.56,4.49,A,ALPHAZ,2023\n55.23,17.32,3.1,B,ALPHAZ,2025\n55.33,26.52,2.23,B,DELTAZ,2024\n35.24,25.67,3.48,C,BETAY,2023\n60.7,19.75,1.19,A,ALPHAZ,2025\n61.49,31.69,4.62,A,BETAX,2024\n57.13,36.74,1.58,B,DELTAZ,2025\n45.09,25.6,4.06,C,ALPHAX,2023\n56.27,36.21,1.9,B,ALPHAZ,2021\n77.4,34.64,3.27,B,DELTAY,2025\n40.63,16.14,2.61,B,GAMMAX,2021\n50.9,26.7,3.32,B,ALPHAZ,2022\n44.58,25.01,2.69,B,DELTAY,2024\n59.68,34.19,4.36,A,ALPHAX,2025\n49.55,18.13,3.58,B,DELTAZ,2022\n65.09,39.97,3.91,A,ALPHAY,2021\n38.44,26.69,2.85,C,ALPHAZ,2023\n43.21,29.49,3.4,C,DELTAX,2021\n64.89,29.96,4.83,C,ALPHAY,2021\n",
+      "data_dictionary.csv": "file,column,description,unit\nfacts.csv,x,\"Primary measurement\",unit\nfacts.csv,y,\"Secondary measurement\",unit\nfacts.csv,w,\"Observation weight\",unitless\nfacts.csv,grp,\"Segment label\",\nfacts.csv,label,\"Record label\",\nfacts.csv,year,\"Observation year\",year\n"
+    },
+    "answer": 3.9100000000000037,
+    "tol": 0.015,
+    "type": "table.holdout_group_median_diff"
+  },
+  {
+    "id": "h2_079",
+    "objective": "How many records in facts.csv have a record label that ends with 'X'? Give a whole number.",
+    "files": {
+      "facts.csv": "x,y,w,grp,label,year\n57.58,32.24,0.5,B,GAMMAX,2024\n73.6,37.04,4.03,A,GAMMAZ,2025\n58.84,35.11,3.57,B,DELTAY,2024\n61.38,36.66,2.21,A,BETAX,2022\n65.17,35.19,3.85,B,BETAY,2024\n58.59,34.38,0.83,B,ALPHAY,2023\n62.48,43.7,2.03,B,ALPHAX,2023\n70.98,46.75,4.86,B,DELTAY,2022\n50.33,24.0,3.16,A,DELTAZ,2025\n48.56,33.56,4.49,A,ALPHAZ,2023\n55.23,17.32,3.1,B,ALPHAZ,2025\n55.33,26.52,2.23,B,DELTAZ,2024\n35.24,25.67,3.48,C,BETAY,2023\n60.7,19.75,1.19,A,ALPHAZ,2025\n61.49,31.69,4.62,A,BETAX,2024\n57.13,36.74,1.58,B,DELTAZ,2025\n45.09,25.6,4.06,C,ALPHAX,2023\n56.27,36.21,1.9,B,ALPHAZ,2021\n77.4,34.64,3.27,B,DELTAY,2025\n40.63,16.14,2.61,B,GAMMAX,2021\n50.9,26.7,3.32,B,ALPHAZ,2022\n44.58,25.01,2.69,B,DELTAY,2024\n59.68,34.19,4.36,A,ALPHAX,2025\n49.55,18.13,3.58,B,DELTAZ,2022\n65.09,39.97,3.91,A,ALPHAY,2021\n38.44,26.69,2.85,C,ALPHAZ,2023\n43.21,29.49,3.4,C,DELTAX,2021\n64.89,29.96,4.83,C,ALPHAY,2021\n",
+      "data_dictionary.csv": "file,column,description,unit\nfacts.csv,x,\"Primary measurement\",unit\nfacts.csv,y,\"Secondary measurement\",unit\nfacts.csv,w,\"Observation weight\",unitless\nfacts.csv,grp,\"Segment label\",\nfacts.csv,label,\"Record label\",\nfacts.csv,year,\"Observation year\",year\n"
+    },
+    "answer": 8.0,
+    "tol": 1e-06,
+    "type": "table.holdout_string_suffix"
+  },
+  {
+    "id": "h2_080",
+    "objective": "Compute the sum of the primary measurement divided by the sum of the secondary measurement over all records in facts.csv. Round to 3 decimals.",
+    "files": {
+      "facts.csv": "x,y,w,grp,label,year\n57.58,32.24,0.5,B,GAMMAX,2024\n73.6,37.04,4.03,A,GAMMAZ,2025\n58.84,35.11,3.57,B,DELTAY,2024\n61.38,36.66,2.21,A,BETAX,2022\n65.17,35.19,3.85,B,BETAY,2024\n58.59,34.38,0.83,B,ALPHAY,2023\n62.48,43.7,2.03,B,ALPHAX,2023\n70.98,46.75,4.86,B,DELTAY,2022\n50.33,24.0,3.16,A,DELTAZ,2025\n48.56,33.56,4.49,A,ALPHAZ,2023\n55.23,17.32,3.1,B,ALPHAZ,2025\n55.33,26.52,2.23,B,DELTAZ,2024\n35.24,25.67,3.48,C,BETAY,2023\n60.7,19.75,1.19,A,ALPHAZ,2025\n61.49,31.69,4.62,A,BETAX,2024\n57.13,36.74,1.58,B,DELTAZ,2025\n45.09,25.6,4.06,C,ALPHAX,2023\n56.27,36.21,1.9,B,ALPHAZ,2021\n77.4,34.64,3.27,B,DELTAY,2025\n40.63,16.14,2.61,B,GAMMAX,2021\n50.9,26.7,3.32,B,ALPHAZ,2022\n44.58,25.01,2.69,B,DELTAY,2024\n59.68,34.19,4.36,A,ALPHAX,2025\n49.55,18.13,3.58,B,DELTAZ,2022\n65.09,39.97,3.91,A,ALPHAY,2021\n38.44,26.69,2.85,C,ALPHAZ,2023\n43.21,29.49,3.4,C,DELTAX,2021\n64.89,29.96,4.83,C,ALPHAY,2021\n",
+      "data_dictionary.csv": "file,column,description,unit\nfacts.csv,x,\"Primary measurement\",unit\nfacts.csv,y,\"Secondary measurement\",unit\nfacts.csv,w,\"Observation weight\",unitless\nfacts.csv,grp,\"Segment label\",\nfacts.csv,label,\"Record label\",\nfacts.csv,year,\"Observation year\",year\n"
+    },
+    "answer": 1.8256911704790175,
+    "tol": 0.0015,
+    "type": "table.holdout_ratio_sums"
+  },
+  {
+    "id": "h2_081",
+    "objective": "Among records whose segment label is 'A', compute the Pearson correlation between the primary measurement and the secondary measurement. Round to 3 decimals.",
+    "files": {
+      "facts.csv": "x,y,w,grp,label,year\n57.58,32.24,0.5,B,GAMMAX,2024\n73.6,37.04,4.03,A,GAMMAZ,2025\n58.84,35.11,3.57,B,DELTAY,2024\n61.38,36.66,2.21,A,BETAX,2022\n65.17,35.19,3.85,B,BETAY,2024\n58.59,34.38,0.83,B,ALPHAY,2023\n62.48,43.7,2.03,B,ALPHAX,2023\n70.98,46.75,4.86,B,DELTAY,2022\n50.33,24.0,3.16,A,DELTAZ,2025\n48.56,33.56,4.49,A,ALPHAZ,2023\n55.23,17.32,3.1,B,ALPHAZ,2025\n55.33,26.52,2.23,B,DELTAZ,2024\n35.24,25.67,3.48,C,BETAY,2023\n60.7,19.75,1.19,A,ALPHAZ,2025\n61.49,31.69,4.62,A,BETAX,2024\n57.13,36.74,1.58,B,DELTAZ,2025\n45.09,25.6,4.06,C,ALPHAX,2023\n56.27,36.21,1.9,B,ALPHAZ,2021\n77.4,34.64,3.27,B,DELTAY,2025\n40.63,16.14,2.61,B,GAMMAX,2021\n50.9,26.7,3.32,B,ALPHAZ,2022\n44.58,25.01,2.69,B,DELTAY,2024\n59.68,34.19,4.36,A,ALPHAX,2025\n49.55,18.13,3.58,B,DELTAZ,2022\n65.09,39.97,3.91,A,ALPHAY,2021\n38.44,26.69,2.85,C,ALPHAZ,2023\n43.21,29.49,3.4,C,DELTAX,2021\n64.89,29.96,4.83,C,ALPHAY,2021\n",
+      "data_dictionary.csv": "file,column,description,unit\nfacts.csv,x,\"Primary measurement\",unit\nfacts.csv,y,\"Secondary measurement\",unit\nfacts.csv,w,\"Observation weight\",unitless\nfacts.csv,grp,\"Segment label\",\nfacts.csv,label,\"Record label\",\nfacts.csv,year,\"Observation year\",year\n"
+    },
+    "answer": 0.43240633986092386,
+    "tol": 0.0015,
+    "type": "table.holdout_filtered_corr"
+  },
+  {
+    "id": "h2_082",
+    "objective": "For each observation year in facts.csv, compute the median primary measurement. Which year has the largest median? Return the year as an integer.",
+    "files": {
+      "facts.csv": "x,y,w,grp,label,year\n57.58,32.24,0.5,B,GAMMAX,2024\n73.6,37.04,4.03,A,GAMMAZ,2025\n58.84,35.11,3.57,B,DELTAY,2024\n61.38,36.66,2.21,A,BETAX,2022\n65.17,35.19,3.85,B,BETAY,2024\n58.59,34.38,0.83,B,ALPHAY,2023\n62.48,43.7,2.03,B,ALPHAX,2023\n70.98,46.75,4.86,B,DELTAY,2022\n50.33,24.0,3.16,A,DELTAZ,2025\n48.56,33.56,4.49,A,ALPHAZ,2023\n55.23,17.32,3.1,B,ALPHAZ,2025\n55.33,26.52,2.23,B,DELTAZ,2024\n35.24,25.67,3.48,C,BETAY,2023\n60.7,19.75,1.19,A,ALPHAZ,2025\n61.49,31.69,4.62,A,BETAX,2024\n57.13,36.74,1.58,B,DELTAZ,2025\n45.09,25.6,4.06,C,ALPHAX,2023\n56.27,36.21,1.9,B,ALPHAZ,2021\n77.4,34.64,3.27,B,DELTAY,2025\n40.63,16.14,2.61,B,GAMMAX,2021\n50.9,26.7,3.32,B,ALPHAZ,2022\n44.58,25.01,2.69,B,DELTAY,2024\n59.68,34.19,4.36,A,ALPHAX,2025\n49.55,18.13,3.58,B,DELTAZ,2022\n65.09,39.97,3.91,A,ALPHAY,2021\n38.44,26.69,2.85,C,ALPHAZ,2023\n43.21,29.49,3.4,C,DELTAX,2021\n64.89,29.96,4.83,C,ALPHAY,2021\n",
+      "data_dictionary.csv": "file,column,description,unit\nfacts.csv,x,\"Primary measurement\",unit\nfacts.csv,y,\"Secondary measurement\",unit\nfacts.csv,w,\"Observation weight\",unitless\nfacts.csv,grp,\"Segment label\",\nfacts.csv,label,\"Record label\",\nfacts.csv,year,\"Observation year\",year\n"
+    },
+    "answer": 2025.0,
+    "tol": 1e-06,
+    "type": "table.holdout_year_max_median"
+  },
+  {
+    "id": "h2_083",
+    "objective": "Join events.csv to entities.csv using the entity identifier. How many event rows belong to entities whose entity segment is 'North'? Give a whole number.",
+    "files": {
+      "events.csv": "eid,entity,value\n1,E10,38.35\n2,E02,24.8\n3,E03,31.42\n4,E01,20.68\n5,E02,24.17\n6,E11,20.06\n7,E08,17.85\n8,E02,22.91\n9,E01,0.72\n10,E06,32.24\n11,E09,22.4\n12,E02,33.62\n13,E10,39.89\n14,E07,19.11\n15,E10,11.17\n16,E04,34.72\n17,E07,17.94\n18,E09,18.27\n19,E09,20.88\n20,E05,16.74\n21,E06,19.52\n22,E05,22.04\n23,E00,27.38\n24,E07,31.16\n25,E01,14.82\n26,E00,12.46\n27,E08,24.59\n28,E00,25.69\n29,E05,29.22\n30,E10,31.33\n31,E08,29.86\n32,E04,34.39\n33,E10,29.9\n34,E07,35.26\n35,E03,29.0\n36,E08,24.1\n",
+      "entities.csv": "entity,segment,weight\nE00,North,3.71\nE01,South,3.09\nE02,North,3.09\nE03,North,0.88\nE04,South,0.7\nE05,South,1.53\nE06,North,2.46\nE07,North,3.88\nE08,North,3.76\nE09,North,3.2\nE10,North,0.78\nE11,South,2.07\n",
+      "data_dictionary.csv": "file,column,description,unit\nevents.csv,eid,\"Event identifier\",\nevents.csv,entity,\"Entity identifier\",\nevents.csv,value,\"Event value\",unit\nentities.csv,entity,\"Entity identifier\",\nentities.csv,segment,\"Entity segment\",\nentities.csv,weight,\"Entity weight\",unitless\n"
+    },
+    "answer": 27.0,
+    "tol": 1e-06,
+    "type": "table.holdout_join_count"
+  },
+  {
+    "id": "h2_084",
+    "objective": "Join events.csv to entities.csv using the entity identifier. For event rows belonging to entities whose entity segment is 'South', compute the weighted mean of event value using entity weight as the weight. Round to 2 decimals.",
+    "files": {
+      "events.csv": "eid,entity,value\n1,E10,38.35\n2,E02,24.8\n3,E03,31.42\n4,E01,20.68\n5,E02,24.17\n6,E11,20.06\n7,E08,17.85\n8,E02,22.91\n9,E01,0.72\n10,E06,32.24\n11,E09,22.4\n12,E02,33.62\n13,E10,39.89\n14,E07,19.11\n15,E10,11.17\n16,E04,34.72\n17,E07,17.94\n18,E09,18.27\n19,E09,20.88\n20,E05,16.74\n21,E06,19.52\n22,E05,22.04\n23,E00,27.38\n24,E07,31.16\n25,E01,14.82\n26,E00,12.46\n27,E08,24.59\n28,E00,25.69\n29,E05,29.22\n30,E10,31.33\n31,E08,29.86\n32,E04,34.39\n33,E10,29.9\n34,E07,35.26\n35,E03,29.0\n36,E08,24.1\n",
+      "entities.csv": "entity,segment,weight\nE00,North,3.71\nE01,South,3.09\nE02,North,3.09\nE03,North,0.88\nE04,South,0.7\nE05,South,1.53\nE06,North,2.46\nE07,North,3.88\nE08,North,3.76\nE09,North,3.2\nE10,North,0.78\nE11,South,2.07\n",
+      "data_dictionary.csv": "file,column,description,unit\nevents.csv,eid,\"Event identifier\",\nevents.csv,entity,\"Entity identifier\",\nevents.csv,value,\"Event value\",unit\nentities.csv,entity,\"Entity identifier\",\nentities.csv,segment,\"Entity segment\",\nentities.csv,weight,\"Entity weight\",unitless\n"
+    },
+    "answer": 17.64922100403924,
+    "tol": 0.015,
+    "type": "table.holdout_join_weighted_mean"
+  },
+  {
+    "id": "h2_085",
+    "objective": "Using facts.csv, compute the 10% trimmed mean of the primary measurement: sort the non-missing values, remove floor(10% of n) observations from each tail, then take the mean. Round to 2 decimals.",
+    "files": {
+      "facts.csv": "x,y,w,grp,label,year\n78.23,27.13,4.3,A,ALPHAX,2022\n60.71,29.73,4.3,B,DELTAY,2022\n42.33,33.32,1.62,C,BETAX,2025\n50.47,24.74,0.94,B,GAMMAX,2021\n33.75,13.35,3.54,A,GAMMAX,2021\n90.74,52.47,2.84,C,BETAY,2022\n59.32,40.15,4.66,A,ALPHAZ,2024\n30.58,28.72,4.13,A,BETAX,2021\n39.89,26.98,3.06,A,ALPHAY,2022\n43.09,34.1,1.58,A,BETAY,2023\n55.27,38.84,3.91,A,BETAZ,2021\n25.92,8.34,1.56,B,BETAX,2023\n42.0,31.21,1.89,B,GAMMAX,2024\n75.57,38.24,0.6,A,DELTAX,2023\n47.46,32.19,3.32,A,ALPHAZ,2022\n43.23,26.61,2.92,C,ALPHAY,2021\n37.12,19.81,1.39,A,GAMMAX,2023\n35.21,18.14,2.54,B,GAMMAZ,2023\n49.89,23.76,2.12,C,DELTAZ,2023\n34.85,39.4,3.35,A,BETAY,2021\n53.11,33.63,4.57,A,ALPHAX,2021\n41.89,13.27,1.9,A,DELTAX,2024\n52.55,39.21,1.04,A,ALPHAY,2025\n52.07,28.82,4.34,C,GAMMAY,2025\n76.7,37.8,1.06,C,BETAZ,2022\n60.43,37.54,2.67,B,BETAZ,2023\n49.8,24.27,1.28,C,ALPHAZ,2024\n63.87,34.59,4.07,C,ALPHAX,2023\n",
+      "data_dictionary.csv": "file,column,description,unit\nfacts.csv,x,\"Primary measurement\",unit\nfacts.csv,y,\"Secondary measurement\",unit\nfacts.csv,w,\"Observation weight\",unitless\nfacts.csv,grp,\"Segment label\",\nfacts.csv,label,\"Record label\",\nfacts.csv,year,\"Observation year\",year\n"
+    },
+    "answer": 50.024166666666666,
+    "tol": 0.015,
+    "type": "table.holdout_trimmed_mean"
+  },
+  {
+    "id": "h2_086",
+    "objective": "What is the sample coefficient of variation of the primary measurement in facts.csv, defined as 100 times the sample standard deviation (ddof=1) divided by the mean? Round to 2 decimals.",
+    "files": {
+      "facts.csv": "x,y,w,grp,label,year\n78.23,27.13,4.3,A,ALPHAX,2022\n60.71,29.73,4.3,B,DELTAY,2022\n42.33,33.32,1.62,C,BETAX,2025\n50.47,24.74,0.94,B,GAMMAX,2021\n33.75,13.35,3.54,A,GAMMAX,2021\n90.74,52.47,2.84,C,BETAY,2022\n59.32,40.15,4.66,A,ALPHAZ,2024\n30.58,28.72,4.13,A,BETAX,2021\n39.89,26.98,3.06,A,ALPHAY,2022\n43.09,34.1,1.58,A,BETAY,2023\n55.27,38.84,3.91,A,BETAZ,2021\n25.92,8.34,1.56,B,BETAX,2023\n42.0,31.21,1.89,B,GAMMAX,2024\n75.57,38.24,0.6,A,DELTAX,2023\n47.46,32.19,3.32,A,ALPHAZ,2022\n43.23,26.61,2.92,C,ALPHAY,2021\n37.12,19.81,1.39,A,GAMMAX,2023\n35.21,18.14,2.54,B,GAMMAZ,2023\n49.89,23.76,2.12,C,DELTAZ,2023\n34.85,39.4,3.35,A,BETAY,2021\n53.11,33.63,4.57,A,ALPHAX,2021\n41.89,13.27,1.9,A,DELTAX,2024\n52.55,39.21,1.04,A,ALPHAY,2025\n52.07,28.82,4.34,C,GAMMAY,2025\n76.7,37.8,1.06,C,BETAZ,2022\n60.43,37.54,2.67,B,BETAZ,2023\n49.8,24.27,1.28,C,ALPHAZ,2024\n63.87,34.59,4.07,C,ALPHAX,2023\n",
+      "data_dictionary.csv": "file,column,description,unit\nfacts.csv,x,\"Primary measurement\",unit\nfacts.csv,y,\"Secondary measurement\",unit\nfacts.csv,w,\"Observation weight\",unitless\nfacts.csv,grp,\"Segment label\",\nfacts.csv,label,\"Record label\",\nfacts.csv,year,\"Observation year\",year\n"
+    },
+    "answer": 30.64340367208964,
+    "tol": 0.015,
+    "type": "table.holdout_coef_variation"
+  },
+  {
+    "id": "h2_087",
+    "objective": "What is the 90th percentile of the primary measurement in facts.csv using linear interpolation? Round to 2 decimals.",
+    "files": {
+      "facts.csv": "x,y,w,grp,label,year\n78.23,27.13,4.3,A,ALPHAX,2022\n60.71,29.73,4.3,B,DELTAY,2022\n42.33,33.32,1.62,C,BETAX,2025\n50.47,24.74,0.94,B,GAMMAX,2021\n33.75,13.35,3.54,A,GAMMAX,2021\n90.74,52.47,2.84,C,BETAY,2022\n59.32,40.15,4.66,A,ALPHAZ,2024\n30.58,28.72,4.13,A,BETAX,2021\n39.89,26.98,3.06,A,ALPHAY,2022\n43.09,34.1,1.58,A,BETAY,2023\n55.27,38.84,3.91,A,BETAZ,2021\n25.92,8.34,1.56,B,BETAX,2023\n42.0,31.21,1.89,B,GAMMAX,2024\n75.57,38.24,0.6,A,DELTAX,2023\n47.46,32.19,3.32,A,ALPHAZ,2022\n43.23,26.61,2.92,C,ALPHAY,2021\n37.12,19.81,1.39,A,GAMMAX,2023\n35.21,18.14,2.54,B,GAMMAZ,2023\n49.89,23.76,2.12,C,DELTAZ,2023\n34.85,39.4,3.35,A,BETAY,2021\n53.11,33.63,4.57,A,ALPHAX,2021\n41.89,13.27,1.9,A,DELTAX,2024\n52.55,39.21,1.04,A,ALPHAY,2025\n52.07,28.82,4.34,C,GAMMAY,2025\n76.7,37.8,1.06,C,BETAZ,2022\n60.43,37.54,2.67,B,BETAZ,2023\n49.8,24.27,1.28,C,ALPHAZ,2024\n63.87,34.59,4.07,C,ALPHAX,2023\n",
+      "data_dictionary.csv": "file,column,description,unit\nfacts.csv,x,\"Primary measurement\",unit\nfacts.csv,y,\"Secondary measurement\",unit\nfacts.csv,w,\"Observation weight\",unitless\nfacts.csv,grp,\"Segment label\",\nfacts.csv,label,\"Record label\",\nfacts.csv,year,\"Observation year\",year\n"
+    },
+    "answer": 75.90899999999999,
+    "tol": 0.015,
+    "type": "table.holdout_p90"
+  },
+  {
+    "id": "h2_088",
+    "objective": "What percentage of records in facts.csv have primary measurement strictly greater than 49.84? Round to 2 decimals.",
+    "files": {
+      "facts.csv": "x,y,w,grp,label,year\n78.23,27.13,4.3,A,ALPHAX,2022\n60.71,29.73,4.3,B,DELTAY,2022\n42.33,33.32,1.62,C,BETAX,2025\n50.47,24.74,0.94,B,GAMMAX,2021\n33.75,13.35,3.54,A,GAMMAX,2021\n90.74,52.47,2.84,C,BETAY,2022\n59.32,40.15,4.66,A,ALPHAZ,2024\n30.58,28.72,4.13,A,BETAX,2021\n39.89,26.98,3.06,A,ALPHAY,2022\n43.09,34.1,1.58,A,BETAY,2023\n55.27,38.84,3.91,A,BETAZ,2021\n25.92,8.34,1.56,B,BETAX,2023\n42.0,31.21,1.89,B,GAMMAX,2024\n75.57,38.24,0.6,A,DELTAX,2023\n47.46,32.19,3.32,A,ALPHAZ,2022\n43.23,26.61,2.92,C,ALPHAY,2021\n37.12,19.81,1.39,A,GAMMAX,2023\n35.21,18.14,2.54,B,GAMMAZ,2023\n49.89,23.76,2.12,C,DELTAZ,2023\n34.85,39.4,3.35,A,BETAY,2021\n53.11,33.63,4.57,A,ALPHAX,2021\n41.89,13.27,1.9,A,DELTAX,2024\n52.55,39.21,1.04,A,ALPHAY,2025\n52.07,28.82,4.34,C,GAMMAY,2025\n76.7,37.8,1.06,C,BETAZ,2022\n60.43,37.54,2.67,B,BETAZ,2023\n49.8,24.27,1.28,C,ALPHAZ,2024\n63.87,34.59,4.07,C,ALPHAX,2023\n",
+      "data_dictionary.csv": "file,column,description,unit\nfacts.csv,x,\"Primary measurement\",unit\nfacts.csv,y,\"Secondary measurement\",unit\nfacts.csv,w,\"Observation weight\",unitless\nfacts.csv,grp,\"Segment label\",\nfacts.csv,label,\"Record label\",\nfacts.csv,year,\"Observation year\",year\n"
+    },
+    "answer": 50.0,
+    "tol": 0.015,
+    "type": "table.holdout_prop_above"
+  },
+  {
+    "id": "h2_089",
+    "objective": "Compute the median absolute deviation of the primary measurement in facts.csv, defined as median(|x - median(x)|), without any scaling constant. Round to 2 decimals.",
+    "files": {
+      "facts.csv": "x,y,w,grp,label,year\n78.23,27.13,4.3,A,ALPHAX,2022\n60.71,29.73,4.3,B,DELTAY,2022\n42.33,33.32,1.62,C,BETAX,2025\n50.47,24.74,0.94,B,GAMMAX,2021\n33.75,13.35,3.54,A,GAMMAX,2021\n90.74,52.47,2.84,C,BETAY,2022\n59.32,40.15,4.66,A,ALPHAZ,2024\n30.58,28.72,4.13,A,BETAX,2021\n39.89,26.98,3.06,A,ALPHAY,2022\n43.09,34.1,1.58,A,BETAY,2023\n55.27,38.84,3.91,A,BETAZ,2021\n25.92,8.34,1.56,B,BETAX,2023\n42.0,31.21,1.89,B,GAMMAX,2024\n75.57,38.24,0.6,A,DELTAX,2023\n47.46,32.19,3.32,A,ALPHAZ,2022\n43.23,26.61,2.92,C,ALPHAY,2021\n37.12,19.81,1.39,A,GAMMAX,2023\n35.21,18.14,2.54,B,GAMMAZ,2023\n49.89,23.76,2.12,C,DELTAZ,2023\n34.85,39.4,3.35,A,BETAY,2021\n53.11,33.63,4.57,A,ALPHAX,2021\n41.89,13.27,1.9,A,DELTAX,2024\n52.55,39.21,1.04,A,ALPHAY,2025\n52.07,28.82,4.34,C,GAMMAY,2025\n76.7,37.8,1.06,C,BETAZ,2022\n60.43,37.54,2.67,B,BETAZ,2023\n49.8,24.27,1.28,C,ALPHAZ,2024\n63.87,34.59,4.07,C,ALPHAX,2023\n",
+      "data_dictionary.csv": "file,column,description,unit\nfacts.csv,x,\"Primary measurement\",unit\nfacts.csv,y,\"Secondary measurement\",unit\nfacts.csv,w,\"Observation weight\",unitless\nfacts.csv,grp,\"Segment label\",\nfacts.csv,label,\"Record label\",\nfacts.csv,year,\"Observation year\",year\n"
+    },
+    "answer": 9.715,
+    "tol": 0.015,
+    "type": "table.holdout_mad"
+  },
+  {
+    "id": "h2_090",
+    "objective": "What is the median primary measurement for segment 'A' minus the median primary measurement for segment 'B' in facts.csv? Round to 2 decimals.",
+    "files": {
+      "facts.csv": "x,y,w,grp,label,year\n78.23,27.13,4.3,A,ALPHAX,2022\n60.71,29.73,4.3,B,DELTAY,2022\n42.33,33.32,1.62,C,BETAX,2025\n50.47,24.74,0.94,B,GAMMAX,2021\n33.75,13.35,3.54,A,GAMMAX,2021\n90.74,52.47,2.84,C,BETAY,2022\n59.32,40.15,4.66,A,ALPHAZ,2024\n30.58,28.72,4.13,A,BETAX,2021\n39.89,26.98,3.06,A,ALPHAY,2022\n43.09,34.1,1.58,A,BETAY,2023\n55.27,38.84,3.91,A,BETAZ,2021\n25.92,8.34,1.56,B,BETAX,2023\n42.0,31.21,1.89,B,GAMMAX,2024\n75.57,38.24,0.6,A,DELTAX,2023\n47.46,32.19,3.32,A,ALPHAZ,2022\n43.23,26.61,2.92,C,ALPHAY,2021\n37.12,19.81,1.39,A,GAMMAX,2023\n35.21,18.14,2.54,B,GAMMAZ,2023\n49.89,23.76,2.12,C,DELTAZ,2023\n34.85,39.4,3.35,A,BETAY,2021\n53.11,33.63,4.57,A,ALPHAX,2021\n41.89,13.27,1.9,A,DELTAX,2024\n52.55,39.21,1.04,A,ALPHAY,2025\n52.07,28.82,4.34,C,GAMMAY,2025\n76.7,37.8,1.06,C,BETAZ,2022\n60.43,37.54,2.67,B,BETAZ,2023\n49.8,24.27,1.28,C,ALPHAZ,2024\n63.87,34.59,4.07,C,ALPHAX,2023\n",
+      "data_dictionary.csv": "file,column,description,unit\nfacts.csv,x,\"Primary measurement\",unit\nfacts.csv,y,\"Secondary measurement\",unit\nfacts.csv,w,\"Observation weight\",unitless\nfacts.csv,grp,\"Segment label\",\nfacts.csv,label,\"Record label\",\nfacts.csv,year,\"Observation year\",year\n"
+    },
+    "answer": -0.9599999999999937,
+    "tol": 0.015,
+    "type": "table.holdout_group_median_diff"
+  },
+  {
+    "id": "h2_091",
+    "objective": "How many records in facts.csv have a record label that ends with 'X'? Give a whole number.",
+    "files": {
+      "facts.csv": "x,y,w,grp,label,year\n78.23,27.13,4.3,A,ALPHAX,2022\n60.71,29.73,4.3,B,DELTAY,2022\n42.33,33.32,1.62,C,BETAX,2025\n50.47,24.74,0.94,B,GAMMAX,2021\n33.75,13.35,3.54,A,GAMMAX,2021\n90.74,52.47,2.84,C,BETAY,2022\n59.32,40.15,4.66,A,ALPHAZ,2024\n30.58,28.72,4.13,A,BETAX,2021\n39.89,26.98,3.06,A,ALPHAY,2022\n43.09,34.1,1.58,A,BETAY,2023\n55.27,38.84,3.91,A,BETAZ,2021\n25.92,8.34,1.56,B,BETAX,2023\n42.0,31.21,1.89,B,GAMMAX,2024\n75.57,38.24,0.6,A,DELTAX,2023\n47.46,32.19,3.32,A,ALPHAZ,2022\n43.23,26.61,2.92,C,ALPHAY,2021\n37.12,19.81,1.39,A,GAMMAX,2023\n35.21,18.14,2.54,B,GAMMAZ,2023\n49.89,23.76,2.12,C,DELTAZ,2023\n34.85,39.4,3.35,A,BETAY,2021\n53.11,33.63,4.57,A,ALPHAX,2021\n41.89,13.27,1.9,A,DELTAX,2024\n52.55,39.21,1.04,A,ALPHAY,2025\n52.07,28.82,4.34,C,GAMMAY,2025\n76.7,37.8,1.06,C,BETAZ,2022\n60.43,37.54,2.67,B,BETAZ,2023\n49.8,24.27,1.28,C,ALPHAZ,2024\n63.87,34.59,4.07,C,ALPHAX,2023\n",
+      "data_dictionary.csv": "file,column,description,unit\nfacts.csv,x,\"Primary measurement\",unit\nfacts.csv,y,\"Secondary measurement\",unit\nfacts.csv,w,\"Observation weight\",unitless\nfacts.csv,grp,\"Segment label\",\nfacts.csv,label,\"Record label\",\nfacts.csv,year,\"Observation year\",year\n"
+    },
+    "answer": 12.0,
+    "tol": 1e-06,
+    "type": "table.holdout_string_suffix"
+  },
+  {
+    "id": "h2_092",
+    "objective": "Compute the sum of the primary measurement divided by the sum of the secondary measurement over all records in facts.csv. Round to 3 decimals.",
+    "files": {
+      "facts.csv": "x,y,w,grp,label,year\n78.23,27.13,4.3,A,ALPHAX,2022\n60.71,29.73,4.3,B,DELTAY,2022\n42.33,33.32,1.62,C,BETAX,2025\n50.47,24.74,0.94,B,GAMMAX,2021\n33.75,13.35,3.54,A,GAMMAX,2021\n90.74,52.47,2.84,C,BETAY,2022\n59.32,40.15,4.66,A,ALPHAZ,2024\n30.58,28.72,4.13,A,BETAX,2021\n39.89,26.98,3.06,A,ALPHAY,2022\n43.09,34.1,1.58,A,BETAY,2023\n55.27,38.84,3.91,A,BETAZ,2021\n25.92,8.34,1.56,B,BETAX,2023\n42.0,31.21,1.89,B,GAMMAX,2024\n75.57,38.24,0.6,A,DELTAX,2023\n47.46,32.19,3.32,A,ALPHAZ,2022\n43.23,26.61,2.92,C,ALPHAY,2021\n37.12,19.81,1.39,A,GAMMAX,2023\n35.21,18.14,2.54,B,GAMMAZ,2023\n49.89,23.76,2.12,C,DELTAZ,2023\n34.85,39.4,3.35,A,BETAY,2021\n53.11,33.63,4.57,A,ALPHAX,2021\n41.89,13.27,1.9,A,DELTAX,2024\n52.55,39.21,1.04,A,ALPHAY,2025\n52.07,28.82,4.34,C,GAMMAY,2025\n76.7,37.8,1.06,C,BETAZ,2022\n60.43,37.54,2.67,B,BETAZ,2023\n49.8,24.27,1.28,C,ALPHAZ,2024\n63.87,34.59,4.07,C,ALPHAX,2023\n",
+      "data_dictionary.csv": "file,column,description,unit\nfacts.csv,x,\"Primary measurement\",unit\nfacts.csv,y,\"Secondary measurement\",unit\nfacts.csv,w,\"Observation weight\",unitless\nfacts.csv,grp,\"Segment label\",\nfacts.csv,label,\"Record label\",\nfacts.csv,year,\"Observation year\",year\n"
+    },
+    "answer": 1.7050671959443304,
+    "tol": 0.0015,
+    "type": "table.holdout_ratio_sums"
+  },
+  {
+    "id": "h2_093",
+    "objective": "Among records whose segment label is 'A', compute the Pearson correlation between the primary measurement and the secondary measurement. Round to 3 decimals.",
+    "files": {
+      "facts.csv": "x,y,w,grp,label,year\n78.23,27.13,4.3,A,ALPHAX,2022\n60.71,29.73,4.3,B,DELTAY,2022\n42.33,33.32,1.62,C,BETAX,2025\n50.47,24.74,0.94,B,GAMMAX,2021\n33.75,13.35,3.54,A,GAMMAX,2021\n90.74,52.47,2.84,C,BETAY,2022\n59.32,40.15,4.66,A,ALPHAZ,2024\n30.58,28.72,4.13,A,BETAX,2021\n39.89,26.98,3.06,A,ALPHAY,2022\n43.09,34.1,1.58,A,BETAY,2023\n55.27,38.84,3.91,A,BETAZ,2021\n25.92,8.34,1.56,B,BETAX,2023\n42.0,31.21,1.89,B,GAMMAX,2024\n75.57,38.24,0.6,A,DELTAX,2023\n47.46,32.19,3.32,A,ALPHAZ,2022\n43.23,26.61,2.92,C,ALPHAY,2021\n37.12,19.81,1.39,A,GAMMAX,2023\n35.21,18.14,2.54,B,GAMMAZ,2023\n49.89,23.76,2.12,C,DELTAZ,2023\n34.85,39.4,3.35,A,BETAY,2021\n53.11,33.63,4.57,A,ALPHAX,2021\n41.89,13.27,1.9,A,DELTAX,2024\n52.55,39.21,1.04,A,ALPHAY,2025\n52.07,28.82,4.34,C,GAMMAY,2025\n76.7,37.8,1.06,C,BETAZ,2022\n60.43,37.54,2.67,B,BETAZ,2023\n49.8,24.27,1.28,C,ALPHAZ,2024\n63.87,34.59,4.07,C,ALPHAX,2023\n",
+      "data_dictionary.csv": "file,column,description,unit\nfacts.csv,x,\"Primary measurement\",unit\nfacts.csv,y,\"Secondary measurement\",unit\nfacts.csv,w,\"Observation weight\",unitless\nfacts.csv,grp,\"Segment label\",\nfacts.csv,label,\"Record label\",\nfacts.csv,year,\"Observation year\",year\n"
+    },
+    "answer": 0.4072005368962364,
+    "tol": 0.0015,
+    "type": "table.holdout_filtered_corr"
+  },
+  {
+    "id": "h2_094",
+    "objective": "For each observation year in facts.csv, compute the median primary measurement. Which year has the largest median? Return the year as an integer.",
+    "files": {
+      "facts.csv": "x,y,w,grp,label,year\n78.23,27.13,4.3,A,ALPHAX,2022\n60.71,29.73,4.3,B,DELTAY,2022\n42.33,33.32,1.62,C,BETAX,2025\n50.47,24.74,0.94,B,GAMMAX,2021\n33.75,13.35,3.54,A,GAMMAX,2021\n90.74,52.47,2.84,C,BETAY,2022\n59.32,40.15,4.66,A,ALPHAZ,2024\n30.58,28.72,4.13,A,BETAX,2021\n39.89,26.98,3.06,A,ALPHAY,2022\n43.09,34.1,1.58,A,BETAY,2023\n55.27,38.84,3.91,A,BETAZ,2021\n25.92,8.34,1.56,B,BETAX,2023\n42.0,31.21,1.89,B,GAMMAX,2024\n75.57,38.24,0.6,A,DELTAX,2023\n47.46,32.19,3.32,A,ALPHAZ,2022\n43.23,26.61,2.92,C,ALPHAY,2021\n37.12,19.81,1.39,A,GAMMAX,2023\n35.21,18.14,2.54,B,GAMMAZ,2023\n49.89,23.76,2.12,C,DELTAZ,2023\n34.85,39.4,3.35,A,BETAY,2021\n53.11,33.63,4.57,A,ALPHAX,2021\n41.89,13.27,1.9,A,DELTAX,2024\n52.55,39.21,1.04,A,ALPHAY,2025\n52.07,28.82,4.34,C,GAMMAY,2025\n76.7,37.8,1.06,C,BETAZ,2022\n60.43,37.54,2.67,B,BETAZ,2023\n49.8,24.27,1.28,C,ALPHAZ,2024\n63.87,34.59,4.07,C,ALPHAX,2023\n",
+      "data_dictionary.csv": "file,column,description,unit\nfacts.csv,x,\"Primary measurement\",unit\nfacts.csv,y,\"Secondary measurement\",unit\nfacts.csv,w,\"Observation weight\",unitless\nfacts.csv,grp,\"Segment label\",\nfacts.csv,label,\"Record label\",\nfacts.csv,year,\"Observation year\",year\n"
+    },
+    "answer": 2022.0,
+    "tol": 1e-06,
+    "type": "table.holdout_year_max_median"
+  },
+  {
+    "id": "h2_095",
+    "objective": "Join events.csv to entities.csv using the entity identifier. How many event rows belong to entities whose entity segment is 'North'? Give a whole number.",
+    "files": {
+      "events.csv": "eid,entity,value\n1,E03,9.52\n2,E02,40.16\n3,E02,13.07\n4,E02,25.49\n5,E04,30.85\n6,E01,19.14\n7,E10,37.82\n8,E01,28.4\n9,E09,42.45\n10,E09,36.42\n11,E09,21.81\n12,E09,28.25\n13,E06,21.03\n14,E00,28.4\n15,E06,36.59\n16,E09,30.18\n17,E11,35.86\n18,E04,37.07\n19,E10,16.26\n20,E01,22.04\n21,E06,32.45\n22,E04,19.4\n23,E08,13.78\n24,E03,15.47\n25,E03,30.99\n26,E08,32.27\n27,E09,28.27\n28,E03,13.56\n29,E10,14.47\n30,E00,31.3\n31,E08,36.97\n32,E09,17.74\n33,E00,29.73\n34,E06,32.51\n35,E10,24.57\n36,E07,31.21\n",
+      "entities.csv": "entity,segment,weight\nE00,North,3.92\nE01,North,0.99\nE02,North,3.83\nE03,North,0.54\nE04,North,2.11\nE05,South,2.51\nE06,North,1.57\nE07,South,0.58\nE08,North,3.0\nE09,South,2.36\nE10,South,3.88\nE11,South,1.26\n",
+      "data_dictionary.csv": "file,column,description,unit\nevents.csv,eid,\"Event identifier\",\nevents.csv,entity,\"Entity identifier\",\nevents.csv,value,\"Event value\",unit\nentities.csv,entity,\"Entity identifier\",\nentities.csv,segment,\"Entity segment\",\nentities.csv,weight,\"Entity weight\",unitless\n"
+    },
+    "answer": 23.0,
+    "tol": 1e-06,
+    "type": "table.holdout_join_count"
+  },
+  {
+    "id": "h2_096",
+    "objective": "Join events.csv to entities.csv using the entity identifier. For event rows belonging to entities whose entity segment is 'South', compute the weighted mean of event value using entity weight as the weight. Round to 2 decimals.",
+    "files": {
+      "events.csv": "eid,entity,value\n1,E03,9.52\n2,E02,40.16\n3,E02,13.07\n4,E02,25.49\n5,E04,30.85\n6,E01,19.14\n7,E10,37.82\n8,E01,28.4\n9,E09,42.45\n10,E09,36.42\n11,E09,21.81\n12,E09,28.25\n13,E06,21.03\n14,E00,28.4\n15,E06,36.59\n16,E09,30.18\n17,E11,35.86\n18,E04,37.07\n19,E10,16.26\n20,E01,22.04\n21,E06,32.45\n22,E04,19.4\n23,E08,13.78\n24,E03,15.47\n25,E03,30.99\n26,E08,32.27\n27,E09,28.27\n28,E03,13.56\n29,E10,14.47\n30,E00,31.3\n31,E08,36.97\n32,E09,17.74\n33,E00,29.73\n34,E06,32.51\n35,E10,24.57\n36,E07,31.21\n",
+      "entities.csv": "entity,segment,weight\nE00,North,3.92\nE01,North,0.99\nE02,North,3.83\nE03,North,0.54\nE04,North,2.11\nE05,South,2.51\nE06,North,1.57\nE07,South,0.58\nE08,North,3.0\nE09,South,2.36\nE10,South,3.88\nE11,South,1.26\n",
+      "data_dictionary.csv": "file,column,description,unit\nevents.csv,eid,\"Event identifier\",\nevents.csv,entity,\"Entity identifier\",\nevents.csv,value,\"Event value\",unit\nentities.csv,entity,\"Entity identifier\",\nentities.csv,segment,\"Entity segment\",\nentities.csv,weight,\"Entity weight\",unitless\n"
+    },
+    "answer": 26.82037190082645,
+    "tol": 0.015,
+    "type": "table.holdout_join_weighted_mean"
+  },
+  {
+    "id": "h2_097",
+    "objective": "Using facts.csv, compute the 10% trimmed mean of the primary measurement: sort the non-missing values, remove floor(10% of n) observations from each tail, then take the mean. Round to 2 decimals.",
+    "files": {
+      "facts.csv": "x,y,w,grp,label,year\n70.9,20.16,3.81,A,GAMMAY,2023\n48.82,26.29,4.43,C,BETAX,2023\n49.38,41.75,0.57,A,DELTAY,2024\n55.97,18.07,1.91,A,ALPHAX,2024\n44.92,26.76,0.73,C,ALPHAY,2021\n60.75,44.71,0.59,A,DELTAX,2021\n72.59,48.3,2.74,C,ALPHAZ,2023\n61.67,38.07,2.31,A,BETAZ,2022\n66.44,42.52,4.06,B,ALPHAZ,2025\n66.35,36.97,3.82,B,ALPHAY,2021\n72.57,30.84,0.67,B,ALPHAX,2023\n52.89,32.63,3.08,B,BETAX,2021\n17.61,12.12,4.21,A,BETAY,2023\n18.34,16.56,4.22,A,BETAZ,2025\n66.47,32.08,2.78,A,GAMMAY,2023\n41.29,33.6,0.67,B,BETAY,2022\n77.78,47.53,2.66,C,BETAY,2023\n50.37,25.54,3.67,C,DELTAX,2022\n60.92,31.13,1.84,A,BETAX,2022\n45.05,26.89,3.17,C,DELTAX,2024\n48.44,17.01,0.9,A,ALPHAY,2024\n79.36,37.81,1.42,B,GAMMAZ,2022\n59.28,31.21,4.31,C,GAMMAX,2023\n61.58,32.69,2.27,B,GAMMAX,2022\n64.35,33.3,0.61,B,DELTAY,2021\n69.32,45.52,3.25,B,ALPHAZ,2024\n38.8,18.97,3.7,C,BETAX,2025\n57.49,22.45,0.62,A,ALPHAZ,2021\n",
+      "data_dictionary.csv": "file,column,description,unit\nfacts.csv,x,\"Primary measurement\",unit\nfacts.csv,y,\"Secondary measurement\",unit\nfacts.csv,w,\"Observation weight\",unitless\nfacts.csv,grp,\"Segment label\",\nfacts.csv,label,\"Record label\",\nfacts.csv,year,\"Observation year\",year\n"
+    },
+    "answer": 57.775416666666665,
+    "tol": 0.015,
+    "type": "table.holdout_trimmed_mean"
+  },
+  {
+    "id": "h2_098",
+    "objective": "What is the sample coefficient of variation of the primary measurement in facts.csv, defined as 100 times the sample standard deviation (ddof=1) divided by the mean? Round to 2 decimals.",
+    "files": {
+      "facts.csv": "x,y,w,grp,label,year\n70.9,20.16,3.81,A,GAMMAY,2023\n48.82,26.29,4.43,C,BETAX,2023\n49.38,41.75,0.57,A,DELTAY,2024\n55.97,18.07,1.91,A,ALPHAX,2024\n44.92,26.76,0.73,C,ALPHAY,2021\n60.75,44.71,0.59,A,DELTAX,2021\n72.59,48.3,2.74,C,ALPHAZ,2023\n61.67,38.07,2.31,A,BETAZ,2022\n66.44,42.52,4.06,B,ALPHAZ,2025\n66.35,36.97,3.82,B,ALPHAY,2021\n72.57,30.84,0.67,B,ALPHAX,2023\n52.89,32.63,3.08,B,BETAX,2021\n17.61,12.12,4.21,A,BETAY,2023\n18.34,16.56,4.22,A,BETAZ,2025\n66.47,32.08,2.78,A,GAMMAY,2023\n41.29,33.6,0.67,B,BETAY,2022\n77.78,47.53,2.66,C,BETAY,2023\n50.37,25.54,3.67,C,DELTAX,2022\n60.92,31.13,1.84,A,BETAX,2022\n45.05,26.89,3.17,C,DELTAX,2024\n48.44,17.01,0.9,A,ALPHAY,2024\n79.36,37.81,1.42,B,GAMMAZ,2022\n59.28,31.21,4.31,C,GAMMAX,2023\n61.58,32.69,2.27,B,GAMMAX,2022\n64.35,33.3,0.61,B,DELTAY,2021\n69.32,45.52,3.25,B,ALPHAZ,2024\n38.8,18.97,3.7,C,BETAX,2025\n57.49,22.45,0.62,A,ALPHAZ,2021\n",
+      "data_dictionary.csv": "file,column,description,unit\nfacts.csv,x,\"Primary measurement\",unit\nfacts.csv,y,\"Secondary measurement\",unit\nfacts.csv,w,\"Observation weight\",unitless\nfacts.csv,grp,\"Segment label\",\nfacts.csv,label,\"Record label\",\nfacts.csv,year,\"Observation year\",year\n"
+    },
+    "answer": 27.126189875487444,
+    "tol": 0.015,
+    "type": "table.holdout_coef_variation"
+  },
+  {
+    "id": "h2_099",
+    "objective": "What is the 90th percentile of the primary measurement in facts.csv using linear interpolation? Round to 2 decimals.",
+    "files": {
+      "facts.csv": "x,y,w,grp,label,year\n70.9,20.16,3.81,A,GAMMAY,2023\n48.82,26.29,4.43,C,BETAX,2023\n49.38,41.75,0.57,A,DELTAY,2024\n55.97,18.07,1.91,A,ALPHAX,2024\n44.92,26.76,0.73,C,ALPHAY,2021\n60.75,44.71,0.59,A,DELTAX,2021\n72.59,48.3,2.74,C,ALPHAZ,2023\n61.67,38.07,2.31,A,BETAZ,2022\n66.44,42.52,4.06,B,ALPHAZ,2025\n66.35,36.97,3.82,B,ALPHAY,2021\n72.57,30.84,0.67,B,ALPHAX,2023\n52.89,32.63,3.08,B,BETAX,2021\n17.61,12.12,4.21,A,BETAY,2023\n18.34,16.56,4.22,A,BETAZ,2025\n66.47,32.08,2.78,A,GAMMAY,2023\n41.29,33.6,0.67,B,BETAY,2022\n77.78,47.53,2.66,C,BETAY,2023\n50.37,25.54,3.67,C,DELTAX,2022\n60.92,31.13,1.84,A,BETAX,2022\n45.05,26.89,3.17,C,DELTAX,2024\n48.44,17.01,0.9,A,ALPHAY,2024\n79.36,37.81,1.42,B,GAMMAZ,2022\n59.28,31.21,4.31,C,GAMMAX,2023\n61.58,32.69,2.27,B,GAMMAX,2022\n64.35,33.3,0.61,B,DELTAY,2021\n69.32,45.52,3.25,B,ALPHAZ,2024\n38.8,18.97,3.7,C,BETAX,2025\n57.49,22.45,0.62,A,ALPHAZ,2021\n",
+      "data_dictionary.csv": "file,column,description,unit\nfacts.csv,x,\"Primary measurement\",unit\nfacts.csv,y,\"Secondary measurement\",unit\nfacts.csv,w,\"Observation weight\",unitless\nfacts.csv,grp,\"Segment label\",\nfacts.csv,label,\"Record label\",\nfacts.csv,year,\"Observation year\",year\n"
+    },
+    "answer": 72.576,
+    "tol": 0.015,
+    "type": "table.holdout_p90"
+  },
+  {
+    "id": "h2_100",
+    "objective": "What percentage of records in facts.csv have primary measurement strictly greater than 60.02? Round to 2 decimals.",
+    "files": {
+      "facts.csv": "x,y,w,grp,label,year\n70.9,20.16,3.81,A,GAMMAY,2023\n48.82,26.29,4.43,C,BETAX,2023\n49.38,41.75,0.57,A,DELTAY,2024\n55.97,18.07,1.91,A,ALPHAX,2024\n44.92,26.76,0.73,C,ALPHAY,2021\n60.75,44.71,0.59,A,DELTAX,2021\n72.59,48.3,2.74,C,ALPHAZ,2023\n61.67,38.07,2.31,A,BETAZ,2022\n66.44,42.52,4.06,B,ALPHAZ,2025\n66.35,36.97,3.82,B,ALPHAY,2021\n72.57,30.84,0.67,B,ALPHAX,2023\n52.89,32.63,3.08,B,BETAX,2021\n17.61,12.12,4.21,A,BETAY,2023\n18.34,16.56,4.22,A,BETAZ,2025\n66.47,32.08,2.78,A,GAMMAY,2023\n41.29,33.6,0.67,B,BETAY,2022\n77.78,47.53,2.66,C,BETAY,2023\n50.37,25.54,3.67,C,DELTAX,2022\n60.92,31.13,1.84,A,BETAX,2022\n45.05,26.89,3.17,C,DELTAX,2024\n48.44,17.01,0.9,A,ALPHAY,2024\n79.36,37.81,1.42,B,GAMMAZ,2022\n59.28,31.21,4.31,C,GAMMAX,2023\n61.58,32.69,2.27,B,GAMMAX,2022\n64.35,33.3,0.61,B,DELTAY,2021\n69.32,45.52,3.25,B,ALPHAZ,2024\n38.8,18.97,3.7,C,BETAX,2025\n57.49,22.45,0.62,A,ALPHAZ,2021\n",
+      "data_dictionary.csv": "file,column,description,unit\nfacts.csv,x,\"Primary measurement\",unit\nfacts.csv,y,\"Secondary measurement\",unit\nfacts.csv,w,\"Observation weight\",unitless\nfacts.csv,grp,\"Segment label\",\nfacts.csv,label,\"Record label\",\nfacts.csv,year,\"Observation year\",year\n"
+    },
+    "answer": 50.0,
+    "tol": 0.015,
+    "type": "table.holdout_prop_above"
+  },
+  {
+    "id": "h2_101",
+    "objective": "Compute the median absolute deviation of the primary measurement in facts.csv, defined as median(|x - median(x)|), without any scaling constant. Round to 2 decimals.",
+    "files": {
+      "facts.csv": "x,y,w,grp,label,year\n70.9,20.16,3.81,A,GAMMAY,2023\n48.82,26.29,4.43,C,BETAX,2023\n49.38,41.75,0.57,A,DELTAY,2024\n55.97,18.07,1.91,A,ALPHAX,2024\n44.92,26.76,0.73,C,ALPHAY,2021\n60.75,44.71,0.59,A,DELTAX,2021\n72.59,48.3,2.74,C,ALPHAZ,2023\n61.67,38.07,2.31,A,BETAZ,2022\n66.44,42.52,4.06,B,ALPHAZ,2025\n66.35,36.97,3.82,B,ALPHAY,2021\n72.57,30.84,0.67,B,ALPHAX,2023\n52.89,32.63,3.08,B,BETAX,2021\n17.61,12.12,4.21,A,BETAY,2023\n18.34,16.56,4.22,A,BETAZ,2025\n66.47,32.08,2.78,A,GAMMAY,2023\n41.29,33.6,0.67,B,BETAY,2022\n77.78,47.53,2.66,C,BETAY,2023\n50.37,25.54,3.67,C,DELTAX,2022\n60.92,31.13,1.84,A,BETAX,2022\n45.05,26.89,3.17,C,DELTAX,2024\n48.44,17.01,0.9,A,ALPHAY,2024\n79.36,37.81,1.42,B,GAMMAZ,2022\n59.28,31.21,4.31,C,GAMMAX,2023\n61.58,32.69,2.27,B,GAMMAX,2022\n64.35,33.3,0.61,B,DELTAY,2021\n69.32,45.52,3.25,B,ALPHAZ,2024\n38.8,18.97,3.7,C,BETAX,2025\n57.49,22.45,0.62,A,ALPHAZ,2021\n",
+      "data_dictionary.csv": "file,column,description,unit\nfacts.csv,x,\"Primary measurement\",unit\nfacts.csv,y,\"Secondary measurement\",unit\nfacts.csv,w,\"Observation weight\",unitless\nfacts.csv,grp,\"Segment label\",\nfacts.csv,label,\"Record label\",\nfacts.csv,year,\"Observation year\",year\n"
+    },
+    "answer": 10.14,
+    "tol": 0.015,
+    "type": "table.holdout_mad"
+  },
+  {
+    "id": "h2_102",
+    "objective": "What is the median primary measurement for segment 'A' minus the median primary measurement for segment 'B' in facts.csv? Round to 2 decimals.",
+    "files": {
+      "facts.csv": "x,y,w,grp,label,year\n70.9,20.16,3.81,A,GAMMAY,2023\n48.82,26.29,4.43,C,BETAX,2023\n49.38,41.75,0.57,A,DELTAY,2024\n55.97,18.07,1.91,A,ALPHAX,2024\n44.92,26.76,0.73,C,ALPHAY,2021\n60.75,44.71,0.59,A,DELTAX,2021\n72.59,48.3,2.74,C,ALPHAZ,2023\n61.67,38.07,2.31,A,BETAZ,2022\n66.44,42.52,4.06,B,ALPHAZ,2025\n66.35,36.97,3.82,B,ALPHAY,2021\n72.57,30.84,0.67,B,ALPHAX,2023\n52.89,32.63,3.08,B,BETAX,2021\n17.61,12.12,4.21,A,BETAY,2023\n18.34,16.56,4.22,A,BETAZ,2025\n66.47,32.08,2.78,A,GAMMAY,2023\n41.29,33.6,0.67,B,BETAY,2022\n77.78,47.53,2.66,C,BETAY,2023\n50.37,25.54,3.67,C,DELTAX,2022\n60.92,31.13,1.84,A,BETAX,2022\n45.05,26.89,3.17,C,DELTAX,2024\n48.44,17.01,0.9,A,ALPHAY,2024\n79.36,37.81,1.42,B,GAMMAZ,2022\n59.28,31.21,4.31,C,GAMMAX,2023\n61.58,32.69,2.27,B,GAMMAX,2022\n64.35,33.3,0.61,B,DELTAY,2021\n69.32,45.52,3.25,B,ALPHAZ,2024\n38.8,18.97,3.7,C,BETAX,2025\n57.49,22.45,0.62,A,ALPHAZ,2021\n",
+      "data_dictionary.csv": "file,column,description,unit\nfacts.csv,x,\"Primary measurement\",unit\nfacts.csv,y,\"Secondary measurement\",unit\nfacts.csv,w,\"Observation weight\",unitless\nfacts.csv,grp,\"Segment label\",\nfacts.csv,label,\"Record label\",\nfacts.csv,year,\"Observation year\",year\n"
+    },
+    "answer": -8.859999999999992,
+    "tol": 0.015,
+    "type": "table.holdout_group_median_diff"
+  },
+  {
+    "id": "h2_103",
+    "objective": "How many records in facts.csv have a record label that ends with 'X'? Give a whole number.",
+    "files": {
+      "facts.csv": "x,y,w,grp,label,year\n70.9,20.16,3.81,A,GAMMAY,2023\n48.82,26.29,4.43,C,BETAX,2023\n49.38,41.75,0.57,A,DELTAY,2024\n55.97,18.07,1.91,A,ALPHAX,2024\n44.92,26.76,0.73,C,ALPHAY,2021\n60.75,44.71,0.59,A,DELTAX,2021\n72.59,48.3,2.74,C,ALPHAZ,2023\n61.67,38.07,2.31,A,BETAZ,2022\n66.44,42.52,4.06,B,ALPHAZ,2025\n66.35,36.97,3.82,B,ALPHAY,2021\n72.57,30.84,0.67,B,ALPHAX,2023\n52.89,32.63,3.08,B,BETAX,2021\n17.61,12.12,4.21,A,BETAY,2023\n18.34,16.56,4.22,A,BETAZ,2025\n66.47,32.08,2.78,A,GAMMAY,2023\n41.29,33.6,0.67,B,BETAY,2022\n77.78,47.53,2.66,C,BETAY,2023\n50.37,25.54,3.67,C,DELTAX,2022\n60.92,31.13,1.84,A,BETAX,2022\n45.05,26.89,3.17,C,DELTAX,2024\n48.44,17.01,0.9,A,ALPHAY,2024\n79.36,37.81,1.42,B,GAMMAZ,2022\n59.28,31.21,4.31,C,GAMMAX,2023\n61.58,32.69,2.27,B,GAMMAX,2022\n64.35,33.3,0.61,B,DELTAY,2021\n69.32,45.52,3.25,B,ALPHAZ,2024\n38.8,18.97,3.7,C,BETAX,2025\n57.49,22.45,0.62,A,ALPHAZ,2021\n",
+      "data_dictionary.csv": "file,column,description,unit\nfacts.csv,x,\"Primary measurement\",unit\nfacts.csv,y,\"Secondary measurement\",unit\nfacts.csv,w,\"Observation weight\",unitless\nfacts.csv,grp,\"Segment label\",\nfacts.csv,label,\"Record label\",\nfacts.csv,year,\"Observation year\",year\n"
+    },
+    "answer": 11.0,
+    "tol": 1e-06,
+    "type": "table.holdout_string_suffix"
+  },
+  {
+    "id": "h2_104",
+    "objective": "Compute the sum of the primary measurement divided by the sum of the secondary measurement over all records in facts.csv. Round to 3 decimals.",
+    "files": {
+      "facts.csv": "x,y,w,grp,label,year\n70.9,20.16,3.81,A,GAMMAY,2023\n48.82,26.29,4.43,C,BETAX,2023\n49.38,41.75,0.57,A,DELTAY,2024\n55.97,18.07,1.91,A,ALPHAX,2024\n44.92,26.76,0.73,C,ALPHAY,2021\n60.75,44.71,0.59,A,DELTAX,2021\n72.59,48.3,2.74,C,ALPHAZ,2023\n61.67,38.07,2.31,A,BETAZ,2022\n66.44,42.52,4.06,B,ALPHAZ,2025\n66.35,36.97,3.82,B,ALPHAY,2021\n72.57,30.84,0.67,B,ALPHAX,2023\n52.89,32.63,3.08,B,BETAX,2021\n17.61,12.12,4.21,A,BETAY,2023\n18.34,16.56,4.22,A,BETAZ,2025\n66.47,32.08,2.78,A,GAMMAY,2023\n41.29,33.6,0.67,B,BETAY,2022\n77.78,47.53,2.66,C,BETAY,2023\n50.37,25.54,3.67,C,DELTAX,2022\n60.92,31.13,1.84,A,BETAX,2022\n45.05,26.89,3.17,C,DELTAX,2024\n48.44,17.01,0.9,A,ALPHAY,2024\n79.36,37.81,1.42,B,GAMMAZ,2022\n59.28,31.21,4.31,C,GAMMAX,2023\n61.58,32.69,2.27,B,GAMMAX,2022\n64.35,33.3,0.61,B,DELTAY,2021\n69.32,45.52,3.25,B,ALPHAZ,2024\n38.8,18.97,3.7,C,BETAX,2025\n57.49,22.45,0.62,A,ALPHAZ,2021\n",
+      "data_dictionary.csv": "file,column,description,unit\nfacts.csv,x,\"Primary measurement\",unit\nfacts.csv,y,\"Secondary measurement\",unit\nfacts.csv,w,\"Observation weight\",unitless\nfacts.csv,grp,\"Segment label\",\nfacts.csv,label,\"Record label\",\nfacts.csv,year,\"Observation year\",year\n"
+    },
+    "answer": 1.8126635149401014,
+    "tol": 0.0015,
+    "type": "table.holdout_ratio_sums"
+  },
+  {
+    "id": "h2_105",
+    "objective": "Among records whose segment label is 'A', compute the Pearson correlation between the primary measurement and the secondary measurement. Round to 3 decimals.",
+    "files": {
+      "facts.csv": "x,y,w,grp,label,year\n70.9,20.16,3.81,A,GAMMAY,2023\n48.82,26.29,4.43,C,BETAX,2023\n49.38,41.75,0.57,A,DELTAY,2024\n55.97,18.07,1.91,A,ALPHAX,2024\n44.92,26.76,0.73,C,ALPHAY,2021\n60.75,44.71,0.59,A,DELTAX,2021\n72.59,48.3,2.74,C,ALPHAZ,2023\n61.67,38.07,2.31,A,BETAZ,2022\n66.44,42.52,4.06,B,ALPHAZ,2025\n66.35,36.97,3.82,B,ALPHAY,2021\n72.57,30.84,0.67,B,ALPHAX,2023\n52.89,32.63,3.08,B,BETAX,2021\n17.61,12.12,4.21,A,BETAY,2023\n18.34,16.56,4.22,A,BETAZ,2025\n66.47,32.08,2.78,A,GAMMAY,2023\n41.29,33.6,0.67,B,BETAY,2022\n77.78,47.53,2.66,C,BETAY,2023\n50.37,25.54,3.67,C,DELTAX,2022\n60.92,31.13,1.84,A,BETAX,2022\n45.05,26.89,3.17,C,DELTAX,2024\n48.44,17.01,0.9,A,ALPHAY,2024\n79.36,37.81,1.42,B,GAMMAZ,2022\n59.28,31.21,4.31,C,GAMMAX,2023\n61.58,32.69,2.27,B,GAMMAX,2022\n64.35,33.3,0.61,B,DELTAY,2021\n69.32,45.52,3.25,B,ALPHAZ,2024\n38.8,18.97,3.7,C,BETAX,2025\n57.49,22.45,0.62,A,ALPHAZ,2021\n",
+      "data_dictionary.csv": "file,column,description,unit\nfacts.csv,x,\"Primary measurement\",unit\nfacts.csv,y,\"Secondary measurement\",unit\nfacts.csv,w,\"Observation weight\",unitless\nfacts.csv,grp,\"Segment label\",\nfacts.csv,label,\"Record label\",\nfacts.csv,year,\"Observation year\",year\n"
+    },
+    "answer": 0.5163671491372492,
+    "tol": 0.0015,
+    "type": "table.holdout_filtered_corr"
+  },
+  {
+    "id": "h2_106",
+    "objective": "For each observation year in facts.csv, compute the median primary measurement. Which year has the largest median? Return the year as an integer.",
+    "files": {
+      "facts.csv": "x,y,w,grp,label,year\n70.9,20.16,3.81,A,GAMMAY,2023\n48.82,26.29,4.43,C,BETAX,2023\n49.38,41.75,0.57,A,DELTAY,2024\n55.97,18.07,1.91,A,ALPHAX,2024\n44.92,26.76,0.73,C,ALPHAY,2021\n60.75,44.71,0.59,A,DELTAX,2021\n72.59,48.3,2.74,C,ALPHAZ,2023\n61.67,38.07,2.31,A,BETAZ,2022\n66.44,42.52,4.06,B,ALPHAZ,2025\n66.35,36.97,3.82,B,ALPHAY,2021\n72.57,30.84,0.67,B,ALPHAX,2023\n52.89,32.63,3.08,B,BETAX,2021\n17.61,12.12,4.21,A,BETAY,2023\n18.34,16.56,4.22,A,BETAZ,2025\n66.47,32.08,2.78,A,GAMMAY,2023\n41.29,33.6,0.67,B,BETAY,2022\n77.78,47.53,2.66,C,BETAY,2023\n50.37,25.54,3.67,C,DELTAX,2022\n60.92,31.13,1.84,A,BETAX,2022\n45.05,26.89,3.17,C,DELTAX,2024\n48.44,17.01,0.9,A,ALPHAY,2024\n79.36,37.81,1.42,B,GAMMAZ,2022\n59.28,31.21,4.31,C,GAMMAX,2023\n61.58,32.69,2.27,B,GAMMAX,2022\n64.35,33.3,0.61,B,DELTAY,2021\n69.32,45.52,3.25,B,ALPHAZ,2024\n38.8,18.97,3.7,C,BETAX,2025\n57.49,22.45,0.62,A,ALPHAZ,2021\n",
+      "data_dictionary.csv": "file,column,description,unit\nfacts.csv,x,\"Primary measurement\",unit\nfacts.csv,y,\"Secondary measurement\",unit\nfacts.csv,w,\"Observation weight\",unitless\nfacts.csv,grp,\"Segment label\",\nfacts.csv,label,\"Record label\",\nfacts.csv,year,\"Observation year\",year\n"
+    },
+    "answer": 2023.0,
+    "tol": 1e-06,
+    "type": "table.holdout_year_max_median"
+  },
+  {
+    "id": "h2_107",
+    "objective": "Join events.csv to entities.csv using the entity identifier. How many event rows belong to entities whose entity segment is 'North'? Give a whole number.",
+    "files": {
+      "events.csv": "eid,entity,value\n1,E10,12.68\n2,E00,25.65\n3,E03,29.66\n4,E06,30.52\n5,E05,21.44\n6,E04,27.86\n7,E11,15.76\n8,E07,35.5\n9,E08,26.88\n10,E11,26.85\n11,E05,29.52\n12,E01,30.23\n13,E08,30.17\n14,E00,7.96\n15,E04,19.19\n16,E00,15.57\n17,E02,36.65\n18,E03,34.29\n19,E02,24.96\n20,E09,21.3\n21,E03,29.74\n22,E01,19.24\n23,E09,30.72\n24,E00,9.96\n25,E03,28.92\n26,E07,29.24\n27,E01,36.46\n28,E04,30.91\n29,E02,19.77\n30,E08,16.73\n31,E07,29.36\n32,E00,18.32\n33,E06,19.93\n34,E00,4.79\n35,E09,16.01\n36,E07,33.34\n",
+      "entities.csv": "entity,segment,weight\nE00,North,1.56\nE01,North,3.81\nE02,South,2.06\nE03,South,1.25\nE04,North,2.31\nE05,South,2.48\nE06,North,1.0\nE07,South,2.25\nE08,North,3.15\nE09,South,1.86\nE10,North,2.4\nE11,South,0.62\n",
+      "data_dictionary.csv": "file,column,description,unit\nevents.csv,eid,\"Event identifier\",\nevents.csv,entity,\"Entity identifier\",\nevents.csv,value,\"Event value\",unit\nentities.csv,entity,\"Entity identifier\",\nentities.csv,segment,\"Entity segment\",\nentities.csv,weight,\"Entity weight\",unitless\n"
+    },
+    "answer": 18.0,
+    "tol": 1e-06,
+    "type": "table.holdout_join_count"
+  },
+  {
+    "id": "h2_108",
+    "objective": "Join events.csv to entities.csv using the entity identifier. For event rows belonging to entities whose entity segment is 'South', compute the weighted mean of event value using entity weight as the weight. Round to 2 decimals.",
+    "files": {
+      "events.csv": "eid,entity,value\n1,E10,12.68\n2,E00,25.65\n3,E03,29.66\n4,E06,30.52\n5,E05,21.44\n6,E04,27.86\n7,E11,15.76\n8,E07,35.5\n9,E08,26.88\n10,E11,26.85\n11,E05,29.52\n12,E01,30.23\n13,E08,30.17\n14,E00,7.96\n15,E04,19.19\n16,E00,15.57\n17,E02,36.65\n18,E03,34.29\n19,E02,24.96\n20,E09,21.3\n21,E03,29.74\n22,E01,19.24\n23,E09,30.72\n24,E00,9.96\n25,E03,28.92\n26,E07,29.24\n27,E01,36.46\n28,E04,30.91\n29,E02,19.77\n30,E08,16.73\n31,E07,29.36\n32,E00,18.32\n33,E06,19.93\n34,E00,4.79\n35,E09,16.01\n36,E07,33.34\n",
+      "entities.csv": "entity,segment,weight\nE00,North,1.56\nE01,North,3.81\nE02,South,2.06\nE03,South,1.25\nE04,North,2.31\nE05,South,2.48\nE06,North,1.0\nE07,South,2.25\nE08,North,3.15\nE09,South,1.86\nE10,North,2.4\nE11,South,0.62\n",
+      "data_dictionary.csv": "file,column,description,unit\nevents.csv,eid,\"Event identifier\",\nevents.csv,entity,\"Entity identifier\",\nevents.csv,value,\"Event value\",unit\nentities.csv,entity,\"Entity identifier\",\nentities.csv,segment,\"Entity segment\",\nentities.csv,weight,\"Entity weight\",unitless\n"
+    },
+    "answer": 27.75281914893617,
+    "tol": 0.015,
+    "type": "table.holdout_join_weighted_mean"
+  },
+  {
+    "id": "h2_109",
+    "objective": "Using facts.csv, compute the 10% trimmed mean of the primary measurement: sort the non-missing values, remove floor(10% of n) observations from each tail, then take the mean. Round to 2 decimals.",
+    "files": {
+      "facts.csv": "x,y,w,grp,label,year\n48.94,24.2,1.58,B,GAMMAZ,2022\n39.66,19.3,4.63,C,DELTAX,2024\n63.94,33.77,2.12,B,GAMMAY,2022\n57.51,19.07,3.66,A,ALPHAY,2021\n53.03,26.53,2.59,C,ALPHAX,2021\n78.17,44.35,3.36,C,BETAZ,2021\n35.86,25.06,2.04,C,BETAX,2022\n58.06,32.97,0.9,A,GAMMAY,2021\n63.7,40.7,4.19,C,DELTAX,2021\n35.04,25.48,0.78,B,BETAZ,2022\n61.7,40.32,2.71,C,ALPHAZ,2024\n48.77,34.29,2.13,B,BETAX,2022\n20.47,12.19,2.0,C,ALPHAY,2025\n37.39,17.78,3.91,B,ALPHAY,2023\n56.55,43.98,2.46,C,ALPHAY,2024\n46.84,26.29,2.28,A,GAMMAZ,2021\n62.75,23.26,4.98,C,ALPHAZ,2023\n42.47,16.15,0.63,C,ALPHAX,2025\n49.89,22.21,1.69,B,GAMMAZ,2023\n64.3,29.26,1.17,A,ALPHAX,2021\n35.64,22.64,1.55,C,DELTAY,2025\n51.19,33.77,1.07,C,GAMMAZ,2022\n38.98,37.33,2.15,C,BETAY,2024\n39.97,25.09,2.63,B,GAMMAX,2024\n67.54,28.36,3.48,B,GAMMAZ,2023\n31.91,36.89,3.21,C,ALPHAX,2024\n53.39,24.89,2.48,B,DELTAY,2021\n43.96,30.64,1.88,A,ALPHAX,2024\n",
+      "data_dictionary.csv": "file,column,description,unit\nfacts.csv,x,\"Primary measurement\",unit\nfacts.csv,y,\"Secondary measurement\",unit\nfacts.csv,w,\"Observation weight\",unitless\nfacts.csv,grp,\"Segment label\",\nfacts.csv,label,\"Record label\",\nfacts.csv,year,\"Observation year\",year\n"
+    },
+    "answer": 49.56375,
+    "tol": 0.015,
+    "type": "table.holdout_trimmed_mean"
+  },
+  {
+    "id": "h2_110",
+    "objective": "What is the sample coefficient of variation of the primary measurement in facts.csv, defined as 100 times the sample standard deviation (ddof=1) divided by the mean? Round to 2 decimals.",
+    "files": {
+      "facts.csv": "x,y,w,grp,label,year\n48.94,24.2,1.58,B,GAMMAZ,2022\n39.66,19.3,4.63,C,DELTAX,2024\n63.94,33.77,2.12,B,GAMMAY,2022\n57.51,19.07,3.66,A,ALPHAY,2021\n53.03,26.53,2.59,C,ALPHAX,2021\n78.17,44.35,3.36,C,BETAZ,2021\n35.86,25.06,2.04,C,BETAX,2022\n58.06,32.97,0.9,A,GAMMAY,2021\n63.7,40.7,4.19,C,DELTAX,2021\n35.04,25.48,0.78,B,BETAZ,2022\n61.7,40.32,2.71,C,ALPHAZ,2024\n48.77,34.29,2.13,B,BETAX,2022\n20.47,12.19,2.0,C,ALPHAY,2025\n37.39,17.78,3.91,B,ALPHAY,2023\n56.55,43.98,2.46,C,ALPHAY,2024\n46.84,26.29,2.28,A,GAMMAZ,2021\n62.75,23.26,4.98,C,ALPHAZ,2023\n42.47,16.15,0.63,C,ALPHAX,2025\n49.89,22.21,1.69,B,GAMMAZ,2023\n64.3,29.26,1.17,A,ALPHAX,2021\n35.64,22.64,1.55,C,DELTAY,2025\n51.19,33.77,1.07,C,GAMMAZ,2022\n38.98,37.33,2.15,C,BETAY,2024\n39.97,25.09,2.63,B,GAMMAX,2024\n67.54,28.36,3.48,B,GAMMAZ,2023\n31.91,36.89,3.21,C,ALPHAX,2024\n53.39,24.89,2.48,B,DELTAY,2021\n43.96,30.64,1.88,A,ALPHAX,2024\n",
+      "data_dictionary.csv": "file,column,description,unit\nfacts.csv,x,\"Primary measurement\",unit\nfacts.csv,y,\"Secondary measurement\",unit\nfacts.csv,w,\"Observation weight\",unitless\nfacts.csv,grp,\"Segment label\",\nfacts.csv,label,\"Record label\",\nfacts.csv,year,\"Observation year\",year\n"
+    },
+    "answer": 26.312451365419864,
+    "tol": 0.015,
+    "type": "table.holdout_coef_variation"
+  },
+  {
+    "id": "h2_111",
+    "objective": "What is the 90th percentile of the primary measurement in facts.csv using linear interpolation? Round to 2 decimals.",
+    "files": {
+      "facts.csv": "x,y,w,grp,label,year\n48.94,24.2,1.58,B,GAMMAZ,2022\n39.66,19.3,4.63,C,DELTAX,2024\n63.94,33.77,2.12,B,GAMMAY,2022\n57.51,19.07,3.66,A,ALPHAY,2021\n53.03,26.53,2.59,C,ALPHAX,2021\n78.17,44.35,3.36,C,BETAZ,2021\n35.86,25.06,2.04,C,BETAX,2022\n58.06,32.97,0.9,A,GAMMAY,2021\n63.7,40.7,4.19,C,DELTAX,2021\n35.04,25.48,0.78,B,BETAZ,2022\n61.7,40.32,2.71,C,ALPHAZ,2024\n48.77,34.29,2.13,B,BETAX,2022\n20.47,12.19,2.0,C,ALPHAY,2025\n37.39,17.78,3.91,B,ALPHAY,2023\n56.55,43.98,2.46,C,ALPHAY,2024\n46.84,26.29,2.28,A,GAMMAZ,2021\n62.75,23.26,4.98,C,ALPHAZ,2023\n42.47,16.15,0.63,C,ALPHAX,2025\n49.89,22.21,1.69,B,GAMMAZ,2023\n64.3,29.26,1.17,A,ALPHAX,2021\n35.64,22.64,1.55,C,DELTAY,2025\n51.19,33.77,1.07,C,GAMMAZ,2022\n38.98,37.33,2.15,C,BETAY,2024\n39.97,25.09,2.63,B,GAMMAX,2024\n67.54,28.36,3.48,B,GAMMAZ,2023\n31.91,36.89,3.21,C,ALPHAX,2024\n53.39,24.89,2.48,B,DELTAY,2021\n43.96,30.64,1.88,A,ALPHAX,2024\n",
+      "data_dictionary.csv": "file,column,description,unit\nfacts.csv,x,\"Primary measurement\",unit\nfacts.csv,y,\"Secondary measurement\",unit\nfacts.csv,w,\"Observation weight\",unitless\nfacts.csv,grp,\"Segment label\",\nfacts.csv,label,\"Record label\",\nfacts.csv,year,\"Observation year\",year\n"
+    },
+    "answer": 64.048,
+    "tol": 0.015,
+    "type": "table.holdout_p90"
+  },
+  {
+    "id": "h2_112",
+    "objective": "What percentage of records in facts.csv have primary measurement strictly greater than 49.41? Round to 2 decimals.",
+    "files": {
+      "facts.csv": "x,y,w,grp,label,year\n48.94,24.2,1.58,B,GAMMAZ,2022\n39.66,19.3,4.63,C,DELTAX,2024\n63.94,33.77,2.12,B,GAMMAY,2022\n57.51,19.07,3.66,A,ALPHAY,2021\n53.03,26.53,2.59,C,ALPHAX,2021\n78.17,44.35,3.36,C,BETAZ,2021\n35.86,25.06,2.04,C,BETAX,2022\n58.06,32.97,0.9,A,GAMMAY,2021\n63.7,40.7,4.19,C,DELTAX,2021\n35.04,25.48,0.78,B,BETAZ,2022\n61.7,40.32,2.71,C,ALPHAZ,2024\n48.77,34.29,2.13,B,BETAX,2022\n20.47,12.19,2.0,C,ALPHAY,2025\n37.39,17.78,3.91,B,ALPHAY,2023\n56.55,43.98,2.46,C,ALPHAY,2024\n46.84,26.29,2.28,A,GAMMAZ,2021\n62.75,23.26,4.98,C,ALPHAZ,2023\n42.47,16.15,0.63,C,ALPHAX,2025\n49.89,22.21,1.69,B,GAMMAZ,2023\n64.3,29.26,1.17,A,ALPHAX,2021\n35.64,22.64,1.55,C,DELTAY,2025\n51.19,33.77,1.07,C,GAMMAZ,2022\n38.98,37.33,2.15,C,BETAY,2024\n39.97,25.09,2.63,B,GAMMAX,2024\n67.54,28.36,3.48,B,GAMMAZ,2023\n31.91,36.89,3.21,C,ALPHAX,2024\n53.39,24.89,2.48,B,DELTAY,2021\n43.96,30.64,1.88,A,ALPHAX,2024\n",
+      "data_dictionary.csv": "file,column,description,unit\nfacts.csv,x,\"Primary measurement\",unit\nfacts.csv,y,\"Secondary measurement\",unit\nfacts.csv,w,\"Observation weight\",unitless\nfacts.csv,grp,\"Segment label\",\nfacts.csv,label,\"Record label\",\nfacts.csv,year,\"Observation year\",year\n"
+    },
+    "answer": 50.0,
+    "tol": 0.015,
+    "type": "table.holdout_prop_above"
+  },
+  {
+    "id": "h2_113",
+    "objective": "Compute the median absolute deviation of the primary measurement in facts.csv, defined as median(|x - median(x)|), without any scaling constant. Round to 2 decimals.",
+    "files": {
+      "facts.csv": "x,y,w,grp,label,year\n48.94,24.2,1.58,B,GAMMAZ,2022\n39.66,19.3,4.63,C,DELTAX,2024\n63.94,33.77,2.12,B,GAMMAY,2022\n57.51,19.07,3.66,A,ALPHAY,2021\n53.03,26.53,2.59,C,ALPHAX,2021\n78.17,44.35,3.36,C,BETAZ,2021\n35.86,25.06,2.04,C,BETAX,2022\n58.06,32.97,0.9,A,GAMMAY,2021\n63.7,40.7,4.19,C,DELTAX,2021\n35.04,25.48,0.78,B,BETAZ,2022\n61.7,40.32,2.71,C,ALPHAZ,2024\n48.77,34.29,2.13,B,BETAX,2022\n20.47,12.19,2.0,C,ALPHAY,2025\n37.39,17.78,3.91,B,ALPHAY,2023\n56.55,43.98,2.46,C,ALPHAY,2024\n46.84,26.29,2.28,A,GAMMAZ,2021\n62.75,23.26,4.98,C,ALPHAZ,2023\n42.47,16.15,0.63,C,ALPHAX,2025\n49.89,22.21,1.69,B,GAMMAZ,2023\n64.3,29.26,1.17,A,ALPHAX,2021\n35.64,22.64,1.55,C,DELTAY,2025\n51.19,33.77,1.07,C,GAMMAZ,2022\n38.98,37.33,2.15,C,BETAY,2024\n39.97,25.09,2.63,B,GAMMAX,2024\n67.54,28.36,3.48,B,GAMMAZ,2023\n31.91,36.89,3.21,C,ALPHAX,2024\n53.39,24.89,2.48,B,DELTAY,2021\n43.96,30.64,1.88,A,ALPHAX,2024\n",
+      "data_dictionary.csv": "file,column,description,unit\nfacts.csv,x,\"Primary measurement\",unit\nfacts.csv,y,\"Secondary measurement\",unit\nfacts.csv,w,\"Observation weight\",unitless\nfacts.csv,grp,\"Segment label\",\nfacts.csv,label,\"Record label\",\nfacts.csv,year,\"Observation year\",year\n"
+    },
+    "answer": 10.095000000000002,
+    "tol": 0.015,
+    "type": "table.holdout_mad"
+  },
+  {
+    "id": "h2_114",
+    "objective": "What is the median primary measurement for segment 'A' minus the median primary measurement for segment 'B' in facts.csv? Round to 2 decimals.",
+    "files": {
+      "facts.csv": "x,y,w,grp,label,year\n48.94,24.2,1.58,B,GAMMAZ,2022\n39.66,19.3,4.63,C,DELTAX,2024\n63.94,33.77,2.12,B,GAMMAY,2022\n57.51,19.07,3.66,A,ALPHAY,2021\n53.03,26.53,2.59,C,ALPHAX,2021\n78.17,44.35,3.36,C,BETAZ,2021\n35.86,25.06,2.04,C,BETAX,2022\n58.06,32.97,0.9,A,GAMMAY,2021\n63.7,40.7,4.19,C,DELTAX,2021\n35.04,25.48,0.78,B,BETAZ,2022\n61.7,40.32,2.71,C,ALPHAZ,2024\n48.77,34.29,2.13,B,BETAX,2022\n20.47,12.19,2.0,C,ALPHAY,2025\n37.39,17.78,3.91,B,ALPHAY,2023\n56.55,43.98,2.46,C,ALPHAY,2024\n46.84,26.29,2.28,A,GAMMAZ,2021\n62.75,23.26,4.98,C,ALPHAZ,2023\n42.47,16.15,0.63,C,ALPHAX,2025\n49.89,22.21,1.69,B,GAMMAZ,2023\n64.3,29.26,1.17,A,ALPHAX,2021\n35.64,22.64,1.55,C,DELTAY,2025\n51.19,33.77,1.07,C,GAMMAZ,2022\n38.98,37.33,2.15,C,BETAY,2024\n39.97,25.09,2.63,B,GAMMAX,2024\n67.54,28.36,3.48,B,GAMMAZ,2023\n31.91,36.89,3.21,C,ALPHAX,2024\n53.39,24.89,2.48,B,DELTAY,2021\n43.96,30.64,1.88,A,ALPHAX,2024\n",
+      "data_dictionary.csv": "file,column,description,unit\nfacts.csv,x,\"Primary measurement\",unit\nfacts.csv,y,\"Secondary measurement\",unit\nfacts.csv,w,\"Observation weight\",unitless\nfacts.csv,grp,\"Segment label\",\nfacts.csv,label,\"Record label\",\nfacts.csv,year,\"Observation year\",year\n"
+    },
+    "answer": 8.57,
+    "tol": 0.015,
+    "type": "table.holdout_group_median_diff"
+  },
+  {
+    "id": "h2_115",
+    "objective": "How many records in facts.csv have a record label that ends with 'X'? Give a whole number.",
+    "files": {
+      "facts.csv": "x,y,w,grp,label,year\n48.94,24.2,1.58,B,GAMMAZ,2022\n39.66,19.3,4.63,C,DELTAX,2024\n63.94,33.77,2.12,B,GAMMAY,2022\n57.51,19.07,3.66,A,ALPHAY,2021\n53.03,26.53,2.59,C,ALPHAX,2021\n78.17,44.35,3.36,C,BETAZ,2021\n35.86,25.06,2.04,C,BETAX,2022\n58.06,32.97,0.9,A,GAMMAY,2021\n63.7,40.7,4.19,C,DELTAX,2021\n35.04,25.48,0.78,B,BETAZ,2022\n61.7,40.32,2.71,C,ALPHAZ,2024\n48.77,34.29,2.13,B,BETAX,2022\n20.47,12.19,2.0,C,ALPHAY,2025\n37.39,17.78,3.91,B,ALPHAY,2023\n56.55,43.98,2.46,C,ALPHAY,2024\n46.84,26.29,2.28,A,GAMMAZ,2021\n62.75,23.26,4.98,C,ALPHAZ,2023\n42.47,16.15,0.63,C,ALPHAX,2025\n49.89,22.21,1.69,B,GAMMAZ,2023\n64.3,29.26,1.17,A,ALPHAX,2021\n35.64,22.64,1.55,C,DELTAY,2025\n51.19,33.77,1.07,C,GAMMAZ,2022\n38.98,37.33,2.15,C,BETAY,2024\n39.97,25.09,2.63,B,GAMMAX,2024\n67.54,28.36,3.48,B,GAMMAZ,2023\n31.91,36.89,3.21,C,ALPHAX,2024\n53.39,24.89,2.48,B,DELTAY,2021\n43.96,30.64,1.88,A,ALPHAX,2024\n",
+      "data_dictionary.csv": "file,column,description,unit\nfacts.csv,x,\"Primary measurement\",unit\nfacts.csv,y,\"Secondary measurement\",unit\nfacts.csv,w,\"Observation weight\",unitless\nfacts.csv,grp,\"Segment label\",\nfacts.csv,label,\"Record label\",\nfacts.csv,year,\"Observation year\",year\n"
+    },
+    "answer": 10.0,
+    "tol": 1e-06,
+    "type": "table.holdout_string_suffix"
+  },
+  {
+    "id": "h2_116",
+    "objective": "Compute the sum of the primary measurement divided by the sum of the secondary measurement over all records in facts.csv. Round to 3 decimals.",
+    "files": {
+      "facts.csv": "x,y,w,grp,label,year\n48.94,24.2,1.58,B,GAMMAZ,2022\n39.66,19.3,4.63,C,DELTAX,2024\n63.94,33.77,2.12,B,GAMMAY,2022\n57.51,19.07,3.66,A,ALPHAY,2021\n53.03,26.53,2.59,C,ALPHAX,2021\n78.17,44.35,3.36,C,BETAZ,2021\n35.86,25.06,2.04,C,BETAX,2022\n58.06,32.97,0.9,A,GAMMAY,2021\n63.7,40.7,4.19,C,DELTAX,2021\n35.04,25.48,0.78,B,BETAZ,2022\n61.7,40.32,2.71,C,ALPHAZ,2024\n48.77,34.29,2.13,B,BETAX,2022\n20.47,12.19,2.0,C,ALPHAY,2025\n37.39,17.78,3.91,B,ALPHAY,2023\n56.55,43.98,2.46,C,ALPHAY,2024\n46.84,26.29,2.28,A,GAMMAZ,2021\n62.75,23.26,4.98,C,ALPHAZ,2023\n42.47,16.15,0.63,C,ALPHAX,2025\n49.89,22.21,1.69,B,GAMMAZ,2023\n64.3,29.26,1.17,A,ALPHAX,2021\n35.64,22.64,1.55,C,DELTAY,2025\n51.19,33.77,1.07,C,GAMMAZ,2022\n38.98,37.33,2.15,C,BETAY,2024\n39.97,25.09,2.63,B,GAMMAX,2024\n67.54,28.36,3.48,B,GAMMAZ,2023\n31.91,36.89,3.21,C,ALPHAX,2024\n53.39,24.89,2.48,B,DELTAY,2021\n43.96,30.64,1.88,A,ALPHAX,2024\n",
+      "data_dictionary.csv": "file,column,description,unit\nfacts.csv,x,\"Primary measurement\",unit\nfacts.csv,y,\"Secondary measurement\",unit\nfacts.csv,w,\"Observation weight\",unitless\nfacts.csv,grp,\"Segment label\",\nfacts.csv,label,\"Record label\",\nfacts.csv,year,\"Observation year\",year\n"
+    },
+    "answer": 1.7415565345080766,
+    "tol": 0.0015,
+    "type": "table.holdout_ratio_sums"
+  },
+  {
+    "id": "h2_117",
+    "objective": "Among records whose segment label is 'A', compute the Pearson correlation between the primary measurement and the secondary measurement. Round to 3 decimals.",
+    "files": {
+      "facts.csv": "x,y,w,grp,label,year\n48.94,24.2,1.58,B,GAMMAZ,2022\n39.66,19.3,4.63,C,DELTAX,2024\n63.94,33.77,2.12,B,GAMMAY,2022\n57.51,19.07,3.66,A,ALPHAY,2021\n53.03,26.53,2.59,C,ALPHAX,2021\n78.17,44.35,3.36,C,BETAZ,2021\n35.86,25.06,2.04,C,BETAX,2022\n58.06,32.97,0.9,A,GAMMAY,2021\n63.7,40.7,4.19,C,DELTAX,2021\n35.04,25.48,0.78,B,BETAZ,2022\n61.7,40.32,2.71,C,ALPHAZ,2024\n48.77,34.29,2.13,B,BETAX,2022\n20.47,12.19,2.0,C,ALPHAY,2025\n37.39,17.78,3.91,B,ALPHAY,2023\n56.55,43.98,2.46,C,ALPHAY,2024\n46.84,26.29,2.28,A,GAMMAZ,2021\n62.75,23.26,4.98,C,ALPHAZ,2023\n42.47,16.15,0.63,C,ALPHAX,2025\n49.89,22.21,1.69,B,GAMMAZ,2023\n64.3,29.26,1.17,A,ALPHAX,2021\n35.64,22.64,1.55,C,DELTAY,2025\n51.19,33.77,1.07,C,GAMMAZ,2022\n38.98,37.33,2.15,C,BETAY,2024\n39.97,25.09,2.63,B,GAMMAX,2024\n67.54,28.36,3.48,B,GAMMAZ,2023\n31.91,36.89,3.21,C,ALPHAX,2024\n53.39,24.89,2.48,B,DELTAY,2021\n43.96,30.64,1.88,A,ALPHAX,2024\n",
+      "data_dictionary.csv": "file,column,description,unit\nfacts.csv,x,\"Primary measurement\",unit\nfacts.csv,y,\"Secondary measurement\",unit\nfacts.csv,w,\"Observation weight\",unitless\nfacts.csv,grp,\"Segment label\",\nfacts.csv,label,\"Record label\",\nfacts.csv,year,\"Observation year\",year\n"
+    },
+    "answer": -0.06715223393832864,
+    "tol": 0.0015,
+    "type": "table.holdout_filtered_corr"
+  },
+  {
+    "id": "h2_118",
+    "objective": "For each observation year in facts.csv, compute the median primary measurement. Which year has the largest median? Return the year as an integer.",
+    "files": {
+      "facts.csv": "x,y,w,grp,label,year\n48.94,24.2,1.58,B,GAMMAZ,2022\n39.66,19.3,4.63,C,DELTAX,2024\n63.94,33.77,2.12,B,GAMMAY,2022\n57.51,19.07,3.66,A,ALPHAY,2021\n53.03,26.53,2.59,C,ALPHAX,2021\n78.17,44.35,3.36,C,BETAZ,2021\n35.86,25.06,2.04,C,BETAX,2022\n58.06,32.97,0.9,A,GAMMAY,2021\n63.7,40.7,4.19,C,DELTAX,2021\n35.04,25.48,0.78,B,BETAZ,2022\n61.7,40.32,2.71,C,ALPHAZ,2024\n48.77,34.29,2.13,B,BETAX,2022\n20.47,12.19,2.0,C,ALPHAY,2025\n37.39,17.78,3.91,B,ALPHAY,2023\n56.55,43.98,2.46,C,ALPHAY,2024\n46.84,26.29,2.28,A,GAMMAZ,2021\n62.75,23.26,4.98,C,ALPHAZ,2023\n42.47,16.15,0.63,C,ALPHAX,2025\n49.89,22.21,1.69,B,GAMMAZ,2023\n64.3,29.26,1.17,A,ALPHAX,2021\n35.64,22.64,1.55,C,DELTAY,2025\n51.19,33.77,1.07,C,GAMMAZ,2022\n38.98,37.33,2.15,C,BETAY,2024\n39.97,25.09,2.63,B,GAMMAX,2024\n67.54,28.36,3.48,B,GAMMAZ,2023\n31.91,36.89,3.21,C,ALPHAX,2024\n53.39,24.89,2.48,B,DELTAY,2021\n43.96,30.64,1.88,A,ALPHAX,2024\n",
+      "data_dictionary.csv": "file,column,description,unit\nfacts.csv,x,\"Primary measurement\",unit\nfacts.csv,y,\"Secondary measurement\",unit\nfacts.csv,w,\"Observation weight\",unitless\nfacts.csv,grp,\"Segment label\",\nfacts.csv,label,\"Record label\",\nfacts.csv,year,\"Observation year\",year\n"
+    },
+    "answer": 2021.0,
+    "tol": 1e-06,
+    "type": "table.holdout_year_max_median"
+  },
+  {
+    "id": "h2_119",
+    "objective": "Join events.csv to entities.csv using the entity identifier. How many event rows belong to entities whose entity segment is 'North'? Give a whole number.",
+    "files": {
+      "events.csv": "eid,entity,value\n1,E05,2.86\n2,E07,23.17\n3,E08,11.33\n4,E01,30.72\n5,E06,9.65\n6,E02,16.64\n7,E07,29.61\n8,E07,17.58\n9,E09,51.65\n10,E02,4.02\n11,E02,18.71\n12,E10,27.18\n13,E05,19.13\n14,E09,26.75\n15,E06,26.2\n16,E03,34.31\n17,E00,30.43\n18,E01,19.83\n19,E04,31.3\n20,E10,16.36\n21,E03,27.4\n22,E06,31.99\n23,E03,42.18\n24,E03,43.4\n25,E07,30.53\n26,E11,21.59\n27,E05,12.63\n28,E00,27.8\n29,E08,18.68\n30,E05,25.73\n31,E06,30.86\n32,E04,23.52\n33,E01,21.92\n34,E07,22.72\n35,E11,38.24\n36,E10,27.38\n",
+      "entities.csv": "entity,segment,weight\nE00,South,1.15\nE01,South,1.69\nE02,South,2.28\nE03,North,0.79\nE04,North,1.92\nE05,South,3.57\nE06,South,1.2\nE07,North,3.94\nE08,South,1.17\nE09,North,2.72\nE10,South,0.92\nE11,North,0.85\n",
+      "data_dictionary.csv": "file,column,description,unit\nevents.csv,eid,\"Event identifier\",\nevents.csv,entity,\"Entity identifier\",\nevents.csv,value,\"Event value\",unit\nentities.csv,entity,\"Entity identifier\",\nentities.csv,segment,\"Entity segment\",\nentities.csv,weight,\"Entity weight\",unitless\n"
+    },
+    "answer": 15.0,
+    "tol": 1e-06,
+    "type": "table.holdout_join_count"
+  },
+  {
+    "id": "h2_120",
+    "objective": "Join events.csv to entities.csv using the entity identifier. For event rows belonging to entities whose entity segment is 'South', compute the weighted mean of event value using entity weight as the weight. Round to 2 decimals.",
+    "files": {
+      "events.csv": "eid,entity,value\n1,E05,2.86\n2,E07,23.17\n3,E08,11.33\n4,E01,30.72\n5,E06,9.65\n6,E02,16.64\n7,E07,29.61\n8,E07,17.58\n9,E09,51.65\n10,E02,4.02\n11,E02,18.71\n12,E10,27.18\n13,E05,19.13\n14,E09,26.75\n15,E06,26.2\n16,E03,34.31\n17,E00,30.43\n18,E01,19.83\n19,E04,31.3\n20,E10,16.36\n21,E03,27.4\n22,E06,31.99\n23,E03,42.18\n24,E03,43.4\n25,E07,30.53\n26,E11,21.59\n27,E05,12.63\n28,E00,27.8\n29,E08,18.68\n30,E05,25.73\n31,E06,30.86\n32,E04,23.52\n33,E01,21.92\n34,E07,22.72\n35,E11,38.24\n36,E10,27.38\n",
+      "entities.csv": "entity,segment,weight\nE00,South,1.15\nE01,South,1.69\nE02,South,2.28\nE03,North,0.79\nE04,North,1.92\nE05,South,3.57\nE06,South,1.2\nE07,North,3.94\nE08,South,1.17\nE09,North,2.72\nE10,South,0.92\nE11,North,0.85\n",
+      "data_dictionary.csv": "file,column,description,unit\nevents.csv,eid,\"Event identifier\",\nevents.csv,entity,\"Entity identifier\",\nevents.csv,value,\"Event value\",unit\nentities.csv,entity,\"Entity identifier\",\nentities.csv,segment,\"Entity segment\",\nentities.csv,weight,\"Entity weight\",unitless\n"
+    },
+    "answer": 18.5842667361292,
+    "tol": 0.015,
+    "type": "table.holdout_join_weighted_mean"
+  }
+]

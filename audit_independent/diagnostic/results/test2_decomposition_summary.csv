@@ -1,0 +1,9 @@
+config,n,accuracy,exec_rate,default1_rate
+S0_stage3_E0,8,0.0,0.8,0.0
+S1_E1_test1_many,8,0.0,0.0,0.0
+S2_E2_alias,8,0.0,0.0,0.0
+S3_reject_zero,8,0.0,0.8,0.0
+S4_default1,8,0.0,0.8,0.0
+S5_reject_zero_default1,8,0.0,0.8,0.0
+S6_test2_batch,8,0.0,0.6,0.0
+S7_test2_batch_alias,8,0.0,0.8,0.0

@@ -1,0 +1,7 @@
+executor,vals,siblings_kept,all_none
+E0_stage3,"[6.0, None, 42.0, 9.0]",True,False
+E1_test1,"[None, None, None, None]",False,True
+E2_alias,"[None, None, None, None]",False,True
+E3_test2,"[None, None, None, None]",False,True
+E4_importlib,"[6.0, None, 42.0, 9.0]",True,False
+E4_faithful,"[None, None, None, None]",False,True

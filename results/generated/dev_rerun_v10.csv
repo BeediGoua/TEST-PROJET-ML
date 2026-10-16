@@ -1,0 +1,2 @@
+agent,n,covered,correct,wrong,coverage,precision_if_covered,selective_risk,deterministic_accuracy,calc_covered,calc_correct,table_covered,table_correct,fit_covered,fit_correct
+v10,180,180,180,0,1.0,1.0,0.0,1.0,65,65,80,80,35,35

@@ -1,0 +1,9 @@
+task_id,n_distinct_answers,sensitive,forward,reverse
+d_001,1,False,780.0,780.0
+d_005,1,False,253.0,253.0
+d_006,1,False,16136.0,16136.0
+d_009,1,False,243090.0,243090.0
+d_011,1,False,119153.0,119153.0
+d_015,1,False,270465.0,270465.0
+d_016,1,False,283878.0,283878.0
+d_021,1,False,175325.0,175325.0

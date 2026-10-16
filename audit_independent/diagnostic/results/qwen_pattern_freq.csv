@@ -1,0 +1,41 @@
+cache,id,type,phase,sample,empty,has_answer,import_pandas_as_pd,any_import,rebind_pd,syntax_ok,truncated_heuristic,syntax_error
+generations_synthetic_smoke.json,d_001,table.filter,greedy,0,False,True,False,False,False,True,False,
+generations_synthetic_smoke.json,d_001,table.filter,samples,0,False,True,True,True,False,True,False,
+generations_synthetic_smoke.json,d_001,table.filter,samples,1,False,True,False,True,False,True,False,
+generations_synthetic_smoke.json,d_001,table.filter,samples,2,False,True,False,False,False,False,False,'(' was never closed (line 1)
+generations_synthetic_smoke.json,d_001,table.filter,samples,3,False,True,False,False,False,True,False,
+generations_synthetic_smoke.json,d_005,table.join,greedy,0,False,True,False,False,False,True,False,
+generations_synthetic_smoke.json,d_005,table.join,samples,0,False,True,True,True,False,True,False,
+generations_synthetic_smoke.json,d_005,table.join,samples,1,False,True,False,True,False,True,False,
+generations_synthetic_smoke.json,d_005,table.join,samples,2,False,True,False,False,False,False,False,'(' was never closed (line 1)
+generations_synthetic_smoke.json,d_005,table.join,samples,3,False,True,False,False,False,True,False,
+generations_synthetic_smoke.json,d_006,table.group,greedy,0,False,True,False,False,False,True,False,
+generations_synthetic_smoke.json,d_006,table.group,samples,0,False,True,True,True,False,True,False,
+generations_synthetic_smoke.json,d_006,table.group,samples,1,False,True,False,True,False,True,False,
+generations_synthetic_smoke.json,d_006,table.group,samples,2,False,True,False,False,False,False,False,'(' was never closed (line 1)
+generations_synthetic_smoke.json,d_006,table.group,samples,3,False,True,False,False,False,True,False,
+generations_synthetic_smoke.json,d_009,table.join,greedy,0,False,True,False,False,False,True,False,
+generations_synthetic_smoke.json,d_009,table.join,samples,0,False,True,True,True,False,True,False,
+generations_synthetic_smoke.json,d_009,table.join,samples,1,False,True,False,True,False,True,False,
+generations_synthetic_smoke.json,d_009,table.join,samples,2,False,True,False,False,False,False,False,'(' was never closed (line 1)
+generations_synthetic_smoke.json,d_009,table.join,samples,3,False,True,False,False,False,True,False,
+generations_synthetic_smoke.json,d_011,table.stat,greedy,0,False,True,False,False,False,True,False,
+generations_synthetic_smoke.json,d_011,table.stat,samples,0,False,True,True,True,False,True,False,
+generations_synthetic_smoke.json,d_011,table.stat,samples,1,False,True,False,True,False,True,False,
+generations_synthetic_smoke.json,d_011,table.stat,samples,2,False,True,False,False,False,False,False,'(' was never closed (line 1)
+generations_synthetic_smoke.json,d_011,table.stat,samples,3,False,True,False,False,False,True,False,
+generations_synthetic_smoke.json,d_015,table.derive,greedy,0,False,True,False,False,False,True,False,
+generations_synthetic_smoke.json,d_015,table.derive,samples,0,False,True,True,True,False,True,False,
+generations_synthetic_smoke.json,d_015,table.derive,samples,1,False,True,False,True,False,True,False,
+generations_synthetic_smoke.json,d_015,table.derive,samples,2,False,True,False,False,False,False,False,'(' was never closed (line 1)
+generations_synthetic_smoke.json,d_015,table.derive,samples,3,False,True,False,False,False,True,False,
+generations_synthetic_smoke.json,d_016,table.filter,greedy,0,False,True,False,False,False,True,False,
+generations_synthetic_smoke.json,d_016,table.filter,samples,0,False,True,True,True,False,True,False,
+generations_synthetic_smoke.json,d_016,table.filter,samples,1,False,True,False,True,False,True,False,
+generations_synthetic_smoke.json,d_016,table.filter,samples,2,False,True,False,False,False,False,False,'(' was never closed (line 1)
+generations_synthetic_smoke.json,d_016,table.filter,samples,3,False,True,False,False,False,True,False,
+generations_synthetic_smoke.json,d_021,table.filter,greedy,0,False,True,False,False,False,True,False,
+generations_synthetic_smoke.json,d_021,table.filter,samples,0,False,True,True,True,False,True,False,
+generations_synthetic_smoke.json,d_021,table.filter,samples,1,False,True,False,True,False,True,False,
+generations_synthetic_smoke.json,d_021,table.filter,samples,2,False,True,False,False,False,False,False,'(' was never closed (line 1)
+generations_synthetic_smoke.json,d_021,table.filter,samples,3,False,True,False,False,False,True,False,

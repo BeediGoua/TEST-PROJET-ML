@@ -1,0 +1,21 @@
+result,value,status,source
+private_stage3_total,92.5/100,MEASURED,ML-Arena result reported for Stage 3
+private_stage3_nofiles,95.6,MEASURED,ML-Arena category display
+private_stage3_tables,88.0,MEASURED,ML-Arena category display
+private_stage3_fits,96.0,MEASURED,ML-Arena category display
+private_stage3_counts,43/45;44/50;24/25,INFERRED,Known private family sizes + displayed rounded percentages
+stage3_dev_deterministic,140/180 covered; 140/140 correct,MEASURED_LOCAL,scripts/run_stage3_audit.py
+naive_dev_deterministic,180/180 correct,MEASURED_LOCAL,scripts/compare_agents.py --agent naive
+naive_explicit_unrelated_pre,26/65 correct; 39 false positives,MEASURED_LOCAL,scripts/run_metamorphic.py --agent naive
+v10_dev_deterministic,180/180 correct,MEASURED_LOCAL,scripts/compare_agents.py --agent v10
+v10_metamorphic,0 false positives on included suite,MEASURED_LOCAL,scripts/run_metamorphic.py --agent v10
+v10_ood1,80/80 correct,MEASURED_LOCAL_DEVELOPMENT,scripts/run_ood.py --agent v10
+v10_ood2,20/120 covered; 20/20 correct; 0 false positives,MEASURED_LOCAL_HOLDOUT,scripts/run_ood.py --agent v10
+v8_ood3,72/80 covered; 64 correct; 8 false positives,MEASURED_LOCAL_FRESH_OOD,historical matrix / scripts/run_ood.py --agent v8
+v9_ood3,72/80 covered; 72/72 correct; 0 false positives,MEASURED_LOCAL_FRESH_OOD,scripts/run_ood.py --agent v9
+v9_ood4,48/64 covered; 8 correct; 40 false positives,MEASURED_LOCAL_REDTEAM,scripts/run_ood.py --agent v9
+v10_ood4,8/64 covered; 8/8 correct; 0 false positives,MEASURED_LOCAL_POST_PATCH,scripts/run_ood.py --agent v10
+v9_ood5,30/48 covered; 0 correct; 30 false positives,MEASURED_LOCAL_BLIND,scripts/run_ood.py --agent v9
+v10_ood5,0/48 covered; 0 false positives,MEASURED_LOCAL_BLIND,scripts/run_ood.py --agent v10
+v10_tool_contract,0 prompt/runtime mismatches; no exec upload violation,MEASURED_STATIC,scripts/run_tool_contract.py
+v10_runtime_subprocess,1:2.18s;2:3.43s;4:7.04s;8:14.47s,MEASURED_LOCAL_MACHINE,scripts/run_runtime.py --all; excludes Qwen generation

@@ -1,0 +1,6 @@
+agent,dataset,n,covered,correct,wrong,coverage,precision_if_covered,selective_risk,deterministic_accuracy
+v9,ood1,80,80,80,0,1.0,1.0,0.0,1.0
+v9,ood2,120,20,20,0,0.16666666666666666,1.0,0.0,0.16666666666666666
+v9,ood3,80,72,72,0,0.9,1.0,0.0,0.9
+v9,ood4,64,48,8,40,0.75,0.16666666666666666,0.8333333333333334,0.125
+v9,ood5,48,30,0,30,0.625,0.0,1.0,0.0

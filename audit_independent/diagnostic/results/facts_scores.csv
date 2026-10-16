@@ -1,0 +1,6 @@
+agent,private_total,private_nf,private_tables,private_fits,private_correct_nf,private_correct_tables,private_correct_fits,evidence,level,local_calc_covered,local_calc_correct,local_calc_total,local_table_covered,local_table_correct,local_table_total,local_fit_covered,local_fit_correct,local_fit_total,artifact
+stage3,92.5,95.6,88.0,96.0,43,44,24,user-reported / CODEX_AUDIT_PROMPT,MEASURED_reported,25,25,65,80,80,80,35,35,35,STAGE3_SUBMITTED_92_5.py
+test1,86.7,88.9,80.0,96.0,40,40,24,user-reported / CODEX_AUDIT_PROMPT,MEASURED_reported,25,25,65,80,80,80,35,35,35,TEST1_SUBMITTED_86_7.py
+v10,81.7,88.9,68.0,96.0,40,34,24,user-reported / CODEX_AUDIT_PROMPT,MEASURED_reported,65,65,65,80,80,80,35,35,35,V10_SUBMITTED_81_7.py
+test2,77.5,95.6,52.0,96.0,43,26,24,user-reported / CODEX_AUDIT_PROMPT,MEASURED_reported,65,65,65,80,80,80,35,35,35,TEST2_SUBMITTED_77_5.py
+minimal,,,,,,,,not submitted,MEASURED,25,25,65,80,80,80,35,35,35,TEST2_MINIMAL_NOT_SUBMITTED.py

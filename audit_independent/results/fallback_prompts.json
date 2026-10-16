@@ -1,0 +1,2642 @@
+[
+  {
+    "agent": "stage3",
+    "id": "d_008",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a careful data scientist. Reply ONLY with a short Python program in one code block. The program must end by setting a variable `answer` to ONE number. No print, no explanation, no comments, no imports, at most 12 lines. Tables are already loaded in `dfs`: never call read_csv. Never compute by hand: let Python compute. DO NOT round the answer yourself (never use round() or .round()), the system will do the rounding.\nAvailable: math, numpy as np, sympy, scipy.stats as stats, datetime, safe_divide. Use safe_divide(a, b) when b may be zero; zero/non-finite results become NaN."
+      },
+      {
+        "role": "user",
+        "content": "Objective: A price of 80 rises by 15% then falls by 10%. What is the final price? Round to 2 decimals."
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nimport math\nanswer = 80 * 1.15 * 0.90\n```"
+      },
+      {
+        "role": "user",
+        "content": "Objective: Compute 88 × 32. The answer is an integer."
+      }
+    ]
+  },
+  {
+    "agent": "stage3",
+    "id": "d_010",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a careful data scientist. Reply ONLY with a short Python program in one code block. The program must end by setting a variable `answer` to ONE number. No print, no explanation, no comments, no imports, at most 12 lines. Tables are already loaded in `dfs`: never call read_csv. Never compute by hand: let Python compute. DO NOT round the answer yourself (never use round() or .round()), the system will do the rounding.\nAvailable: math, numpy as np, sympy, scipy.stats as stats, datetime, safe_divide. Use safe_divide(a, b) when b may be zero; zero/non-finite results become NaN."
+      },
+      {
+        "role": "user",
+        "content": "Objective: A price of 80 rises by 15% then falls by 10%. What is the final price? Round to 2 decimals."
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nimport math\nanswer = 80 * 1.15 * 0.90\n```"
+      },
+      {
+        "role": "user",
+        "content": "Objective: An invoice of 1030.86 euros includes VAT at 21%. What is the amount before VAT? Report it with 2 decimals."
+      }
+    ]
+  },
+  {
+    "agent": "stage3",
+    "id": "d_017",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a careful data scientist. Reply ONLY with a short Python program in one code block. The program must end by setting a variable `answer` to ONE number. No print, no explanation, no comments, no imports, at most 12 lines. Tables are already loaded in `dfs`: never call read_csv. Never compute by hand: let Python compute. DO NOT round the answer yourself (never use round() or .round()), the system will do the rounding.\nAvailable: math, numpy as np, sympy, scipy.stats as stats, datetime, safe_divide. Use safe_divide(a, b) when b may be zero; zero/non-finite results become NaN."
+      },
+      {
+        "role": "user",
+        "content": "Objective: A price of 80 rises by 15% then falls by 10%. What is the final price? Round to 2 decimals."
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nimport math\nanswer = 80 * 1.15 * 0.90\n```"
+      },
+      {
+        "role": "user",
+        "content": "Objective: An invoice of 1591.41 euros includes VAT at 7.7%. What is the amount before VAT? Round your answer to 2 decimal places."
+      }
+    ]
+  },
+  {
+    "agent": "stage3",
+    "id": "d_020",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a careful data scientist. Reply ONLY with a short Python program in one code block. The program must end by setting a variable `answer` to ONE number. No print, no explanation, no comments, no imports, at most 12 lines. Tables are already loaded in `dfs`: never call read_csv. Never compute by hand: let Python compute. DO NOT round the answer yourself (never use round() or .round()), the system will do the rounding.\nAvailable: math, numpy as np, sympy, scipy.stats as stats, datetime, safe_divide. Use safe_divide(a, b) when b may be zero; zero/non-finite results become NaN."
+      },
+      {
+        "role": "user",
+        "content": "Objective: A price of 80 rises by 15% then falls by 10%. What is the final price? Round to 2 decimals."
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nimport math\nanswer = 80 * 1.15 * 0.90\n```"
+      },
+      {
+        "role": "user",
+        "content": "Objective: What is the base-10 logarithm of 2804? Round your answer to 4 decimal places."
+      }
+    ]
+  },
+  {
+    "agent": "stage3",
+    "id": "d_022",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a careful data scientist. Reply ONLY with a short Python program in one code block. The program must end by setting a variable `answer` to ONE number. No print, no explanation, no comments, no imports, at most 12 lines. Tables are already loaded in `dfs`: never call read_csv. Never compute by hand: let Python compute. DO NOT round the answer yourself (never use round() or .round()), the system will do the rounding.\nAvailable: math, numpy as np, sympy, scipy.stats as stats, datetime, safe_divide. Use safe_divide(a, b) when b may be zero; zero/non-finite results become NaN."
+      },
+      {
+        "role": "user",
+        "content": "Objective: A price of 80 rises by 15% then falls by 10%. What is the final price? Round to 2 decimals."
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nimport math\nanswer = 80 * 1.15 * 0.90\n```"
+      },
+      {
+        "role": "user",
+        "content": "Objective: A game pays 5 euros with probability 23%, 2 euros with probability 1%, 100 euros with probability 8%, 2 euros with probability 20% and 5 euros with probability 48%. What is the expected gain per game, in euros? Give the answer rounded to 2 decimal places."
+      }
+    ]
+  },
+  {
+    "agent": "stage3",
+    "id": "d_026",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a careful data scientist. Reply ONLY with a short Python program in one code block. The program must end by setting a variable `answer` to ONE number. No print, no explanation, no comments, no imports, at most 12 lines. Tables are already loaded in `dfs`: never call read_csv. Never compute by hand: let Python compute. DO NOT round the answer yourself (never use round() or .round()), the system will do the rounding.\nAvailable: math, numpy as np, sympy, scipy.stats as stats, datetime, safe_divide. Use safe_divide(a, b) when b may be zero; zero/non-finite results become NaN."
+      },
+      {
+        "role": "user",
+        "content": "Objective: A price of 80 rises by 15% then falls by 10%. What is the final price? Round to 2 decimals."
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nimport math\nanswer = 80 * 1.15 * 0.90\n```"
+      },
+      {
+        "role": "user",
+        "content": "Objective: How many days are there from 15 April 2017 to April 28, 2017? Give a whole number."
+      }
+    ]
+  },
+  {
+    "agent": "stage3",
+    "id": "d_027",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a careful data scientist. Reply ONLY with a short Python program in one code block. The program must end by setting a variable `answer` to ONE number. No print, no explanation, no comments, no imports, at most 12 lines. Tables are already loaded in `dfs`: never call read_csv. Never compute by hand: let Python compute. DO NOT round the answer yourself (never use round() or .round()), the system will do the rounding.\nAvailable: math, numpy as np, sympy, scipy.stats as stats, datetime, safe_divide. Use safe_divide(a, b) when b may be zero; zero/non-finite results become NaN."
+      },
+      {
+        "role": "user",
+        "content": "Objective: A price of 80 rises by 15% then falls by 10%. What is the final price? Round to 2 decimals."
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nimport math\nanswer = 80 * 1.15 * 0.90\n```"
+      },
+      {
+        "role": "user",
+        "content": "Objective: The delivery delays of 11 orders were 64.62, 95.29, 30.42, 28.19, 67.74, 64.1, 85.05, 93.81, 21.34, 26.32, 83.87 (hours). The measurements were checked twice. What is the mean? Round to 2 decimals."
+      }
+    ]
+  },
+  {
+    "agent": "stage3",
+    "id": "d_028",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a careful data scientist. Reply ONLY with a short Python program in one code block. The program must end by setting a variable `answer` to ONE number. No print, no explanation, no comments, no imports, at most 12 lines. Tables are already loaded in `dfs`: never call read_csv. Never compute by hand: let Python compute. DO NOT round the answer yourself (never use round() or .round()), the system will do the rounding.\nAvailable: math, numpy as np, sympy, scipy.stats as stats, datetime, safe_divide. Use safe_divide(a, b) when b may be zero; zero/non-finite results become NaN."
+      },
+      {
+        "role": "user",
+        "content": "Objective: A price of 80 rises by 15% then falls by 10%. What is the final price? Round to 2 decimals."
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nimport math\nanswer = 80 * 1.15 * 0.90\n```"
+      },
+      {
+        "role": "user",
+        "content": "Objective: A contract starts on 23 September 2011 and ends on 16 September 2018. How many days long is it? Give a whole number."
+      }
+    ]
+  },
+  {
+    "agent": "stage3",
+    "id": "d_040",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a careful data scientist. Reply ONLY with a short Python program in one code block. The program must end by setting a variable `answer` to ONE number. No print, no explanation, no comments, no imports, at most 12 lines. Tables are already loaded in `dfs`: never call read_csv. Never compute by hand: let Python compute. DO NOT round the answer yourself (never use round() or .round()), the system will do the rounding.\nAvailable: math, numpy as np, sympy, scipy.stats as stats, datetime, safe_divide. Use safe_divide(a, b) when b may be zero; zero/non-finite results become NaN."
+      },
+      {
+        "role": "user",
+        "content": "Objective: A price of 80 rises by 15% then falls by 10%. What is the final price? Round to 2 decimals."
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nimport math\nanswer = 80 * 1.15 * 0.90\n```"
+      },
+      {
+        "role": "user",
+        "content": "Objective: A student has 18.6 in history (coefficient 2), 12.6 in economics (coefficient 1), 5.2 in biology (coefficient 5) and 10.5 in English (coefficient 1). What is the weighted mean of the marks? Report it with 2 decimals."
+      }
+    ]
+  },
+  {
+    "agent": "stage3",
+    "id": "d_043",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a careful data scientist. Reply ONLY with a short Python program in one code block. The program must end by setting a variable `answer` to ONE number. No print, no explanation, no comments, no imports, at most 12 lines. Tables are already loaded in `dfs`: never call read_csv. Never compute by hand: let Python compute. DO NOT round the answer yourself (never use round() or .round()), the system will do the rounding.\nAvailable: math, numpy as np, sympy, scipy.stats as stats, datetime, safe_divide. Use safe_divide(a, b) when b may be zero; zero/non-finite results become NaN."
+      },
+      {
+        "role": "user",
+        "content": "Objective: A price of 80 rises by 15% then falls by 10%. What is the final price? Round to 2 decimals."
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nimport math\nanswer = 80 * 1.15 * 0.90\n```"
+      },
+      {
+        "role": "user",
+        "content": "Objective: Compute 6.85 raised to the power 1/3. Round to 3 decimals."
+      }
+    ]
+  },
+  {
+    "agent": "stage3",
+    "id": "d_045",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a careful data scientist. Reply ONLY with a short Python program in one code block. The program must end by setting a variable `answer` to ONE number. No print, no explanation, no comments, no imports, at most 12 lines. Tables are already loaded in `dfs`: never call read_csv. Never compute by hand: let Python compute. DO NOT round the answer yourself (never use round() or .round()), the system will do the rounding.\nAvailable: math, numpy as np, sympy, scipy.stats as stats, datetime, safe_divide. Use safe_divide(a, b) when b may be zero; zero/non-finite results become NaN."
+      },
+      {
+        "role": "user",
+        "content": "Objective: A price of 80 rises by 15% then falls by 10%. What is the final price? Round to 2 decimals."
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nimport math\nanswer = 80 * 1.15 * 0.90\n```"
+      },
+      {
+        "role": "user",
+        "content": "Objective: What is the base-10 logarithm of 93052? Round to 4 decimals."
+      }
+    ]
+  },
+  {
+    "agent": "stage3",
+    "id": "d_060",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a careful data scientist. Reply ONLY with a short Python program in one code block. The program must end by setting a variable `answer` to ONE number. No print, no explanation, no comments, no imports, at most 12 lines. Tables are already loaded in `dfs`: never call read_csv. Never compute by hand: let Python compute. DO NOT round the answer yourself (never use round() or .round()), the system will do the rounding.\nAvailable: math, numpy as np, sympy, scipy.stats as stats, datetime, safe_divide. Use safe_divide(a, b) when b may be zero; zero/non-finite results become NaN."
+      },
+      {
+        "role": "user",
+        "content": "Objective: A price of 80 rises by 15% then falls by 10%. What is the final price? Round to 2 decimals."
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nimport math\nanswer = 80 * 1.15 * 0.90\n```"
+      },
+      {
+        "role": "user",
+        "content": "Objective: The weights of 9 parcels leaving a warehouse were 10.5, 27.8, 21.4, 11.9, 26.8, 30.7, 22.4, 26.2, 42.5 (kg). Values are listed in the order they were recorded. What is the median? Give the answer rounded to 2 decimal places."
+      }
+    ]
+  },
+  {
+    "agent": "stage3",
+    "id": "d_065",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a careful data scientist. Reply ONLY with a short Python program in one code block. The program must end by setting a variable `answer` to ONE number. No print, no explanation, no comments, no imports, at most 12 lines. Tables are already loaded in `dfs`: never call read_csv. Never compute by hand: let Python compute. DO NOT round the answer yourself (never use round() or .round()), the system will do the rounding.\nAvailable: math, numpy as np, sympy, scipy.stats as stats, datetime, safe_divide. Use safe_divide(a, b) when b may be zero; zero/non-finite results become NaN."
+      },
+      {
+        "role": "user",
+        "content": "Objective: A price of 80 rises by 15% then falls by 10%. What is the final price? Round to 2 decimals."
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nimport math\nanswer = 80 * 1.15 * 0.90\n```"
+      },
+      {
+        "role": "user",
+        "content": "Objective: Count the values strictly above 1.75 in this list: 2.48, 1.43, 1.791, 0.64, 2.9, 1.19, 0.47, 2.5, 1.26, 1.11, 0.7, 2.862, 2.56. Give a whole number."
+      }
+    ]
+  },
+  {
+    "agent": "stage3",
+    "id": "d_072",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a careful data scientist. Reply ONLY with a short Python program in one code block. The program must end by setting a variable `answer` to ONE number. No print, no explanation, no comments, no imports, at most 12 lines. Tables are already loaded in `dfs`: never call read_csv. Never compute by hand: let Python compute. DO NOT round the answer yourself (never use round() or .round()), the system will do the rounding.\nAvailable: math, numpy as np, sympy, scipy.stats as stats, datetime, safe_divide. Use safe_divide(a, b) when b may be zero; zero/non-finite results become NaN."
+      },
+      {
+        "role": "user",
+        "content": "Objective: A price of 80 rises by 15% then falls by 10%. What is the final price? Round to 2 decimals."
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nimport math\nanswer = 80 * 1.15 * 0.90\n```"
+      },
+      {
+        "role": "user",
+        "content": "Objective: A student has 5.8 in English (coefficient 4), 12.4 in history (coefficient 2), 13.3 in physics (coefficient 5), 12.5 in chemistry (coefficient 5) and 5.3 in biology (coefficient 4). What is the weighted mean of the marks? Round to 2 decimals."
+      }
+    ]
+  },
+  {
+    "agent": "stage3",
+    "id": "d_076",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a careful data scientist. Reply ONLY with a short Python program in one code block. The program must end by setting a variable `answer` to ONE number. No print, no explanation, no comments, no imports, at most 12 lines. Tables are already loaded in `dfs`: never call read_csv. Never compute by hand: let Python compute. DO NOT round the answer yourself (never use round() or .round()), the system will do the rounding.\nAvailable: math, numpy as np, sympy, scipy.stats as stats, datetime, safe_divide. Use safe_divide(a, b) when b may be zero; zero/non-finite results become NaN."
+      },
+      {
+        "role": "user",
+        "content": "Objective: A price of 80 rises by 15% then falls by 10%. What is the final price? Round to 2 decimals."
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nimport math\nanswer = 80 * 1.15 * 0.90\n```"
+      },
+      {
+        "role": "user",
+        "content": "Objective: How many days are there from December 4, 2011 to December 19, 2011? Count both the first and the last day. The answer is an integer."
+      }
+    ]
+  },
+  {
+    "agent": "stage3",
+    "id": "d_078",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a careful data scientist. Reply ONLY with a short Python program in one code block. The program must end by setting a variable `answer` to ONE number. No print, no explanation, no comments, no imports, at most 12 lines. Tables are already loaded in `dfs`: never call read_csv. Never compute by hand: let Python compute. DO NOT round the answer yourself (never use round() or .round()), the system will do the rounding.\nAvailable: math, numpy as np, sympy, scipy.stats as stats, datetime, safe_divide. Use safe_divide(a, b) when b may be zero; zero/non-finite results become NaN."
+      },
+      {
+        "role": "user",
+        "content": "Objective: A price of 80 rises by 15% then falls by 10%. What is the final price? Round to 2 decimals."
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nimport math\nanswer = 80 * 1.15 * 0.90\n```"
+      },
+      {
+        "role": "user",
+        "content": "Objective: What is the date 749 days after 3 October 2021? Answer with a number of the form YYYYMMDD (for example 20240307 for March 7, 2024). Give a whole number."
+      }
+    ]
+  },
+  {
+    "agent": "stage3",
+    "id": "d_081",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a careful data scientist. Reply ONLY with a short Python program in one code block. The program must end by setting a variable `answer` to ONE number. No print, no explanation, no comments, no imports, at most 12 lines. Tables are already loaded in `dfs`: never call read_csv. Never compute by hand: let Python compute. DO NOT round the answer yourself (never use round() or .round()), the system will do the rounding.\nAvailable: math, numpy as np, sympy, scipy.stats as stats, datetime, safe_divide. Use safe_divide(a, b) when b may be zero; zero/non-finite results become NaN."
+      },
+      {
+        "role": "user",
+        "content": "Objective: A price of 80 rises by 15% then falls by 10%. What is the final price? Round to 2 decimals."
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nimport math\nanswer = 80 * 1.15 * 0.90\n```"
+      },
+      {
+        "role": "user",
+        "content": "Objective: What is 33.18 minus 33.6? Round your answer to 2 decimal places."
+      }
+    ]
+  },
+  {
+    "agent": "stage3",
+    "id": "d_087",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a careful data scientist. Reply ONLY with a short Python program in one code block. The program must end by setting a variable `answer` to ONE number. No print, no explanation, no comments, no imports, at most 12 lines. Tables are already loaded in `dfs`: never call read_csv. Never compute by hand: let Python compute. DO NOT round the answer yourself (never use round() or .round()), the system will do the rounding.\nAvailable: math, numpy as np, sympy, scipy.stats as stats, datetime, safe_divide. Use safe_divide(a, b) when b may be zero; zero/non-finite results become NaN."
+      },
+      {
+        "role": "user",
+        "content": "Objective: A price of 80 rises by 15% then falls by 10%. What is the final price? Round to 2 decimals."
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nimport math\nanswer = 80 * 1.15 * 0.90\n```"
+      },
+      {
+        "role": "user",
+        "content": "Objective: Compute √2. Give the answer rounded to 3 decimal places."
+      }
+    ]
+  },
+  {
+    "agent": "stage3",
+    "id": "d_089",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a careful data scientist. Reply ONLY with a short Python program in one code block. The program must end by setting a variable `answer` to ONE number. No print, no explanation, no comments, no imports, at most 12 lines. Tables are already loaded in `dfs`: never call read_csv. Never compute by hand: let Python compute. DO NOT round the answer yourself (never use round() or .round()), the system will do the rounding.\nAvailable: math, numpy as np, sympy, scipy.stats as stats, datetime, safe_divide. Use safe_divide(a, b) when b may be zero; zero/non-finite results become NaN."
+      },
+      {
+        "role": "user",
+        "content": "Objective: A price of 80 rises by 15% then falls by 10%. What is the final price? Round to 2 decimals."
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nimport math\nanswer = 80 * 1.15 * 0.90\n```"
+      },
+      {
+        "role": "user",
+        "content": "Objective: An invoice of 1846.86 euros includes VAT at 21%. What is the amount before VAT? Report it with 2 decimals."
+      }
+    ]
+  },
+  {
+    "agent": "stage3",
+    "id": "d_095",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a careful data scientist. Reply ONLY with a short Python program in one code block. The program must end by setting a variable `answer` to ONE number. No print, no explanation, no comments, no imports, at most 12 lines. Tables are already loaded in `dfs`: never call read_csv. Never compute by hand: let Python compute. DO NOT round the answer yourself (never use round() or .round()), the system will do the rounding.\nAvailable: math, numpy as np, sympy, scipy.stats as stats, datetime, safe_divide. Use safe_divide(a, b) when b may be zero; zero/non-finite results become NaN."
+      },
+      {
+        "role": "user",
+        "content": "Objective: A price of 80 rises by 15% then falls by 10%. What is the final price? Round to 2 decimals."
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nimport math\nanswer = 80 * 1.15 * 0.90\n```"
+      },
+      {
+        "role": "user",
+        "content": "Objective: Compute 37.15 − 37.8. Round to 2 decimals."
+      }
+    ]
+  },
+  {
+    "agent": "stage3",
+    "id": "d_101",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a careful data scientist. Reply ONLY with a short Python program in one code block. The program must end by setting a variable `answer` to ONE number. No print, no explanation, no comments, no imports, at most 12 lines. Tables are already loaded in `dfs`: never call read_csv. Never compute by hand: let Python compute. DO NOT round the answer yourself (never use round() or .round()), the system will do the rounding.\nAvailable: math, numpy as np, sympy, scipy.stats as stats, datetime, safe_divide. Use safe_divide(a, b) when b may be zero; zero/non-finite results become NaN."
+      },
+      {
+        "role": "user",
+        "content": "Objective: A price of 80 rises by 15% then falls by 10%. What is the final price? Round to 2 decimals."
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nimport math\nanswer = 80 * 1.15 * 0.90\n```"
+      },
+      {
+        "role": "user",
+        "content": "Objective: A student has 17 in chemistry (coefficient 5), 14 in physics (coefficient 1) and 10 in biology (coefficient 5). What is the weighted mean of the marks? Round your answer to 2 decimal places."
+      }
+    ]
+  },
+  {
+    "agent": "stage3",
+    "id": "d_102",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a careful data scientist. Reply ONLY with a short Python program in one code block. The program must end by setting a variable `answer` to ONE number. No print, no explanation, no comments, no imports, at most 12 lines. Tables are already loaded in `dfs`: never call read_csv. Never compute by hand: let Python compute. DO NOT round the answer yourself (never use round() or .round()), the system will do the rounding.\nAvailable: math, numpy as np, sympy, scipy.stats as stats, datetime, safe_divide. Use safe_divide(a, b) when b may be zero; zero/non-finite results become NaN."
+      },
+      {
+        "role": "user",
+        "content": "Objective: A price of 80 rises by 15% then falls by 10%. What is the final price? Round to 2 decimals."
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nimport math\nanswer = 80 * 1.15 * 0.90\n```"
+      },
+      {
+        "role": "user",
+        "content": "Objective: 800 euros are placed at 4.5% compound interest per year. What is the balance after 3 years? Round to 2 decimals."
+      }
+    ]
+  },
+  {
+    "agent": "stage3",
+    "id": "d_106",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a careful data scientist. Reply ONLY with a short Python program in one code block. The program must end by setting a variable `answer` to ONE number. No print, no explanation, no comments, no imports, at most 12 lines. Tables are already loaded in `dfs`: never call read_csv. Never compute by hand: let Python compute. DO NOT round the answer yourself (never use round() or .round()), the system will do the rounding.\nAvailable: math, numpy as np, sympy, scipy.stats as stats, datetime, safe_divide. Use safe_divide(a, b) when b may be zero; zero/non-finite results become NaN."
+      },
+      {
+        "role": "user",
+        "content": "Objective: A price of 80 rises by 15% then falls by 10%. What is the final price? Round to 2 decimals."
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nimport math\nanswer = 80 * 1.15 * 0.90\n```"
+      },
+      {
+        "role": "user",
+        "content": "Objective: What is the date 104 days after 12 June 2022? Answer with a number of the form YYYYMMDD (for example 20240307 for March 7, 2024). Give a whole number."
+      }
+    ]
+  },
+  {
+    "agent": "stage3",
+    "id": "d_110",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a careful data scientist. Reply ONLY with a short Python program in one code block. The program must end by setting a variable `answer` to ONE number. No print, no explanation, no comments, no imports, at most 12 lines. Tables are already loaded in `dfs`: never call read_csv. Never compute by hand: let Python compute. DO NOT round the answer yourself (never use round() or .round()), the system will do the rounding.\nAvailable: math, numpy as np, sympy, scipy.stats as stats, datetime, safe_divide. Use safe_divide(a, b) when b may be zero; zero/non-finite results become NaN."
+      },
+      {
+        "role": "user",
+        "content": "Objective: A price of 80 rises by 15% then falls by 10%. What is the final price? Round to 2 decimals."
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nimport math\nanswer = 80 * 1.15 * 0.90\n```"
+      },
+      {
+        "role": "user",
+        "content": "Objective: In how many ways can a team of 5 be chosen from 6 people (order does not matter)? Give a whole number."
+      }
+    ]
+  },
+  {
+    "agent": "stage3",
+    "id": "d_113",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a careful data scientist. Reply ONLY with a short Python program in one code block. The program must end by setting a variable `answer` to ONE number. No print, no explanation, no comments, no imports, at most 12 lines. Tables are already loaded in `dfs`: never call read_csv. Never compute by hand: let Python compute. DO NOT round the answer yourself (never use round() or .round()), the system will do the rounding.\nAvailable: math, numpy as np, sympy, scipy.stats as stats, datetime, safe_divide. Use safe_divide(a, b) when b may be zero; zero/non-finite results become NaN."
+      },
+      {
+        "role": "user",
+        "content": "Objective: A price of 80 rises by 15% then falls by 10%. What is the final price? Round to 2 decimals."
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nimport math\nanswer = 80 * 1.15 * 0.90\n```"
+      },
+      {
+        "role": "user",
+        "content": "Objective: Count the values strictly above 1.75 in this list: 0.38, 0.354, 1.07, 1.33, 2.42, 0.6, 2.47, 1.5, 1.71, 1.329. Give a whole number."
+      }
+    ]
+  },
+  {
+    "agent": "stage3",
+    "id": "d_118",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a careful data scientist. Reply ONLY with a short Python program in one code block. The program must end by setting a variable `answer` to ONE number. No print, no explanation, no comments, no imports, at most 12 lines. Tables are already loaded in `dfs`: never call read_csv. Never compute by hand: let Python compute. DO NOT round the answer yourself (never use round() or .round()), the system will do the rounding.\nAvailable: math, numpy as np, sympy, scipy.stats as stats, datetime, safe_divide. Use safe_divide(a, b) when b may be zero; zero/non-finite results become NaN."
+      },
+      {
+        "role": "user",
+        "content": "Objective: A price of 80 rises by 15% then falls by 10%. What is the final price? Round to 2 decimals."
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nimport math\nanswer = 80 * 1.15 * 0.90\n```"
+      },
+      {
+        "role": "user",
+        "content": "Objective: Compute 14.13 − 14.6 + 6.64. Report it with 2 decimals."
+      }
+    ]
+  },
+  {
+    "agent": "stage3",
+    "id": "d_119",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a careful data scientist. Reply ONLY with a short Python program in one code block. The program must end by setting a variable `answer` to ONE number. No print, no explanation, no comments, no imports, at most 12 lines. Tables are already loaded in `dfs`: never call read_csv. Never compute by hand: let Python compute. DO NOT round the answer yourself (never use round() or .round()), the system will do the rounding.\nAvailable: math, numpy as np, sympy, scipy.stats as stats, datetime, safe_divide. Use safe_divide(a, b) when b may be zero; zero/non-finite results become NaN."
+      },
+      {
+        "role": "user",
+        "content": "Objective: A price of 80 rises by 15% then falls by 10%. What is the final price? Round to 2 decimals."
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nimport math\nanswer = 80 * 1.15 * 0.90\n```"
+      },
+      {
+        "role": "user",
+        "content": "Objective: What is the date 5 days after 2022-01-14? Answer with a number of the form YYYYMMDD (for example 20240307 for March 7, 2024). The answer is an integer."
+      }
+    ]
+  },
+  {
+    "agent": "stage3",
+    "id": "d_123",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a careful data scientist. Reply ONLY with a short Python program in one code block. The program must end by setting a variable `answer` to ONE number. No print, no explanation, no comments, no imports, at most 12 lines. Tables are already loaded in `dfs`: never call read_csv. Never compute by hand: let Python compute. DO NOT round the answer yourself (never use round() or .round()), the system will do the rounding.\nAvailable: math, numpy as np, sympy, scipy.stats as stats, datetime, safe_divide. Use safe_divide(a, b) when b may be zero; zero/non-finite results become NaN."
+      },
+      {
+        "role": "user",
+        "content": "Objective: A price of 80 rises by 15% then falls by 10%. What is the final price? Round to 2 decimals."
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nimport math\nanswer = 80 * 1.15 * 0.90\n```"
+      },
+      {
+        "role": "user",
+        "content": "Objective: What is the remainder of the division of 100338135 by 52? Give a whole number."
+      }
+    ]
+  },
+  {
+    "agent": "stage3",
+    "id": "d_135",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a careful data scientist. Reply ONLY with a short Python program in one code block. The program must end by setting a variable `answer` to ONE number. No print, no explanation, no comments, no imports, at most 12 lines. Tables are already loaded in `dfs`: never call read_csv. Never compute by hand: let Python compute. DO NOT round the answer yourself (never use round() or .round()), the system will do the rounding.\nAvailable: math, numpy as np, sympy, scipy.stats as stats, datetime, safe_divide. Use safe_divide(a, b) when b may be zero; zero/non-finite results become NaN."
+      },
+      {
+        "role": "user",
+        "content": "Objective: A price of 80 rises by 15% then falls by 10%. What is the final price? Round to 2 decimals."
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nimport math\nanswer = 80 * 1.15 * 0.90\n```"
+      },
+      {
+        "role": "user",
+        "content": "Objective: A laptop bought for 24,000 euros loses 10% of its value every year. What is it worth after 5 years? Give the answer rounded to 2 decimal places."
+      }
+    ]
+  },
+  {
+    "agent": "stage3",
+    "id": "d_139",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a careful data scientist. Reply ONLY with a short Python program in one code block. The program must end by setting a variable `answer` to ONE number. No print, no explanation, no comments, no imports, at most 12 lines. Tables are already loaded in `dfs`: never call read_csv. Never compute by hand: let Python compute. DO NOT round the answer yourself (never use round() or .round()), the system will do the rounding.\nAvailable: math, numpy as np, sympy, scipy.stats as stats, datetime, safe_divide. Use safe_divide(a, b) when b may be zero; zero/non-finite results become NaN."
+      },
+      {
+        "role": "user",
+        "content": "Objective: A price of 80 rises by 15% then falls by 10%. What is the final price? Round to 2 decimals."
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nimport math\nanswer = 80 * 1.15 * 0.90\n```"
+      },
+      {
+        "role": "user",
+        "content": "Objective: What is the date 7 days after January 31, 2009? Answer with a number of the form YYYYMMDD (for example 20240307 for March 7, 2024). Give a whole number."
+      }
+    ]
+  },
+  {
+    "agent": "stage3",
+    "id": "d_140",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a careful data scientist. Reply ONLY with a short Python program in one code block. The program must end by setting a variable `answer` to ONE number. No print, no explanation, no comments, no imports, at most 12 lines. Tables are already loaded in `dfs`: never call read_csv. Never compute by hand: let Python compute. DO NOT round the answer yourself (never use round() or .round()), the system will do the rounding.\nAvailable: math, numpy as np, sympy, scipy.stats as stats, datetime, safe_divide. Use safe_divide(a, b) when b may be zero; zero/non-finite results become NaN."
+      },
+      {
+        "role": "user",
+        "content": "Objective: A price of 80 rises by 15% then falls by 10%. What is the final price? Round to 2 decimals."
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nimport math\nanswer = 80 * 1.15 * 0.90\n```"
+      },
+      {
+        "role": "user",
+        "content": "Objective: A game pays 50 euros with probability 20% and 50 euros with probability 80%. What is the expected gain per game, in euros? Give the answer rounded to 2 decimal places."
+      }
+    ]
+  },
+  {
+    "agent": "stage3",
+    "id": "d_143",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a careful data scientist. Reply ONLY with a short Python program in one code block. The program must end by setting a variable `answer` to ONE number. No print, no explanation, no comments, no imports, at most 12 lines. Tables are already loaded in `dfs`: never call read_csv. Never compute by hand: let Python compute. DO NOT round the answer yourself (never use round() or .round()), the system will do the rounding.\nAvailable: math, numpy as np, sympy, scipy.stats as stats, datetime, safe_divide. Use safe_divide(a, b) when b may be zero; zero/non-finite results become NaN."
+      },
+      {
+        "role": "user",
+        "content": "Objective: A price of 80 rises by 15% then falls by 10%. What is the final price? Round to 2 decimals."
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nimport math\nanswer = 80 * 1.15 * 0.90\n```"
+      },
+      {
+        "role": "user",
+        "content": "Objective: A runner logged these lap times over 4 laps: 6.8, 13.3, 26.6, 3.3 (seconds). What is their population standard deviation (divide by n)? Report it with 2 decimals."
+      }
+    ]
+  },
+  {
+    "agent": "stage3",
+    "id": "d_144",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a careful data scientist. Reply ONLY with a short Python program in one code block. The program must end by setting a variable `answer` to ONE number. No print, no explanation, no comments, no imports, at most 12 lines. Tables are already loaded in `dfs`: never call read_csv. Never compute by hand: let Python compute. DO NOT round the answer yourself (never use round() or .round()), the system will do the rounding.\nAvailable: math, numpy as np, sympy, scipy.stats as stats, datetime, safe_divide. Use safe_divide(a, b) when b may be zero; zero/non-finite results become NaN."
+      },
+      {
+        "role": "user",
+        "content": "Objective: A price of 80 rises by 15% then falls by 10%. What is the final price? Round to 2 decimals."
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nimport math\nanswer = 80 * 1.15 * 0.90\n```"
+      },
+      {
+        "role": "user",
+        "content": "Objective: The weights of 9 parcels leaving a warehouse were 50.92, 94.7, 19.51, 43.74, 96.79, 68.64, 96.33, 74.67, 44.93 (kg). The measurements were checked twice. What is the mean? Round to 2 decimals."
+      }
+    ]
+  },
+  {
+    "agent": "stage3",
+    "id": "d_148",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a careful data scientist. Reply ONLY with a short Python program in one code block. The program must end by setting a variable `answer` to ONE number. No print, no explanation, no comments, no imports, at most 12 lines. Tables are already loaded in `dfs`: never call read_csv. Never compute by hand: let Python compute. DO NOT round the answer yourself (never use round() or .round()), the system will do the rounding.\nAvailable: math, numpy as np, sympy, scipy.stats as stats, datetime, safe_divide. Use safe_divide(a, b) when b may be zero; zero/non-finite results become NaN."
+      },
+      {
+        "role": "user",
+        "content": "Objective: A price of 80 rises by 15% then falls by 10%. What is the final price? Round to 2 decimals."
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nimport math\nanswer = 80 * 1.15 * 0.90\n```"
+      },
+      {
+        "role": "user",
+        "content": "Objective: Compute e raised to the power 5.01. Round to 3 decimals."
+      }
+    ]
+  },
+  {
+    "agent": "stage3",
+    "id": "d_152",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a careful data scientist. Reply ONLY with a short Python program in one code block. The program must end by setting a variable `answer` to ONE number. No print, no explanation, no comments, no imports, at most 12 lines. Tables are already loaded in `dfs`: never call read_csv. Never compute by hand: let Python compute. DO NOT round the answer yourself (never use round() or .round()), the system will do the rounding.\nAvailable: math, numpy as np, sympy, scipy.stats as stats, datetime, safe_divide. Use safe_divide(a, b) when b may be zero; zero/non-finite results become NaN."
+      },
+      {
+        "role": "user",
+        "content": "Objective: A price of 80 rises by 15% then falls by 10%. What is the final price? Round to 2 decimals."
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nimport math\nanswer = 80 * 1.15 * 0.90\n```"
+      },
+      {
+        "role": "user",
+        "content": "Objective: How many of these numbers are greater than 2.5: 1.651, 1.4, 2.7, 3.48, 1.15, 3.01, 1.38, 3.8, 2.462, 1.88, 3.8? The answer is an integer."
+      }
+    ]
+  },
+  {
+    "agent": "stage3",
+    "id": "d_154",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a careful data scientist. Reply ONLY with a short Python program in one code block. The program must end by setting a variable `answer` to ONE number. No print, no explanation, no comments, no imports, at most 12 lines. Tables are already loaded in `dfs`: never call read_csv. Never compute by hand: let Python compute. DO NOT round the answer yourself (never use round() or .round()), the system will do the rounding.\nAvailable: math, numpy as np, sympy, scipy.stats as stats, datetime, safe_divide. Use safe_divide(a, b) when b may be zero; zero/non-finite results become NaN."
+      },
+      {
+        "role": "user",
+        "content": "Objective: A price of 80 rises by 15% then falls by 10%. What is the final price? Round to 2 decimals."
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nimport math\nanswer = 80 * 1.15 * 0.90\n```"
+      },
+      {
+        "role": "user",
+        "content": "Objective: On which day of the week does 2034-12-24 fall? Answer with a number: Monday = 1, Tuesday = 2, …, Sunday = 7. The answer is an integer."
+      }
+    ]
+  },
+  {
+    "agent": "stage3",
+    "id": "d_155",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a careful data scientist. Reply ONLY with a short Python program in one code block. The program must end by setting a variable `answer` to ONE number. No print, no explanation, no comments, no imports, at most 12 lines. Tables are already loaded in `dfs`: never call read_csv. Never compute by hand: let Python compute. DO NOT round the answer yourself (never use round() or .round()), the system will do the rounding.\nAvailable: math, numpy as np, sympy, scipy.stats as stats, datetime, safe_divide. Use safe_divide(a, b) when b may be zero; zero/non-finite results become NaN."
+      },
+      {
+        "role": "user",
+        "content": "Objective: A price of 80 rises by 15% then falls by 10%. What is the final price? Round to 2 decimals."
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nimport math\nanswer = 80 * 1.15 * 0.90\n```"
+      },
+      {
+        "role": "user",
+        "content": "Objective: What is the natural logarithm of 331? Report it with 4 decimals."
+      }
+    ]
+  },
+  {
+    "agent": "stage3",
+    "id": "d_168",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a careful data scientist. Reply ONLY with a short Python program in one code block. The program must end by setting a variable `answer` to ONE number. No print, no explanation, no comments, no imports, at most 12 lines. Tables are already loaded in `dfs`: never call read_csv. Never compute by hand: let Python compute. DO NOT round the answer yourself (never use round() or .round()), the system will do the rounding.\nAvailable: math, numpy as np, sympy, scipy.stats as stats, datetime, safe_divide. Use safe_divide(a, b) when b may be zero; zero/non-finite results become NaN."
+      },
+      {
+        "role": "user",
+        "content": "Objective: A price of 80 rises by 15% then falls by 10%. What is the final price? Round to 2 decimals."
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nimport math\nanswer = 80 * 1.15 * 0.90\n```"
+      },
+      {
+        "role": "user",
+        "content": "Objective: Compute 16.78 raised to the power 5/2. Round your answer to 3 decimal places."
+      }
+    ]
+  },
+  {
+    "agent": "stage3",
+    "id": "d_171",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a careful data scientist. Reply ONLY with a short Python program in one code block. The program must end by setting a variable `answer` to ONE number. No print, no explanation, no comments, no imports, at most 12 lines. Tables are already loaded in `dfs`: never call read_csv. Never compute by hand: let Python compute. DO NOT round the answer yourself (never use round() or .round()), the system will do the rounding.\nAvailable: math, numpy as np, sympy, scipy.stats as stats, datetime, safe_divide. Use safe_divide(a, b) when b may be zero; zero/non-finite results become NaN."
+      },
+      {
+        "role": "user",
+        "content": "Objective: A price of 80 rises by 15% then falls by 10%. What is the final price? Round to 2 decimals."
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nimport math\nanswer = 80 * 1.15 * 0.90\n```"
+      },
+      {
+        "role": "user",
+        "content": "Objective: 1 foot = 0.3048 m. Convert 339.45 feet to metres. Report it with 2 decimals."
+      }
+    ]
+  },
+  {
+    "agent": "stage3",
+    "id": "d_176",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a careful data scientist. Reply ONLY with a short Python program in one code block. The program must end by setting a variable `answer` to ONE number. No print, no explanation, no comments, no imports, at most 12 lines. Tables are already loaded in `dfs`: never call read_csv. Never compute by hand: let Python compute. DO NOT round the answer yourself (never use round() or .round()), the system will do the rounding.\nAvailable: math, numpy as np, sympy, scipy.stats as stats, datetime, safe_divide. Use safe_divide(a, b) when b may be zero; zero/non-finite results become NaN."
+      },
+      {
+        "role": "user",
+        "content": "Objective: A price of 80 rises by 15% then falls by 10%. What is the final price? Round to 2 decimals."
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nimport math\nanswer = 80 * 1.15 * 0.90\n```"
+      },
+      {
+        "role": "user",
+        "content": "Objective: The population of a village went from 2383 to 2658. What is the percentage change? Report it with 2 decimals."
+      }
+    ]
+  },
+  {
+    "agent": "test1",
+    "id": "d_008",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a careful data scientist. Reply ONLY with a short Python program in one code block. The program must end by setting a variable `answer` to ONE number. No print, no explanation, no comments, no imports, at most 12 lines. Tables are already loaded in `dfs`: never call read_csv. Never compute by hand: let Python compute. DO NOT round the answer yourself (never use round() or .round()), the system will do the rounding.\nAvailable: math, numpy as np, sympy, scipy.stats as stats, datetime, safe_divide. Use safe_divide(a, b) when b may be zero; zero/non-finite results become NaN."
+      },
+      {
+        "role": "user",
+        "content": "Objective: A price of 80 rises by 15% then falls by 10%. What is the final price? Round to 2 decimals."
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nimport math\nanswer = 80 * 1.15 * 0.90\n```"
+      },
+      {
+        "role": "user",
+        "content": "Objective: Compute 88 × 32. The answer is an integer."
+      }
+    ]
+  },
+  {
+    "agent": "test1",
+    "id": "d_010",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a careful data scientist. Reply ONLY with a short Python program in one code block. The program must end by setting a variable `answer` to ONE number. No print, no explanation, no comments, no imports, at most 12 lines. Tables are already loaded in `dfs`: never call read_csv. Never compute by hand: let Python compute. DO NOT round the answer yourself (never use round() or .round()), the system will do the rounding.\nAvailable: math, numpy as np, sympy, scipy.stats as stats, datetime, safe_divide. Use safe_divide(a, b) when b may be zero; zero/non-finite results become NaN."
+      },
+      {
+        "role": "user",
+        "content": "Objective: A price of 80 rises by 15% then falls by 10%. What is the final price? Round to 2 decimals."
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nimport math\nanswer = 80 * 1.15 * 0.90\n```"
+      },
+      {
+        "role": "user",
+        "content": "Objective: An invoice of 1030.86 euros includes VAT at 21%. What is the amount before VAT? Report it with 2 decimals."
+      }
+    ]
+  },
+  {
+    "agent": "test1",
+    "id": "d_017",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a careful data scientist. Reply ONLY with a short Python program in one code block. The program must end by setting a variable `answer` to ONE number. No print, no explanation, no comments, no imports, at most 12 lines. Tables are already loaded in `dfs`: never call read_csv. Never compute by hand: let Python compute. DO NOT round the answer yourself (never use round() or .round()), the system will do the rounding.\nAvailable: math, numpy as np, sympy, scipy.stats as stats, datetime, safe_divide. Use safe_divide(a, b) when b may be zero; zero/non-finite results become NaN."
+      },
+      {
+        "role": "user",
+        "content": "Objective: A price of 80 rises by 15% then falls by 10%. What is the final price? Round to 2 decimals."
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nimport math\nanswer = 80 * 1.15 * 0.90\n```"
+      },
+      {
+        "role": "user",
+        "content": "Objective: An invoice of 1591.41 euros includes VAT at 7.7%. What is the amount before VAT? Round your answer to 2 decimal places."
+      }
+    ]
+  },
+  {
+    "agent": "test1",
+    "id": "d_020",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a careful data scientist. Reply ONLY with a short Python program in one code block. The program must end by setting a variable `answer` to ONE number. No print, no explanation, no comments, no imports, at most 12 lines. Tables are already loaded in `dfs`: never call read_csv. Never compute by hand: let Python compute. DO NOT round the answer yourself (never use round() or .round()), the system will do the rounding.\nAvailable: math, numpy as np, sympy, scipy.stats as stats, datetime, safe_divide. Use safe_divide(a, b) when b may be zero; zero/non-finite results become NaN."
+      },
+      {
+        "role": "user",
+        "content": "Objective: A price of 80 rises by 15% then falls by 10%. What is the final price? Round to 2 decimals."
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nimport math\nanswer = 80 * 1.15 * 0.90\n```"
+      },
+      {
+        "role": "user",
+        "content": "Objective: What is the base-10 logarithm of 2804? Round your answer to 4 decimal places."
+      }
+    ]
+  },
+  {
+    "agent": "test1",
+    "id": "d_022",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a careful data scientist. Reply ONLY with a short Python program in one code block. The program must end by setting a variable `answer` to ONE number. No print, no explanation, no comments, no imports, at most 12 lines. Tables are already loaded in `dfs`: never call read_csv. Never compute by hand: let Python compute. DO NOT round the answer yourself (never use round() or .round()), the system will do the rounding.\nAvailable: math, numpy as np, sympy, scipy.stats as stats, datetime, safe_divide. Use safe_divide(a, b) when b may be zero; zero/non-finite results become NaN."
+      },
+      {
+        "role": "user",
+        "content": "Objective: A price of 80 rises by 15% then falls by 10%. What is the final price? Round to 2 decimals."
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nimport math\nanswer = 80 * 1.15 * 0.90\n```"
+      },
+      {
+        "role": "user",
+        "content": "Objective: A game pays 5 euros with probability 23%, 2 euros with probability 1%, 100 euros with probability 8%, 2 euros with probability 20% and 5 euros with probability 48%. What is the expected gain per game, in euros? Give the answer rounded to 2 decimal places."
+      }
+    ]
+  },
+  {
+    "agent": "test1",
+    "id": "d_026",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a careful data scientist. Reply ONLY with a short Python program in one code block. The program must end by setting a variable `answer` to ONE number. No print, no explanation, no comments, no imports, at most 12 lines. Tables are already loaded in `dfs`: never call read_csv. Never compute by hand: let Python compute. DO NOT round the answer yourself (never use round() or .round()), the system will do the rounding.\nAvailable: math, numpy as np, sympy, scipy.stats as stats, datetime, safe_divide. Use safe_divide(a, b) when b may be zero; zero/non-finite results become NaN."
+      },
+      {
+        "role": "user",
+        "content": "Objective: A price of 80 rises by 15% then falls by 10%. What is the final price? Round to 2 decimals."
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nimport math\nanswer = 80 * 1.15 * 0.90\n```"
+      },
+      {
+        "role": "user",
+        "content": "Objective: How many days are there from 15 April 2017 to April 28, 2017? Give a whole number."
+      }
+    ]
+  },
+  {
+    "agent": "test1",
+    "id": "d_027",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a careful data scientist. Reply ONLY with a short Python program in one code block. The program must end by setting a variable `answer` to ONE number. No print, no explanation, no comments, no imports, at most 12 lines. Tables are already loaded in `dfs`: never call read_csv. Never compute by hand: let Python compute. DO NOT round the answer yourself (never use round() or .round()), the system will do the rounding.\nAvailable: math, numpy as np, sympy, scipy.stats as stats, datetime, safe_divide. Use safe_divide(a, b) when b may be zero; zero/non-finite results become NaN."
+      },
+      {
+        "role": "user",
+        "content": "Objective: A price of 80 rises by 15% then falls by 10%. What is the final price? Round to 2 decimals."
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nimport math\nanswer = 80 * 1.15 * 0.90\n```"
+      },
+      {
+        "role": "user",
+        "content": "Objective: The delivery delays of 11 orders were 64.62, 95.29, 30.42, 28.19, 67.74, 64.1, 85.05, 93.81, 21.34, 26.32, 83.87 (hours). The measurements were checked twice. What is the mean? Round to 2 decimals."
+      }
+    ]
+  },
+  {
+    "agent": "test1",
+    "id": "d_028",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a careful data scientist. Reply ONLY with a short Python program in one code block. The program must end by setting a variable `answer` to ONE number. No print, no explanation, no comments, no imports, at most 12 lines. Tables are already loaded in `dfs`: never call read_csv. Never compute by hand: let Python compute. DO NOT round the answer yourself (never use round() or .round()), the system will do the rounding.\nAvailable: math, numpy as np, sympy, scipy.stats as stats, datetime, safe_divide. Use safe_divide(a, b) when b may be zero; zero/non-finite results become NaN."
+      },
+      {
+        "role": "user",
+        "content": "Objective: A price of 80 rises by 15% then falls by 10%. What is the final price? Round to 2 decimals."
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nimport math\nanswer = 80 * 1.15 * 0.90\n```"
+      },
+      {
+        "role": "user",
+        "content": "Objective: A contract starts on 23 September 2011 and ends on 16 September 2018. How many days long is it? Give a whole number."
+      }
+    ]
+  },
+  {
+    "agent": "test1",
+    "id": "d_040",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a careful data scientist. Reply ONLY with a short Python program in one code block. The program must end by setting a variable `answer` to ONE number. No print, no explanation, no comments, no imports, at most 12 lines. Tables are already loaded in `dfs`: never call read_csv. Never compute by hand: let Python compute. DO NOT round the answer yourself (never use round() or .round()), the system will do the rounding.\nAvailable: math, numpy as np, sympy, scipy.stats as stats, datetime, safe_divide. Use safe_divide(a, b) when b may be zero; zero/non-finite results become NaN."
+      },
+      {
+        "role": "user",
+        "content": "Objective: A price of 80 rises by 15% then falls by 10%. What is the final price? Round to 2 decimals."
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nimport math\nanswer = 80 * 1.15 * 0.90\n```"
+      },
+      {
+        "role": "user",
+        "content": "Objective: A student has 18.6 in history (coefficient 2), 12.6 in economics (coefficient 1), 5.2 in biology (coefficient 5) and 10.5 in English (coefficient 1). What is the weighted mean of the marks? Report it with 2 decimals."
+      }
+    ]
+  },
+  {
+    "agent": "test1",
+    "id": "d_043",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a careful data scientist. Reply ONLY with a short Python program in one code block. The program must end by setting a variable `answer` to ONE number. No print, no explanation, no comments, no imports, at most 12 lines. Tables are already loaded in `dfs`: never call read_csv. Never compute by hand: let Python compute. DO NOT round the answer yourself (never use round() or .round()), the system will do the rounding.\nAvailable: math, numpy as np, sympy, scipy.stats as stats, datetime, safe_divide. Use safe_divide(a, b) when b may be zero; zero/non-finite results become NaN."
+      },
+      {
+        "role": "user",
+        "content": "Objective: A price of 80 rises by 15% then falls by 10%. What is the final price? Round to 2 decimals."
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nimport math\nanswer = 80 * 1.15 * 0.90\n```"
+      },
+      {
+        "role": "user",
+        "content": "Objective: Compute 6.85 raised to the power 1/3. Round to 3 decimals."
+      }
+    ]
+  },
+  {
+    "agent": "test1",
+    "id": "d_045",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a careful data scientist. Reply ONLY with a short Python program in one code block. The program must end by setting a variable `answer` to ONE number. No print, no explanation, no comments, no imports, at most 12 lines. Tables are already loaded in `dfs`: never call read_csv. Never compute by hand: let Python compute. DO NOT round the answer yourself (never use round() or .round()), the system will do the rounding.\nAvailable: math, numpy as np, sympy, scipy.stats as stats, datetime, safe_divide. Use safe_divide(a, b) when b may be zero; zero/non-finite results become NaN."
+      },
+      {
+        "role": "user",
+        "content": "Objective: A price of 80 rises by 15% then falls by 10%. What is the final price? Round to 2 decimals."
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nimport math\nanswer = 80 * 1.15 * 0.90\n```"
+      },
+      {
+        "role": "user",
+        "content": "Objective: What is the base-10 logarithm of 93052? Round to 4 decimals."
+      }
+    ]
+  },
+  {
+    "agent": "test1",
+    "id": "d_060",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a careful data scientist. Reply ONLY with a short Python program in one code block. The program must end by setting a variable `answer` to ONE number. No print, no explanation, no comments, no imports, at most 12 lines. Tables are already loaded in `dfs`: never call read_csv. Never compute by hand: let Python compute. DO NOT round the answer yourself (never use round() or .round()), the system will do the rounding.\nAvailable: math, numpy as np, sympy, scipy.stats as stats, datetime, safe_divide. Use safe_divide(a, b) when b may be zero; zero/non-finite results become NaN."
+      },
+      {
+        "role": "user",
+        "content": "Objective: A price of 80 rises by 15% then falls by 10%. What is the final price? Round to 2 decimals."
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nimport math\nanswer = 80 * 1.15 * 0.90\n```"
+      },
+      {
+        "role": "user",
+        "content": "Objective: The weights of 9 parcels leaving a warehouse were 10.5, 27.8, 21.4, 11.9, 26.8, 30.7, 22.4, 26.2, 42.5 (kg). Values are listed in the order they were recorded. What is the median? Give the answer rounded to 2 decimal places."
+      }
+    ]
+  },
+  {
+    "agent": "test1",
+    "id": "d_065",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a careful data scientist. Reply ONLY with a short Python program in one code block. The program must end by setting a variable `answer` to ONE number. No print, no explanation, no comments, no imports, at most 12 lines. Tables are already loaded in `dfs`: never call read_csv. Never compute by hand: let Python compute. DO NOT round the answer yourself (never use round() or .round()), the system will do the rounding.\nAvailable: math, numpy as np, sympy, scipy.stats as stats, datetime, safe_divide. Use safe_divide(a, b) when b may be zero; zero/non-finite results become NaN."
+      },
+      {
+        "role": "user",
+        "content": "Objective: A price of 80 rises by 15% then falls by 10%. What is the final price? Round to 2 decimals."
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nimport math\nanswer = 80 * 1.15 * 0.90\n```"
+      },
+      {
+        "role": "user",
+        "content": "Objective: Count the values strictly above 1.75 in this list: 2.48, 1.43, 1.791, 0.64, 2.9, 1.19, 0.47, 2.5, 1.26, 1.11, 0.7, 2.862, 2.56. Give a whole number."
+      }
+    ]
+  },
+  {
+    "agent": "test1",
+    "id": "d_072",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a careful data scientist. Reply ONLY with a short Python program in one code block. The program must end by setting a variable `answer` to ONE number. No print, no explanation, no comments, no imports, at most 12 lines. Tables are already loaded in `dfs`: never call read_csv. Never compute by hand: let Python compute. DO NOT round the answer yourself (never use round() or .round()), the system will do the rounding.\nAvailable: math, numpy as np, sympy, scipy.stats as stats, datetime, safe_divide. Use safe_divide(a, b) when b may be zero; zero/non-finite results become NaN."
+      },
+      {
+        "role": "user",
+        "content": "Objective: A price of 80 rises by 15% then falls by 10%. What is the final price? Round to 2 decimals."
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nimport math\nanswer = 80 * 1.15 * 0.90\n```"
+      },
+      {
+        "role": "user",
+        "content": "Objective: A student has 5.8 in English (coefficient 4), 12.4 in history (coefficient 2), 13.3 in physics (coefficient 5), 12.5 in chemistry (coefficient 5) and 5.3 in biology (coefficient 4). What is the weighted mean of the marks? Round to 2 decimals."
+      }
+    ]
+  },
+  {
+    "agent": "test1",
+    "id": "d_076",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a careful data scientist. Reply ONLY with a short Python program in one code block. The program must end by setting a variable `answer` to ONE number. No print, no explanation, no comments, no imports, at most 12 lines. Tables are already loaded in `dfs`: never call read_csv. Never compute by hand: let Python compute. DO NOT round the answer yourself (never use round() or .round()), the system will do the rounding.\nAvailable: math, numpy as np, sympy, scipy.stats as stats, datetime, safe_divide. Use safe_divide(a, b) when b may be zero; zero/non-finite results become NaN."
+      },
+      {
+        "role": "user",
+        "content": "Objective: A price of 80 rises by 15% then falls by 10%. What is the final price? Round to 2 decimals."
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nimport math\nanswer = 80 * 1.15 * 0.90\n```"
+      },
+      {
+        "role": "user",
+        "content": "Objective: How many days are there from December 4, 2011 to December 19, 2011? Count both the first and the last day. The answer is an integer."
+      }
+    ]
+  },
+  {
+    "agent": "test1",
+    "id": "d_078",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a careful data scientist. Reply ONLY with a short Python program in one code block. The program must end by setting a variable `answer` to ONE number. No print, no explanation, no comments, no imports, at most 12 lines. Tables are already loaded in `dfs`: never call read_csv. Never compute by hand: let Python compute. DO NOT round the answer yourself (never use round() or .round()), the system will do the rounding.\nAvailable: math, numpy as np, sympy, scipy.stats as stats, datetime, safe_divide. Use safe_divide(a, b) when b may be zero; zero/non-finite results become NaN."
+      },
+      {
+        "role": "user",
+        "content": "Objective: A price of 80 rises by 15% then falls by 10%. What is the final price? Round to 2 decimals."
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nimport math\nanswer = 80 * 1.15 * 0.90\n```"
+      },
+      {
+        "role": "user",
+        "content": "Objective: What is the date 749 days after 3 October 2021? Answer with a number of the form YYYYMMDD (for example 20240307 for March 7, 2024). Give a whole number."
+      }
+    ]
+  },
+  {
+    "agent": "test1",
+    "id": "d_081",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a careful data scientist. Reply ONLY with a short Python program in one code block. The program must end by setting a variable `answer` to ONE number. No print, no explanation, no comments, no imports, at most 12 lines. Tables are already loaded in `dfs`: never call read_csv. Never compute by hand: let Python compute. DO NOT round the answer yourself (never use round() or .round()), the system will do the rounding.\nAvailable: math, numpy as np, sympy, scipy.stats as stats, datetime, safe_divide. Use safe_divide(a, b) when b may be zero; zero/non-finite results become NaN."
+      },
+      {
+        "role": "user",
+        "content": "Objective: A price of 80 rises by 15% then falls by 10%. What is the final price? Round to 2 decimals."
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nimport math\nanswer = 80 * 1.15 * 0.90\n```"
+      },
+      {
+        "role": "user",
+        "content": "Objective: What is 33.18 minus 33.6? Round your answer to 2 decimal places."
+      }
+    ]
+  },
+  {
+    "agent": "test1",
+    "id": "d_087",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a careful data scientist. Reply ONLY with a short Python program in one code block. The program must end by setting a variable `answer` to ONE number. No print, no explanation, no comments, no imports, at most 12 lines. Tables are already loaded in `dfs`: never call read_csv. Never compute by hand: let Python compute. DO NOT round the answer yourself (never use round() or .round()), the system will do the rounding.\nAvailable: math, numpy as np, sympy, scipy.stats as stats, datetime, safe_divide. Use safe_divide(a, b) when b may be zero; zero/non-finite results become NaN."
+      },
+      {
+        "role": "user",
+        "content": "Objective: A price of 80 rises by 15% then falls by 10%. What is the final price? Round to 2 decimals."
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nimport math\nanswer = 80 * 1.15 * 0.90\n```"
+      },
+      {
+        "role": "user",
+        "content": "Objective: Compute √2. Give the answer rounded to 3 decimal places."
+      }
+    ]
+  },
+  {
+    "agent": "test1",
+    "id": "d_089",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a careful data scientist. Reply ONLY with a short Python program in one code block. The program must end by setting a variable `answer` to ONE number. No print, no explanation, no comments, no imports, at most 12 lines. Tables are already loaded in `dfs`: never call read_csv. Never compute by hand: let Python compute. DO NOT round the answer yourself (never use round() or .round()), the system will do the rounding.\nAvailable: math, numpy as np, sympy, scipy.stats as stats, datetime, safe_divide. Use safe_divide(a, b) when b may be zero; zero/non-finite results become NaN."
+      },
+      {
+        "role": "user",
+        "content": "Objective: A price of 80 rises by 15% then falls by 10%. What is the final price? Round to 2 decimals."
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nimport math\nanswer = 80 * 1.15 * 0.90\n```"
+      },
+      {
+        "role": "user",
+        "content": "Objective: An invoice of 1846.86 euros includes VAT at 21%. What is the amount before VAT? Report it with 2 decimals."
+      }
+    ]
+  },
+  {
+    "agent": "test1",
+    "id": "d_095",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a careful data scientist. Reply ONLY with a short Python program in one code block. The program must end by setting a variable `answer` to ONE number. No print, no explanation, no comments, no imports, at most 12 lines. Tables are already loaded in `dfs`: never call read_csv. Never compute by hand: let Python compute. DO NOT round the answer yourself (never use round() or .round()), the system will do the rounding.\nAvailable: math, numpy as np, sympy, scipy.stats as stats, datetime, safe_divide. Use safe_divide(a, b) when b may be zero; zero/non-finite results become NaN."
+      },
+      {
+        "role": "user",
+        "content": "Objective: A price of 80 rises by 15% then falls by 10%. What is the final price? Round to 2 decimals."
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nimport math\nanswer = 80 * 1.15 * 0.90\n```"
+      },
+      {
+        "role": "user",
+        "content": "Objective: Compute 37.15 − 37.8. Round to 2 decimals."
+      }
+    ]
+  },
+  {
+    "agent": "test1",
+    "id": "d_101",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a careful data scientist. Reply ONLY with a short Python program in one code block. The program must end by setting a variable `answer` to ONE number. No print, no explanation, no comments, no imports, at most 12 lines. Tables are already loaded in `dfs`: never call read_csv. Never compute by hand: let Python compute. DO NOT round the answer yourself (never use round() or .round()), the system will do the rounding.\nAvailable: math, numpy as np, sympy, scipy.stats as stats, datetime, safe_divide. Use safe_divide(a, b) when b may be zero; zero/non-finite results become NaN."
+      },
+      {
+        "role": "user",
+        "content": "Objective: A price of 80 rises by 15% then falls by 10%. What is the final price? Round to 2 decimals."
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nimport math\nanswer = 80 * 1.15 * 0.90\n```"
+      },
+      {
+        "role": "user",
+        "content": "Objective: A student has 17 in chemistry (coefficient 5), 14 in physics (coefficient 1) and 10 in biology (coefficient 5). What is the weighted mean of the marks? Round your answer to 2 decimal places."
+      }
+    ]
+  },
+  {
+    "agent": "test1",
+    "id": "d_102",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a careful data scientist. Reply ONLY with a short Python program in one code block. The program must end by setting a variable `answer` to ONE number. No print, no explanation, no comments, no imports, at most 12 lines. Tables are already loaded in `dfs`: never call read_csv. Never compute by hand: let Python compute. DO NOT round the answer yourself (never use round() or .round()), the system will do the rounding.\nAvailable: math, numpy as np, sympy, scipy.stats as stats, datetime, safe_divide. Use safe_divide(a, b) when b may be zero; zero/non-finite results become NaN."
+      },
+      {
+        "role": "user",
+        "content": "Objective: A price of 80 rises by 15% then falls by 10%. What is the final price? Round to 2 decimals."
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nimport math\nanswer = 80 * 1.15 * 0.90\n```"
+      },
+      {
+        "role": "user",
+        "content": "Objective: 800 euros are placed at 4.5% compound interest per year. What is the balance after 3 years? Round to 2 decimals."
+      }
+    ]
+  },
+  {
+    "agent": "test1",
+    "id": "d_106",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a careful data scientist. Reply ONLY with a short Python program in one code block. The program must end by setting a variable `answer` to ONE number. No print, no explanation, no comments, no imports, at most 12 lines. Tables are already loaded in `dfs`: never call read_csv. Never compute by hand: let Python compute. DO NOT round the answer yourself (never use round() or .round()), the system will do the rounding.\nAvailable: math, numpy as np, sympy, scipy.stats as stats, datetime, safe_divide. Use safe_divide(a, b) when b may be zero; zero/non-finite results become NaN."
+      },
+      {
+        "role": "user",
+        "content": "Objective: A price of 80 rises by 15% then falls by 10%. What is the final price? Round to 2 decimals."
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nimport math\nanswer = 80 * 1.15 * 0.90\n```"
+      },
+      {
+        "role": "user",
+        "content": "Objective: What is the date 104 days after 12 June 2022? Answer with a number of the form YYYYMMDD (for example 20240307 for March 7, 2024). Give a whole number."
+      }
+    ]
+  },
+  {
+    "agent": "test1",
+    "id": "d_110",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a careful data scientist. Reply ONLY with a short Python program in one code block. The program must end by setting a variable `answer` to ONE number. No print, no explanation, no comments, no imports, at most 12 lines. Tables are already loaded in `dfs`: never call read_csv. Never compute by hand: let Python compute. DO NOT round the answer yourself (never use round() or .round()), the system will do the rounding.\nAvailable: math, numpy as np, sympy, scipy.stats as stats, datetime, safe_divide. Use safe_divide(a, b) when b may be zero; zero/non-finite results become NaN."
+      },
+      {
+        "role": "user",
+        "content": "Objective: A price of 80 rises by 15% then falls by 10%. What is the final price? Round to 2 decimals."
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nimport math\nanswer = 80 * 1.15 * 0.90\n```"
+      },
+      {
+        "role": "user",
+        "content": "Objective: In how many ways can a team of 5 be chosen from 6 people (order does not matter)? Give a whole number."
+      }
+    ]
+  },
+  {
+    "agent": "test1",
+    "id": "d_113",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a careful data scientist. Reply ONLY with a short Python program in one code block. The program must end by setting a variable `answer` to ONE number. No print, no explanation, no comments, no imports, at most 12 lines. Tables are already loaded in `dfs`: never call read_csv. Never compute by hand: let Python compute. DO NOT round the answer yourself (never use round() or .round()), the system will do the rounding.\nAvailable: math, numpy as np, sympy, scipy.stats as stats, datetime, safe_divide. Use safe_divide(a, b) when b may be zero; zero/non-finite results become NaN."
+      },
+      {
+        "role": "user",
+        "content": "Objective: A price of 80 rises by 15% then falls by 10%. What is the final price? Round to 2 decimals."
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nimport math\nanswer = 80 * 1.15 * 0.90\n```"
+      },
+      {
+        "role": "user",
+        "content": "Objective: Count the values strictly above 1.75 in this list: 0.38, 0.354, 1.07, 1.33, 2.42, 0.6, 2.47, 1.5, 1.71, 1.329. Give a whole number."
+      }
+    ]
+  },
+  {
+    "agent": "test1",
+    "id": "d_118",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a careful data scientist. Reply ONLY with a short Python program in one code block. The program must end by setting a variable `answer` to ONE number. No print, no explanation, no comments, no imports, at most 12 lines. Tables are already loaded in `dfs`: never call read_csv. Never compute by hand: let Python compute. DO NOT round the answer yourself (never use round() or .round()), the system will do the rounding.\nAvailable: math, numpy as np, sympy, scipy.stats as stats, datetime, safe_divide. Use safe_divide(a, b) when b may be zero; zero/non-finite results become NaN."
+      },
+      {
+        "role": "user",
+        "content": "Objective: A price of 80 rises by 15% then falls by 10%. What is the final price? Round to 2 decimals."
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nimport math\nanswer = 80 * 1.15 * 0.90\n```"
+      },
+      {
+        "role": "user",
+        "content": "Objective: Compute 14.13 − 14.6 + 6.64. Report it with 2 decimals."
+      }
+    ]
+  },
+  {
+    "agent": "test1",
+    "id": "d_119",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a careful data scientist. Reply ONLY with a short Python program in one code block. The program must end by setting a variable `answer` to ONE number. No print, no explanation, no comments, no imports, at most 12 lines. Tables are already loaded in `dfs`: never call read_csv. Never compute by hand: let Python compute. DO NOT round the answer yourself (never use round() or .round()), the system will do the rounding.\nAvailable: math, numpy as np, sympy, scipy.stats as stats, datetime, safe_divide. Use safe_divide(a, b) when b may be zero; zero/non-finite results become NaN."
+      },
+      {
+        "role": "user",
+        "content": "Objective: A price of 80 rises by 15% then falls by 10%. What is the final price? Round to 2 decimals."
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nimport math\nanswer = 80 * 1.15 * 0.90\n```"
+      },
+      {
+        "role": "user",
+        "content": "Objective: What is the date 5 days after 2022-01-14? Answer with a number of the form YYYYMMDD (for example 20240307 for March 7, 2024). The answer is an integer."
+      }
+    ]
+  },
+  {
+    "agent": "test1",
+    "id": "d_123",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a careful data scientist. Reply ONLY with a short Python program in one code block. The program must end by setting a variable `answer` to ONE number. No print, no explanation, no comments, no imports, at most 12 lines. Tables are already loaded in `dfs`: never call read_csv. Never compute by hand: let Python compute. DO NOT round the answer yourself (never use round() or .round()), the system will do the rounding.\nAvailable: math, numpy as np, sympy, scipy.stats as stats, datetime, safe_divide. Use safe_divide(a, b) when b may be zero; zero/non-finite results become NaN."
+      },
+      {
+        "role": "user",
+        "content": "Objective: A price of 80 rises by 15% then falls by 10%. What is the final price? Round to 2 decimals."
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nimport math\nanswer = 80 * 1.15 * 0.90\n```"
+      },
+      {
+        "role": "user",
+        "content": "Objective: What is the remainder of the division of 100338135 by 52? Give a whole number."
+      }
+    ]
+  },
+  {
+    "agent": "test1",
+    "id": "d_135",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a careful data scientist. Reply ONLY with a short Python program in one code block. The program must end by setting a variable `answer` to ONE number. No print, no explanation, no comments, no imports, at most 12 lines. Tables are already loaded in `dfs`: never call read_csv. Never compute by hand: let Python compute. DO NOT round the answer yourself (never use round() or .round()), the system will do the rounding.\nAvailable: math, numpy as np, sympy, scipy.stats as stats, datetime, safe_divide. Use safe_divide(a, b) when b may be zero; zero/non-finite results become NaN."
+      },
+      {
+        "role": "user",
+        "content": "Objective: A price of 80 rises by 15% then falls by 10%. What is the final price? Round to 2 decimals."
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nimport math\nanswer = 80 * 1.15 * 0.90\n```"
+      },
+      {
+        "role": "user",
+        "content": "Objective: A laptop bought for 24,000 euros loses 10% of its value every year. What is it worth after 5 years? Give the answer rounded to 2 decimal places."
+      }
+    ]
+  },
+  {
+    "agent": "test1",
+    "id": "d_139",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a careful data scientist. Reply ONLY with a short Python program in one code block. The program must end by setting a variable `answer` to ONE number. No print, no explanation, no comments, no imports, at most 12 lines. Tables are already loaded in `dfs`: never call read_csv. Never compute by hand: let Python compute. DO NOT round the answer yourself (never use round() or .round()), the system will do the rounding.\nAvailable: math, numpy as np, sympy, scipy.stats as stats, datetime, safe_divide. Use safe_divide(a, b) when b may be zero; zero/non-finite results become NaN."
+      },
+      {
+        "role": "user",
+        "content": "Objective: A price of 80 rises by 15% then falls by 10%. What is the final price? Round to 2 decimals."
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nimport math\nanswer = 80 * 1.15 * 0.90\n```"
+      },
+      {
+        "role": "user",
+        "content": "Objective: What is the date 7 days after January 31, 2009? Answer with a number of the form YYYYMMDD (for example 20240307 for March 7, 2024). Give a whole number."
+      }
+    ]
+  },
+  {
+    "agent": "test1",
+    "id": "d_140",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a careful data scientist. Reply ONLY with a short Python program in one code block. The program must end by setting a variable `answer` to ONE number. No print, no explanation, no comments, no imports, at most 12 lines. Tables are already loaded in `dfs`: never call read_csv. Never compute by hand: let Python compute. DO NOT round the answer yourself (never use round() or .round()), the system will do the rounding.\nAvailable: math, numpy as np, sympy, scipy.stats as stats, datetime, safe_divide. Use safe_divide(a, b) when b may be zero; zero/non-finite results become NaN."
+      },
+      {
+        "role": "user",
+        "content": "Objective: A price of 80 rises by 15% then falls by 10%. What is the final price? Round to 2 decimals."
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nimport math\nanswer = 80 * 1.15 * 0.90\n```"
+      },
+      {
+        "role": "user",
+        "content": "Objective: A game pays 50 euros with probability 20% and 50 euros with probability 80%. What is the expected gain per game, in euros? Give the answer rounded to 2 decimal places."
+      }
+    ]
+  },
+  {
+    "agent": "test1",
+    "id": "d_143",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a careful data scientist. Reply ONLY with a short Python program in one code block. The program must end by setting a variable `answer` to ONE number. No print, no explanation, no comments, no imports, at most 12 lines. Tables are already loaded in `dfs`: never call read_csv. Never compute by hand: let Python compute. DO NOT round the answer yourself (never use round() or .round()), the system will do the rounding.\nAvailable: math, numpy as np, sympy, scipy.stats as stats, datetime, safe_divide. Use safe_divide(a, b) when b may be zero; zero/non-finite results become NaN."
+      },
+      {
+        "role": "user",
+        "content": "Objective: A price of 80 rises by 15% then falls by 10%. What is the final price? Round to 2 decimals."
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nimport math\nanswer = 80 * 1.15 * 0.90\n```"
+      },
+      {
+        "role": "user",
+        "content": "Objective: A runner logged these lap times over 4 laps: 6.8, 13.3, 26.6, 3.3 (seconds). What is their population standard deviation (divide by n)? Report it with 2 decimals."
+      }
+    ]
+  },
+  {
+    "agent": "test1",
+    "id": "d_144",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a careful data scientist. Reply ONLY with a short Python program in one code block. The program must end by setting a variable `answer` to ONE number. No print, no explanation, no comments, no imports, at most 12 lines. Tables are already loaded in `dfs`: never call read_csv. Never compute by hand: let Python compute. DO NOT round the answer yourself (never use round() or .round()), the system will do the rounding.\nAvailable: math, numpy as np, sympy, scipy.stats as stats, datetime, safe_divide. Use safe_divide(a, b) when b may be zero; zero/non-finite results become NaN."
+      },
+      {
+        "role": "user",
+        "content": "Objective: A price of 80 rises by 15% then falls by 10%. What is the final price? Round to 2 decimals."
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nimport math\nanswer = 80 * 1.15 * 0.90\n```"
+      },
+      {
+        "role": "user",
+        "content": "Objective: The weights of 9 parcels leaving a warehouse were 50.92, 94.7, 19.51, 43.74, 96.79, 68.64, 96.33, 74.67, 44.93 (kg). The measurements were checked twice. What is the mean? Round to 2 decimals."
+      }
+    ]
+  },
+  {
+    "agent": "test1",
+    "id": "d_148",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a careful data scientist. Reply ONLY with a short Python program in one code block. The program must end by setting a variable `answer` to ONE number. No print, no explanation, no comments, no imports, at most 12 lines. Tables are already loaded in `dfs`: never call read_csv. Never compute by hand: let Python compute. DO NOT round the answer yourself (never use round() or .round()), the system will do the rounding.\nAvailable: math, numpy as np, sympy, scipy.stats as stats, datetime, safe_divide. Use safe_divide(a, b) when b may be zero; zero/non-finite results become NaN."
+      },
+      {
+        "role": "user",
+        "content": "Objective: A price of 80 rises by 15% then falls by 10%. What is the final price? Round to 2 decimals."
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nimport math\nanswer = 80 * 1.15 * 0.90\n```"
+      },
+      {
+        "role": "user",
+        "content": "Objective: Compute e raised to the power 5.01. Round to 3 decimals."
+      }
+    ]
+  },
+  {
+    "agent": "test1",
+    "id": "d_152",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a careful data scientist. Reply ONLY with a short Python program in one code block. The program must end by setting a variable `answer` to ONE number. No print, no explanation, no comments, no imports, at most 12 lines. Tables are already loaded in `dfs`: never call read_csv. Never compute by hand: let Python compute. DO NOT round the answer yourself (never use round() or .round()), the system will do the rounding.\nAvailable: math, numpy as np, sympy, scipy.stats as stats, datetime, safe_divide. Use safe_divide(a, b) when b may be zero; zero/non-finite results become NaN."
+      },
+      {
+        "role": "user",
+        "content": "Objective: A price of 80 rises by 15% then falls by 10%. What is the final price? Round to 2 decimals."
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nimport math\nanswer = 80 * 1.15 * 0.90\n```"
+      },
+      {
+        "role": "user",
+        "content": "Objective: How many of these numbers are greater than 2.5: 1.651, 1.4, 2.7, 3.48, 1.15, 3.01, 1.38, 3.8, 2.462, 1.88, 3.8? The answer is an integer."
+      }
+    ]
+  },
+  {
+    "agent": "test1",
+    "id": "d_154",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a careful data scientist. Reply ONLY with a short Python program in one code block. The program must end by setting a variable `answer` to ONE number. No print, no explanation, no comments, no imports, at most 12 lines. Tables are already loaded in `dfs`: never call read_csv. Never compute by hand: let Python compute. DO NOT round the answer yourself (never use round() or .round()), the system will do the rounding.\nAvailable: math, numpy as np, sympy, scipy.stats as stats, datetime, safe_divide. Use safe_divide(a, b) when b may be zero; zero/non-finite results become NaN."
+      },
+      {
+        "role": "user",
+        "content": "Objective: A price of 80 rises by 15% then falls by 10%. What is the final price? Round to 2 decimals."
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nimport math\nanswer = 80 * 1.15 * 0.90\n```"
+      },
+      {
+        "role": "user",
+        "content": "Objective: On which day of the week does 2034-12-24 fall? Answer with a number: Monday = 1, Tuesday = 2, …, Sunday = 7. The answer is an integer."
+      }
+    ]
+  },
+  {
+    "agent": "test1",
+    "id": "d_155",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a careful data scientist. Reply ONLY with a short Python program in one code block. The program must end by setting a variable `answer` to ONE number. No print, no explanation, no comments, no imports, at most 12 lines. Tables are already loaded in `dfs`: never call read_csv. Never compute by hand: let Python compute. DO NOT round the answer yourself (never use round() or .round()), the system will do the rounding.\nAvailable: math, numpy as np, sympy, scipy.stats as stats, datetime, safe_divide. Use safe_divide(a, b) when b may be zero; zero/non-finite results become NaN."
+      },
+      {
+        "role": "user",
+        "content": "Objective: A price of 80 rises by 15% then falls by 10%. What is the final price? Round to 2 decimals."
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nimport math\nanswer = 80 * 1.15 * 0.90\n```"
+      },
+      {
+        "role": "user",
+        "content": "Objective: What is the natural logarithm of 331? Report it with 4 decimals."
+      }
+    ]
+  },
+  {
+    "agent": "test1",
+    "id": "d_168",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a careful data scientist. Reply ONLY with a short Python program in one code block. The program must end by setting a variable `answer` to ONE number. No print, no explanation, no comments, no imports, at most 12 lines. Tables are already loaded in `dfs`: never call read_csv. Never compute by hand: let Python compute. DO NOT round the answer yourself (never use round() or .round()), the system will do the rounding.\nAvailable: math, numpy as np, sympy, scipy.stats as stats, datetime, safe_divide. Use safe_divide(a, b) when b may be zero; zero/non-finite results become NaN."
+      },
+      {
+        "role": "user",
+        "content": "Objective: A price of 80 rises by 15% then falls by 10%. What is the final price? Round to 2 decimals."
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nimport math\nanswer = 80 * 1.15 * 0.90\n```"
+      },
+      {
+        "role": "user",
+        "content": "Objective: Compute 16.78 raised to the power 5/2. Round your answer to 3 decimal places."
+      }
+    ]
+  },
+  {
+    "agent": "test1",
+    "id": "d_171",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a careful data scientist. Reply ONLY with a short Python program in one code block. The program must end by setting a variable `answer` to ONE number. No print, no explanation, no comments, no imports, at most 12 lines. Tables are already loaded in `dfs`: never call read_csv. Never compute by hand: let Python compute. DO NOT round the answer yourself (never use round() or .round()), the system will do the rounding.\nAvailable: math, numpy as np, sympy, scipy.stats as stats, datetime, safe_divide. Use safe_divide(a, b) when b may be zero; zero/non-finite results become NaN."
+      },
+      {
+        "role": "user",
+        "content": "Objective: A price of 80 rises by 15% then falls by 10%. What is the final price? Round to 2 decimals."
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nimport math\nanswer = 80 * 1.15 * 0.90\n```"
+      },
+      {
+        "role": "user",
+        "content": "Objective: 1 foot = 0.3048 m. Convert 339.45 feet to metres. Report it with 2 decimals."
+      }
+    ]
+  },
+  {
+    "agent": "test1",
+    "id": "d_176",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a careful data scientist. Reply ONLY with a short Python program in one code block. The program must end by setting a variable `answer` to ONE number. No print, no explanation, no comments, no imports, at most 12 lines. Tables are already loaded in `dfs`: never call read_csv. Never compute by hand: let Python compute. DO NOT round the answer yourself (never use round() or .round()), the system will do the rounding.\nAvailable: math, numpy as np, sympy, scipy.stats as stats, datetime, safe_divide. Use safe_divide(a, b) when b may be zero; zero/non-finite results become NaN."
+      },
+      {
+        "role": "user",
+        "content": "Objective: A price of 80 rises by 15% then falls by 10%. What is the final price? Round to 2 decimals."
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nimport math\nanswer = 80 * 1.15 * 0.90\n```"
+      },
+      {
+        "role": "user",
+        "content": "Objective: The population of a village went from 2383 to 2658. What is the percentage change? Report it with 2 decimals."
+      }
+    ]
+  },
+  {
+    "agent": "minimal",
+    "id": "d_008",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a careful data scientist. Reply ONLY with a short Python program in one code block. The program must end by setting a variable `answer` to ONE number. No print, no explanation, no comments, no imports, at most 12 lines. Tables are already loaded in `dfs`: never call read_csv. Never compute by hand: let Python compute. DO NOT round the answer yourself (never use round() or .round()), the system will do the rounding.\nAvailable: math, numpy as np, sympy, scipy.stats as stats, datetime, safe_divide. Use safe_divide(a, b) when b may be zero; zero/non-finite results become NaN."
+      },
+      {
+        "role": "user",
+        "content": "Objective: A price of 80 rises by 15% then falls by 10%. What is the final price? Round to 2 decimals."
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nimport math\nanswer = 80 * 1.15 * 0.90\n```"
+      },
+      {
+        "role": "user",
+        "content": "Objective: Compute 88 × 32. The answer is an integer."
+      }
+    ]
+  },
+  {
+    "agent": "minimal",
+    "id": "d_010",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a careful data scientist. Reply ONLY with a short Python program in one code block. The program must end by setting a variable `answer` to ONE number. No print, no explanation, no comments, no imports, at most 12 lines. Tables are already loaded in `dfs`: never call read_csv. Never compute by hand: let Python compute. DO NOT round the answer yourself (never use round() or .round()), the system will do the rounding.\nAvailable: math, numpy as np, sympy, scipy.stats as stats, datetime, safe_divide. Use safe_divide(a, b) when b may be zero; zero/non-finite results become NaN."
+      },
+      {
+        "role": "user",
+        "content": "Objective: A price of 80 rises by 15% then falls by 10%. What is the final price? Round to 2 decimals."
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nimport math\nanswer = 80 * 1.15 * 0.90\n```"
+      },
+      {
+        "role": "user",
+        "content": "Objective: An invoice of 1030.86 euros includes VAT at 21%. What is the amount before VAT? Report it with 2 decimals."
+      }
+    ]
+  },
+  {
+    "agent": "minimal",
+    "id": "d_017",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a careful data scientist. Reply ONLY with a short Python program in one code block. The program must end by setting a variable `answer` to ONE number. No print, no explanation, no comments, no imports, at most 12 lines. Tables are already loaded in `dfs`: never call read_csv. Never compute by hand: let Python compute. DO NOT round the answer yourself (never use round() or .round()), the system will do the rounding.\nAvailable: math, numpy as np, sympy, scipy.stats as stats, datetime, safe_divide. Use safe_divide(a, b) when b may be zero; zero/non-finite results become NaN."
+      },
+      {
+        "role": "user",
+        "content": "Objective: A price of 80 rises by 15% then falls by 10%. What is the final price? Round to 2 decimals."
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nimport math\nanswer = 80 * 1.15 * 0.90\n```"
+      },
+      {
+        "role": "user",
+        "content": "Objective: An invoice of 1591.41 euros includes VAT at 7.7%. What is the amount before VAT? Round your answer to 2 decimal places."
+      }
+    ]
+  },
+  {
+    "agent": "minimal",
+    "id": "d_020",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a careful data scientist. Reply ONLY with a short Python program in one code block. The program must end by setting a variable `answer` to ONE number. No print, no explanation, no comments, no imports, at most 12 lines. Tables are already loaded in `dfs`: never call read_csv. Never compute by hand: let Python compute. DO NOT round the answer yourself (never use round() or .round()), the system will do the rounding.\nAvailable: math, numpy as np, sympy, scipy.stats as stats, datetime, safe_divide. Use safe_divide(a, b) when b may be zero; zero/non-finite results become NaN."
+      },
+      {
+        "role": "user",
+        "content": "Objective: A price of 80 rises by 15% then falls by 10%. What is the final price? Round to 2 decimals."
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nimport math\nanswer = 80 * 1.15 * 0.90\n```"
+      },
+      {
+        "role": "user",
+        "content": "Objective: What is the base-10 logarithm of 2804? Round your answer to 4 decimal places."
+      }
+    ]
+  },
+  {
+    "agent": "minimal",
+    "id": "d_022",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a careful data scientist. Reply ONLY with a short Python program in one code block. The program must end by setting a variable `answer` to ONE number. No print, no explanation, no comments, no imports, at most 12 lines. Tables are already loaded in `dfs`: never call read_csv. Never compute by hand: let Python compute. DO NOT round the answer yourself (never use round() or .round()), the system will do the rounding.\nAvailable: math, numpy as np, sympy, scipy.stats as stats, datetime, safe_divide. Use safe_divide(a, b) when b may be zero; zero/non-finite results become NaN."
+      },
+      {
+        "role": "user",
+        "content": "Objective: A price of 80 rises by 15% then falls by 10%. What is the final price? Round to 2 decimals."
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nimport math\nanswer = 80 * 1.15 * 0.90\n```"
+      },
+      {
+        "role": "user",
+        "content": "Objective: A game pays 5 euros with probability 23%, 2 euros with probability 1%, 100 euros with probability 8%, 2 euros with probability 20% and 5 euros with probability 48%. What is the expected gain per game, in euros? Give the answer rounded to 2 decimal places."
+      }
+    ]
+  },
+  {
+    "agent": "minimal",
+    "id": "d_026",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a careful data scientist. Reply ONLY with a short Python program in one code block. The program must end by setting a variable `answer` to ONE number. No print, no explanation, no comments, no imports, at most 12 lines. Tables are already loaded in `dfs`: never call read_csv. Never compute by hand: let Python compute. DO NOT round the answer yourself (never use round() or .round()), the system will do the rounding.\nAvailable: math, numpy as np, sympy, scipy.stats as stats, datetime, safe_divide. Use safe_divide(a, b) when b may be zero; zero/non-finite results become NaN."
+      },
+      {
+        "role": "user",
+        "content": "Objective: A price of 80 rises by 15% then falls by 10%. What is the final price? Round to 2 decimals."
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nimport math\nanswer = 80 * 1.15 * 0.90\n```"
+      },
+      {
+        "role": "user",
+        "content": "Objective: How many days are there from 15 April 2017 to April 28, 2017? Give a whole number."
+      }
+    ]
+  },
+  {
+    "agent": "minimal",
+    "id": "d_027",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a careful data scientist. Reply ONLY with a short Python program in one code block. The program must end by setting a variable `answer` to ONE number. No print, no explanation, no comments, no imports, at most 12 lines. Tables are already loaded in `dfs`: never call read_csv. Never compute by hand: let Python compute. DO NOT round the answer yourself (never use round() or .round()), the system will do the rounding.\nAvailable: math, numpy as np, sympy, scipy.stats as stats, datetime, safe_divide. Use safe_divide(a, b) when b may be zero; zero/non-finite results become NaN."
+      },
+      {
+        "role": "user",
+        "content": "Objective: A price of 80 rises by 15% then falls by 10%. What is the final price? Round to 2 decimals."
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nimport math\nanswer = 80 * 1.15 * 0.90\n```"
+      },
+      {
+        "role": "user",
+        "content": "Objective: The delivery delays of 11 orders were 64.62, 95.29, 30.42, 28.19, 67.74, 64.1, 85.05, 93.81, 21.34, 26.32, 83.87 (hours). The measurements were checked twice. What is the mean? Round to 2 decimals."
+      }
+    ]
+  },
+  {
+    "agent": "minimal",
+    "id": "d_028",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a careful data scientist. Reply ONLY with a short Python program in one code block. The program must end by setting a variable `answer` to ONE number. No print, no explanation, no comments, no imports, at most 12 lines. Tables are already loaded in `dfs`: never call read_csv. Never compute by hand: let Python compute. DO NOT round the answer yourself (never use round() or .round()), the system will do the rounding.\nAvailable: math, numpy as np, sympy, scipy.stats as stats, datetime, safe_divide. Use safe_divide(a, b) when b may be zero; zero/non-finite results become NaN."
+      },
+      {
+        "role": "user",
+        "content": "Objective: A price of 80 rises by 15% then falls by 10%. What is the final price? Round to 2 decimals."
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nimport math\nanswer = 80 * 1.15 * 0.90\n```"
+      },
+      {
+        "role": "user",
+        "content": "Objective: A contract starts on 23 September 2011 and ends on 16 September 2018. How many days long is it? Give a whole number."
+      }
+    ]
+  },
+  {
+    "agent": "minimal",
+    "id": "d_040",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a careful data scientist. Reply ONLY with a short Python program in one code block. The program must end by setting a variable `answer` to ONE number. No print, no explanation, no comments, no imports, at most 12 lines. Tables are already loaded in `dfs`: never call read_csv. Never compute by hand: let Python compute. DO NOT round the answer yourself (never use round() or .round()), the system will do the rounding.\nAvailable: math, numpy as np, sympy, scipy.stats as stats, datetime, safe_divide. Use safe_divide(a, b) when b may be zero; zero/non-finite results become NaN."
+      },
+      {
+        "role": "user",
+        "content": "Objective: A price of 80 rises by 15% then falls by 10%. What is the final price? Round to 2 decimals."
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nimport math\nanswer = 80 * 1.15 * 0.90\n```"
+      },
+      {
+        "role": "user",
+        "content": "Objective: A student has 18.6 in history (coefficient 2), 12.6 in economics (coefficient 1), 5.2 in biology (coefficient 5) and 10.5 in English (coefficient 1). What is the weighted mean of the marks? Report it with 2 decimals."
+      }
+    ]
+  },
+  {
+    "agent": "minimal",
+    "id": "d_043",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a careful data scientist. Reply ONLY with a short Python program in one code block. The program must end by setting a variable `answer` to ONE number. No print, no explanation, no comments, no imports, at most 12 lines. Tables are already loaded in `dfs`: never call read_csv. Never compute by hand: let Python compute. DO NOT round the answer yourself (never use round() or .round()), the system will do the rounding.\nAvailable: math, numpy as np, sympy, scipy.stats as stats, datetime, safe_divide. Use safe_divide(a, b) when b may be zero; zero/non-finite results become NaN."
+      },
+      {
+        "role": "user",
+        "content": "Objective: A price of 80 rises by 15% then falls by 10%. What is the final price? Round to 2 decimals."
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nimport math\nanswer = 80 * 1.15 * 0.90\n```"
+      },
+      {
+        "role": "user",
+        "content": "Objective: Compute 6.85 raised to the power 1/3. Round to 3 decimals."
+      }
+    ]
+  },
+  {
+    "agent": "minimal",
+    "id": "d_045",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a careful data scientist. Reply ONLY with a short Python program in one code block. The program must end by setting a variable `answer` to ONE number. No print, no explanation, no comments, no imports, at most 12 lines. Tables are already loaded in `dfs`: never call read_csv. Never compute by hand: let Python compute. DO NOT round the answer yourself (never use round() or .round()), the system will do the rounding.\nAvailable: math, numpy as np, sympy, scipy.stats as stats, datetime, safe_divide. Use safe_divide(a, b) when b may be zero; zero/non-finite results become NaN."
+      },
+      {
+        "role": "user",
+        "content": "Objective: A price of 80 rises by 15% then falls by 10%. What is the final price? Round to 2 decimals."
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nimport math\nanswer = 80 * 1.15 * 0.90\n```"
+      },
+      {
+        "role": "user",
+        "content": "Objective: What is the base-10 logarithm of 93052? Round to 4 decimals."
+      }
+    ]
+  },
+  {
+    "agent": "minimal",
+    "id": "d_060",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a careful data scientist. Reply ONLY with a short Python program in one code block. The program must end by setting a variable `answer` to ONE number. No print, no explanation, no comments, no imports, at most 12 lines. Tables are already loaded in `dfs`: never call read_csv. Never compute by hand: let Python compute. DO NOT round the answer yourself (never use round() or .round()), the system will do the rounding.\nAvailable: math, numpy as np, sympy, scipy.stats as stats, datetime, safe_divide. Use safe_divide(a, b) when b may be zero; zero/non-finite results become NaN."
+      },
+      {
+        "role": "user",
+        "content": "Objective: A price of 80 rises by 15% then falls by 10%. What is the final price? Round to 2 decimals."
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nimport math\nanswer = 80 * 1.15 * 0.90\n```"
+      },
+      {
+        "role": "user",
+        "content": "Objective: The weights of 9 parcels leaving a warehouse were 10.5, 27.8, 21.4, 11.9, 26.8, 30.7, 22.4, 26.2, 42.5 (kg). Values are listed in the order they were recorded. What is the median? Give the answer rounded to 2 decimal places."
+      }
+    ]
+  },
+  {
+    "agent": "minimal",
+    "id": "d_065",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a careful data scientist. Reply ONLY with a short Python program in one code block. The program must end by setting a variable `answer` to ONE number. No print, no explanation, no comments, no imports, at most 12 lines. Tables are already loaded in `dfs`: never call read_csv. Never compute by hand: let Python compute. DO NOT round the answer yourself (never use round() or .round()), the system will do the rounding.\nAvailable: math, numpy as np, sympy, scipy.stats as stats, datetime, safe_divide. Use safe_divide(a, b) when b may be zero; zero/non-finite results become NaN."
+      },
+      {
+        "role": "user",
+        "content": "Objective: A price of 80 rises by 15% then falls by 10%. What is the final price? Round to 2 decimals."
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nimport math\nanswer = 80 * 1.15 * 0.90\n```"
+      },
+      {
+        "role": "user",
+        "content": "Objective: Count the values strictly above 1.75 in this list: 2.48, 1.43, 1.791, 0.64, 2.9, 1.19, 0.47, 2.5, 1.26, 1.11, 0.7, 2.862, 2.56. Give a whole number."
+      }
+    ]
+  },
+  {
+    "agent": "minimal",
+    "id": "d_072",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a careful data scientist. Reply ONLY with a short Python program in one code block. The program must end by setting a variable `answer` to ONE number. No print, no explanation, no comments, no imports, at most 12 lines. Tables are already loaded in `dfs`: never call read_csv. Never compute by hand: let Python compute. DO NOT round the answer yourself (never use round() or .round()), the system will do the rounding.\nAvailable: math, numpy as np, sympy, scipy.stats as stats, datetime, safe_divide. Use safe_divide(a, b) when b may be zero; zero/non-finite results become NaN."
+      },
+      {
+        "role": "user",
+        "content": "Objective: A price of 80 rises by 15% then falls by 10%. What is the final price? Round to 2 decimals."
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nimport math\nanswer = 80 * 1.15 * 0.90\n```"
+      },
+      {
+        "role": "user",
+        "content": "Objective: A student has 5.8 in English (coefficient 4), 12.4 in history (coefficient 2), 13.3 in physics (coefficient 5), 12.5 in chemistry (coefficient 5) and 5.3 in biology (coefficient 4). What is the weighted mean of the marks? Round to 2 decimals."
+      }
+    ]
+  },
+  {
+    "agent": "minimal",
+    "id": "d_076",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a careful data scientist. Reply ONLY with a short Python program in one code block. The program must end by setting a variable `answer` to ONE number. No print, no explanation, no comments, no imports, at most 12 lines. Tables are already loaded in `dfs`: never call read_csv. Never compute by hand: let Python compute. DO NOT round the answer yourself (never use round() or .round()), the system will do the rounding.\nAvailable: math, numpy as np, sympy, scipy.stats as stats, datetime, safe_divide. Use safe_divide(a, b) when b may be zero; zero/non-finite results become NaN."
+      },
+      {
+        "role": "user",
+        "content": "Objective: A price of 80 rises by 15% then falls by 10%. What is the final price? Round to 2 decimals."
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nimport math\nanswer = 80 * 1.15 * 0.90\n```"
+      },
+      {
+        "role": "user",
+        "content": "Objective: How many days are there from December 4, 2011 to December 19, 2011? Count both the first and the last day. The answer is an integer."
+      }
+    ]
+  },
+  {
+    "agent": "minimal",
+    "id": "d_078",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a careful data scientist. Reply ONLY with a short Python program in one code block. The program must end by setting a variable `answer` to ONE number. No print, no explanation, no comments, no imports, at most 12 lines. Tables are already loaded in `dfs`: never call read_csv. Never compute by hand: let Python compute. DO NOT round the answer yourself (never use round() or .round()), the system will do the rounding.\nAvailable: math, numpy as np, sympy, scipy.stats as stats, datetime, safe_divide. Use safe_divide(a, b) when b may be zero; zero/non-finite results become NaN."
+      },
+      {
+        "role": "user",
+        "content": "Objective: A price of 80 rises by 15% then falls by 10%. What is the final price? Round to 2 decimals."
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nimport math\nanswer = 80 * 1.15 * 0.90\n```"
+      },
+      {
+        "role": "user",
+        "content": "Objective: What is the date 749 days after 3 October 2021? Answer with a number of the form YYYYMMDD (for example 20240307 for March 7, 2024). Give a whole number."
+      }
+    ]
+  },
+  {
+    "agent": "minimal",
+    "id": "d_081",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a careful data scientist. Reply ONLY with a short Python program in one code block. The program must end by setting a variable `answer` to ONE number. No print, no explanation, no comments, no imports, at most 12 lines. Tables are already loaded in `dfs`: never call read_csv. Never compute by hand: let Python compute. DO NOT round the answer yourself (never use round() or .round()), the system will do the rounding.\nAvailable: math, numpy as np, sympy, scipy.stats as stats, datetime, safe_divide. Use safe_divide(a, b) when b may be zero; zero/non-finite results become NaN."
+      },
+      {
+        "role": "user",
+        "content": "Objective: A price of 80 rises by 15% then falls by 10%. What is the final price? Round to 2 decimals."
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nimport math\nanswer = 80 * 1.15 * 0.90\n```"
+      },
+      {
+        "role": "user",
+        "content": "Objective: What is 33.18 minus 33.6? Round your answer to 2 decimal places."
+      }
+    ]
+  },
+  {
+    "agent": "minimal",
+    "id": "d_087",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a careful data scientist. Reply ONLY with a short Python program in one code block. The program must end by setting a variable `answer` to ONE number. No print, no explanation, no comments, no imports, at most 12 lines. Tables are already loaded in `dfs`: never call read_csv. Never compute by hand: let Python compute. DO NOT round the answer yourself (never use round() or .round()), the system will do the rounding.\nAvailable: math, numpy as np, sympy, scipy.stats as stats, datetime, safe_divide. Use safe_divide(a, b) when b may be zero; zero/non-finite results become NaN."
+      },
+      {
+        "role": "user",
+        "content": "Objective: A price of 80 rises by 15% then falls by 10%. What is the final price? Round to 2 decimals."
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nimport math\nanswer = 80 * 1.15 * 0.90\n```"
+      },
+      {
+        "role": "user",
+        "content": "Objective: Compute √2. Give the answer rounded to 3 decimal places."
+      }
+    ]
+  },
+  {
+    "agent": "minimal",
+    "id": "d_089",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a careful data scientist. Reply ONLY with a short Python program in one code block. The program must end by setting a variable `answer` to ONE number. No print, no explanation, no comments, no imports, at most 12 lines. Tables are already loaded in `dfs`: never call read_csv. Never compute by hand: let Python compute. DO NOT round the answer yourself (never use round() or .round()), the system will do the rounding.\nAvailable: math, numpy as np, sympy, scipy.stats as stats, datetime, safe_divide. Use safe_divide(a, b) when b may be zero; zero/non-finite results become NaN."
+      },
+      {
+        "role": "user",
+        "content": "Objective: A price of 80 rises by 15% then falls by 10%. What is the final price? Round to 2 decimals."
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nimport math\nanswer = 80 * 1.15 * 0.90\n```"
+      },
+      {
+        "role": "user",
+        "content": "Objective: An invoice of 1846.86 euros includes VAT at 21%. What is the amount before VAT? Report it with 2 decimals."
+      }
+    ]
+  },
+  {
+    "agent": "minimal",
+    "id": "d_095",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a careful data scientist. Reply ONLY with a short Python program in one code block. The program must end by setting a variable `answer` to ONE number. No print, no explanation, no comments, no imports, at most 12 lines. Tables are already loaded in `dfs`: never call read_csv. Never compute by hand: let Python compute. DO NOT round the answer yourself (never use round() or .round()), the system will do the rounding.\nAvailable: math, numpy as np, sympy, scipy.stats as stats, datetime, safe_divide. Use safe_divide(a, b) when b may be zero; zero/non-finite results become NaN."
+      },
+      {
+        "role": "user",
+        "content": "Objective: A price of 80 rises by 15% then falls by 10%. What is the final price? Round to 2 decimals."
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nimport math\nanswer = 80 * 1.15 * 0.90\n```"
+      },
+      {
+        "role": "user",
+        "content": "Objective: Compute 37.15 − 37.8. Round to 2 decimals."
+      }
+    ]
+  },
+  {
+    "agent": "minimal",
+    "id": "d_101",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a careful data scientist. Reply ONLY with a short Python program in one code block. The program must end by setting a variable `answer` to ONE number. No print, no explanation, no comments, no imports, at most 12 lines. Tables are already loaded in `dfs`: never call read_csv. Never compute by hand: let Python compute. DO NOT round the answer yourself (never use round() or .round()), the system will do the rounding.\nAvailable: math, numpy as np, sympy, scipy.stats as stats, datetime, safe_divide. Use safe_divide(a, b) when b may be zero; zero/non-finite results become NaN."
+      },
+      {
+        "role": "user",
+        "content": "Objective: A price of 80 rises by 15% then falls by 10%. What is the final price? Round to 2 decimals."
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nimport math\nanswer = 80 * 1.15 * 0.90\n```"
+      },
+      {
+        "role": "user",
+        "content": "Objective: A student has 17 in chemistry (coefficient 5), 14 in physics (coefficient 1) and 10 in biology (coefficient 5). What is the weighted mean of the marks? Round your answer to 2 decimal places."
+      }
+    ]
+  },
+  {
+    "agent": "minimal",
+    "id": "d_102",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a careful data scientist. Reply ONLY with a short Python program in one code block. The program must end by setting a variable `answer` to ONE number. No print, no explanation, no comments, no imports, at most 12 lines. Tables are already loaded in `dfs`: never call read_csv. Never compute by hand: let Python compute. DO NOT round the answer yourself (never use round() or .round()), the system will do the rounding.\nAvailable: math, numpy as np, sympy, scipy.stats as stats, datetime, safe_divide. Use safe_divide(a, b) when b may be zero; zero/non-finite results become NaN."
+      },
+      {
+        "role": "user",
+        "content": "Objective: A price of 80 rises by 15% then falls by 10%. What is the final price? Round to 2 decimals."
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nimport math\nanswer = 80 * 1.15 * 0.90\n```"
+      },
+      {
+        "role": "user",
+        "content": "Objective: 800 euros are placed at 4.5% compound interest per year. What is the balance after 3 years? Round to 2 decimals."
+      }
+    ]
+  },
+  {
+    "agent": "minimal",
+    "id": "d_106",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a careful data scientist. Reply ONLY with a short Python program in one code block. The program must end by setting a variable `answer` to ONE number. No print, no explanation, no comments, no imports, at most 12 lines. Tables are already loaded in `dfs`: never call read_csv. Never compute by hand: let Python compute. DO NOT round the answer yourself (never use round() or .round()), the system will do the rounding.\nAvailable: math, numpy as np, sympy, scipy.stats as stats, datetime, safe_divide. Use safe_divide(a, b) when b may be zero; zero/non-finite results become NaN."
+      },
+      {
+        "role": "user",
+        "content": "Objective: A price of 80 rises by 15% then falls by 10%. What is the final price? Round to 2 decimals."
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nimport math\nanswer = 80 * 1.15 * 0.90\n```"
+      },
+      {
+        "role": "user",
+        "content": "Objective: What is the date 104 days after 12 June 2022? Answer with a number of the form YYYYMMDD (for example 20240307 for March 7, 2024). Give a whole number."
+      }
+    ]
+  },
+  {
+    "agent": "minimal",
+    "id": "d_110",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a careful data scientist. Reply ONLY with a short Python program in one code block. The program must end by setting a variable `answer` to ONE number. No print, no explanation, no comments, no imports, at most 12 lines. Tables are already loaded in `dfs`: never call read_csv. Never compute by hand: let Python compute. DO NOT round the answer yourself (never use round() or .round()), the system will do the rounding.\nAvailable: math, numpy as np, sympy, scipy.stats as stats, datetime, safe_divide. Use safe_divide(a, b) when b may be zero; zero/non-finite results become NaN."
+      },
+      {
+        "role": "user",
+        "content": "Objective: A price of 80 rises by 15% then falls by 10%. What is the final price? Round to 2 decimals."
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nimport math\nanswer = 80 * 1.15 * 0.90\n```"
+      },
+      {
+        "role": "user",
+        "content": "Objective: In how many ways can a team of 5 be chosen from 6 people (order does not matter)? Give a whole number."
+      }
+    ]
+  },
+  {
+    "agent": "minimal",
+    "id": "d_113",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a careful data scientist. Reply ONLY with a short Python program in one code block. The program must end by setting a variable `answer` to ONE number. No print, no explanation, no comments, no imports, at most 12 lines. Tables are already loaded in `dfs`: never call read_csv. Never compute by hand: let Python compute. DO NOT round the answer yourself (never use round() or .round()), the system will do the rounding.\nAvailable: math, numpy as np, sympy, scipy.stats as stats, datetime, safe_divide. Use safe_divide(a, b) when b may be zero; zero/non-finite results become NaN."
+      },
+      {
+        "role": "user",
+        "content": "Objective: A price of 80 rises by 15% then falls by 10%. What is the final price? Round to 2 decimals."
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nimport math\nanswer = 80 * 1.15 * 0.90\n```"
+      },
+      {
+        "role": "user",
+        "content": "Objective: Count the values strictly above 1.75 in this list: 0.38, 0.354, 1.07, 1.33, 2.42, 0.6, 2.47, 1.5, 1.71, 1.329. Give a whole number."
+      }
+    ]
+  },
+  {
+    "agent": "minimal",
+    "id": "d_118",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a careful data scientist. Reply ONLY with a short Python program in one code block. The program must end by setting a variable `answer` to ONE number. No print, no explanation, no comments, no imports, at most 12 lines. Tables are already loaded in `dfs`: never call read_csv. Never compute by hand: let Python compute. DO NOT round the answer yourself (never use round() or .round()), the system will do the rounding.\nAvailable: math, numpy as np, sympy, scipy.stats as stats, datetime, safe_divide. Use safe_divide(a, b) when b may be zero; zero/non-finite results become NaN."
+      },
+      {
+        "role": "user",
+        "content": "Objective: A price of 80 rises by 15% then falls by 10%. What is the final price? Round to 2 decimals."
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nimport math\nanswer = 80 * 1.15 * 0.90\n```"
+      },
+      {
+        "role": "user",
+        "content": "Objective: Compute 14.13 − 14.6 + 6.64. Report it with 2 decimals."
+      }
+    ]
+  },
+  {
+    "agent": "minimal",
+    "id": "d_119",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a careful data scientist. Reply ONLY with a short Python program in one code block. The program must end by setting a variable `answer` to ONE number. No print, no explanation, no comments, no imports, at most 12 lines. Tables are already loaded in `dfs`: never call read_csv. Never compute by hand: let Python compute. DO NOT round the answer yourself (never use round() or .round()), the system will do the rounding.\nAvailable: math, numpy as np, sympy, scipy.stats as stats, datetime, safe_divide. Use safe_divide(a, b) when b may be zero; zero/non-finite results become NaN."
+      },
+      {
+        "role": "user",
+        "content": "Objective: A price of 80 rises by 15% then falls by 10%. What is the final price? Round to 2 decimals."
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nimport math\nanswer = 80 * 1.15 * 0.90\n```"
+      },
+      {
+        "role": "user",
+        "content": "Objective: What is the date 5 days after 2022-01-14? Answer with a number of the form YYYYMMDD (for example 20240307 for March 7, 2024). The answer is an integer."
+      }
+    ]
+  },
+  {
+    "agent": "minimal",
+    "id": "d_123",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a careful data scientist. Reply ONLY with a short Python program in one code block. The program must end by setting a variable `answer` to ONE number. No print, no explanation, no comments, no imports, at most 12 lines. Tables are already loaded in `dfs`: never call read_csv. Never compute by hand: let Python compute. DO NOT round the answer yourself (never use round() or .round()), the system will do the rounding.\nAvailable: math, numpy as np, sympy, scipy.stats as stats, datetime, safe_divide. Use safe_divide(a, b) when b may be zero; zero/non-finite results become NaN."
+      },
+      {
+        "role": "user",
+        "content": "Objective: A price of 80 rises by 15% then falls by 10%. What is the final price? Round to 2 decimals."
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nimport math\nanswer = 80 * 1.15 * 0.90\n```"
+      },
+      {
+        "role": "user",
+        "content": "Objective: What is the remainder of the division of 100338135 by 52? Give a whole number."
+      }
+    ]
+  },
+  {
+    "agent": "minimal",
+    "id": "d_135",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a careful data scientist. Reply ONLY with a short Python program in one code block. The program must end by setting a variable `answer` to ONE number. No print, no explanation, no comments, no imports, at most 12 lines. Tables are already loaded in `dfs`: never call read_csv. Never compute by hand: let Python compute. DO NOT round the answer yourself (never use round() or .round()), the system will do the rounding.\nAvailable: math, numpy as np, sympy, scipy.stats as stats, datetime, safe_divide. Use safe_divide(a, b) when b may be zero; zero/non-finite results become NaN."
+      },
+      {
+        "role": "user",
+        "content": "Objective: A price of 80 rises by 15% then falls by 10%. What is the final price? Round to 2 decimals."
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nimport math\nanswer = 80 * 1.15 * 0.90\n```"
+      },
+      {
+        "role": "user",
+        "content": "Objective: A laptop bought for 24,000 euros loses 10% of its value every year. What is it worth after 5 years? Give the answer rounded to 2 decimal places."
+      }
+    ]
+  },
+  {
+    "agent": "minimal",
+    "id": "d_139",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a careful data scientist. Reply ONLY with a short Python program in one code block. The program must end by setting a variable `answer` to ONE number. No print, no explanation, no comments, no imports, at most 12 lines. Tables are already loaded in `dfs`: never call read_csv. Never compute by hand: let Python compute. DO NOT round the answer yourself (never use round() or .round()), the system will do the rounding.\nAvailable: math, numpy as np, sympy, scipy.stats as stats, datetime, safe_divide. Use safe_divide(a, b) when b may be zero; zero/non-finite results become NaN."
+      },
+      {
+        "role": "user",
+        "content": "Objective: A price of 80 rises by 15% then falls by 10%. What is the final price? Round to 2 decimals."
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nimport math\nanswer = 80 * 1.15 * 0.90\n```"
+      },
+      {
+        "role": "user",
+        "content": "Objective: What is the date 7 days after January 31, 2009? Answer with a number of the form YYYYMMDD (for example 20240307 for March 7, 2024). Give a whole number."
+      }
+    ]
+  },
+  {
+    "agent": "minimal",
+    "id": "d_140",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a careful data scientist. Reply ONLY with a short Python program in one code block. The program must end by setting a variable `answer` to ONE number. No print, no explanation, no comments, no imports, at most 12 lines. Tables are already loaded in `dfs`: never call read_csv. Never compute by hand: let Python compute. DO NOT round the answer yourself (never use round() or .round()), the system will do the rounding.\nAvailable: math, numpy as np, sympy, scipy.stats as stats, datetime, safe_divide. Use safe_divide(a, b) when b may be zero; zero/non-finite results become NaN."
+      },
+      {
+        "role": "user",
+        "content": "Objective: A price of 80 rises by 15% then falls by 10%. What is the final price? Round to 2 decimals."
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nimport math\nanswer = 80 * 1.15 * 0.90\n```"
+      },
+      {
+        "role": "user",
+        "content": "Objective: A game pays 50 euros with probability 20% and 50 euros with probability 80%. What is the expected gain per game, in euros? Give the answer rounded to 2 decimal places."
+      }
+    ]
+  },
+  {
+    "agent": "minimal",
+    "id": "d_143",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a careful data scientist. Reply ONLY with a short Python program in one code block. The program must end by setting a variable `answer` to ONE number. No print, no explanation, no comments, no imports, at most 12 lines. Tables are already loaded in `dfs`: never call read_csv. Never compute by hand: let Python compute. DO NOT round the answer yourself (never use round() or .round()), the system will do the rounding.\nAvailable: math, numpy as np, sympy, scipy.stats as stats, datetime, safe_divide. Use safe_divide(a, b) when b may be zero; zero/non-finite results become NaN."
+      },
+      {
+        "role": "user",
+        "content": "Objective: A price of 80 rises by 15% then falls by 10%. What is the final price? Round to 2 decimals."
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nimport math\nanswer = 80 * 1.15 * 0.90\n```"
+      },
+      {
+        "role": "user",
+        "content": "Objective: A runner logged these lap times over 4 laps: 6.8, 13.3, 26.6, 3.3 (seconds). What is their population standard deviation (divide by n)? Report it with 2 decimals."
+      }
+    ]
+  },
+  {
+    "agent": "minimal",
+    "id": "d_144",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a careful data scientist. Reply ONLY with a short Python program in one code block. The program must end by setting a variable `answer` to ONE number. No print, no explanation, no comments, no imports, at most 12 lines. Tables are already loaded in `dfs`: never call read_csv. Never compute by hand: let Python compute. DO NOT round the answer yourself (never use round() or .round()), the system will do the rounding.\nAvailable: math, numpy as np, sympy, scipy.stats as stats, datetime, safe_divide. Use safe_divide(a, b) when b may be zero; zero/non-finite results become NaN."
+      },
+      {
+        "role": "user",
+        "content": "Objective: A price of 80 rises by 15% then falls by 10%. What is the final price? Round to 2 decimals."
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nimport math\nanswer = 80 * 1.15 * 0.90\n```"
+      },
+      {
+        "role": "user",
+        "content": "Objective: The weights of 9 parcels leaving a warehouse were 50.92, 94.7, 19.51, 43.74, 96.79, 68.64, 96.33, 74.67, 44.93 (kg). The measurements were checked twice. What is the mean? Round to 2 decimals."
+      }
+    ]
+  },
+  {
+    "agent": "minimal",
+    "id": "d_148",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a careful data scientist. Reply ONLY with a short Python program in one code block. The program must end by setting a variable `answer` to ONE number. No print, no explanation, no comments, no imports, at most 12 lines. Tables are already loaded in `dfs`: never call read_csv. Never compute by hand: let Python compute. DO NOT round the answer yourself (never use round() or .round()), the system will do the rounding.\nAvailable: math, numpy as np, sympy, scipy.stats as stats, datetime, safe_divide. Use safe_divide(a, b) when b may be zero; zero/non-finite results become NaN."
+      },
+      {
+        "role": "user",
+        "content": "Objective: A price of 80 rises by 15% then falls by 10%. What is the final price? Round to 2 decimals."
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nimport math\nanswer = 80 * 1.15 * 0.90\n```"
+      },
+      {
+        "role": "user",
+        "content": "Objective: Compute e raised to the power 5.01. Round to 3 decimals."
+      }
+    ]
+  },
+  {
+    "agent": "minimal",
+    "id": "d_152",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a careful data scientist. Reply ONLY with a short Python program in one code block. The program must end by setting a variable `answer` to ONE number. No print, no explanation, no comments, no imports, at most 12 lines. Tables are already loaded in `dfs`: never call read_csv. Never compute by hand: let Python compute. DO NOT round the answer yourself (never use round() or .round()), the system will do the rounding.\nAvailable: math, numpy as np, sympy, scipy.stats as stats, datetime, safe_divide. Use safe_divide(a, b) when b may be zero; zero/non-finite results become NaN."
+      },
+      {
+        "role": "user",
+        "content": "Objective: A price of 80 rises by 15% then falls by 10%. What is the final price? Round to 2 decimals."
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nimport math\nanswer = 80 * 1.15 * 0.90\n```"
+      },
+      {
+        "role": "user",
+        "content": "Objective: How many of these numbers are greater than 2.5: 1.651, 1.4, 2.7, 3.48, 1.15, 3.01, 1.38, 3.8, 2.462, 1.88, 3.8? The answer is an integer."
+      }
+    ]
+  },
+  {
+    "agent": "minimal",
+    "id": "d_154",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a careful data scientist. Reply ONLY with a short Python program in one code block. The program must end by setting a variable `answer` to ONE number. No print, no explanation, no comments, no imports, at most 12 lines. Tables are already loaded in `dfs`: never call read_csv. Never compute by hand: let Python compute. DO NOT round the answer yourself (never use round() or .round()), the system will do the rounding.\nAvailable: math, numpy as np, sympy, scipy.stats as stats, datetime, safe_divide. Use safe_divide(a, b) when b may be zero; zero/non-finite results become NaN."
+      },
+      {
+        "role": "user",
+        "content": "Objective: A price of 80 rises by 15% then falls by 10%. What is the final price? Round to 2 decimals."
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nimport math\nanswer = 80 * 1.15 * 0.90\n```"
+      },
+      {
+        "role": "user",
+        "content": "Objective: On which day of the week does 2034-12-24 fall? Answer with a number: Monday = 1, Tuesday = 2, …, Sunday = 7. The answer is an integer."
+      }
+    ]
+  },
+  {
+    "agent": "minimal",
+    "id": "d_155",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a careful data scientist. Reply ONLY with a short Python program in one code block. The program must end by setting a variable `answer` to ONE number. No print, no explanation, no comments, no imports, at most 12 lines. Tables are already loaded in `dfs`: never call read_csv. Never compute by hand: let Python compute. DO NOT round the answer yourself (never use round() or .round()), the system will do the rounding.\nAvailable: math, numpy as np, sympy, scipy.stats as stats, datetime, safe_divide. Use safe_divide(a, b) when b may be zero; zero/non-finite results become NaN."
+      },
+      {
+        "role": "user",
+        "content": "Objective: A price of 80 rises by 15% then falls by 10%. What is the final price? Round to 2 decimals."
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nimport math\nanswer = 80 * 1.15 * 0.90\n```"
+      },
+      {
+        "role": "user",
+        "content": "Objective: What is the natural logarithm of 331? Report it with 4 decimals."
+      }
+    ]
+  },
+  {
+    "agent": "minimal",
+    "id": "d_168",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a careful data scientist. Reply ONLY with a short Python program in one code block. The program must end by setting a variable `answer` to ONE number. No print, no explanation, no comments, no imports, at most 12 lines. Tables are already loaded in `dfs`: never call read_csv. Never compute by hand: let Python compute. DO NOT round the answer yourself (never use round() or .round()), the system will do the rounding.\nAvailable: math, numpy as np, sympy, scipy.stats as stats, datetime, safe_divide. Use safe_divide(a, b) when b may be zero; zero/non-finite results become NaN."
+      },
+      {
+        "role": "user",
+        "content": "Objective: A price of 80 rises by 15% then falls by 10%. What is the final price? Round to 2 decimals."
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nimport math\nanswer = 80 * 1.15 * 0.90\n```"
+      },
+      {
+        "role": "user",
+        "content": "Objective: Compute 16.78 raised to the power 5/2. Round your answer to 3 decimal places."
+      }
+    ]
+  },
+  {
+    "agent": "minimal",
+    "id": "d_171",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a careful data scientist. Reply ONLY with a short Python program in one code block. The program must end by setting a variable `answer` to ONE number. No print, no explanation, no comments, no imports, at most 12 lines. Tables are already loaded in `dfs`: never call read_csv. Never compute by hand: let Python compute. DO NOT round the answer yourself (never use round() or .round()), the system will do the rounding.\nAvailable: math, numpy as np, sympy, scipy.stats as stats, datetime, safe_divide. Use safe_divide(a, b) when b may be zero; zero/non-finite results become NaN."
+      },
+      {
+        "role": "user",
+        "content": "Objective: A price of 80 rises by 15% then falls by 10%. What is the final price? Round to 2 decimals."
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nimport math\nanswer = 80 * 1.15 * 0.90\n```"
+      },
+      {
+        "role": "user",
+        "content": "Objective: 1 foot = 0.3048 m. Convert 339.45 feet to metres. Report it with 2 decimals."
+      }
+    ]
+  },
+  {
+    "agent": "minimal",
+    "id": "d_176",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a careful data scientist. Reply ONLY with a short Python program in one code block. The program must end by setting a variable `answer` to ONE number. No print, no explanation, no comments, no imports, at most 12 lines. Tables are already loaded in `dfs`: never call read_csv. Never compute by hand: let Python compute. DO NOT round the answer yourself (never use round() or .round()), the system will do the rounding.\nAvailable: math, numpy as np, sympy, scipy.stats as stats, datetime, safe_divide. Use safe_divide(a, b) when b may be zero; zero/non-finite results become NaN."
+      },
+      {
+        "role": "user",
+        "content": "Objective: A price of 80 rises by 15% then falls by 10%. What is the final price? Round to 2 decimals."
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nimport math\nanswer = 80 * 1.15 * 0.90\n```"
+      },
+      {
+        "role": "user",
+        "content": "Objective: The population of a village went from 2383 to 2658. What is the percentage change? Report it with 2 decimals."
+      }
+    ]
+  }
+]

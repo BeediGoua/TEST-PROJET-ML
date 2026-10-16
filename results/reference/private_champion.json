@@ -1,0 +1,19 @@
+{
+  "status": "MEASURED_ON_PRIVATE_PLATFORM",
+  "agent": "stage3_92_5.py",
+  "score": 92.5,
+  "category_scores": {
+    "nofiles": 95.6,
+    "tables": 88.0,
+    "fits": 96.0
+  },
+  "answered": 120,
+  "format_errors": 0,
+  "total_correct_exact_from_score": 111,
+  "inferred_counts_from_displayed_category_percentages": {
+    "nofiles": "43/45",
+    "tables": "44/50",
+    "fits": "24/25"
+  },
+  "note": "Only the 92.5 total and displayed category percentages are platform observations. Category integer counts are inferred from the known private family sizes and rounded percentages."
+}

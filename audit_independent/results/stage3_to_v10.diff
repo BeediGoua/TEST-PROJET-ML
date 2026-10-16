@@ -1,0 +1,769 @@
+--- stage3:Agent
++++ v10:Agent
+@@ -54,10 +54,11 @@
+             try:
+                 files = t.get("files") or []
+                 kind = route(files)
+-                dfs, dico = load_task(t["objective"], files)
++                rule_objective = _strip_explicit_distractors(t["objective"])
++                dfs, dico = load_task(rule_objective, files)
+                 if kind == "nofile":
+                     try:
+-                        rv = calc_rules(t["objective"])
++                        rv = calc_rules(rule_objective)
+                     except Exception:
+                         rv = None
+                     if rv is not None and math.isfinite(rv):
+@@ -67,7 +68,7 @@
+                         continue
+                 if kind == "table":
+                     try:
+-                        rv = table_stat_rule(t["objective"], dfs, dico)
++                        rv = table_stat_rule(rule_objective, dfs, dico)
+                     except Exception:
+                         rv = None
+                     if rv is not None and math.isfinite(rv):
+@@ -76,7 +77,7 @@
+                         prep.append(dict(id=t["id"], obj=t["objective"], dfs=dfs, msgs=None, c=[(rv, 100.0)], ok=False))
+                         continue
+                     try:
+-                        rv = table_group_rule(t["objective"], dfs, dico)
++                        rv = table_group_rule(rule_objective, dfs, dico)
+                     except Exception:
+                         rv = None
+                     if rv is not None and math.isfinite(rv):
+@@ -85,7 +86,7 @@
+                         prep.append(dict(id=t["id"], obj=t["objective"], dfs=dfs, msgs=None, c=[(rv, 100.0)], ok=False))
+                         continue
+                     try:
+-                        rv = table_join_rule(t["objective"], dfs, dico)
++                        rv = table_join_rule(rule_objective, dfs, dico)
+                     except Exception:
+                         rv = None
+                     if rv is not None and math.isfinite(rv):
+@@ -94,7 +95,7 @@
+                         prep.append(dict(id=t["id"], obj=t["objective"], dfs=dfs, msgs=None, c=[(rv, 100.0)], ok=False))
+                         continue
+                     try:
+-                        rv = table_derive_rule(t["objective"], dfs, dico)
++                        rv = table_derive_rule(rule_objective, dfs, dico)
+                     except Exception:
+                         rv = None
+                     if rv is not None and math.isfinite(rv):
+@@ -103,7 +104,7 @@
+                         prep.append(dict(id=t["id"], obj=t["objective"], dfs=dfs, msgs=None, c=[(rv, 100.0)], ok=False))
+                         continue
+                     try:
+-                        rv = table_filter_rule(t["objective"], dfs, dico)
++                        rv = table_filter_rule(rule_objective, dfs, dico)
+                     except Exception:
+                         rv = None
+                     if rv is not None and math.isfinite(rv):
+@@ -111,9 +112,18 @@
+                             print(f"[debug] {t['id']} filtre déterministe -> {rv}")
+                         prep.append(dict(id=t["id"], obj=t["objective"], dfs=dfs, msgs=None, c=[(rv, 100.0)], ok=False))
+                         continue
++                    try:
++                        rv = table_extended_rule(rule_objective, dfs, dico)
++                    except Exception:
++                        rv = None
++                    if rv is not None and math.isfinite(rv):
++                        if DEBUG:
++                            print(f"[debug] {t['id']} table OOD déterministe -> {rv}")
++                        prep.append(dict(id=t["id"], obj=t["objective"], dfs=dfs, msgs=None, c=[(rv, 100.0)], ok=False))
++                        continue
+                 if kind == "fit":
+                     try:
+-                        rv = fit_rules(t["objective"], dfs, dico)
++                        rv = fit_rules(rule_objective, dfs, dico)
+                     except Exception:
+                         rv = None
+                     if rv is not None and math.isfinite(rv):
+@@ -163,8 +173,19 @@
+             if DEBUG:
+                 print(f"[debug] génération {time.time() - t0:.1f}s écoulées, reste {left():.1f}s")
+             for p, outs in zip(live, gens):
+-                for o in outs:
+-                    if not absorb(p, o, weight):
++                # Sampling produces several programs for the same task. Execute them in one
++                # subprocess to amortise pandas/scipy startup; greedy still uses absorb() so
++                # its exact traceback is available to the repair pass.
++                if len(outs) > 1:
++                    if left() < 2.5:
++                        return
++                    codes = [extract_code(o) for o in outs]
++                    vals = run_codes_many(codes, p["dfs"], min(EXEC_TIMEOUT + 1.5, left() - 0.5), p["obj"])
++                    for v in vals:
++                        if v is not None:
++                            p["c"].append((v, weight))
++                else:
++                    if not absorb(p, outs[0], weight):
+                         return
+ 
+         def run_continue():
+--- stage3:Agent.solve
++++ v10:Agent.solve
+@@ -10,10 +10,11 @@
+             try:
+                 files = t.get("files") or []
+                 kind = route(files)
+-                dfs, dico = load_task(t["objective"], files)
++                rule_objective = _strip_explicit_distractors(t["objective"])
++                dfs, dico = load_task(rule_objective, files)
+                 if kind == "nofile":
+                     try:
+-                        rv = calc_rules(t["objective"])
++                        rv = calc_rules(rule_objective)
+                     except Exception:
+                         rv = None
+                     if rv is not None and math.isfinite(rv):
+@@ -23,7 +24,7 @@
+                         continue
+                 if kind == "table":
+                     try:
+-                        rv = table_stat_rule(t["objective"], dfs, dico)
++                        rv = table_stat_rule(rule_objective, dfs, dico)
+                     except Exception:
+                         rv = None
+                     if rv is not None and math.isfinite(rv):
+@@ -32,7 +33,7 @@
+                         prep.append(dict(id=t["id"], obj=t["objective"], dfs=dfs, msgs=None, c=[(rv, 100.0)], ok=False))
+                         continue
+                     try:
+-                        rv = table_group_rule(t["objective"], dfs, dico)
++                        rv = table_group_rule(rule_objective, dfs, dico)
+                     except Exception:
+                         rv = None
+                     if rv is not None and math.isfinite(rv):
+@@ -41,7 +42,7 @@
+                         prep.append(dict(id=t["id"], obj=t["objective"], dfs=dfs, msgs=None, c=[(rv, 100.0)], ok=False))
+                         continue
+                     try:
+-                        rv = table_join_rule(t["objective"], dfs, dico)
++                        rv = table_join_rule(rule_objective, dfs, dico)
+                     except Exception:
+                         rv = None
+                     if rv is not None and math.isfinite(rv):
+@@ -50,7 +51,7 @@
+                         prep.append(dict(id=t["id"], obj=t["objective"], dfs=dfs, msgs=None, c=[(rv, 100.0)], ok=False))
+                         continue
+                     try:
+-                        rv = table_derive_rule(t["objective"], dfs, dico)
++                        rv = table_derive_rule(rule_objective, dfs, dico)
+                     except Exception:
+                         rv = None
+                     if rv is not None and math.isfinite(rv):
+@@ -59,7 +60,7 @@
+                         prep.append(dict(id=t["id"], obj=t["objective"], dfs=dfs, msgs=None, c=[(rv, 100.0)], ok=False))
+                         continue
+                     try:
+-                        rv = table_filter_rule(t["objective"], dfs, dico)
++                        rv = table_filter_rule(rule_objective, dfs, dico)
+                     except Exception:
+                         rv = None
+                     if rv is not None and math.isfinite(rv):
+@@ -67,9 +68,18 @@
+                             print(f"[debug] {t['id']} filtre déterministe -> {rv}")
+                         prep.append(dict(id=t["id"], obj=t["objective"], dfs=dfs, msgs=None, c=[(rv, 100.0)], ok=False))
+                         continue
++                    try:
++                        rv = table_extended_rule(rule_objective, dfs, dico)
++                    except Exception:
++                        rv = None
++                    if rv is not None and math.isfinite(rv):
++                        if DEBUG:
++                            print(f"[debug] {t['id']} table OOD déterministe -> {rv}")
++                        prep.append(dict(id=t["id"], obj=t["objective"], dfs=dfs, msgs=None, c=[(rv, 100.0)], ok=False))
++                        continue
+                 if kind == "fit":
+                     try:
+-                        rv = fit_rules(t["objective"], dfs, dico)
++                        rv = fit_rules(rule_objective, dfs, dico)
+                     except Exception:
+                         rv = None
+                     if rv is not None and math.isfinite(rv):
+@@ -119,8 +129,19 @@
+             if DEBUG:
+                 print(f"[debug] génération {time.time() - t0:.1f}s écoulées, reste {left():.1f}s")
+             for p, outs in zip(live, gens):
+-                for o in outs:
+-                    if not absorb(p, o, weight):
++                # Sampling produces several programs for the same task. Execute them in one
++                # subprocess to amortise pandas/scipy startup; greedy still uses absorb() so
++                # its exact traceback is available to the repair pass.
++                if len(outs) > 1:
++                    if left() < 2.5:
++                        return
++                    codes = [extract_code(o) for o in outs]
++                    vals = run_codes_many(codes, p["dfs"], min(EXEC_TIMEOUT + 1.5, left() - 0.5), p["obj"])
++                    for v in vals:
++                        if v is not None:
++                            p["c"].append((v, weight))
++                else:
++                    if not absorb(p, outs[0], weight):
+                         return
+ 
+         def run_continue():
+--- stage3:EXAMPLES
++++ v10:EXAMPLES
+@@ -1,7 +1,7 @@
+ EXAMPLES = {
+     "nofile": (
+         "Objective: A price of 80 rises by 15% then falls by 10%. What is the final price? Round to 2 decimals.",
+-        "import math\nanswer = 80 * 1.15 * 0.90",
++        "answer = 80 * 1.15 * 0.90",
+     ),
+     "fit": (
+         "Tables:\ndfs['train']: 80 rows; columns: a1 (float64), a2 (float64), a3 (float64)\n"
+--- stage3:EXEC_TIMEOUT
++++ v10:EXEC_TIMEOUT
+@@ -1 +1 @@
+-EXEC_TIMEOUT = 1.5+EXEC_TIMEOUT = 5.0--- stage3:TOOLS
++++ v10:TOOLS
+@@ -1,5 +1,5 @@
+ TOOLS = {
+-    "nofile": "Available: math, numpy as np, sympy, scipy.stats as stats, datetime, safe_divide. "
++    "nofile": "Available: math, numpy as np, scipy.stats as stats, datetime, safe_divide. "
+               "Use safe_divide(a, b) when b may be zero; zero/non-finite results become NaN.",
+     "table": "Available: pandas as pd, numpy as np, math, scipy.stats as stats. The tables are in dict `dfs` "
+              "(keys = file names without .csv). Numeric/date types are inferred only when parsing is unambiguous; "
+@@ -12,6 +12,7 @@
+     "fit": "Available: pandas as pd, numpy as np, math, stats, LinearRegression, LogisticRegression, r2_score. "
+            "Tables are in dict `dfs` ('train', 'test'), already parsed (floats, NaN). Column codes are short: "
+            "find them in the dictionary. Drop rows with NaN in the used columns before fitting. "
+-           "LinearRegression and LogisticRegression automatically one-hot encode selected text columns; "
+-           "unknown test categories are ignored. Use safe_divide(a, b) for possible zero denominators.",
++           "LinearRegression and LogisticRegression are the standard scikit-learn estimators. "
++           "If selected predictors are text/categorical, explicitly one-hot encode them with pandas and align test columns to the training design matrix. "
++           "Use safe_divide(a, b) for possible zero denominators.",
+ }--- stage3:_NUMWORDS_EXT
++++ v10:_NUMWORDS_EXT
+@@ -0,0 +1 @@
++_NUMWORDS_EXT={'one':1,'two':2,'three':3,'four':4,'five':5,'six':6,'seven':7,'eight':8,'nine':9,'ten':10}--- stage3:_calc_rules_extended
++++ v10:_calc_rules_extended
+@@ -0,0 +1,127 @@
++def _calc_rules_extended(objective):
++    """High-precision deterministic coverage for regular no-file task families."""
++    objective = _strip_calc_distractors(objective)
++    o = " ".join(objective.lower().split())
++    norm = o.replace("−", "-").replace("–", "-").replace(" minus ", " - ")
++
++    m = re.search(r"compute\s+([-+]?\d+(?:\.\d+)?)\s*[×x*]\s*([-+]?\d+(?:\.\d+)?)", norm)
++    if m:
++        return float(m.group(1)) * float(m.group(2))
++    m = re.search(r"(?:compute|what is)\s+([-+]?\d+(?:\.\d+)?(?:\s*[+\-]\s*[-+]?\d+(?:\.\d+)?)+)", norm)
++    if m:
++        terms = re.findall(r"([+\-]?)\s*(\d+(?:\.\d+)?)", m.group(1))
++        return sum((-1.0 if sign == "-" else 1.0) * float(value) for sign, value in terms)
++
++    m = re.search(r"(?:strictly above|greater than)\s+([-+]?\d+(?:\.\d+)?)\s+(?:in this list|:)\s*([^?]+)", o)
++    if not m:
++        m = re.search(r"how many of these numbers are greater than\s+([-+]?\d+(?:\.\d+)?):\s*([^?]+)", o)
++    if m:
++        threshold = float(m.group(1))
++        return float(sum(x > threshold for x in _inline_numbers(m.group(2))))
++
++    m = re.search(r"(?:invoice|price) of\s+([\d.]+)\s+euros? includes vat at\s+([\d.]+)%", o)
++    if m:
++        return float(m.group(1)) / (1.0 + float(m.group(2)) / 100.0)
++    m = re.search(r"(?:went|goes|increased|changed) from\s+([\d.]+)\s+to\s+([\d.]+).*?percentage change", o)
++    if m:
++        start, end = map(float, m.groups())
++        return (end - start) / start * 100.0 if start else None
++
++    m = re.search(r"base-10 logarithm of\s+([\d.]+)", o)
++    if m:
++        return math.log10(float(m.group(1)))
++    m = re.search(r"natural logarithm of\s+([\d.]+)", o)
++    if m:
++        return math.log(float(m.group(1)))
++    m = re.search(r"(?:compute\s+)?√\s*([\d.]+)", objective)
++    if m:
++        return math.sqrt(float(m.group(1)))
++    m = re.search(r"square root of\s+([\d.]+)", o)
++    if m:
++        return math.sqrt(float(m.group(1)))
++    m = re.search(r"compute e raised to the power\s+([-+]?\d+(?:\.\d+)?)", o)
++    if m:
++        return math.exp(float(m.group(1)))
++    m = re.search(r"compute\s+([\d.]+)\s+raised to the power\s+([+-]?\d+)(?:\s*/\s*(\d+))?", o)
++    if m:
++        base = float(m.group(1)); numerator = int(m.group(2)); denominator = int(m.group(3) or 1)
++        return base ** (numerator / denominator)
++
++    if "expected gain" in o and "probability" in o:
++        segment = o.split("what is the expected gain", 1)[0]
++        pairs = re.findall(r"([\d.]+)\s+euros?\s+with probability\s+([\d.]+)%", segment)
++        if len(pairs) >= 2:
++            return sum(float(value) * float(prob) / 100.0 for value, prob in pairs)
++
++    if "weighted mean" in o and "coefficient" in o:
++        pairs = re.findall(r"([-+]?\d+(?:\.\d+)?)\s+in\s+[a-z ]+\s*\(coefficient\s+(\d+(?:\.\d+)?)\)", o)
++        if pairs:
++            weights = sum(float(w) for _, w in pairs)
++            return sum(float(v) * float(w) for v, w in pairs) / weights if weights else None
++
++    m = re.search(r"were\s+([-+\d.,\s]+)\s*\([^)]*\).*?what is the (mean|median)", o)
++    if m:
++        values = _inline_numbers(m.group(1))
++        if values:
++            return float(np.mean(values) if m.group(2) == "mean" else np.median(values))
++    m = re.search(r"lap times over \d+ laps:\s*([-+\d.,\s]+)\s*\([^)]*\).*?population standard deviation", o)
++    if m:
++        values = _inline_numbers(m.group(1))
++        if values:
++            return float(np.std(values, ddof=0))
++
++    m = re.search(r"how many days are there from\s+(.+?)\s+to\s+(.+?)(?:\?|\. count|\. give|\? give)", o)
++    if m:
++        start, end = _parse_inline_date(m.group(1)), _parse_inline_date(m.group(2))
++        if start and end:
++            days = (end - start).days + (1 if "count both the first and the last day" in o else 0)
++            return float(days)
++    m = re.search(r"a contract starts on\s+(.+?)\s+and ends on\s+(.+?)\. how many days long", o)
++    if m:
++        start, end = _parse_inline_date(m.group(1)), _parse_inline_date(m.group(2))
++        if start and end:
++            return float((end - start).days)
++    m = re.search(r"what is the date\s+(\d+)\s+days after\s+(.+?)\? answer", o)
++    if m:
++        start = _parse_inline_date(m.group(2))
++        if start:
++            value = start + datetime.timedelta(days=int(m.group(1)))
++            return float(value.strftime("%Y%m%d"))
++    m = re.search(r"on which day of the week does\s+(\d{4}-\d{2}-\d{2})\s+fall", o)
++    if m:
++        value = _parse_inline_date(m.group(1))
++        if value:
++            return float(value.isoweekday())
++
++    m = re.search(r"in how many ways can (?:a|the) .*? of\s+(\d+)\s+be chosen from\s+(\d+)\s+people", o)
++    if m:
++        k, n = map(int, m.groups())
++        return float(math.comb(n, k)) if 0 <= k <= n else None
++    m = re.search(r"remainder of the division of\s+(\d+)\s+by\s+(\d+)", o)
++    if m:
++        a, b = map(int, m.groups())
++        return float(a % b) if b else None
++
++    m = re.search(r"([\d.]+)\s+euros? are placed at\s+([\d.]+)%\s+compound interest per year.*?after\s+(\d+)\s+years", o)
++    if m:
++        principal, rate, years = float(m.group(1)), float(m.group(2)) / 100.0, int(m.group(3))
++        return principal * (1.0 + rate) ** years
++    m = re.search(r"(?:bought for|worth)\s+([\d,]+)\s+euros? loses\s+([\d.]+)%\s+of its value every year.*?after\s+(\d+)\s+years", o)
++    if m:
++        principal, rate, years = float(m.group(1).replace(",", "")), float(m.group(2)) / 100.0, int(m.group(3))
++        return principal * (1.0 - rate) ** years
++
++    equation = re.search(r"1\s+([a-z]+)\s*=\s*([\d.]+)\s*([a-z]+)", o)
++    request = re.search(r"convert\s+([\d.]+)\s+([a-z]+)\s+to\s+([a-z]+)", o)
++    if equation and request:
++        aliases = {"foot": "foot", "feet": "foot", "metre": "m", "metres": "m",
++                   "meter": "m", "meters": "m", "m": "m"}
++        source_u, factor, target_u = equation.group(1), float(equation.group(2)), equation.group(3)
++        value, source, target = float(request.group(1)), request.group(2), request.group(3)
++        source_u, target_u = aliases.get(source_u, source_u), aliases.get(target_u, target_u)
++        source, target = aliases.get(source, source), aliases.get(target, target)
++        if source == source_u and target == target_u:
++            return value * factor
++        if source == target_u and target == source_u:
++            return value / factor
++    return None--- stage3:_inline_numbers
++++ v10:_inline_numbers
+@@ -0,0 +1,2 @@
++def _inline_numbers(text):
++    return [float(x) for x in re.findall(r"[-+]?\d+(?:\.\d+)?", text)]--- stage3:_parse_inline_date
++++ v10:_parse_inline_date
+@@ -0,0 +1,16 @@
++def _parse_inline_date(text):
++    """Parse the English/ISO date forms used by DS-Harness calculation objectives."""
++    text = re.sub(r"\s+", " ", str(text).strip().replace(",", " "))
++    months = {m.lower(): i for i, m in enumerate(
++        ("", "January", "February", "March", "April", "May", "June", "July", "August",
++         "September", "October", "November", "December")) if m}
++    m = re.fullmatch(r"(\d{4})-(\d{1,2})-(\d{1,2})", text)
++    if m:
++        return datetime.date(*map(int, m.groups()))
++    m = re.fullmatch(r"(\d{1,2})\s+([A-Za-z]+)\s+(\d{4})", text)
++    if m and m.group(2).lower() in months:
++        return datetime.date(int(m.group(3)), months[m.group(2).lower()], int(m.group(1)))
++    m = re.fullmatch(r"([A-Za-z]+)\s+(\d{1,2})\s+(\d{4})", text)
++    if m and m.group(1).lower() in months:
++        return datetime.date(int(m.group(3)), months[m.group(1).lower()], int(m.group(2)))
++    return None--- stage3:_strip_calc_distractors
++++ v10:_strip_calc_distractors
+@@ -0,0 +1,2 @@
++def _strip_calc_distractors(objective):
++    return _strip_explicit_distractors(objective)--- stage3:_strip_explicit_distractors
++++ v10:_strip_explicit_distractors
+@@ -0,0 +1,31 @@
++def _strip_explicit_distractors(objective):
++    """Remove only text explicitly marked as irrelevant/unrelated/independent.
++
++    Conservative by design: domain instructions such as "ignore missing values" are kept.
++    Parenthetical examples explicitly labelled unrelated are removed before sentence splitting.
++    If a follow-up sentence says "this example is independent of the question", the
++    preceding example sentence is removed as well.
++    """
++    original = str(objective)
++    # Sentence splitting after a closing parenthesis is awkward ("... 4.) Real question").
++    # Remove only parentheticals that *explicitly* identify themselves as irrelevant/unrelated.
++    text = re.sub(
++        r"\([^)]*\b(?:irrelevant|unrelated)\b[^)]*\)\s*",
++        " ", original, flags=re.I,
++    )
++    parts = [p.strip() for p in re.split(r"(?<=[.;!?])\s+|\s*;\s*", text) if p.strip()]
++    direct = re.compile(
++        r"\b(?:irrelevant|unrelated|does not affect|doesn't affect|changes nothing|"
++        r"independent of (?:the )?(?:question|task|problem|answer|calculation)|"
++        r"ignore this (?:sentence|illustration|example|fact|note|number|reference))\b",
++        re.I,
++    )
++    backward = re.compile(r"^this\s+(?:fact|note|sentence|number|reference|illustration|example)\b", re.I)
++    keep = [True] * len(parts)
++    for i, part in enumerate(parts):
++        if direct.search(part):
++            keep[i] = False
++            if i > 0 and backward.search(part):
++                keep[i - 1] = False
++    kept = [p for p, k in zip(parts, keep) if k]
++    return " ".join(kept) if kept else original--- stage3:calc_rules
++++ v10:calc_rules
+@@ -141,4 +141,4 @@
+         rate = 1/a + 1/b - 1/leak
+         if rate > 0:
+             return 1/rate
+-    return None+    return _calc_rules_extended(objective)--- stage3:run_code
++++ v10:run_code
+@@ -1,59 +1,62 @@
+ def run_code(code, dfs, timeout, obj=""):
+-    """Exécute le code généré, renvoie un float ou None."""
+-    from scipy import stats
+-    from sklearn.metrics import r2_score
+-    unreg = bool(re.search(r"without regularis|no regularis|unregularis|unpenali|without penal", obj.lower()))
+-    LinearRegression, LogisticRegression = _make_models(unreg)
+-    
+-    # PATCH 4: Remplacement des vieilles méthodes scipy.stats
+-    for _n in ("nanmean", "nanmedian", "nanstd", "nansum"):   # retirés de scipy.stats, le modèle les utilise encore
+-        if not hasattr(stats, _n):
+-            setattr(stats, _n, getattr(np, _n))
+-    if not hasattr(stats, "median"):
+-        setattr(stats, "median", np.median)
+-    if not hasattr(stats, "scoreatpercentile"):
+-        setattr(stats, "scoreatpercentile", np.percentile)
+-        
+-    import sympy
++    """Execute generated code with the challenge-approved dsh.run_python subprocess.
+ 
+-    try:
+-        SmartFrame._desc = dict(getattr(dfs, "desc", {}) or {})
+-        cdfs = {k: SmartFrame(v) for k, v in dfs.items()}
+-    except Exception:
+-        cdfs = {k: v.copy() for k, v in dfs.items()}
+-    dd = getattr(dfs, "dictionary", None)
+-    extra = {"data_dictionary": dd} if dd is not None else {}
+-    ns = {
+-        "pd": pd, "np": np, "math": math, "stats": stats, "sympy": sympy, "datetime": datetime,
+-        "clean_numeric": clean_numeric, "clean_dates": clean_dates, "safe_divide": safe_divide,
+-        "LinearRegression": LinearRegression, "LogisticRegression": LogisticRegression, "r2_score": r2_score,
+-        "dfs": cdfs,
+-    }
+-    orig_read_csv = pd.read_csv
+-    pd.read_csv = _fake_read_csv(cdfs, extra)   # le code généré recharge souvent les CSV lui-même
+-
++    Tables are already parsed/cleaned in the parent. The child only imports what its
++    task family needs, which keeps cold-start time low.
++    """
++    import dsh
+     global LAST_ERR, LAST_STATE
+     LAST_ERR, LAST_STATE = "", ""
+-
+-    def job():
+-        global LAST_STATE
+-        try:
+-            with contextlib.redirect_stdout(io.StringIO()), contextlib.redirect_stderr(io.StringIO()):
+-                exec(code, ns)
+-            value = to_float(ns.get("answer"))
+-            if value is None:
+-                raise ValueError("answer missing, non-numeric, or non-finite")
+-            return value
+-        except BaseException:
+-            LAST_STATE = _runtime_state(ns)
+-            raise
+-
++    root = tempfile.mkdtemp(prefix="dsh_clean_")
+     try:
+-        return _run_with_timeout(job, timeout)
++        names = set(dfs)
++        is_fit = "train" in {os.path.splitext(os.path.basename(x))[0].lower() for x in names}
++        paths = []
++        load_lines = [
++            "import pandas as pd, numpy as np, math, datetime",
++            "def safe_divide(a,b):",
++            "    a=np.asarray(a,dtype=float); b=np.asarray(b,dtype=float)",
++            "    return pd.Series(np.divide(a,b,out=np.full(np.broadcast(a,b).shape,np.nan),where=np.isfinite(b)&(b!=0)))",
++            "def clean_numeric(x):",
++            "    return pd.to_numeric(x, errors='coerce') if hasattr(x,'__len__') and not isinstance(x,str) else float(x)",
++            "def clean_dates(x, dayfirst=False):",
++            "    return pd.to_datetime(x, errors='coerce', dayfirst=dayfirst)",
++            "dfs = {}",
++        ]
++        # scipy is common in generated table code; sklearn only for unresolved fit tasks.
++        load_lines.append("from scipy import stats")
++        if is_fit:
++            load_lines += [
++                "from sklearn.linear_model import LinearRegression, LogisticRegression",
++                "from sklearn.metrics import r2_score",
++            ]
++        for name, frame in dfs.items():
++            # Preserve the original basename so model-written dfs['x.csv'] references still work.
++            clean_name = os.path.basename(str(name))
++            if not clean_name.lower().endswith('.csv'):
++                clean_name += '.csv'
++            out = os.path.join(root, clean_name)
++            frame.to_csv(out, index=False, na_rep="")
++            paths.append(out)
++            load_lines.append(f"dfs[{name!r}] = pd.read_csv({clean_name!r})")
++            for col in frame.columns:
++                if getattr(frame[col].dtype, "kind", "") == "M":
++                    load_lines.append(f"dfs[{name!r}][{str(col)!r}] = pd.to_datetime(dfs[{name!r}][{str(col)!r}], errors='coerce')")
++        dd = getattr(dfs, "dictionary", None)
++        if dd is not None:
++            dd_path = os.path.join(root, "data_dictionary.csv")
++            dd.to_csv(dd_path, index=False)
++            paths.append(dd_path)
++            load_lines.append("data_dictionary = pd.read_csv('data_dictionary.csv')")
++        full_code = "\n".join(load_lines) + "\n" + code.strip() + "\nRESULT = answer\n"
++        result = dsh.run_python(full_code, files=paths, timeout_s=max(0.5, float(timeout)),
++                                mem_limit_mb=768, max_output=2000)
++        if result.ok:
++            return to_float(result.value)
++        LAST_ERR = (result.error or "generated program failed")[:300]
++        return None
+     except BaseException as e:
+-        LAST_ERR = f"{type(e).__name__}: {str(e)[:150]}"
+-        if not LAST_STATE:
+-            LAST_STATE = _runtime_state(ns)
++        LAST_ERR = f"{type(e).__name__}: {str(e)[:200]}"
+         return None
+     finally:
+-        pd.read_csv = orig_read_csv+        shutil.rmtree(root, ignore_errors=True)--- stage3:run_codes_many
++++ v10:run_codes_many
+@@ -0,0 +1,73 @@
++def run_codes_many(codes, dfs, timeout, obj=""):
++    """Execute several candidate programs for one task in ONE dsh.run_python child.
++
++    This amortises the ~2 s pandas/scipy cold start. Each candidate is wrapped in its own
++    function, so a failure only yields None for that candidate.
++    """
++    import dsh
++    if not codes:
++        return []
++    root = tempfile.mkdtemp(prefix="dsh_clean_many_")
++    try:
++        names = set(dfs)
++        is_fit = "train" in {os.path.splitext(os.path.basename(x))[0].lower() for x in names}
++        paths = []
++        lines = [
++            "import pandas as pd, numpy as np, math, datetime",
++            "from scipy import stats",
++            "def safe_divide(a,b):",
++            "    a=np.asarray(a,dtype=float); b=np.asarray(b,dtype=float)",
++            "    return pd.Series(np.divide(a,b,out=np.full(np.broadcast(a,b).shape,np.nan),where=np.isfinite(b)&(b!=0)))",
++            "def clean_numeric(x):",
++            "    return pd.to_numeric(x, errors='coerce') if hasattr(x,'__len__') and not isinstance(x,str) else float(x)",
++            "def clean_dates(x, dayfirst=False):",
++            "    return pd.to_datetime(x, errors='coerce', dayfirst=dayfirst)",
++            "dfs = {}",
++        ]
++        if is_fit:
++            lines += [
++                "from sklearn.linear_model import LinearRegression, LogisticRegression",
++                "from sklearn.metrics import r2_score",
++            ]
++        for name, frame in dfs.items():
++            clean_name = os.path.basename(str(name))
++            if not clean_name.lower().endswith('.csv'):
++                clean_name += '.csv'
++            out = os.path.join(root, clean_name)
++            frame.to_csv(out, index=False, na_rep="")
++            paths.append(out)
++            lines.append(f"dfs[{name!r}] = pd.read_csv({clean_name!r})")
++            for col in frame.columns:
++                if getattr(frame[col].dtype, "kind", "") == "M":
++                    lines.append(f"dfs[{name!r}][{str(col)!r}] = pd.to_datetime(dfs[{name!r}][{str(col)!r}], errors='coerce')")
++        dd = getattr(dfs, "dictionary", None)
++        if dd is not None:
++            dd_path = os.path.join(root, "data_dictionary.csv")
++            dd.to_csv(dd_path, index=False)
++            paths.append(dd_path)
++            lines.append("data_dictionary = pd.read_csv('data_dictionary.csv')")
++        for i, code in enumerate(codes):
++            lines.append(f"def _candidate_{i}():")
++            body = code.strip() or "answer = None"
++            lines.extend("    " + ln for ln in body.splitlines())
++            lines.append("    return answer")
++        lines.append("_results = []")
++        for i in range(len(codes)):
++            lines += [
++                "try:",
++                f"    _results.append(_candidate_{i}())",
++                "except BaseException:",
++                "    _results.append(None)",
++            ]
++        lines.append("RESULT = _results")
++        result = dsh.run_python("\n".join(lines) + "\n", files=paths,
++                                timeout_s=max(0.5, float(timeout)), mem_limit_mb=768,
++                                max_output=1000)
++        if not result.ok or not isinstance(result.value, list):
++            return [None] * len(codes)
++        out = [to_float(v) if v is not None else None for v in result.value]
++        return (out + [None] * len(codes))[:len(codes)]
++    except BaseException:
++        return [None] * len(codes)
++    finally:
++        shutil.rmtree(root, ignore_errors=True)--- stage3:table_extended_rule
++++ v10:table_extended_rule
+@@ -0,0 +1,117 @@
++def table_extended_rule(objective, dfs, dico):
++    o=' '.join(objective.lower().split())
++    # one-table operations
++    if len(dfs)==1:
++        name,df=next(iter(dfs.items()))
++        desc=_table_descriptions(name,df.columns,dico)
++        # Red-team guard: a specialised aggregate must not silently ignore an extra
++        # subset/filter clause. Unsupported compositions abstain and fall back to LLM.
++        parsed_subset_conditions = [c for c in _parse_table_conditions(o, dfs, dico) if c[0] == name]
++        subset_intent = bool(parsed_subset_conditions) or bool(re.search(
++            r"\b(?:among|within|considering only|restrict(?:ed)? to|subset of|where|whose)\b", o))
++        quoted_literals = re.findall(r"['\u2018\u201c]([^'\u2019\u201d]{1,80})['\u2019\u201d]", o)
++        # IQR
++        m=re.search(r'interquartile range(?:\s*\([^)]*\))?\s+of\s+(?:the\s+)?(.+?)(?:\s+over all|\?|\.|$)',o)
++        if m and not subset_intent and not quoted_literals:
++            col=_resolve_dico_column(m.group(1),dfs,dico)
++            if col and col[0]==name:
++                s=_numeric_metric(df[col[1]],desc.get(col[1],''))
++                if s is not None:
++                    s=s.dropna()
++                    if len(s): return float(s.quantile(.75,interpolation='linear')-s.quantile(.25,interpolation='linear'))
++        # weighted mean
++        m=re.search(r'weighted mean of\s+(?:the\s+)?(.+?),?\s+using\s+(?:the\s+)?(.+?)\s+as (?:the )?weight',o)
++        if m and not subset_intent and not quoted_literals:
++            x=_resolve_dico_column(m.group(1),dfs,dico); w=_resolve_dico_column(m.group(2),dfs,dico)
++            if x and w and x[0]==name and w[0]==name:
++                xv=_numeric_metric(df[x[1]],desc.get(x[1],''));wv=_numeric_metric(df[w[1]],desc.get(w[1],''))
++                if xv is not None and wv is not None:
++                    z=pd.DataFrame({'x':xv,'w':wv}).dropna(); z=z[np.isfinite(z.x)&np.isfinite(z.w)]
++                    if len(z) and z.w.sum()!=0:return float(np.average(z.x,weights=z.w))
++        # difference between subgroup means
++        m=re.search(r'mean\s+(.+?)\s+for\s+(.+?)\s+[\'“"]([^\'”"]+)[\'”"]\s+minus\s+the mean\s+(.+?)\s+for\s+(.+?)\s+[\'“"]([^\'”"]+)[\'”"]',o)
++        if m:
++            metric1=_resolve_dico_column(m.group(1),dfs,dico); group1=_resolve_dico_column(m.group(2),dfs,dico)
++            metric2=_resolve_dico_column(m.group(4),dfs,dico); group2=_resolve_dico_column(m.group(5),dfs,dico)
++            if metric1 and metric2 and group1 and group2 and metric1==metric2 and group1==group2 and metric1[0]==name:
++                vals=_numeric_metric(df[metric1[1]],desc.get(metric1[1],''));
++                if vals is not None:
++                    cats=df[group1[1]].astype(str).str.strip().str.lower();a=vals[cats==m.group(3).lower()].dropna();b=vals[cats==m.group(6).lower()].dropna()
++                    if len(a) and len(b):return float(a.mean()-b.mean())
++        # membership aggregate (either A or C)
++        m=re.search(r'(total|sum|mean|average|median)\s+(.+?)\s+for .*?whose\s+(.+?)\s+is either\s+[\'“"]([^\'”"]+)[\'”"]\s+or\s+[\'“"]([^\'”"]+)[\'”"]',o)
++        if m:
++            metric=_resolve_dico_column(m.group(2),dfs,dico);group=_resolve_dico_column(m.group(3),dfs,dico)
++            if metric and group and metric[0]==name and group[0]==name:
++                vals=_numeric_metric(df[metric[1]],desc.get(metric[1],'')); cats=df[group[1]].astype(str).str.strip().str.lower()
++                if vals is not None:
++                    z=vals[cats.isin([m.group(4).lower(),m.group(5).lower()])].dropna();
++                    if len(z):return float({'total':z.sum,'sum':z.sum,'mean':z.mean,'average':z.mean,'median':z.median}[m.group(1)]())
++        # string starts with
++        m=re.search(r'how many .*? have (?:a |an )?(.+?) that starts with\s+[\'“"]([^\'”"]+)[\'”"]',o)
++        if m and not subset_intent and len(quoted_literals) <= 1:
++            col=_resolve_dico_column(m.group(1),dfs,dico)
++            if col and col[0]==name:
++                s=df[col[1]].dropna().astype(str).str.strip().str.lower(); return float(s.str.startswith(m.group(2).lower(),na=False).sum())
++        # mean duration in days from two date cols
++        m=re.search(r'number of days from\s+(?:the\s+)?(.+?)\s+to\s+(?:the\s+)?(.+?)\.\s+what is the (mean|average|median|maximum|minimum) duration',o)
++        if m and not subset_intent and not quoted_literals:
++            c0=_resolve_dico_column(m.group(1),dfs,dico);c1=_resolve_dico_column(m.group(2),dfs,dico)
++            if c0 and c1 and c0[0]==name and c1[0]==name:
++                a=clean_dates(df[c0[1]]);b=clean_dates(df[c1[1]]);days=(b-a).dt.days.dropna()
++                if len(days):
++                    op={'average':'mean','maximum':'max','minimum':'min'}.get(m.group(3),m.group(3));return float(getattr(days,op)())
++        # top-k mean of largest distinct
++        m=re.search(r'(mean|average|median) of the\s+(\d+|one|two|three|four|five|six|seven|eight|nine|ten)\s+(largest|highest|smallest|lowest)\s+distinct\s+(.+?)\s+values',o)
++        if m and not subset_intent and not quoted_literals:
++            k=int(m.group(2)) if m.group(2).isdigit() else _NUMWORDS_EXT[m.group(2)];col=_resolve_dico_column(m.group(4),dfs,dico)
++            if col and col[0]==name:
++                s=_numeric_metric(df[col[1]],desc.get(col[1],''))
++                if s is not None:
++                    s=s.dropna().drop_duplicates(); z=s.nlargest(k) if m.group(3) in ('largest','highest') else s.nsmallest(k)
++                    if len(z)==k:return float(z.mean() if m.group(1) in ('mean','average') else z.median())
++        # percentage share of total by one group
++        m=re.search(r'what percentage of the total\s+(.+?)\s+is contributed by\s+(.+?)\s+[\'“"]([^\'”"]+)[\'”"]',o)
++        if m and not subset_intent and len(quoted_literals) <= 1:
++            metric=_resolve_dico_column(m.group(1),dfs,dico);group=_resolve_dico_column(m.group(2),dfs,dico)
++            if metric and group and metric[0]==name and group[0]==name:
++                vals=_numeric_metric(df[metric[1]],desc.get(metric[1],'')); cats=df[group[1]].astype(str).str.strip().str.lower()
++                if vals is not None:
++                    total=vals.dropna().sum();part=vals[cats==m.group(3).lower()].dropna().sum();
++                    if total!=0:return float(100*part/total)
++        # covariance, optionally filtered by quoted group
++        m=re.search(r'(?:sample\s+)?covariance between\s+(?:the\s+)?(.+?)\s+and\s+(?:the\s+)?(.+?)(?:\?|\.|$)',o)
++        if m:
++            a=_resolve_dico_column(m.group(1),dfs,dico);b=_resolve_dico_column(m.group(2),dfs,dico)
++            if a and b and a[0]==name and b[0]==name:
++                av=_numeric_metric(df[a[1]],desc.get(a[1],''));bv=_numeric_metric(df[b[1]],desc.get(b[1],''))
++                if av is not None and bv is not None:
++                    mask=pd.Series(True,index=df.index)
++                    # handle "among records in SEGMENT 'X'"
++                    fm=re.search(r'among .*? in\s+(.+?)\s+[\'“"]([^\'”"]+)[\'”"]',o)
++                    # If a quoted category is present but this dedicated pattern cannot
++                    # recover the subset, abstain rather than compute a whole-table value.
++                    if quoted_literals and not fm:
++                        return None
++                    if fm:
++                        g=_resolve_dico_column(fm.group(1),dfs,dico)
++                        if not g or g[0]!=name:return None
++                        mask &= df[g[1]].astype(str).str.strip().str.lower()==fm.group(2).lower()
++                    z=pd.DataFrame({'a':av[mask],'b':bv[mask]}).dropna();
++                    if len(z)>=2:return float(z.cov(ddof=1).iloc[0,1])
++    # two-table join + ratio + dimension filter
++    if len(dfs)==2 and re.search(r'divided by',o) and re.search(r'belonging to',o):
++        notes=align_keys(dfs,dico); key=next((n for n in notes if 'Join key:' in n),None)
++        if key:
++            km=re.search(r"dfs\['([^']+)'\]\['([^']+)'\] matches dfs\['([^']+)'\]\['([^']+)'\]",key)
++            expr=re.search(r'compute\s+(.+?)\s+divided by\s+(.+?)\s+for each',o)
++            filt=re.search(r'belonging to .*? in\s+(.+?)\s+[\'“"]([^\'”"]+)[\'”"]',o)
++            if km and expr and filt:
++                fact,fk,dim,dk=km.groups(); num=_resolve_dico_column(expr.group(1),dfs,dico);den=_resolve_dico_column(expr.group(2),dfs,dico);fc=_resolve_dico_column(filt.group(1),dfs,dico)
++                if num and den and fc and num[0]==fact and den[0]==dim and fc[0]==dim:
++                    L=dfs[fact].copy().rename(columns={fk:'__k'});R=dfs[dim].copy().rename(columns={dk:'__k'});J=L.merge(R,on='__k',how='inner',suffixes=('','__d'))
++                    # preserve exact original names because no collision in benchmark
++                    J=J[J[fc[1]].astype(str).str.strip().str.lower()==filt.group(2).lower()]
++                    nv=clean_numeric(J[num[1]]);dv=clean_numeric(J[den[1]]);z=safe_divide(nv,dv).dropna()
++                    if len(z): return float(z.mean())
++    return None--- stage3:table_filter_rule
++++ v10:table_filter_rule
+@@ -3,6 +3,9 @@
+     if len(dfs) != 1:
+         return None
+     o = " ".join(objective.lower().split())
++    # Composite statistics such as IQR must not be reduced to the generic word "range".
++    if re.search(r"\b(?:interquartile range|iqr)\b", o):
++        return None
+     if re.search(r"\brank\b|\bfor each\b", o):
+         return None
+     name, df = next(iter(dfs.items()))
+--- stage3:table_stat_rule
++++ v10:table_stat_rule
+@@ -3,6 +3,11 @@
+     if len(dfs) != 1:
+         return None
+     o = " ".join(objective.lower().split())
++    # Red-team guard: composite/extended statistics must not be captured by the generic
++    # whole-table parser.  A fresh paraphrase of IQR exposed a false-positive path where
++    # the generic rule interpreted one of the percentiles as the requested statistic.
++    if re.search(r"\b(?:interquartile range|iqr)\b", o):
++        return None
+     # Leave row-level ratios and grouped/filtered questions to their dedicated rules.
+     if re.search(r"\bdivided by\b|\bconsider the .+?\s+per\s+", o) or re.search(r"\bfor each\b|\brank\b|\bgrouped by\b", o):
+         return None

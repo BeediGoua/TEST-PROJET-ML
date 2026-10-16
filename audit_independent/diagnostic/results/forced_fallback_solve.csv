@@ -1,0 +1,61 @@
+agent,wrapper_alias_fix,id,type,answer,finite,is_default_one,gold,error
+stage3,False,d_001,table.filter,780.0,True,False,,
+stage3,False,d_016,table.filter,283878.0,True,False,,
+stage3,False,d_032,table.group,2043041.0,True,False,,
+stage3,False,d_039,table.filter,3336.0,True,False,,
+stage3,False,d_052,table.join,8580.0,True,False,,
+stage3,False,d_068,table.join,389945.0,True,False,,
+stage3,False,d_077,table.derive,3678.0,True,False,,
+stage3,False,d_096,table.group,207276.0,True,False,,
+stage3,False,d_112,table.filter,131425.0,True,False,,
+stage3,False,d_129,table.derive,216300.0,True,False,,
+stage3,False,d_142,table.stat,266741.0,True,False,,
+stage3,False,d_153,table.derive,11466.0,True,False,,
+test1,False,d_001,table.filter,0.0,False,False,,
+test1,False,d_016,table.filter,0.0,False,False,,
+test1,False,d_032,table.group,0.0,False,False,,
+test1,False,d_039,table.filter,0.0,False,False,,
+test1,False,d_052,table.join,0.0,False,False,,
+test1,False,d_068,table.join,0.0,False,False,,
+test1,False,d_077,table.derive,0.0,False,False,,
+test1,False,d_096,table.group,0.0,False,False,,
+test1,False,d_112,table.filter,0.0,False,False,,
+test1,False,d_129,table.derive,0.0,False,False,,
+test1,False,d_142,table.stat,0.0,False,False,,
+test1,False,d_153,table.derive,0.0,False,False,,
+test2,False,d_001,table.filter,1.0,False,True,,UnboundLocalError: cannot access local variable 'pd' where it is not associated with a value
+test2,False,d_016,table.filter,1.0,False,True,,UnboundLocalError: cannot access local variable 'pd' where it is not associated with a value
+test2,False,d_032,table.group,1.0,False,True,,UnboundLocalError: cannot access local variable 'pd' where it is not associated with a value
+test2,False,d_039,table.filter,1.0,False,True,,UnboundLocalError: cannot access local variable 'pd' where it is not associated with a value
+test2,False,d_052,table.join,1.0,False,True,,UnboundLocalError: cannot access local variable 'pd' where it is not associated with a value
+test2,False,d_068,table.join,1.0,False,True,,UnboundLocalError: cannot access local variable 'pd' where it is not associated with a value
+test2,False,d_077,table.derive,1.0,False,True,,UnboundLocalError: cannot access local variable 'pd' where it is not associated with a value
+test2,False,d_096,table.group,1.0,False,True,,UnboundLocalError: cannot access local variable 'pd' where it is not associated with a value
+test2,False,d_112,table.filter,1.0,False,True,,UnboundLocalError: cannot access local variable 'pd' where it is not associated with a value
+test2,False,d_129,table.derive,1.0,False,True,,UnboundLocalError: cannot access local variable 'pd' where it is not associated with a value
+test2,False,d_142,table.stat,1.0,False,True,,UnboundLocalError: cannot access local variable 'pd' where it is not associated with a value
+test2,False,d_153,table.derive,1.0,False,True,,UnboundLocalError: cannot access local variable 'pd' where it is not associated with a value
+test2,True,d_001,table.filter,780.0,True,False,,
+test2,True,d_016,table.filter,283878.0,True,False,,
+test2,True,d_032,table.group,2043041.0,True,False,,
+test2,True,d_039,table.filter,3336.0,True,False,,
+test2,True,d_052,table.join,8580.0,True,False,,
+test2,True,d_068,table.join,389945.0,True,False,,
+test2,True,d_077,table.derive,3678.0,True,False,,
+test2,True,d_096,table.group,207276.0,True,False,,
+test2,True,d_112,table.filter,131425.0,True,False,,
+test2,True,d_129,table.derive,216300.0,True,False,,
+test2,True,d_142,table.stat,266741.0,True,False,,
+test2,True,d_153,table.derive,11466.0,True,False,,
+faithful,False,d_001,table.filter,780.0,True,False,,
+faithful,False,d_016,table.filter,283878.0,True,False,,
+faithful,False,d_032,table.group,2043041.0,True,False,,
+faithful,False,d_039,table.filter,3336.0,True,False,,
+faithful,False,d_052,table.join,8580.0,True,False,,
+faithful,False,d_068,table.join,389945.0,True,False,,
+faithful,False,d_077,table.derive,3678.0,True,False,,
+faithful,False,d_096,table.group,207276.0,True,False,,
+faithful,False,d_112,table.filter,131425.0,True,False,,
+faithful,False,d_129,table.derive,216300.0,True,False,,
+faithful,False,d_142,table.stat,266741.0,True,False,,
+faithful,False,d_153,table.derive,11466.0,True,False,,

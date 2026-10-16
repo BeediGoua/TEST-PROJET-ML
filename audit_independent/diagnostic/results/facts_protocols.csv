@@ -1,0 +1,7 @@
+protocol,what,full_solve,llm,batch8,budget40,where,typical_claim,predicts_private
+local_deterministic_core,evaluate_deterministic: rules only via calc_rules/table_*/fit_rules,no,no,no,no,projects/src/evaluation/core.py,"v10=180/180, Stage3=140/180",no
+audit_real_solve_stub,Agent.solve with generate stubbed empty; rule coverage only,yes_stubbed,no,no,no,projects/audit_independent/audit.py,tables 80/80 covered for all agents,no
+metamorphic_ood_rules,distractors / OOD holdouts on deterministic rules,no,no,no,no,"projects/scripts/run_metamorphic.py, run_ood.py",v10 0 FP; OOD5 48/48 abstentions,partial_abstention_risk_only
+runtime_smoke,run_codes_many on trivial answer=2+2; no Qwen,no,no,smoke,no,projects/src/evaluation/runtime.py,~14s for 8 trivial fallbacks,no
+executor_probes,fixed programs through run_code / run_codes_many / run_code_batch,no,no,no,no,projects/audit_independent/probes.py,pandas UnboundLocalError; SyntaxError contagion,mechanism_only
+ml_arena_private,Agent.solve + mounted Qwen + scoring.run_agent batches of 8 / 40s,yes,yes,yes,yes,ML-Arena challenge 194,Stage3 92.5 champion,yes_is_the_target

@@ -1,0 +1,14 @@
+__pycache__/
+*.pyc
+.pytest_cache/
+.ipynb_checkpoints/
+.venv/
+venv/
+.env
+*.egg-info/
+results/generated/*.tmp
+benchmarks/ood_development/ood1_fresh_variant.json
+# Large / regenerable GPU caches (upload Colab outputs separately if needed)
+audit_independent/results/generations_*.partial.json
+**/.DS_Store
+Thumbs.db

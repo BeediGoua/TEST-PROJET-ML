@@ -1,0 +1,596 @@
+--- stage3:Agent
++++ test1:Agent
+@@ -163,9 +163,18 @@
+             if DEBUG:
+                 print(f"[debug] génération {time.time() - t0:.1f}s écoulées, reste {left():.1f}s")
+             for p, outs in zip(live, gens):
+-                for o in outs:
+-                    if not absorb(p, o, weight):
++                if len(outs) > 1:
++                    if left() < 2.5:
+                         return
++                    codes = [extract_code(o) for o in outs]
++                    vals = run_codes_many(codes, p["dfs"], min(EXEC_TIMEOUT + 1.5, left() - 0.5), p["obj"])
++                    for v in vals:
++                        if v is not None:
++                            p["c"].append((v, weight))
++                else:
++                    for o in outs:
++                        if not absorb(p, o, weight):
++                            return
+ 
+         def run_continue():
+             """Les programmes coupés par max_new tokens reprennent là où ils se sont arrêtés."""
+--- stage3:Agent.solve
++++ test1:Agent.solve
+@@ -119,9 +119,18 @@
+             if DEBUG:
+                 print(f"[debug] génération {time.time() - t0:.1f}s écoulées, reste {left():.1f}s")
+             for p, outs in zip(live, gens):
+-                for o in outs:
+-                    if not absorb(p, o, weight):
++                if len(outs) > 1:
++                    if left() < 2.5:
+                         return
++                    codes = [extract_code(o) for o in outs]
++                    vals = run_codes_many(codes, p["dfs"], min(EXEC_TIMEOUT + 1.5, left() - 0.5), p["obj"])
++                    for v in vals:
++                        if v is not None:
++                            p["c"].append((v, weight))
++                else:
++                    for o in outs:
++                        if not absorb(p, o, weight):
++                            return
+ 
+         def run_continue():
+             """Les programmes coupés par max_new tokens reprennent là où ils se sont arrêtés."""
+--- stage3:EXEC_TIMEOUT
++++ test1:EXEC_TIMEOUT
+@@ -1 +1 @@
+-EXEC_TIMEOUT = 1.5+EXEC_TIMEOUT = 5.0--- stage3:_SANDBOX_MODELS
++++ test1:_SANDBOX_MODELS
+@@ -0,0 +1,146 @@
++_SANDBOX_MODELS = r'''def _make_models(unreg=False):
++    """LinearRegression / LogisticRegression tolérants aux NaN (sklearn plante sinon) :
++    fit ignore les lignes incomplètes, predict impute par la moyenne d'apprentissage.
++    Si l'énoncé dit « sans régularisation », la logistique est non pénalisée (le défaut sklearn, C=1, change les
++    probabilités) ; elle est résolue sur variables standardisées puis ramenée à l'échelle d'origine.
++    Les colonnes catégorielles textuelles sont encodées en one-hot, sans toucher au chemin numérique habituel."""
++    from sklearn.linear_model import LinearRegression as _LR, LogisticRegression as _LogR
++    from sklearn.preprocessing import OneHotEncoder as _OHE
++
++    def _clean_fit(self, X, y, *a, **k):
++        raw = pd.DataFrame(X).copy()
++        yv = pd.Series(np.asarray(y).ravel(), index=raw.index)
++        numeric, categorical = [], []
++        converted = {}
++        for col in raw.columns:
++            values = pd.to_numeric(raw[col], errors="coerce").replace([np.inf, -np.inf], np.nan)
++            nonmissing = raw[col].notna()
++            rate = values[nonmissing].notna().mean() if nonmissing.any() else 0.0
++            if pd.api.types.is_numeric_dtype(raw[col]) or rate >= 0.9:
++                numeric.append(col)
++                converted[col] = values
++            else:
++                categorical.append(col)
++
++        if not categorical:
++            Xd = pd.DataFrame({col: converted[col] for col in raw.columns}, index=raw.index)
++            ok = Xd.notna().all(axis=1) & yv.notna()
++            if pd.api.types.is_numeric_dtype(yv):
++                y_num = pd.to_numeric(yv, errors="coerce")
++                ok &= np.isfinite(y_num)
++                yv = y_num
++            self._mu = Xd.loc[ok].mean()
++            self._dsh_numeric_cols = list(Xd.columns)
++            self._dsh_numeric_coef_idx = {col: i for i, col in enumerate(Xd.columns)}
++            self._dsh_cat_cols = []
++            self._dsh_ohe = None
++            self._dsh_input_cols = list(raw.columns)
++            self._dsh_encoded_names = list(raw.columns)
++            return Xd.loc[ok].values, yv.loc[ok].values
++
++        Xd = pd.DataFrame(index=raw.index)
++        for col in numeric:
++            Xd[col] = converted[col]
++        for col in categorical:
++            Xd[col] = raw[col]
++        ok = Xd.notna().all(axis=1) & yv.notna()
++        if pd.api.types.is_numeric_dtype(yv):
++            y_num = pd.to_numeric(yv, errors="coerce")
++            ok &= np.isfinite(y_num)
++            yv = y_num
++        Xd, yv = Xd.loc[ok], yv.loc[ok]
++        if Xd.empty:
++            return np.empty((0, 0)), yv.values
++
++        self._dsh_numeric_cols = list(numeric)
++        self._dsh_cat_cols = list(categorical)
++        self._dsh_input_cols = list(raw.columns)
++        self._mu = Xd[numeric].mean() if numeric else pd.Series(dtype=float)
++        if categorical:
++            cat = Xd[categorical].astype(str)
++            try:
++                encoder = _OHE(handle_unknown="ignore", drop="first", sparse_output=False)
++            except TypeError:  # scikit-learn < 1.2
++                encoder = _OHE(handle_unknown="ignore", drop="first", sparse=False)
++            cat_encoded = encoder.fit_transform(cat)
++            self._dsh_ohe = encoder
++            try:
++                cat_names = list(encoder.get_feature_names_out(categorical))
++            except Exception:
++                cat_names = [f"{col}__onehot_{i}" for col in categorical for i in range(cat_encoded.shape[1])]
++        else:
++            cat_encoded = np.empty((len(Xd), 0))
++            self._dsh_ohe = None
++            cat_names = []
++        num_encoded = Xd[numeric].to_numpy(dtype=float) if numeric else np.empty((len(Xd), 0))
++        self._dsh_numeric_coef_idx = {col: i for i, col in enumerate(numeric)}
++        self._dsh_encoded_names = list(numeric) + cat_names
++        encoded = np.column_stack([num_encoded, cat_encoded])
++        if encoded.shape[1] == 0:
++            encoded = np.zeros((len(Xd), 1), dtype=float)
++            self._dsh_encoded_names = ["__constant__"]
++            self._dsh_numeric_coef_idx = {}
++        return encoded, yv.values
++
++    def _clean_X(self, X):
++        raw = pd.DataFrame(X, columns=getattr(self, "_dsh_input_cols", None)).copy()
++        if not getattr(self, "_dsh_cat_cols", []):
++            Xd = raw.reindex(columns=self._dsh_numeric_cols).apply(pd.to_numeric, errors="coerce")
++            Xd = Xd.replace([np.inf, -np.inf], np.nan).fillna(self._mu)
++            return Xd.to_numpy(dtype=float)
++        Xd = pd.DataFrame(index=raw.index)
++        for col in self._dsh_numeric_cols:
++            values = pd.to_numeric(raw[col], errors="coerce").replace([np.inf, -np.inf], np.nan)
++            Xd[col] = values.fillna(self._mu.get(col, 0.0))
++        num_encoded = Xd[self._dsh_numeric_cols].to_numpy(dtype=float) if self._dsh_numeric_cols else np.empty((len(raw), 0))
++        cat = raw.reindex(columns=self._dsh_cat_cols).fillna("__missing__").astype(str)
++        with warnings.catch_warnings():
++            warnings.simplefilter("ignore", UserWarning)
++            cat_encoded = self._dsh_ohe.transform(cat)
++        return np.column_stack([num_encoded, cat_encoded])
++
++    class LinearRegression(_LR):
++        def fit(self, X, y, *a, **k):
++            Xv, yv = _clean_fit(self, X, y)
++            return super().fit(Xv, yv, *a, **k)
++
++        def predict(self, X):
++            return super().predict(_clean_X(self, X))
++
++        def score(self, X, y, *a, **k):
++            Xv = _clean_X(self, X)
++            yv = pd.to_numeric(pd.Series(np.asarray(y).ravel()), errors="coerce")
++            ok = yv.notna() & np.isfinite(yv)
++            return super().score(Xv[ok.to_numpy()], yv[ok].to_numpy(), *a, **k)
++
++    class LogisticRegression(_LogR):
++        def __init__(self, penalty="l2", C=1.0, tol=1e-4, max_iter=5000, class_weight=None,
++                     solver="lbfgs", fit_intercept=True, random_state=None, **ignored):
++            if unreg:                      # sans régularisation : lbfgs seul le permet partout, tolérance serrée
++                penalty, solver, tol = None, "lbfgs", 1e-9
++            super().__init__(penalty=penalty, C=C, tol=tol, max_iter=max_iter, class_weight=class_weight,
++                             solver=solver, fit_intercept=fit_intercept, random_state=random_state)
++
++        def fit(self, X, y, *a, **k):
++            Xv, yv = _clean_fit(self, X, y)
++            if yv.dtype == object or yv.dtype.kind in "US":
++                yv = pd.Series(yv).astype(str).str.strip().str.lower().isin(["1", "yes", "y", "true"]).astype(int).values
++            if not unreg:
++                return super().fit(Xv, yv, *a, **k)
++            mu, sd = Xv.mean(axis=0), Xv.std(axis=0)
++            sd[sd == 0] = 1.0
++            with warnings.catch_warnings():
++                warnings.simplefilter("ignore")
++                super().fit((Xv - mu) / sd, yv, *a, **k)
++            self.coef_ = self.coef_ / sd
++            self.intercept_ = self.intercept_ - (self.coef_ * mu).sum(axis=1)
++            return self
++
++        def predict(self, X):
++            return super().predict(_clean_X(self, X))
++
++        def predict_proba(self, X):
++            return super().predict_proba(_clean_X(self, X))
++
++    return LinearRegression, LogisticRegression
++'''--- stage3:_SANDBOX_PRELUDE
++++ test1:_SANDBOX_PRELUDE
+@@ -0,0 +1,230 @@
++_SANDBOX_PRELUDE = r'''import os, re, math, datetime, warnings, json, difflib, sys, io
++import numpy as np, pandas as pd
++from scipy import stats
++for _n in ("nanmean", "nanmedian", "nanstd", "nansum"):
++    if not hasattr(stats, _n): setattr(stats, _n, getattr(np, _n))
++if not hasattr(stats, "median"): setattr(stats, "median", np.median)
++if not hasattr(stats, "scoreatpercentile"): setattr(stats, "scoreatpercentile", np.percentile)
++def _num_from_text(x):
++    """'1 234,5 kg' -> 1234.5 ; '1,234.5' -> 1234.5 ; '3,14' -> 3.14."""
++    if not isinstance(x, str):
++        return np.nan
++    m = re.search(r"[-+]?\d[\d.,\s]*", x.replace("\u202f", " ").replace("\xa0", " "))
++    if not m:
++        return np.nan
++    t = m.group(0).strip().replace(" ", "")
++    if "," in t and "." in t:
++        dec = "," if t.rfind(",") > t.rfind(".") else "."
++        thou = "." if dec == "," else ","
++        t = t.replace(thou, "").replace(dec, ".")
++    elif "," in t:
++        if re.fullmatch(r"[-+]?\d{1,3}(,\d{3})+", t):
++            t = t.replace(",", "")
++        else:
++            t = t.replace(",", ".")
++    try:
++        sign = -1.0 if x.strip().startswith("-") else 1.0
++        return sign * abs(float(t))
++    except ValueError:
++        return np.nan
++def clean_numeric(values):
++    """Coerce mixed numeric strings, decimal commas, and simple units; unparseable entries become NaN."""
++    def parse(value):
++        if pd.isna(value):
++            return np.nan
++        if isinstance(value, (int, float, np.number)):
++            number = float(value)
++            return number if math.isfinite(number) else np.nan
++        return _num_from_text(str(value))
++    if isinstance(values, pd.Series):
++        return values.map(parse).astype(float)
++    if np.isscalar(values):
++        return parse(values)
++    return pd.Series(values).map(parse).astype(float)
++def clean_dates(values, dayfirst=False):
++    """Parse mixed date strings while refusing to interpret arbitrary numbers as epoch timestamps."""
++    def parse(value):
++        if pd.isna(value):
++            return pd.NaT
++        if isinstance(value, (datetime.datetime, datetime.date, pd.Timestamp, np.datetime64)):
++            return pd.to_datetime(value, errors="coerce")
++        text = str(value).strip()
++        compact = re.fullmatch(r"(\d{8})(?:\.0+)?", text)
++        if compact:
++            return pd.to_datetime(compact.group(1), format="%Y%m%d", errors="coerce")
++        if re.fullmatch(r"[-+]?\d+(?:\.\d+)?", text):
++            return pd.NaT
++        with warnings.catch_warnings():
++            warnings.simplefilter("ignore", UserWarning)
++            return pd.to_datetime(text, dayfirst=dayfirst, errors="coerce")
++    if isinstance(values, pd.Series):
++        return values.map(parse)
++    if np.isscalar(values):
++        return parse(values)
++    return pd.Series(values).map(parse)
++def safe_divide(numerator, denominator):
++    """Divide while mapping zero denominators and non-finite outputs to NaN."""
++    if isinstance(numerator, pd.Series) or isinstance(denominator, pd.Series):
++        if isinstance(numerator, pd.Series):
++            n = clean_numeric(numerator)
++            if isinstance(denominator, pd.Series):
++                d = clean_numeric(denominator).reindex(n.index)
++            elif np.isscalar(denominator):
++                d = denominator
++            else:
++                d = clean_numeric(pd.Series(denominator, index=n.index))
++            result = n.div(d)
++        else:
++            d = clean_numeric(denominator)
++            n = clean_numeric(pd.Series(numerator, index=d.index))
++            result = n.div(d)
++        if isinstance(result, pd.Series):
++            return result.replace([np.inf, -np.inf], np.nan).where(d != 0)
++    with np.errstate(divide="ignore", invalid="ignore", over="ignore"):
++        result = np.divide(np.asarray(numerator, dtype=float), np.asarray(denominator, dtype=float))
++    result = np.where(np.isfinite(result), result, np.nan)
++    return float(result) if np.ndim(result) == 0 else result
++_STOP = {"the", "of", "a", "an", "in", "on", "at", "per", "to", "for", "and", "with", "by", "is", "are", "last"}
++def _toks(s):
++    out = set()
++    for w in re.findall(r"[a-z]+", s.lower()):
++        if w in _STOP:
++            continue
++        if w in {"used", "uses", "using"}:
++            w = "use"
++        elif w in {"billed", "billing"}:
++            w = "bill"
++        elif w in {"born", "births", "birthday", "birthdate"}:
++            w = "birth"
++        elif w in {"shipped", "shipping", "shipment", "shipments"}:
++            w = "ship"
++        elif w == "carrier":
++            w = "transport"
++        elif w == "occupancy":
++            w = "people"
++        elif w in {"pupil", "pupils", "enrollment", "enrolled"}:
++            w = "size"
++        elif w in {"absences", "absence"}:
++            w = "absence"
++        out.add(w[:-1] if w.endswith("s") and len(w) > 3 else w)
++    return out
++def stem(path):
++    return os.path.splitext(os.path.basename(path))[0]
++def _resolve_col(key, columns, desc):
++    cols = [str(c) for c in columns]
++    k = key.strip()
++    low = {c.lower(): c for c in cols}
++    if k.lower() in low:
++        return low[k.lower()]
++    norm = lambda x: re.sub(r"[^a-z0-9]", "", x.lower())
++    nm = {norm(c): c for c in cols}
++    if norm(k) in nm:
++        return nm[norm(k)]
++    kt = _toks(re.sub(r"[_\W]+", " ", k))
++    if kt:
++        scores = []
++        for c in cols:
++            ct = _toks(desc.get(c, "")) | _toks(re.sub(r"[_\W]+", " ", c))
++            sc = sum(1 for a in kt if any(a == b or (len(a) >= 4 and len(b) >= 4 and (a.startswith(b) or b.startswith(a)))
++                                           for b in ct))
++            scores.append((sc, c))
++        scores.sort(reverse=True)
++        if scores and scores[0][0] >= 1 and (len(scores) == 1 or scores[0][0] > scores[1][0]):
++            return scores[0][1]
++    import difflib
++    m = difflib.get_close_matches(k, cols, n=1, cutoff=0.8)
++    return m[0] if m else None
++class SmartFrame(pd.DataFrame):
++    """DataFrame dont df['colonne_inexistante'] cherche la colonne voulue au lieu de lever KeyError."""
++    _desc = {}
++
++    @property
++    def _constructor(self):
++        return SmartFrame
++
++    def __getitem__(self, key):
++        try:
++            return super().__getitem__(key)
++        except KeyError:
++            if isinstance(key, str):
++                alt = _resolve_col(key, self.columns, SmartFrame._desc)
++                if alt is not None:
++                    return super().__getitem__(alt)
++            elif isinstance(key, list) and key and all(isinstance(x, str) for x in key):
++                alts = [x if x in self.columns else _resolve_col(x, self.columns, SmartFrame._desc) for x in key]
++                if all(a is not None for a in alts):
++                    return super().__getitem__(alts)
++            raise
++def _fake_read_csv(cdfs, extra=None):
++    extra = extra or {}
++
++    def read_csv(path, *a, **k):
++        name = stem(str(path))
++        if name in extra:
++            return extra[name].copy()
++        if name in cdfs:
++            return cdfs[name].copy()
++        for key, d in cdfs.items():
++            if key in name or name in key:
++                return d.copy()
++                
++        # PATCH 3: Fallback pour éviter les FileNotFoundError si le LLM invente 'school.csv'
++        if cdfs:
++            return list(cdfs.values())[0].copy()
++            
++        raise FileNotFoundError(path)
++    return read_csv
++def _runtime_state(ns, max_frames=4):
++    """Compact DataFrame diagnostics captured after generated code fails."""
++    candidates = []
++    seen = set()
++    for name, value in ns.items():
++        if name == "dfs" or name.startswith("__"):
++            continue
++        if isinstance(value, pd.DataFrame):
++            priority = 0 if re.search(r"merge|join|result|output|\bm\b", name, re.I) else 1
++            candidates.append((priority, name, value))
++    tables = ns.get("dfs")
++    if isinstance(tables, dict):
++        for name, value in tables.items():
++            if isinstance(value, pd.DataFrame):
++                candidates.append((2, f"dfs['{name}']", value))
++    candidates.sort(key=lambda item: item[0])
++    reports = []
++    for _, name, frame in candidates:
++        if id(frame) in seen:
++            continue
++        seen.add(id(frame))
++        try:
++            details = []
++            for col in list(frame.columns)[:12]:
++                series = frame[col]
++                missing = series.isna().mean()
++                details.append(f"{col}:{series.dtype},NaN={missing:.0%}")
++            head = frame.head(2).to_string(index=False, max_cols=8, max_colwidth=28)
++            reports.append(f"{name} shape={frame.shape}; " + ", ".join(details) + "\nhead(2): " + head[:900])
++        except Exception as error:
++            reports.append(f"{name}: diagnostic failed ({type(error).__name__})")
++        if len(reports) >= max_frames:
++            break
++    return "\n\n".join(reports)[:5000]
++def to_float(v):
++    try:
++        if isinstance(v, (pd.Series, pd.DataFrame)):
++            v = np.asarray(v).ravel()[0]
++        if isinstance(v, (list, tuple, np.ndarray)):
++            v = np.asarray(v).ravel()[0]
++        if isinstance(v, str):
++            v = _num_from_text(v)
++        f = float(v)
++        return f if math.isfinite(f) else None
++    except Exception:
++        return None
++with open("__dsh_state.json", "r", encoding="utf-8") as _f:
++    _raw_state = json.load(_f)
++_BASE_DFS = {k: pd.read_json(io.StringIO(v), orient="table") for k, v in _raw_state.get("dfs", {}).items()}
++_DESC = _raw_state.get("desc", {}) or {}
++_DICTIONARY = pd.read_json(io.StringIO(_raw_state["dictionary"]), orient="table") if _raw_state.get("dictionary") else None
++SmartFrame._desc = dict(_DESC)
++def _fresh_dfs(): return {k: SmartFrame(v.copy(deep=True)) for k, v in _BASE_DFS.items()}
++'''--- stage3:_sandbox_header
++++ test1:_sandbox_header
+@@ -0,0 +1,11 @@
++def _sandbox_header(obj, dfs):
++    names = {str(k).lower() for k in dfs}
++    is_fit = "train" in names and "test" in names
++    is_nofile = not dfs
++    extra = ""
++    if is_nofile:
++        extra += "\nimport sympy\n"
++    if is_fit:
++        unreg = bool(re.search(r"without regularis|no regularis|unregularis|unpenali|without penal", str(obj).lower()))
++        extra += "\nfrom sklearn.metrics import r2_score\n" + _SANDBOX_MODELS + f"\nLinearRegression, LogisticRegression = _make_models({unreg!r})\n"
++    return _SANDBOX_PRELUDE + extra--- stage3:_write_sandbox_state
++++ test1:_write_sandbox_state
+@@ -0,0 +1,11 @@
++def _write_sandbox_state(dfs, root):
++    dictionary = getattr(dfs, "dictionary", None)
++    state = {
++        "dfs": {k: v.to_json(orient="table", date_format="iso") for k, v in dfs.items()},
++        "desc": {str(k): str(v) for k, v in dict(getattr(dfs, "desc", {}) or {}).items()},
++        "dictionary": dictionary.to_json(orient="table", date_format="iso") if isinstance(dictionary, pd.DataFrame) else None,
++    }
++    path = os.path.join(root, "__dsh_state.json")
++    with open(path, "w", encoding="utf-8") as fh:
++        json.dump(state, fh, ensure_ascii=False)
++    return path--- stage3:run_code
++++ test1:run_code
+@@ -1,59 +1,44 @@
+ def run_code(code, dfs, timeout, obj=""):
+-    """Exécute le code généré, renvoie un float ou None."""
+-    from scipy import stats
+-    from sklearn.metrics import r2_score
+-    unreg = bool(re.search(r"without regularis|no regularis|unregularis|unpenali|without penal", obj.lower()))
+-    LinearRegression, LogisticRegression = _make_models(unreg)
+-    
+-    # PATCH 4: Remplacement des vieilles méthodes scipy.stats
+-    for _n in ("nanmean", "nanmedian", "nanstd", "nansum"):   # retirés de scipy.stats, le modèle les utilise encore
+-        if not hasattr(stats, _n):
+-            setattr(stats, _n, getattr(np, _n))
+-    if not hasattr(stats, "median"):
+-        setattr(stats, "median", np.median)
+-    if not hasattr(stats, "scoreatpercentile"):
+-        setattr(stats, "scoreatpercentile", np.percentile)
+-        
+-    import sympy
+-
+-    try:
+-        SmartFrame._desc = dict(getattr(dfs, "desc", {}) or {})
+-        cdfs = {k: SmartFrame(v) for k, v in dfs.items()}
+-    except Exception:
+-        cdfs = {k: v.copy() for k, v in dfs.items()}
+-    dd = getattr(dfs, "dictionary", None)
+-    extra = {"data_dictionary": dd} if dd is not None else {}
+-    ns = {
+-        "pd": pd, "np": np, "math": math, "stats": stats, "sympy": sympy, "datetime": datetime,
+-        "clean_numeric": clean_numeric, "clean_dates": clean_dates, "safe_divide": safe_divide,
+-        "LinearRegression": LinearRegression, "LogisticRegression": LogisticRegression, "r2_score": r2_score,
+-        "dfs": cdfs,
+-    }
+-    orig_read_csv = pd.read_csv
+-    pd.read_csv = _fake_read_csv(cdfs, extra)   # le code généré recharge souvent les CSV lui-même
+-
++    """Challenge-compliant equivalent of the measured Stage-3 executor."""
++    import dsh
+     global LAST_ERR, LAST_STATE
+     LAST_ERR, LAST_STATE = "", ""
+-
+-    def job():
+-        global LAST_STATE
+-        try:
+-            with contextlib.redirect_stdout(io.StringIO()), contextlib.redirect_stderr(io.StringIO()):
+-                exec(code, ns)
+-            value = to_float(ns.get("answer"))
+-            if value is None:
+-                raise ValueError("answer missing, non-numeric, or non-finite")
+-            return value
+-        except BaseException:
+-            LAST_STATE = _runtime_state(ns)
+-            raise
+-
++    root = tempfile.mkdtemp(prefix="dsh_stage3_")
+     try:
+-        return _run_with_timeout(job, timeout)
++        state_path = _write_sandbox_state(dfs, root)
++        body = textwrap.indent(code.strip(), "    ") if code.strip() else "    pass"
++        full_code = _sandbox_header(obj, dfs) + """
++_dfs_local = _fresh_dfs()
++_extra = {"data_dictionary": _DICTIONARY} if _DICTIONARY is not None else {}
++_orig_read_csv = pd.read_csv
++pd.read_csv = _fake_read_csv(_dfs_local, _extra)
++dfs = _dfs_local
++answer = None
++try:
++__CODE__
++    RESULT = to_float(answer)
++    if RESULT is None:
++        raise ValueError("answer missing, non-numeric, or non-finite")
++except BaseException:
++    try:
++        print("__DSH_STATE__" + _runtime_state(locals()))
++    except Exception:
++        pass
++    raise
++finally:
++    pd.read_csv = _orig_read_csv
++""".replace("__CODE__", body)
++        result = dsh.run_python(full_code, files=[state_path], timeout_s=max(0.5, float(timeout)),
++                                mem_limit_mb=768, max_output=6000)
++        if result.ok:
++            return to_float(result.value)
++        LAST_ERR = (result.error or "generated program failed")[-2000:]
++        marker = "__DSH_STATE__"
++        if marker in (result.stdout or ""):
++            LAST_STATE = result.stdout.split(marker, 1)[1][-5000:]
++        return None
+     except BaseException as e:
+-        LAST_ERR = f"{type(e).__name__}: {str(e)[:150]}"
+-        if not LAST_STATE:
+-            LAST_STATE = _runtime_state(ns)
++        LAST_ERR = f"{type(e).__name__}: {str(e)[:300]}"
+         return None
+     finally:
+-        pd.read_csv = orig_read_csv+        shutil.rmtree(root, ignore_errors=True)--- stage3:run_codes_many
++++ test1:run_codes_many
+@@ -0,0 +1,41 @@
++def run_codes_many(codes, dfs, timeout, obj=""):
++    """One child for self-consistency samples, with an independent Stage-3 state per candidate."""
++    import dsh
++    if not codes:
++        return []
++    root = tempfile.mkdtemp(prefix="dsh_stage3_many_")
++    try:
++        state_path = _write_sandbox_state(dfs, root)
++        chunks=[]
++        for i, code in enumerate(codes):
++            body=textwrap.indent(code.strip(), "        ") if code.strip() else "        pass"
++            chunk=f"""
++def __candidate_{i}():
++    dfs = _fresh_dfs()
++    _extra = {{"data_dictionary": _DICTIONARY}} if _DICTIONARY is not None else {{}}
++    _orig = pd.read_csv
++    pd.read_csv = _fake_read_csv(dfs, _extra)
++    answer = None
++    try:
++__BODY__
++        return to_float(answer)
++    except BaseException:
++        return None
++    finally:
++        pd.read_csv = _orig
++""".replace("__BODY__", body)
++            chunks.append(chunk)
++        calls=", ".join(f"__candidate_{i}()" for i in range(len(codes)))
++        full_code=_sandbox_header(obj, dfs)+"\n"+"\n".join(chunks)+f"\nRESULT = [{calls}]\n"
++        result=dsh.run_python(full_code, files=[state_path], timeout_s=max(0.8,float(timeout)),
++                              mem_limit_mb=768, max_output=2000)
++        if not result.ok or not isinstance(result.value, list):
++            return [None]*len(codes)
++        vals=[]
++        for v in result.value:
++            vals.append(to_float(v) if v is not None else None)
++        return vals + [None]*max(0,len(codes)-len(vals))
++    except BaseException:
++        return [None]*len(codes)
++    finally:
++        shutil.rmtree(root, ignore_errors=True)

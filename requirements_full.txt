@@ -1,0 +1,5 @@
+-r requirements.txt
+# Full-agent / official localtest. Les poids du modèle doivent être disponibles séparément.
+torch
+transformers
+accelerate

@@ -1,0 +1,10 @@
+agent,mutation,n,covered,correct,wrong,coverage,precision_if_covered,selective_risk,deterministic_accuracy
+naive,background_note_pre,65,65,65,0,1.0,1.0,0.0,1.0
+naive,explicit_unrelated_post,65,65,29,36,1.0,0.4461538461538462,0.5538461538461539,0.4461538461538462
+naive,explicit_unrelated_pre,65,65,26,39,1.0,0.4,0.6,0.4
+naive,explicit_year_post,65,65,63,2,1.0,0.9692307692307692,0.03076923076923077,0.9692307692307692
+naive,fit_train_row_shuffle,35,35,35,0,1.0,1.0,0.0,1.0
+naive,independent_example_post,65,65,63,2,1.0,0.9692307692307692,0.03076923076923077,0.9692307692307692
+naive,parenthetical_unrelated_pre,65,65,65,0,1.0,1.0,0.0,1.0
+naive,spacing_case,65,65,65,0,1.0,1.0,0.0,1.0
+naive,table_distractor_column,80,80,80,0,1.0,1.0,0.0,1.0

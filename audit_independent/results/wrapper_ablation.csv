@@ -1,0 +1,16 @@
+agent,wrapper_alias_fix,code,answer,correct,log
+stage3,False,"import pandas as pd
+answer = float(dfs[""data""][""x""].sum())",6.0,True,"[solve] prep 0.0s | glouton 4.7s | réparation 0.0s | échantillons 0.0s | total 4.8s
+"
+test1,False,"import pandas as pd
+answer = float(dfs[""data""][""x""].sum())",6.0,True,"[solve] prep 0.0s | glouton 3.3s | réparation 0.0s | échantillons 2.9s | total 6.2s
+"
+minimal,False,"import pandas as pd
+answer = float(dfs[""data""][""x""].sum())",6.0,True,"[solve] prep 0.0s | glouton 3.0s | réparation 0.0s | échantillons 3.0s | total 6.0s
+"
+test2,False,"import pandas as pd
+answer = float(dfs[""data""][""x""].sum())",1.0,False,"[solve] prep 0.0s | glouton 3.1s | réparation 3.1s | échantillons 3.9s | total 10.1s
+"
+test2,True,"import pandas as pd
+answer = float(dfs[""data""][""x""].sum())",6.0,True,"[solve] prep 0.0s | glouton 3.0s | réparation 0.0s | échantillons 2.7s | total 5.7s
+"

@@ -1,0 +1,16 @@
+agent,family,total,covered,correct
+stage3,calc,65,25,25
+stage3,table,80,80,80
+stage3,fit,35,35,35
+test1,calc,65,25,25
+test1,table,80,80,80
+test1,fit,35,35,35
+test2,calc,65,65,65
+test2,table,80,80,80
+test2,fit,35,35,35
+minimal,calc,65,25,25
+minimal,table,80,80,80
+minimal,fit,35,35,35
+v10,calc,65,65,65
+v10,table,80,80,80
+v10,fit,35,35,35

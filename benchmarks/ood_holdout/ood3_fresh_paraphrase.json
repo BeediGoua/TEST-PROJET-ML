@@ -1,0 +1,890 @@
+[
+  {
+    "id": "o1_001",
+    "objective": "What is the interquartile range (75th percentile minus 25th percentile) of the primary measurement over all records in facts.csv? Round to 2 decimals.",
+    "files": {
+      "facts.csv": "x,w,grp,label,start,end,y\n45.65,1.71,C,AX0,2024-04-06,2024-04-16,33.22\n50.74,3.45,A,AX1,2024-03-14,2024-03-19,34.68\n40.46,1.98,A,DZ2,2024-03-07,2024-03-18,34.32\n55.92,2.26,A,BX3,2024-02-21,2024-03-18,33.66\n45.53,3.95,B,AY4,2024-01-27,2024-02-13,36.39\n51.85,3.61,C,BX5,2024-02-15,2024-02-22,45.18\n47.43,3.88,B,DZ6,2024-01-01,2024-01-29,32.89\n70.98,0.98,B,BX7,2024-02-01,2024-02-27,51.05\n53.86,2.82,A,DZ8,2024-02-08,2024-03-06,45.85\n45.83,2.73,A,CY9,2024-03-11,2024-04-07,42.7\n47.85,0.57,B,BX10,2024-03-16,2024-04-12,38.49\n43.24,1.62,C,BX11,2024-04-07,2024-04-14,29.31\n52.27,1.72,A,CY12,2024-02-23,2024-03-06,27.8\n51.19,2.11,B,AY13,2024-03-16,2024-03-26,44.46\n43.37,3.42,D,AX14,2024-04-03,2024-04-20,30.74\n30.95,2.01,C,DZ15,2024-02-23,2024-03-13,32.12\n27.45,0.91,D,BX16,2024-01-04,2024-01-24,18.7\n58.77,3.46,C,AY17,2024-02-28,2024-03-25,40.81\n47.61,3.43,B,AY18,2024-01-14,2024-02-07,34.67\n48.67,2.2,A,CY19,2024-03-06,2024-03-22,37.46\n61.59,1.33,C,DZ20,2024-02-15,2024-03-12,45.12\n40.09,3.5,C,CY21,2024-03-13,2024-04-11,27.0\n47.65,0.9,B,AY22,2024-03-11,2024-03-19,23.03\n49.34,2.64,A,AX23,2024-01-30,2024-02-27,33.27\n",
+      "data_dictionary.csv": "file,column,description,unit\nfacts.csv,x,\"Primary measurement\",unit\nfacts.csv,w,\"Observation weight\",unitless\nfacts.csv,grp,\"Segment\",\nfacts.csv,label,\"Record label\",\nfacts.csv,start,\"Start date\",\nfacts.csv,end,\"End date\",\nfacts.csv,y,\"Secondary measurement\",unit\n"
+    },
+    "answer": 6.964999999999996,
+    "tol": 0.015,
+    "type": "table.ood_iqr"
+  },
+  {
+    "id": "o1_002",
+    "objective": "Using facts.csv and its data dictionary, compute the weighted mean of the primary measurement, using observation weight as the weight. Ignore rows missing either value. Report it with 2 decimals.",
+    "files": {
+      "facts.csv": "x,w,grp,label,start,end,y\n45.65,1.71,C,AX0,2024-04-06,2024-04-16,33.22\n50.74,3.45,A,AX1,2024-03-14,2024-03-19,34.68\n40.46,1.98,A,DZ2,2024-03-07,2024-03-18,34.32\n55.92,2.26,A,BX3,2024-02-21,2024-03-18,33.66\n45.53,3.95,B,AY4,2024-01-27,2024-02-13,36.39\n51.85,3.61,C,BX5,2024-02-15,2024-02-22,45.18\n47.43,3.88,B,DZ6,2024-01-01,2024-01-29,32.89\n70.98,0.98,B,BX7,2024-02-01,2024-02-27,51.05\n53.86,2.82,A,DZ8,2024-02-08,2024-03-06,45.85\n45.83,2.73,A,CY9,2024-03-11,2024-04-07,42.7\n47.85,0.57,B,BX10,2024-03-16,2024-04-12,38.49\n43.24,1.62,C,BX11,2024-04-07,2024-04-14,29.31\n52.27,1.72,A,CY12,2024-02-23,2024-03-06,27.8\n51.19,2.11,B,AY13,2024-03-16,2024-03-26,44.46\n43.37,3.42,D,AX14,2024-04-03,2024-04-20,30.74\n30.95,2.01,C,DZ15,2024-02-23,2024-03-13,32.12\n27.45,0.91,D,BX16,2024-01-04,2024-01-24,18.7\n58.77,3.46,C,AY17,2024-02-28,2024-03-25,40.81\n47.61,3.43,B,AY18,2024-01-14,2024-02-07,34.67\n48.67,2.2,A,CY19,2024-03-06,2024-03-22,37.46\n61.59,1.33,C,DZ20,2024-02-15,2024-03-12,45.12\n40.09,3.5,C,CY21,2024-03-13,2024-04-11,27.0\n47.65,0.9,B,AY22,2024-03-11,2024-03-19,23.03\n49.34,2.64,A,AX23,2024-01-30,2024-02-27,33.27\n",
+      "data_dictionary.csv": "file,column,description,unit\nfacts.csv,x,\"Primary measurement\",unit\nfacts.csv,w,\"Observation weight\",unitless\nfacts.csv,grp,\"Segment\",\nfacts.csv,label,\"Record label\",\nfacts.csv,start,\"Start date\",\nfacts.csv,end,\"End date\",\nfacts.csv,y,\"Secondary measurement\",unit\n"
+    },
+    "answer": 48.208816226613045,
+    "tol": 0.015,
+    "type": "table.ood_weighted_mean"
+  },
+  {
+    "id": "o1_003",
+    "objective": "What is the mean primary measurement for segment 'A' minus the mean primary measurement for segment 'B' in facts.csv? Round to 2 decimals.",
+    "files": {
+      "facts.csv": "x,w,grp,label,start,end,y\n45.65,1.71,C,AX0,2024-04-06,2024-04-16,33.22\n50.74,3.45,A,AX1,2024-03-14,2024-03-19,34.68\n40.46,1.98,A,DZ2,2024-03-07,2024-03-18,34.32\n55.92,2.26,A,BX3,2024-02-21,2024-03-18,33.66\n45.53,3.95,B,AY4,2024-01-27,2024-02-13,36.39\n51.85,3.61,C,BX5,2024-02-15,2024-02-22,45.18\n47.43,3.88,B,DZ6,2024-01-01,2024-01-29,32.89\n70.98,0.98,B,BX7,2024-02-01,2024-02-27,51.05\n53.86,2.82,A,DZ8,2024-02-08,2024-03-06,45.85\n45.83,2.73,A,CY9,2024-03-11,2024-04-07,42.7\n47.85,0.57,B,BX10,2024-03-16,2024-04-12,38.49\n43.24,1.62,C,BX11,2024-04-07,2024-04-14,29.31\n52.27,1.72,A,CY12,2024-02-23,2024-03-06,27.8\n51.19,2.11,B,AY13,2024-03-16,2024-03-26,44.46\n43.37,3.42,D,AX14,2024-04-03,2024-04-20,30.74\n30.95,2.01,C,DZ15,2024-02-23,2024-03-13,32.12\n27.45,0.91,D,BX16,2024-01-04,2024-01-24,18.7\n58.77,3.46,C,AY17,2024-02-28,2024-03-25,40.81\n47.61,3.43,B,AY18,2024-01-14,2024-02-07,34.67\n48.67,2.2,A,CY19,2024-03-06,2024-03-22,37.46\n61.59,1.33,C,DZ20,2024-02-15,2024-03-12,45.12\n40.09,3.5,C,CY21,2024-03-13,2024-04-11,27.0\n47.65,0.9,B,AY22,2024-03-11,2024-03-19,23.03\n49.34,2.64,A,AX23,2024-01-30,2024-02-27,33.27\n",
+      "data_dictionary.csv": "file,column,description,unit\nfacts.csv,x,\"Primary measurement\",unit\nfacts.csv,w,\"Observation weight\",unitless\nfacts.csv,grp,\"Segment\",\nfacts.csv,label,\"Record label\",\nfacts.csv,start,\"Start date\",\nfacts.csv,end,\"End date\",\nfacts.csv,y,\"Secondary measurement\",unit\n"
+    },
+    "answer": -1.5408928571428575,
+    "tol": 0.015,
+    "type": "table.ood_group_diff"
+  },
+  {
+    "id": "o1_004",
+    "objective": "What is the mean primary measurement for records whose segment is either 'A' or 'C' in facts.csv? Round to 2 decimals.",
+    "files": {
+      "facts.csv": "x,w,grp,label,start,end,y\n45.65,1.71,C,AX0,2024-04-06,2024-04-16,33.22\n50.74,3.45,A,AX1,2024-03-14,2024-03-19,34.68\n40.46,1.98,A,DZ2,2024-03-07,2024-03-18,34.32\n55.92,2.26,A,BX3,2024-02-21,2024-03-18,33.66\n45.53,3.95,B,AY4,2024-01-27,2024-02-13,36.39\n51.85,3.61,C,BX5,2024-02-15,2024-02-22,45.18\n47.43,3.88,B,DZ6,2024-01-01,2024-01-29,32.89\n70.98,0.98,B,BX7,2024-02-01,2024-02-27,51.05\n53.86,2.82,A,DZ8,2024-02-08,2024-03-06,45.85\n45.83,2.73,A,CY9,2024-03-11,2024-04-07,42.7\n47.85,0.57,B,BX10,2024-03-16,2024-04-12,38.49\n43.24,1.62,C,BX11,2024-04-07,2024-04-14,29.31\n52.27,1.72,A,CY12,2024-02-23,2024-03-06,27.8\n51.19,2.11,B,AY13,2024-03-16,2024-03-26,44.46\n43.37,3.42,D,AX14,2024-04-03,2024-04-20,30.74\n30.95,2.01,C,DZ15,2024-02-23,2024-03-13,32.12\n27.45,0.91,D,BX16,2024-01-04,2024-01-24,18.7\n58.77,3.46,C,AY17,2024-02-28,2024-03-25,40.81\n47.61,3.43,B,AY18,2024-01-14,2024-02-07,34.67\n48.67,2.2,A,CY19,2024-03-06,2024-03-22,37.46\n61.59,1.33,C,DZ20,2024-02-15,2024-03-12,45.12\n40.09,3.5,C,CY21,2024-03-13,2024-04-11,27.0\n47.65,0.9,B,AY22,2024-03-11,2024-03-19,23.03\n49.34,2.64,A,AX23,2024-01-30,2024-02-27,33.27\n",
+      "data_dictionary.csv": "file,column,description,unit\nfacts.csv,x,\"Primary measurement\",unit\nfacts.csv,w,\"Observation weight\",unitless\nfacts.csv,grp,\"Segment\",\nfacts.csv,label,\"Record label\",\nfacts.csv,start,\"Start date\",\nfacts.csv,end,\"End date\",\nfacts.csv,y,\"Secondary measurement\",unit\n"
+    },
+    "answer": 48.61533333333333,
+    "tol": 0.015,
+    "type": "table.ood_membership"
+  },
+  {
+    "id": "o1_005",
+    "objective": "How many records in facts.csv have a record label that starts with 'A'? Give a whole number.",
+    "files": {
+      "facts.csv": "x,w,grp,label,start,end,y\n45.65,1.71,C,AX0,2024-04-06,2024-04-16,33.22\n50.74,3.45,A,AX1,2024-03-14,2024-03-19,34.68\n40.46,1.98,A,DZ2,2024-03-07,2024-03-18,34.32\n55.92,2.26,A,BX3,2024-02-21,2024-03-18,33.66\n45.53,3.95,B,AY4,2024-01-27,2024-02-13,36.39\n51.85,3.61,C,BX5,2024-02-15,2024-02-22,45.18\n47.43,3.88,B,DZ6,2024-01-01,2024-01-29,32.89\n70.98,0.98,B,BX7,2024-02-01,2024-02-27,51.05\n53.86,2.82,A,DZ8,2024-02-08,2024-03-06,45.85\n45.83,2.73,A,CY9,2024-03-11,2024-04-07,42.7\n47.85,0.57,B,BX10,2024-03-16,2024-04-12,38.49\n43.24,1.62,C,BX11,2024-04-07,2024-04-14,29.31\n52.27,1.72,A,CY12,2024-02-23,2024-03-06,27.8\n51.19,2.11,B,AY13,2024-03-16,2024-03-26,44.46\n43.37,3.42,D,AX14,2024-04-03,2024-04-20,30.74\n30.95,2.01,C,DZ15,2024-02-23,2024-03-13,32.12\n27.45,0.91,D,BX16,2024-01-04,2024-01-24,18.7\n58.77,3.46,C,AY17,2024-02-28,2024-03-25,40.81\n47.61,3.43,B,AY18,2024-01-14,2024-02-07,34.67\n48.67,2.2,A,CY19,2024-03-06,2024-03-22,37.46\n61.59,1.33,C,DZ20,2024-02-15,2024-03-12,45.12\n40.09,3.5,C,CY21,2024-03-13,2024-04-11,27.0\n47.65,0.9,B,AY22,2024-03-11,2024-03-19,23.03\n49.34,2.64,A,AX23,2024-01-30,2024-02-27,33.27\n",
+      "data_dictionary.csv": "file,column,description,unit\nfacts.csv,x,\"Primary measurement\",unit\nfacts.csv,w,\"Observation weight\",unitless\nfacts.csv,grp,\"Segment\",\nfacts.csv,label,\"Record label\",\nfacts.csv,start,\"Start date\",\nfacts.csv,end,\"End date\",\nfacts.csv,y,\"Secondary measurement\",unit\n"
+    },
+    "answer": 9.0,
+    "tol": 1e-06,
+    "type": "table.ood_string"
+  },
+  {
+    "id": "o1_006",
+    "objective": "For each row of facts.csv, compute the number of days from the start date to the end date. What is the mean duration? Round to 2 decimals.",
+    "files": {
+      "facts.csv": "x,w,grp,label,start,end,y\n45.65,1.71,C,AX0,2024-04-06,2024-04-16,33.22\n50.74,3.45,A,AX1,2024-03-14,2024-03-19,34.68\n40.46,1.98,A,DZ2,2024-03-07,2024-03-18,34.32\n55.92,2.26,A,BX3,2024-02-21,2024-03-18,33.66\n45.53,3.95,B,AY4,2024-01-27,2024-02-13,36.39\n51.85,3.61,C,BX5,2024-02-15,2024-02-22,45.18\n47.43,3.88,B,DZ6,2024-01-01,2024-01-29,32.89\n70.98,0.98,B,BX7,2024-02-01,2024-02-27,51.05\n53.86,2.82,A,DZ8,2024-02-08,2024-03-06,45.85\n45.83,2.73,A,CY9,2024-03-11,2024-04-07,42.7\n47.85,0.57,B,BX10,2024-03-16,2024-04-12,38.49\n43.24,1.62,C,BX11,2024-04-07,2024-04-14,29.31\n52.27,1.72,A,CY12,2024-02-23,2024-03-06,27.8\n51.19,2.11,B,AY13,2024-03-16,2024-03-26,44.46\n43.37,3.42,D,AX14,2024-04-03,2024-04-20,30.74\n30.95,2.01,C,DZ15,2024-02-23,2024-03-13,32.12\n27.45,0.91,D,BX16,2024-01-04,2024-01-24,18.7\n58.77,3.46,C,AY17,2024-02-28,2024-03-25,40.81\n47.61,3.43,B,AY18,2024-01-14,2024-02-07,34.67\n48.67,2.2,A,CY19,2024-03-06,2024-03-22,37.46\n61.59,1.33,C,DZ20,2024-02-15,2024-03-12,45.12\n40.09,3.5,C,CY21,2024-03-13,2024-04-11,27.0\n47.65,0.9,B,AY22,2024-03-11,2024-03-19,23.03\n49.34,2.64,A,AX23,2024-01-30,2024-02-27,33.27\n",
+      "data_dictionary.csv": "file,column,description,unit\nfacts.csv,x,\"Primary measurement\",unit\nfacts.csv,w,\"Observation weight\",unitless\nfacts.csv,grp,\"Segment\",\nfacts.csv,label,\"Record label\",\nfacts.csv,start,\"Start date\",\nfacts.csv,end,\"End date\",\nfacts.csv,y,\"Secondary measurement\",unit\n"
+    },
+    "answer": 18.875,
+    "tol": 0.015,
+    "type": "table.ood_date_delta"
+  },
+  {
+    "id": "o1_007",
+    "objective": "What is the mean of the 3 largest distinct primary measurement values in facts.csv? Round to 2 decimals.",
+    "files": {
+      "facts.csv": "x,w,grp,label,start,end,y\n45.65,1.71,C,AX0,2024-04-06,2024-04-16,33.22\n50.74,3.45,A,AX1,2024-03-14,2024-03-19,34.68\n40.46,1.98,A,DZ2,2024-03-07,2024-03-18,34.32\n55.92,2.26,A,BX3,2024-02-21,2024-03-18,33.66\n45.53,3.95,B,AY4,2024-01-27,2024-02-13,36.39\n51.85,3.61,C,BX5,2024-02-15,2024-02-22,45.18\n47.43,3.88,B,DZ6,2024-01-01,2024-01-29,32.89\n70.98,0.98,B,BX7,2024-02-01,2024-02-27,51.05\n53.86,2.82,A,DZ8,2024-02-08,2024-03-06,45.85\n45.83,2.73,A,CY9,2024-03-11,2024-04-07,42.7\n47.85,0.57,B,BX10,2024-03-16,2024-04-12,38.49\n43.24,1.62,C,BX11,2024-04-07,2024-04-14,29.31\n52.27,1.72,A,CY12,2024-02-23,2024-03-06,27.8\n51.19,2.11,B,AY13,2024-03-16,2024-03-26,44.46\n43.37,3.42,D,AX14,2024-04-03,2024-04-20,30.74\n30.95,2.01,C,DZ15,2024-02-23,2024-03-13,32.12\n27.45,0.91,D,BX16,2024-01-04,2024-01-24,18.7\n58.77,3.46,C,AY17,2024-02-28,2024-03-25,40.81\n47.61,3.43,B,AY18,2024-01-14,2024-02-07,34.67\n48.67,2.2,A,CY19,2024-03-06,2024-03-22,37.46\n61.59,1.33,C,DZ20,2024-02-15,2024-03-12,45.12\n40.09,3.5,C,CY21,2024-03-13,2024-04-11,27.0\n47.65,0.9,B,AY22,2024-03-11,2024-03-19,23.03\n49.34,2.64,A,AX23,2024-01-30,2024-02-27,33.27\n",
+      "data_dictionary.csv": "file,column,description,unit\nfacts.csv,x,\"Primary measurement\",unit\nfacts.csv,w,\"Observation weight\",unitless\nfacts.csv,grp,\"Segment\",\nfacts.csv,label,\"Record label\",\nfacts.csv,start,\"Start date\",\nfacts.csv,end,\"End date\",\nfacts.csv,y,\"Secondary measurement\",unit\n"
+    },
+    "answer": 63.78,
+    "tol": 0.015,
+    "type": "table.ood_topk"
+  },
+  {
+    "id": "o1_008",
+    "objective": "What percentage of the total primary measurement is contributed by segment 'A' in facts.csv? Round to 2 decimals.",
+    "files": {
+      "facts.csv": "x,w,grp,label,start,end,y\n45.65,1.71,C,AX0,2024-04-06,2024-04-16,33.22\n50.74,3.45,A,AX1,2024-03-14,2024-03-19,34.68\n40.46,1.98,A,DZ2,2024-03-07,2024-03-18,34.32\n55.92,2.26,A,BX3,2024-02-21,2024-03-18,33.66\n45.53,3.95,B,AY4,2024-01-27,2024-02-13,36.39\n51.85,3.61,C,BX5,2024-02-15,2024-02-22,45.18\n47.43,3.88,B,DZ6,2024-01-01,2024-01-29,32.89\n70.98,0.98,B,BX7,2024-02-01,2024-02-27,51.05\n53.86,2.82,A,DZ8,2024-02-08,2024-03-06,45.85\n45.83,2.73,A,CY9,2024-03-11,2024-04-07,42.7\n47.85,0.57,B,BX10,2024-03-16,2024-04-12,38.49\n43.24,1.62,C,BX11,2024-04-07,2024-04-14,29.31\n52.27,1.72,A,CY12,2024-02-23,2024-03-06,27.8\n51.19,2.11,B,AY13,2024-03-16,2024-03-26,44.46\n43.37,3.42,D,AX14,2024-04-03,2024-04-20,30.74\n30.95,2.01,C,DZ15,2024-02-23,2024-03-13,32.12\n27.45,0.91,D,BX16,2024-01-04,2024-01-24,18.7\n58.77,3.46,C,AY17,2024-02-28,2024-03-25,40.81\n47.61,3.43,B,AY18,2024-01-14,2024-02-07,34.67\n48.67,2.2,A,CY19,2024-03-06,2024-03-22,37.46\n61.59,1.33,C,DZ20,2024-02-15,2024-03-12,45.12\n40.09,3.5,C,CY21,2024-03-13,2024-04-11,27.0\n47.65,0.9,B,AY22,2024-03-11,2024-03-19,23.03\n49.34,2.64,A,AX23,2024-01-30,2024-02-27,33.27\n",
+      "data_dictionary.csv": "file,column,description,unit\nfacts.csv,x,\"Primary measurement\",unit\nfacts.csv,w,\"Observation weight\",unitless\nfacts.csv,grp,\"Segment\",\nfacts.csv,label,\"Record label\",\nfacts.csv,start,\"Start date\",\nfacts.csv,end,\"End date\",\nfacts.csv,y,\"Secondary measurement\",unit\n"
+    },
+    "answer": 34.28243358744356,
+    "tol": 0.015,
+    "type": "table.ood_share"
+  },
+  {
+    "id": "o1_009",
+    "objective": "What is the sample covariance between the primary measurement and the secondary measurement in facts.csv? Round to 2 decimals.",
+    "files": {
+      "facts.csv": "x,w,grp,label,start,end,y\n45.65,1.71,C,AX0,2024-04-06,2024-04-16,33.22\n50.74,3.45,A,AX1,2024-03-14,2024-03-19,34.68\n40.46,1.98,A,DZ2,2024-03-07,2024-03-18,34.32\n55.92,2.26,A,BX3,2024-02-21,2024-03-18,33.66\n45.53,3.95,B,AY4,2024-01-27,2024-02-13,36.39\n51.85,3.61,C,BX5,2024-02-15,2024-02-22,45.18\n47.43,3.88,B,DZ6,2024-01-01,2024-01-29,32.89\n70.98,0.98,B,BX7,2024-02-01,2024-02-27,51.05\n53.86,2.82,A,DZ8,2024-02-08,2024-03-06,45.85\n45.83,2.73,A,CY9,2024-03-11,2024-04-07,42.7\n47.85,0.57,B,BX10,2024-03-16,2024-04-12,38.49\n43.24,1.62,C,BX11,2024-04-07,2024-04-14,29.31\n52.27,1.72,A,CY12,2024-02-23,2024-03-06,27.8\n51.19,2.11,B,AY13,2024-03-16,2024-03-26,44.46\n43.37,3.42,D,AX14,2024-04-03,2024-04-20,30.74\n30.95,2.01,C,DZ15,2024-02-23,2024-03-13,32.12\n27.45,0.91,D,BX16,2024-01-04,2024-01-24,18.7\n58.77,3.46,C,AY17,2024-02-28,2024-03-25,40.81\n47.61,3.43,B,AY18,2024-01-14,2024-02-07,34.67\n48.67,2.2,A,CY19,2024-03-06,2024-03-22,37.46\n61.59,1.33,C,DZ20,2024-02-15,2024-03-12,45.12\n40.09,3.5,C,CY21,2024-03-13,2024-04-11,27.0\n47.65,0.9,B,AY22,2024-03-11,2024-03-19,23.03\n49.34,2.64,A,AX23,2024-01-30,2024-02-27,33.27\n",
+      "data_dictionary.csv": "file,column,description,unit\nfacts.csv,x,\"Primary measurement\",unit\nfacts.csv,w,\"Observation weight\",unitless\nfacts.csv,grp,\"Segment\",\nfacts.csv,label,\"Record label\",\nfacts.csv,start,\"Start date\",\nfacts.csv,end,\"End date\",\nfacts.csv,y,\"Secondary measurement\",unit\n"
+    },
+    "answer": 49.73555144927536,
+    "tol": 0.015,
+    "type": "table.ood_covariance"
+  },
+  {
+    "id": "o1_010",
+    "objective": "Join fact.csv and dim.csv on the entity key. Compute numerator measure divided by denominator measure for each joined row belonging to a region 'North'. What is the mean of these ratios? Round to 2 decimals.",
+    "files": {
+      "fact.csv": "k,num\nK12,67.35\nK08,27.21\nK12,26.74\nK00,30.57\nK11,17.94\nK10,76.35\nK12,28.47\nK04,114.28\nK08,58.5\nK09,109.81\nK10,116.69\nK09,26.49\nK04,74.29\nK12,57.33\nK00,82.31\nK13,89.69\nK09,108.99\nK12,53.76\nK12,83.96\nK12,95.13\nK13,119.69\nK09,30.52\nK12,33.4\nK02,78.89\nK01,118.56\nK13,21.71\nK09,116.47\nK11,53.26\nK10,80.95\nK10,119.24\nK01,107.16\nK12,109.17\nK13,40.64\nK04,44.94\nK13,82.66\nK10,46.91\n",
+      "dim.csv": "k,den,grp\nK00,3.64,South\nK01,11.02,South\nK02,11.6,North\nK03,10.87,North\nK04,7.95,South\nK05,8.63,North\nK06,2.71,North\nK07,3.75,North\nK08,8.44,North\nK09,6.37,South\nK10,6.19,North\nK11,6.17,South\nK12,3.68,South\nK13,3.32,South\n",
+      "data_dictionary.csv": "file,column,description,unit\nfact.csv,k,\"Entity key\",\nfact.csv,num,\"Numerator measure\",unit\ndim.csv,k,\"Entity key\",\ndim.csv,den,\"Denominator measure\",unit\ndim.csv,grp,\"Region\",\n"
+    },
+    "answer": 11.007635427081514,
+    "tol": 0.015,
+    "type": "table.ood_join_derive"
+  },
+  {
+    "id": "o1_011",
+    "objective": "What is the interquartile range (75th percentile minus 25th percentile) of the primary measurement over all records in facts.csv? Round to 2 decimals.",
+    "files": {
+      "facts.csv": "x,w,grp,label,start,end,y\n64.91,1.9,B,BX0,2024-02-20,2024-03-11,57.94\n48.17,2.84,C,AX1,2024-01-31,2024-02-20,35.12\n37.14,1.79,D,BX2,2024-02-17,2024-03-02,21.57\n66.88,3.74,B,CY3,2024-03-23,2024-03-27,47.2\n64.0,3.66,D,BX4,2024-02-18,2024-03-14,40.12\n49.03,0.88,A,BX5,2024-03-11,2024-04-04,40.11\n27.03,3.94,B,CY6,2024-01-03,2024-01-09,24.21\n42.45,1.32,D,AX7,2024-03-12,2024-03-21,27.21\n42.92,3.08,C,AY8,2024-01-29,2024-02-07,32.33\n41.79,1.29,A,DZ9,2024-02-11,2024-03-05,32.39\n74.7,1.55,B,CY10,2024-01-22,2024-02-15,58.17\n54.16,3.28,A,DZ11,2024-04-02,2024-04-23,37.91\n64.44,3.5,A,BX12,2024-01-27,2024-02-04,41.56\n33.21,3.84,D,BX13,2024-03-06,2024-03-27,26.45\n19.61,1.54,B,AX14,2024-01-07,2024-02-01,13.63\n48.2,0.65,A,BX15,2024-03-27,2024-04-01,42.02\n47.55,3.52,C,BX16,2024-03-10,2024-03-27,38.03\n66.44,2.46,D,BX17,2024-01-11,2024-01-21,55.36\n47.26,3.72,A,CY18,2024-03-21,2024-04-11,41.35\n42.03,3.74,C,CY19,2024-01-01,2024-01-09,38.16\n40.88,0.76,A,AX20,2024-02-17,2024-03-01,33.53\n37.74,3.19,A,CY21,2024-02-04,2024-02-10,33.35\n44.57,1.41,A,CY22,2024-03-09,2024-03-11,31.56\n50.74,2.55,D,DZ23,2024-01-25,2024-02-21,41.32\n",
+      "data_dictionary.csv": "file,column,description,unit\nfacts.csv,x,\"Primary measurement\",unit\nfacts.csv,w,\"Observation weight\",unitless\nfacts.csv,grp,\"Segment\",\nfacts.csv,label,\"Record label\",\nfacts.csv,start,\"Start date\",\nfacts.csv,end,\"End date\",\nfacts.csv,y,\"Secondary measurement\",unit\n"
+    },
+    "answer": 15.057499999999997,
+    "tol": 0.015,
+    "type": "table.ood_iqr"
+  },
+  {
+    "id": "o1_012",
+    "objective": "Using facts.csv and its data dictionary, compute the weighted mean of the primary measurement, using observation weight as the weight. Ignore rows missing either value. Report it with 2 decimals.",
+    "files": {
+      "facts.csv": "x,w,grp,label,start,end,y\n64.91,1.9,B,BX0,2024-02-20,2024-03-11,57.94\n48.17,2.84,C,AX1,2024-01-31,2024-02-20,35.12\n37.14,1.79,D,BX2,2024-02-17,2024-03-02,21.57\n66.88,3.74,B,CY3,2024-03-23,2024-03-27,47.2\n64.0,3.66,D,BX4,2024-02-18,2024-03-14,40.12\n49.03,0.88,A,BX5,2024-03-11,2024-04-04,40.11\n27.03,3.94,B,CY6,2024-01-03,2024-01-09,24.21\n42.45,1.32,D,AX7,2024-03-12,2024-03-21,27.21\n42.92,3.08,C,AY8,2024-01-29,2024-02-07,32.33\n41.79,1.29,A,DZ9,2024-02-11,2024-03-05,32.39\n74.7,1.55,B,CY10,2024-01-22,2024-02-15,58.17\n54.16,3.28,A,DZ11,2024-04-02,2024-04-23,37.91\n64.44,3.5,A,BX12,2024-01-27,2024-02-04,41.56\n33.21,3.84,D,BX13,2024-03-06,2024-03-27,26.45\n19.61,1.54,B,AX14,2024-01-07,2024-02-01,13.63\n48.2,0.65,A,BX15,2024-03-27,2024-04-01,42.02\n47.55,3.52,C,BX16,2024-03-10,2024-03-27,38.03\n66.44,2.46,D,BX17,2024-01-11,2024-01-21,55.36\n47.26,3.72,A,CY18,2024-03-21,2024-04-11,41.35\n42.03,3.74,C,CY19,2024-01-01,2024-01-09,38.16\n40.88,0.76,A,AX20,2024-02-17,2024-03-01,33.53\n37.74,3.19,A,CY21,2024-02-04,2024-02-10,33.35\n44.57,1.41,A,CY22,2024-03-09,2024-03-11,31.56\n50.74,2.55,D,DZ23,2024-01-25,2024-02-21,41.32\n",
+      "data_dictionary.csv": "file,column,description,unit\nfacts.csv,x,\"Primary measurement\",unit\nfacts.csv,w,\"Observation weight\",unitless\nfacts.csv,grp,\"Segment\",\nfacts.csv,label,\"Record label\",\nfacts.csv,start,\"Start date\",\nfacts.csv,end,\"End date\",\nfacts.csv,y,\"Secondary measurement\",unit\n"
+    },
+    "answer": 48.517014131338314,
+    "tol": 0.015,
+    "type": "table.ood_weighted_mean"
+  },
+  {
+    "id": "o1_013",
+    "objective": "What is the mean primary measurement for segment 'A' minus the mean primary measurement for segment 'B' in facts.csv? Round to 2 decimals.",
+    "files": {
+      "facts.csv": "x,w,grp,label,start,end,y\n64.91,1.9,B,BX0,2024-02-20,2024-03-11,57.94\n48.17,2.84,C,AX1,2024-01-31,2024-02-20,35.12\n37.14,1.79,D,BX2,2024-02-17,2024-03-02,21.57\n66.88,3.74,B,CY3,2024-03-23,2024-03-27,47.2\n64.0,3.66,D,BX4,2024-02-18,2024-03-14,40.12\n49.03,0.88,A,BX5,2024-03-11,2024-04-04,40.11\n27.03,3.94,B,CY6,2024-01-03,2024-01-09,24.21\n42.45,1.32,D,AX7,2024-03-12,2024-03-21,27.21\n42.92,3.08,C,AY8,2024-01-29,2024-02-07,32.33\n41.79,1.29,A,DZ9,2024-02-11,2024-03-05,32.39\n74.7,1.55,B,CY10,2024-01-22,2024-02-15,58.17\n54.16,3.28,A,DZ11,2024-04-02,2024-04-23,37.91\n64.44,3.5,A,BX12,2024-01-27,2024-02-04,41.56\n33.21,3.84,D,BX13,2024-03-06,2024-03-27,26.45\n19.61,1.54,B,AX14,2024-01-07,2024-02-01,13.63\n48.2,0.65,A,BX15,2024-03-27,2024-04-01,42.02\n47.55,3.52,C,BX16,2024-03-10,2024-03-27,38.03\n66.44,2.46,D,BX17,2024-01-11,2024-01-21,55.36\n47.26,3.72,A,CY18,2024-03-21,2024-04-11,41.35\n42.03,3.74,C,CY19,2024-01-01,2024-01-09,38.16\n40.88,0.76,A,AX20,2024-02-17,2024-03-01,33.53\n37.74,3.19,A,CY21,2024-02-04,2024-02-10,33.35\n44.57,1.41,A,CY22,2024-03-09,2024-03-11,31.56\n50.74,2.55,D,DZ23,2024-01-25,2024-02-21,41.32\n",
+      "data_dictionary.csv": "file,column,description,unit\nfacts.csv,x,\"Primary measurement\",unit\nfacts.csv,w,\"Observation weight\",unitless\nfacts.csv,grp,\"Segment\",\nfacts.csv,label,\"Record label\",\nfacts.csv,start,\"Start date\",\nfacts.csv,end,\"End date\",\nfacts.csv,y,\"Secondary measurement\",unit\n"
+    },
+    "answer": -3.062666666666665,
+    "tol": 0.015,
+    "type": "table.ood_group_diff"
+  },
+  {
+    "id": "o1_014",
+    "objective": "What is the mean primary measurement for records whose segment is either 'A' or 'C' in facts.csv? Round to 2 decimals.",
+    "files": {
+      "facts.csv": "x,w,grp,label,start,end,y\n64.91,1.9,B,BX0,2024-02-20,2024-03-11,57.94\n48.17,2.84,C,AX1,2024-01-31,2024-02-20,35.12\n37.14,1.79,D,BX2,2024-02-17,2024-03-02,21.57\n66.88,3.74,B,CY3,2024-03-23,2024-03-27,47.2\n64.0,3.66,D,BX4,2024-02-18,2024-03-14,40.12\n49.03,0.88,A,BX5,2024-03-11,2024-04-04,40.11\n27.03,3.94,B,CY6,2024-01-03,2024-01-09,24.21\n42.45,1.32,D,AX7,2024-03-12,2024-03-21,27.21\n42.92,3.08,C,AY8,2024-01-29,2024-02-07,32.33\n41.79,1.29,A,DZ9,2024-02-11,2024-03-05,32.39\n74.7,1.55,B,CY10,2024-01-22,2024-02-15,58.17\n54.16,3.28,A,DZ11,2024-04-02,2024-04-23,37.91\n64.44,3.5,A,BX12,2024-01-27,2024-02-04,41.56\n33.21,3.84,D,BX13,2024-03-06,2024-03-27,26.45\n19.61,1.54,B,AX14,2024-01-07,2024-02-01,13.63\n48.2,0.65,A,BX15,2024-03-27,2024-04-01,42.02\n47.55,3.52,C,BX16,2024-03-10,2024-03-27,38.03\n66.44,2.46,D,BX17,2024-01-11,2024-01-21,55.36\n47.26,3.72,A,CY18,2024-03-21,2024-04-11,41.35\n42.03,3.74,C,CY19,2024-01-01,2024-01-09,38.16\n40.88,0.76,A,AX20,2024-02-17,2024-03-01,33.53\n37.74,3.19,A,CY21,2024-02-04,2024-02-10,33.35\n44.57,1.41,A,CY22,2024-03-09,2024-03-11,31.56\n50.74,2.55,D,DZ23,2024-01-25,2024-02-21,41.32\n",
+      "data_dictionary.csv": "file,column,description,unit\nfacts.csv,x,\"Primary measurement\",unit\nfacts.csv,w,\"Observation weight\",unitless\nfacts.csv,grp,\"Segment\",\nfacts.csv,label,\"Record label\",\nfacts.csv,start,\"Start date\",\nfacts.csv,end,\"End date\",\nfacts.csv,y,\"Secondary measurement\",unit\n"
+    },
+    "answer": 46.826153846153844,
+    "tol": 0.015,
+    "type": "table.ood_membership"
+  },
+  {
+    "id": "o1_015",
+    "objective": "How many records in facts.csv have a record label that starts with 'A'? Give a whole number.",
+    "files": {
+      "facts.csv": "x,w,grp,label,start,end,y\n64.91,1.9,B,BX0,2024-02-20,2024-03-11,57.94\n48.17,2.84,C,AX1,2024-01-31,2024-02-20,35.12\n37.14,1.79,D,BX2,2024-02-17,2024-03-02,21.57\n66.88,3.74,B,CY3,2024-03-23,2024-03-27,47.2\n64.0,3.66,D,BX4,2024-02-18,2024-03-14,40.12\n49.03,0.88,A,BX5,2024-03-11,2024-04-04,40.11\n27.03,3.94,B,CY6,2024-01-03,2024-01-09,24.21\n42.45,1.32,D,AX7,2024-03-12,2024-03-21,27.21\n42.92,3.08,C,AY8,2024-01-29,2024-02-07,32.33\n41.79,1.29,A,DZ9,2024-02-11,2024-03-05,32.39\n74.7,1.55,B,CY10,2024-01-22,2024-02-15,58.17\n54.16,3.28,A,DZ11,2024-04-02,2024-04-23,37.91\n64.44,3.5,A,BX12,2024-01-27,2024-02-04,41.56\n33.21,3.84,D,BX13,2024-03-06,2024-03-27,26.45\n19.61,1.54,B,AX14,2024-01-07,2024-02-01,13.63\n48.2,0.65,A,BX15,2024-03-27,2024-04-01,42.02\n47.55,3.52,C,BX16,2024-03-10,2024-03-27,38.03\n66.44,2.46,D,BX17,2024-01-11,2024-01-21,55.36\n47.26,3.72,A,CY18,2024-03-21,2024-04-11,41.35\n42.03,3.74,C,CY19,2024-01-01,2024-01-09,38.16\n40.88,0.76,A,AX20,2024-02-17,2024-03-01,33.53\n37.74,3.19,A,CY21,2024-02-04,2024-02-10,33.35\n44.57,1.41,A,CY22,2024-03-09,2024-03-11,31.56\n50.74,2.55,D,DZ23,2024-01-25,2024-02-21,41.32\n",
+      "data_dictionary.csv": "file,column,description,unit\nfacts.csv,x,\"Primary measurement\",unit\nfacts.csv,w,\"Observation weight\",unitless\nfacts.csv,grp,\"Segment\",\nfacts.csv,label,\"Record label\",\nfacts.csv,start,\"Start date\",\nfacts.csv,end,\"End date\",\nfacts.csv,y,\"Secondary measurement\",unit\n"
+    },
+    "answer": 5.0,
+    "tol": 1e-06,
+    "type": "table.ood_string"
+  },
+  {
+    "id": "o1_016",
+    "objective": "For each row of facts.csv, compute the number of days from the start date to the end date. What is the mean duration? Round to 2 decimals.",
+    "files": {
+      "facts.csv": "x,w,grp,label,start,end,y\n64.91,1.9,B,BX0,2024-02-20,2024-03-11,57.94\n48.17,2.84,C,AX1,2024-01-31,2024-02-20,35.12\n37.14,1.79,D,BX2,2024-02-17,2024-03-02,21.57\n66.88,3.74,B,CY3,2024-03-23,2024-03-27,47.2\n64.0,3.66,D,BX4,2024-02-18,2024-03-14,40.12\n49.03,0.88,A,BX5,2024-03-11,2024-04-04,40.11\n27.03,3.94,B,CY6,2024-01-03,2024-01-09,24.21\n42.45,1.32,D,AX7,2024-03-12,2024-03-21,27.21\n42.92,3.08,C,AY8,2024-01-29,2024-02-07,32.33\n41.79,1.29,A,DZ9,2024-02-11,2024-03-05,32.39\n74.7,1.55,B,CY10,2024-01-22,2024-02-15,58.17\n54.16,3.28,A,DZ11,2024-04-02,2024-04-23,37.91\n64.44,3.5,A,BX12,2024-01-27,2024-02-04,41.56\n33.21,3.84,D,BX13,2024-03-06,2024-03-27,26.45\n19.61,1.54,B,AX14,2024-01-07,2024-02-01,13.63\n48.2,0.65,A,BX15,2024-03-27,2024-04-01,42.02\n47.55,3.52,C,BX16,2024-03-10,2024-03-27,38.03\n66.44,2.46,D,BX17,2024-01-11,2024-01-21,55.36\n47.26,3.72,A,CY18,2024-03-21,2024-04-11,41.35\n42.03,3.74,C,CY19,2024-01-01,2024-01-09,38.16\n40.88,0.76,A,AX20,2024-02-17,2024-03-01,33.53\n37.74,3.19,A,CY21,2024-02-04,2024-02-10,33.35\n44.57,1.41,A,CY22,2024-03-09,2024-03-11,31.56\n50.74,2.55,D,DZ23,2024-01-25,2024-02-21,41.32\n",
+      "data_dictionary.csv": "file,column,description,unit\nfacts.csv,x,\"Primary measurement\",unit\nfacts.csv,w,\"Observation weight\",unitless\nfacts.csv,grp,\"Segment\",\nfacts.csv,label,\"Record label\",\nfacts.csv,start,\"Start date\",\nfacts.csv,end,\"End date\",\nfacts.csv,y,\"Secondary measurement\",unit\n"
+    },
+    "answer": 15.083333333333334,
+    "tol": 0.015,
+    "type": "table.ood_date_delta"
+  },
+  {
+    "id": "o1_017",
+    "objective": "What is the mean of the 3 largest distinct primary measurement values in facts.csv? Round to 2 decimals.",
+    "files": {
+      "facts.csv": "x,w,grp,label,start,end,y\n64.91,1.9,B,BX0,2024-02-20,2024-03-11,57.94\n48.17,2.84,C,AX1,2024-01-31,2024-02-20,35.12\n37.14,1.79,D,BX2,2024-02-17,2024-03-02,21.57\n66.88,3.74,B,CY3,2024-03-23,2024-03-27,47.2\n64.0,3.66,D,BX4,2024-02-18,2024-03-14,40.12\n49.03,0.88,A,BX5,2024-03-11,2024-04-04,40.11\n27.03,3.94,B,CY6,2024-01-03,2024-01-09,24.21\n42.45,1.32,D,AX7,2024-03-12,2024-03-21,27.21\n42.92,3.08,C,AY8,2024-01-29,2024-02-07,32.33\n41.79,1.29,A,DZ9,2024-02-11,2024-03-05,32.39\n74.7,1.55,B,CY10,2024-01-22,2024-02-15,58.17\n54.16,3.28,A,DZ11,2024-04-02,2024-04-23,37.91\n64.44,3.5,A,BX12,2024-01-27,2024-02-04,41.56\n33.21,3.84,D,BX13,2024-03-06,2024-03-27,26.45\n19.61,1.54,B,AX14,2024-01-07,2024-02-01,13.63\n48.2,0.65,A,BX15,2024-03-27,2024-04-01,42.02\n47.55,3.52,C,BX16,2024-03-10,2024-03-27,38.03\n66.44,2.46,D,BX17,2024-01-11,2024-01-21,55.36\n47.26,3.72,A,CY18,2024-03-21,2024-04-11,41.35\n42.03,3.74,C,CY19,2024-01-01,2024-01-09,38.16\n40.88,0.76,A,AX20,2024-02-17,2024-03-01,33.53\n37.74,3.19,A,CY21,2024-02-04,2024-02-10,33.35\n44.57,1.41,A,CY22,2024-03-09,2024-03-11,31.56\n50.74,2.55,D,DZ23,2024-01-25,2024-02-21,41.32\n",
+      "data_dictionary.csv": "file,column,description,unit\nfacts.csv,x,\"Primary measurement\",unit\nfacts.csv,w,\"Observation weight\",unitless\nfacts.csv,grp,\"Segment\",\nfacts.csv,label,\"Record label\",\nfacts.csv,start,\"Start date\",\nfacts.csv,end,\"End date\",\nfacts.csv,y,\"Secondary measurement\",unit\n"
+    },
+    "answer": 69.33999999999999,
+    "tol": 0.015,
+    "type": "table.ood_topk"
+  },
+  {
+    "id": "o1_018",
+    "objective": "What percentage of the total primary measurement is contributed by segment 'A' in facts.csv? Round to 2 decimals.",
+    "files": {
+      "facts.csv": "x,w,grp,label,start,end,y\n64.91,1.9,B,BX0,2024-02-20,2024-03-11,57.94\n48.17,2.84,C,AX1,2024-01-31,2024-02-20,35.12\n37.14,1.79,D,BX2,2024-02-17,2024-03-02,21.57\n66.88,3.74,B,CY3,2024-03-23,2024-03-27,47.2\n64.0,3.66,D,BX4,2024-02-18,2024-03-14,40.12\n49.03,0.88,A,BX5,2024-03-11,2024-04-04,40.11\n27.03,3.94,B,CY6,2024-01-03,2024-01-09,24.21\n42.45,1.32,D,AX7,2024-03-12,2024-03-21,27.21\n42.92,3.08,C,AY8,2024-01-29,2024-02-07,32.33\n41.79,1.29,A,DZ9,2024-02-11,2024-03-05,32.39\n74.7,1.55,B,CY10,2024-01-22,2024-02-15,58.17\n54.16,3.28,A,DZ11,2024-04-02,2024-04-23,37.91\n64.44,3.5,A,BX12,2024-01-27,2024-02-04,41.56\n33.21,3.84,D,BX13,2024-03-06,2024-03-27,26.45\n19.61,1.54,B,AX14,2024-01-07,2024-02-01,13.63\n48.2,0.65,A,BX15,2024-03-27,2024-04-01,42.02\n47.55,3.52,C,BX16,2024-03-10,2024-03-27,38.03\n66.44,2.46,D,BX17,2024-01-11,2024-01-21,55.36\n47.26,3.72,A,CY18,2024-03-21,2024-04-11,41.35\n42.03,3.74,C,CY19,2024-01-01,2024-01-09,38.16\n40.88,0.76,A,AX20,2024-02-17,2024-03-01,33.53\n37.74,3.19,A,CY21,2024-02-04,2024-02-10,33.35\n44.57,1.41,A,CY22,2024-03-09,2024-03-11,31.56\n50.74,2.55,D,DZ23,2024-01-25,2024-02-21,41.32\n",
+      "data_dictionary.csv": "file,column,description,unit\nfacts.csv,x,\"Primary measurement\",unit\nfacts.csv,w,\"Observation weight\",unitless\nfacts.csv,grp,\"Segment\",\nfacts.csv,label,\"Record label\",\nfacts.csv,start,\"Start date\",\nfacts.csv,end,\"End date\",\nfacts.csv,y,\"Secondary measurement\",unit\n"
+    },
+    "answer": 37.03508240688671,
+    "tol": 0.015,
+    "type": "table.ood_share"
+  },
+  {
+    "id": "o1_019",
+    "objective": "What is the sample covariance between the primary measurement and the secondary measurement in facts.csv? Round to 2 decimals.",
+    "files": {
+      "facts.csv": "x,w,grp,label,start,end,y\n64.91,1.9,B,BX0,2024-02-20,2024-03-11,57.94\n48.17,2.84,C,AX1,2024-01-31,2024-02-20,35.12\n37.14,1.79,D,BX2,2024-02-17,2024-03-02,21.57\n66.88,3.74,B,CY3,2024-03-23,2024-03-27,47.2\n64.0,3.66,D,BX4,2024-02-18,2024-03-14,40.12\n49.03,0.88,A,BX5,2024-03-11,2024-04-04,40.11\n27.03,3.94,B,CY6,2024-01-03,2024-01-09,24.21\n42.45,1.32,D,AX7,2024-03-12,2024-03-21,27.21\n42.92,3.08,C,AY8,2024-01-29,2024-02-07,32.33\n41.79,1.29,A,DZ9,2024-02-11,2024-03-05,32.39\n74.7,1.55,B,CY10,2024-01-22,2024-02-15,58.17\n54.16,3.28,A,DZ11,2024-04-02,2024-04-23,37.91\n64.44,3.5,A,BX12,2024-01-27,2024-02-04,41.56\n33.21,3.84,D,BX13,2024-03-06,2024-03-27,26.45\n19.61,1.54,B,AX14,2024-01-07,2024-02-01,13.63\n48.2,0.65,A,BX15,2024-03-27,2024-04-01,42.02\n47.55,3.52,C,BX16,2024-03-10,2024-03-27,38.03\n66.44,2.46,D,BX17,2024-01-11,2024-01-21,55.36\n47.26,3.72,A,CY18,2024-03-21,2024-04-11,41.35\n42.03,3.74,C,CY19,2024-01-01,2024-01-09,38.16\n40.88,0.76,A,AX20,2024-02-17,2024-03-01,33.53\n37.74,3.19,A,CY21,2024-02-04,2024-02-10,33.35\n44.57,1.41,A,CY22,2024-03-09,2024-03-11,31.56\n50.74,2.55,D,DZ23,2024-01-25,2024-02-21,41.32\n",
+      "data_dictionary.csv": "file,column,description,unit\nfacts.csv,x,\"Primary measurement\",unit\nfacts.csv,w,\"Observation weight\",unitless\nfacts.csv,grp,\"Segment\",\nfacts.csv,label,\"Record label\",\nfacts.csv,start,\"Start date\",\nfacts.csv,end,\"End date\",\nfacts.csv,y,\"Secondary measurement\",unit\n"
+    },
+    "answer": 131.67157463768115,
+    "tol": 0.015,
+    "type": "table.ood_covariance"
+  },
+  {
+    "id": "o1_020",
+    "objective": "Join fact.csv and dim.csv on the entity key. Compute numerator measure divided by denominator measure for each joined row belonging to a region 'North'. What is the mean of these ratios? Round to 2 decimals.",
+    "files": {
+      "fact.csv": "k,num\nK04,110.61\nK04,87.69\nK10,115.29\nK10,110.79\nK08,53.22\nK12,101.16\nK04,93.97\nK12,44.18\nK05,114.71\nK04,53.11\nK01,70.94\nK01,17.03\nK02,20.44\nK11,35.85\nK07,76.18\nK05,76.86\nK01,47.67\nK10,22.96\nK06,107.51\nK01,69.87\nK02,86.0\nK06,36.11\nK08,40.17\nK05,10.87\nK03,17.96\nK04,111.26\nK11,32.03\nK01,52.57\nK11,24.26\nK08,116.14\nK04,87.06\nK09,93.8\nK03,74.2\nK13,15.23\nK09,42.34\nK01,68.16\n",
+      "dim.csv": "k,den,grp\nK00,2.49,North\nK01,7.74,North\nK02,5.37,North\nK03,10.31,North\nK04,3.18,South\nK05,4.45,South\nK06,10.32,North\nK07,11.94,South\nK08,5.97,South\nK09,11.81,South\nK10,3.93,North\nK11,11.24,South\nK12,5.67,North\nK13,9.45,South\n",
+      "data_dictionary.csv": "file,column,description,unit\nfact.csv,k,\"Entity key\",\nfact.csv,num,\"Numerator measure\",unit\ndim.csv,k,\"Entity key\",\ndim.csv,den,\"Denominator measure\",unit\ndim.csv,grp,\"Region\",\n"
+    },
+    "answer": 10.225222029698413,
+    "tol": 0.015,
+    "type": "table.ood_join_derive"
+  },
+  {
+    "id": "o1_021",
+    "objective": "What is the interquartile range (75th percentile minus 25th percentile) of the primary measurement over all records in facts.csv? Round to 2 decimals.",
+    "files": {
+      "facts.csv": "x,w,grp,label,start,end,y\n63.75,1.99,B,AY0,2024-02-09,2024-02-26,44.27\n62.43,1.11,B,AX1,2024-02-27,2024-03-20,39.53\n49.24,1.5,A,CY2,2024-01-30,2024-02-26,40.9\n43.87,0.6,B,AY3,2024-03-06,2024-03-07,41.03\n56.39,3.4,B,AY4,2024-01-20,2024-02-06,39.04\n39.9,1.74,A,AY5,2024-01-14,2024-02-04,28.37\n46.34,3.94,D,AX6,2024-03-02,2024-03-15,29.54\n52.62,1.92,B,CY7,2024-04-09,2024-04-23,45.77\n54.34,0.99,B,DZ8,2024-01-07,2024-01-31,31.48\n48.17,3.92,A,BX9,2024-02-11,2024-02-14,45.51\n47.37,1.27,A,CY10,2024-03-09,2024-03-26,36.32\n43.99,1.73,A,AX11,2024-03-23,2024-04-06,35.47\n54.69,1.97,C,CY12,2024-02-21,2024-03-03,46.43\n26.93,2.23,B,AX13,2024-03-27,2024-04-18,35.93\n55.55,3.7,A,BX14,2024-01-12,2024-01-23,39.28\n39.34,2.1,C,DZ15,2024-02-04,2024-02-16,34.47\n48.51,1.6,D,AX16,2024-01-17,2024-02-08,38.61\n44.21,2.97,A,BX17,2024-01-04,2024-01-28,39.04\n55.87,2.44,A,AX18,2024-03-19,2024-04-07,41.95\n56.16,2.2,B,AX19,2024-02-09,2024-02-26,41.16\n58.21,3.87,C,BX20,2024-03-06,2024-03-09,39.93\n57.73,1.18,C,BX21,2024-03-27,2024-04-10,46.05\n35.52,2.82,C,AX22,2024-01-20,2024-02-07,25.56\n52.59,2.75,C,CY23,2024-02-11,2024-02-19,37.51\n",
+      "data_dictionary.csv": "file,column,description,unit\nfacts.csv,x,\"Primary measurement\",unit\nfacts.csv,w,\"Observation weight\",unitless\nfacts.csv,grp,\"Segment\",\nfacts.csv,label,\"Record label\",\nfacts.csv,start,\"Start date\",\nfacts.csv,end,\"End date\",\nfacts.csv,y,\"Secondary measurement\",unit\n"
+    },
+    "answer": 11.787499999999994,
+    "tol": 0.015,
+    "type": "table.ood_iqr"
+  },
+  {
+    "id": "o1_022",
+    "objective": "Using facts.csv and its data dictionary, compute the weighted mean of the primary measurement, using observation weight as the weight. Ignore rows missing either value. Report it with 2 decimals.",
+    "files": {
+      "facts.csv": "x,w,grp,label,start,end,y\n63.75,1.99,B,AY0,2024-02-09,2024-02-26,44.27\n62.43,1.11,B,AX1,2024-02-27,2024-03-20,39.53\n49.24,1.5,A,CY2,2024-01-30,2024-02-26,40.9\n43.87,0.6,B,AY3,2024-03-06,2024-03-07,41.03\n56.39,3.4,B,AY4,2024-01-20,2024-02-06,39.04\n39.9,1.74,A,AY5,2024-01-14,2024-02-04,28.37\n46.34,3.94,D,AX6,2024-03-02,2024-03-15,29.54\n52.62,1.92,B,CY7,2024-04-09,2024-04-23,45.77\n54.34,0.99,B,DZ8,2024-01-07,2024-01-31,31.48\n48.17,3.92,A,BX9,2024-02-11,2024-02-14,45.51\n47.37,1.27,A,CY10,2024-03-09,2024-03-26,36.32\n43.99,1.73,A,AX11,2024-03-23,2024-04-06,35.47\n54.69,1.97,C,CY12,2024-02-21,2024-03-03,46.43\n26.93,2.23,B,AX13,2024-03-27,2024-04-18,35.93\n55.55,3.7,A,BX14,2024-01-12,2024-01-23,39.28\n39.34,2.1,C,DZ15,2024-02-04,2024-02-16,34.47\n48.51,1.6,D,AX16,2024-01-17,2024-02-08,38.61\n44.21,2.97,A,BX17,2024-01-04,2024-01-28,39.04\n55.87,2.44,A,AX18,2024-03-19,2024-04-07,41.95\n56.16,2.2,B,AX19,2024-02-09,2024-02-26,41.16\n58.21,3.87,C,BX20,2024-03-06,2024-03-09,39.93\n57.73,1.18,C,BX21,2024-03-27,2024-04-10,46.05\n35.52,2.82,C,AX22,2024-01-20,2024-02-07,25.56\n52.59,2.75,C,CY23,2024-02-11,2024-02-19,37.51\n",
+      "data_dictionary.csv": "file,column,description,unit\nfacts.csv,x,\"Primary measurement\",unit\nfacts.csv,w,\"Observation weight\",unitless\nfacts.csv,grp,\"Segment\",\nfacts.csv,label,\"Record label\",\nfacts.csv,start,\"Start date\",\nfacts.csv,end,\"End date\",\nfacts.csv,y,\"Secondary measurement\",unit\n"
+    },
+    "answer": 49.73876714868373,
+    "tol": 0.015,
+    "type": "table.ood_weighted_mean"
+  },
+  {
+    "id": "o1_023",
+    "objective": "What is the mean primary measurement for segment 'A' minus the mean primary measurement for segment 'B' in facts.csv? Round to 2 decimals.",
+    "files": {
+      "facts.csv": "x,w,grp,label,start,end,y\n63.75,1.99,B,AY0,2024-02-09,2024-02-26,44.27\n62.43,1.11,B,AX1,2024-02-27,2024-03-20,39.53\n49.24,1.5,A,CY2,2024-01-30,2024-02-26,40.9\n43.87,0.6,B,AY3,2024-03-06,2024-03-07,41.03\n56.39,3.4,B,AY4,2024-01-20,2024-02-06,39.04\n39.9,1.74,A,AY5,2024-01-14,2024-02-04,28.37\n46.34,3.94,D,AX6,2024-03-02,2024-03-15,29.54\n52.62,1.92,B,CY7,2024-04-09,2024-04-23,45.77\n54.34,0.99,B,DZ8,2024-01-07,2024-01-31,31.48\n48.17,3.92,A,BX9,2024-02-11,2024-02-14,45.51\n47.37,1.27,A,CY10,2024-03-09,2024-03-26,36.32\n43.99,1.73,A,AX11,2024-03-23,2024-04-06,35.47\n54.69,1.97,C,CY12,2024-02-21,2024-03-03,46.43\n26.93,2.23,B,AX13,2024-03-27,2024-04-18,35.93\n55.55,3.7,A,BX14,2024-01-12,2024-01-23,39.28\n39.34,2.1,C,DZ15,2024-02-04,2024-02-16,34.47\n48.51,1.6,D,AX16,2024-01-17,2024-02-08,38.61\n44.21,2.97,A,BX17,2024-01-04,2024-01-28,39.04\n55.87,2.44,A,AX18,2024-03-19,2024-04-07,41.95\n56.16,2.2,B,AX19,2024-02-09,2024-02-26,41.16\n58.21,3.87,C,BX20,2024-03-06,2024-03-09,39.93\n57.73,1.18,C,BX21,2024-03-27,2024-04-10,46.05\n35.52,2.82,C,AX22,2024-01-20,2024-02-07,25.56\n52.59,2.75,C,CY23,2024-02-11,2024-02-19,37.51\n",
+      "data_dictionary.csv": "file,column,description,unit\nfacts.csv,x,\"Primary measurement\",unit\nfacts.csv,w,\"Observation weight\",unitless\nfacts.csv,grp,\"Segment\",\nfacts.csv,label,\"Record label\",\nfacts.csv,start,\"Start date\",\nfacts.csv,end,\"End date\",\nfacts.csv,y,\"Secondary measurement\",unit\n"
+    },
+    "answer": -4.02375,
+    "tol": 0.015,
+    "type": "table.ood_group_diff"
+  },
+  {
+    "id": "o1_024",
+    "objective": "What is the mean primary measurement for records whose segment is either 'A' or 'C' in facts.csv? Round to 2 decimals.",
+    "files": {
+      "facts.csv": "x,w,grp,label,start,end,y\n63.75,1.99,B,AY0,2024-02-09,2024-02-26,44.27\n62.43,1.11,B,AX1,2024-02-27,2024-03-20,39.53\n49.24,1.5,A,CY2,2024-01-30,2024-02-26,40.9\n43.87,0.6,B,AY3,2024-03-06,2024-03-07,41.03\n56.39,3.4,B,AY4,2024-01-20,2024-02-06,39.04\n39.9,1.74,A,AY5,2024-01-14,2024-02-04,28.37\n46.34,3.94,D,AX6,2024-03-02,2024-03-15,29.54\n52.62,1.92,B,CY7,2024-04-09,2024-04-23,45.77\n54.34,0.99,B,DZ8,2024-01-07,2024-01-31,31.48\n48.17,3.92,A,BX9,2024-02-11,2024-02-14,45.51\n47.37,1.27,A,CY10,2024-03-09,2024-03-26,36.32\n43.99,1.73,A,AX11,2024-03-23,2024-04-06,35.47\n54.69,1.97,C,CY12,2024-02-21,2024-03-03,46.43\n26.93,2.23,B,AX13,2024-03-27,2024-04-18,35.93\n55.55,3.7,A,BX14,2024-01-12,2024-01-23,39.28\n39.34,2.1,C,DZ15,2024-02-04,2024-02-16,34.47\n48.51,1.6,D,AX16,2024-01-17,2024-02-08,38.61\n44.21,2.97,A,BX17,2024-01-04,2024-01-28,39.04\n55.87,2.44,A,AX18,2024-03-19,2024-04-07,41.95\n56.16,2.2,B,AX19,2024-02-09,2024-02-26,41.16\n58.21,3.87,C,BX20,2024-03-06,2024-03-09,39.93\n57.73,1.18,C,BX21,2024-03-27,2024-04-10,46.05\n35.52,2.82,C,AX22,2024-01-20,2024-02-07,25.56\n52.59,2.75,C,CY23,2024-02-11,2024-02-19,37.51\n",
+      "data_dictionary.csv": "file,column,description,unit\nfacts.csv,x,\"Primary measurement\",unit\nfacts.csv,w,\"Observation weight\",unitless\nfacts.csv,grp,\"Segment\",\nfacts.csv,label,\"Record label\",\nfacts.csv,start,\"Start date\",\nfacts.csv,end,\"End date\",\nfacts.csv,y,\"Secondary measurement\",unit\n"
+    },
+    "answer": 48.74142857142857,
+    "tol": 0.015,
+    "type": "table.ood_membership"
+  },
+  {
+    "id": "o1_025",
+    "objective": "How many records in facts.csv have a record label that starts with 'A'? Give a whole number.",
+    "files": {
+      "facts.csv": "x,w,grp,label,start,end,y\n63.75,1.99,B,AY0,2024-02-09,2024-02-26,44.27\n62.43,1.11,B,AX1,2024-02-27,2024-03-20,39.53\n49.24,1.5,A,CY2,2024-01-30,2024-02-26,40.9\n43.87,0.6,B,AY3,2024-03-06,2024-03-07,41.03\n56.39,3.4,B,AY4,2024-01-20,2024-02-06,39.04\n39.9,1.74,A,AY5,2024-01-14,2024-02-04,28.37\n46.34,3.94,D,AX6,2024-03-02,2024-03-15,29.54\n52.62,1.92,B,CY7,2024-04-09,2024-04-23,45.77\n54.34,0.99,B,DZ8,2024-01-07,2024-01-31,31.48\n48.17,3.92,A,BX9,2024-02-11,2024-02-14,45.51\n47.37,1.27,A,CY10,2024-03-09,2024-03-26,36.32\n43.99,1.73,A,AX11,2024-03-23,2024-04-06,35.47\n54.69,1.97,C,CY12,2024-02-21,2024-03-03,46.43\n26.93,2.23,B,AX13,2024-03-27,2024-04-18,35.93\n55.55,3.7,A,BX14,2024-01-12,2024-01-23,39.28\n39.34,2.1,C,DZ15,2024-02-04,2024-02-16,34.47\n48.51,1.6,D,AX16,2024-01-17,2024-02-08,38.61\n44.21,2.97,A,BX17,2024-01-04,2024-01-28,39.04\n55.87,2.44,A,AX18,2024-03-19,2024-04-07,41.95\n56.16,2.2,B,AX19,2024-02-09,2024-02-26,41.16\n58.21,3.87,C,BX20,2024-03-06,2024-03-09,39.93\n57.73,1.18,C,BX21,2024-03-27,2024-04-10,46.05\n35.52,2.82,C,AX22,2024-01-20,2024-02-07,25.56\n52.59,2.75,C,CY23,2024-02-11,2024-02-19,37.51\n",
+      "data_dictionary.csv": "file,column,description,unit\nfacts.csv,x,\"Primary measurement\",unit\nfacts.csv,w,\"Observation weight\",unitless\nfacts.csv,grp,\"Segment\",\nfacts.csv,label,\"Record label\",\nfacts.csv,start,\"Start date\",\nfacts.csv,end,\"End date\",\nfacts.csv,y,\"Secondary measurement\",unit\n"
+    },
+    "answer": 12.0,
+    "tol": 1e-06,
+    "type": "table.ood_string"
+  },
+  {
+    "id": "o1_026",
+    "objective": "For each row of facts.csv, compute the number of days from the start date to the end date. What is the mean duration? Round to 2 decimals.",
+    "files": {
+      "facts.csv": "x,w,grp,label,start,end,y\n63.75,1.99,B,AY0,2024-02-09,2024-02-26,44.27\n62.43,1.11,B,AX1,2024-02-27,2024-03-20,39.53\n49.24,1.5,A,CY2,2024-01-30,2024-02-26,40.9\n43.87,0.6,B,AY3,2024-03-06,2024-03-07,41.03\n56.39,3.4,B,AY4,2024-01-20,2024-02-06,39.04\n39.9,1.74,A,AY5,2024-01-14,2024-02-04,28.37\n46.34,3.94,D,AX6,2024-03-02,2024-03-15,29.54\n52.62,1.92,B,CY7,2024-04-09,2024-04-23,45.77\n54.34,0.99,B,DZ8,2024-01-07,2024-01-31,31.48\n48.17,3.92,A,BX9,2024-02-11,2024-02-14,45.51\n47.37,1.27,A,CY10,2024-03-09,2024-03-26,36.32\n43.99,1.73,A,AX11,2024-03-23,2024-04-06,35.47\n54.69,1.97,C,CY12,2024-02-21,2024-03-03,46.43\n26.93,2.23,B,AX13,2024-03-27,2024-04-18,35.93\n55.55,3.7,A,BX14,2024-01-12,2024-01-23,39.28\n39.34,2.1,C,DZ15,2024-02-04,2024-02-16,34.47\n48.51,1.6,D,AX16,2024-01-17,2024-02-08,38.61\n44.21,2.97,A,BX17,2024-01-04,2024-01-28,39.04\n55.87,2.44,A,AX18,2024-03-19,2024-04-07,41.95\n56.16,2.2,B,AX19,2024-02-09,2024-02-26,41.16\n58.21,3.87,C,BX20,2024-03-06,2024-03-09,39.93\n57.73,1.18,C,BX21,2024-03-27,2024-04-10,46.05\n35.52,2.82,C,AX22,2024-01-20,2024-02-07,25.56\n52.59,2.75,C,CY23,2024-02-11,2024-02-19,37.51\n",
+      "data_dictionary.csv": "file,column,description,unit\nfacts.csv,x,\"Primary measurement\",unit\nfacts.csv,w,\"Observation weight\",unitless\nfacts.csv,grp,\"Segment\",\nfacts.csv,label,\"Record label\",\nfacts.csv,start,\"Start date\",\nfacts.csv,end,\"End date\",\nfacts.csv,y,\"Secondary measurement\",unit\n"
+    },
+    "answer": 15.458333333333334,
+    "tol": 0.015,
+    "type": "table.ood_date_delta"
+  },
+  {
+    "id": "o1_027",
+    "objective": "What is the mean of the 3 largest distinct primary measurement values in facts.csv? Round to 2 decimals.",
+    "files": {
+      "facts.csv": "x,w,grp,label,start,end,y\n63.75,1.99,B,AY0,2024-02-09,2024-02-26,44.27\n62.43,1.11,B,AX1,2024-02-27,2024-03-20,39.53\n49.24,1.5,A,CY2,2024-01-30,2024-02-26,40.9\n43.87,0.6,B,AY3,2024-03-06,2024-03-07,41.03\n56.39,3.4,B,AY4,2024-01-20,2024-02-06,39.04\n39.9,1.74,A,AY5,2024-01-14,2024-02-04,28.37\n46.34,3.94,D,AX6,2024-03-02,2024-03-15,29.54\n52.62,1.92,B,CY7,2024-04-09,2024-04-23,45.77\n54.34,0.99,B,DZ8,2024-01-07,2024-01-31,31.48\n48.17,3.92,A,BX9,2024-02-11,2024-02-14,45.51\n47.37,1.27,A,CY10,2024-03-09,2024-03-26,36.32\n43.99,1.73,A,AX11,2024-03-23,2024-04-06,35.47\n54.69,1.97,C,CY12,2024-02-21,2024-03-03,46.43\n26.93,2.23,B,AX13,2024-03-27,2024-04-18,35.93\n55.55,3.7,A,BX14,2024-01-12,2024-01-23,39.28\n39.34,2.1,C,DZ15,2024-02-04,2024-02-16,34.47\n48.51,1.6,D,AX16,2024-01-17,2024-02-08,38.61\n44.21,2.97,A,BX17,2024-01-04,2024-01-28,39.04\n55.87,2.44,A,AX18,2024-03-19,2024-04-07,41.95\n56.16,2.2,B,AX19,2024-02-09,2024-02-26,41.16\n58.21,3.87,C,BX20,2024-03-06,2024-03-09,39.93\n57.73,1.18,C,BX21,2024-03-27,2024-04-10,46.05\n35.52,2.82,C,AX22,2024-01-20,2024-02-07,25.56\n52.59,2.75,C,CY23,2024-02-11,2024-02-19,37.51\n",
+      "data_dictionary.csv": "file,column,description,unit\nfacts.csv,x,\"Primary measurement\",unit\nfacts.csv,w,\"Observation weight\",unitless\nfacts.csv,grp,\"Segment\",\nfacts.csv,label,\"Record label\",\nfacts.csv,start,\"Start date\",\nfacts.csv,end,\"End date\",\nfacts.csv,y,\"Secondary measurement\",unit\n"
+    },
+    "answer": 61.46333333333334,
+    "tol": 0.015,
+    "type": "table.ood_topk"
+  },
+  {
+    "id": "o1_028",
+    "objective": "What percentage of the total primary measurement is contributed by segment 'A' in facts.csv? Round to 2 decimals.",
+    "files": {
+      "facts.csv": "x,w,grp,label,start,end,y\n63.75,1.99,B,AY0,2024-02-09,2024-02-26,44.27\n62.43,1.11,B,AX1,2024-02-27,2024-03-20,39.53\n49.24,1.5,A,CY2,2024-01-30,2024-02-26,40.9\n43.87,0.6,B,AY3,2024-03-06,2024-03-07,41.03\n56.39,3.4,B,AY4,2024-01-20,2024-02-06,39.04\n39.9,1.74,A,AY5,2024-01-14,2024-02-04,28.37\n46.34,3.94,D,AX6,2024-03-02,2024-03-15,29.54\n52.62,1.92,B,CY7,2024-04-09,2024-04-23,45.77\n54.34,0.99,B,DZ8,2024-01-07,2024-01-31,31.48\n48.17,3.92,A,BX9,2024-02-11,2024-02-14,45.51\n47.37,1.27,A,CY10,2024-03-09,2024-03-26,36.32\n43.99,1.73,A,AX11,2024-03-23,2024-04-06,35.47\n54.69,1.97,C,CY12,2024-02-21,2024-03-03,46.43\n26.93,2.23,B,AX13,2024-03-27,2024-04-18,35.93\n55.55,3.7,A,BX14,2024-01-12,2024-01-23,39.28\n39.34,2.1,C,DZ15,2024-02-04,2024-02-16,34.47\n48.51,1.6,D,AX16,2024-01-17,2024-02-08,38.61\n44.21,2.97,A,BX17,2024-01-04,2024-01-28,39.04\n55.87,2.44,A,AX18,2024-03-19,2024-04-07,41.95\n56.16,2.2,B,AX19,2024-02-09,2024-02-26,41.16\n58.21,3.87,C,BX20,2024-03-06,2024-03-09,39.93\n57.73,1.18,C,BX21,2024-03-27,2024-04-10,46.05\n35.52,2.82,C,AX22,2024-01-20,2024-02-07,25.56\n52.59,2.75,C,CY23,2024-02-11,2024-02-19,37.51\n",
+      "data_dictionary.csv": "file,column,description,unit\nfacts.csv,x,\"Primary measurement\",unit\nfacts.csv,w,\"Observation weight\",unitless\nfacts.csv,grp,\"Segment\",\nfacts.csv,label,\"Record label\",\nfacts.csv,start,\"Start date\",\nfacts.csv,end,\"End date\",\nfacts.csv,y,\"Secondary measurement\",unit\n"
+    },
+    "answer": 32.19347920785444,
+    "tol": 0.015,
+    "type": "table.ood_share"
+  },
+  {
+    "id": "o1_029",
+    "objective": "What is the sample covariance between the primary measurement and the secondary measurement in facts.csv? Round to 2 decimals.",
+    "files": {
+      "facts.csv": "x,w,grp,label,start,end,y\n63.75,1.99,B,AY0,2024-02-09,2024-02-26,44.27\n62.43,1.11,B,AX1,2024-02-27,2024-03-20,39.53\n49.24,1.5,A,CY2,2024-01-30,2024-02-26,40.9\n43.87,0.6,B,AY3,2024-03-06,2024-03-07,41.03\n56.39,3.4,B,AY4,2024-01-20,2024-02-06,39.04\n39.9,1.74,A,AY5,2024-01-14,2024-02-04,28.37\n46.34,3.94,D,AX6,2024-03-02,2024-03-15,29.54\n52.62,1.92,B,CY7,2024-04-09,2024-04-23,45.77\n54.34,0.99,B,DZ8,2024-01-07,2024-01-31,31.48\n48.17,3.92,A,BX9,2024-02-11,2024-02-14,45.51\n47.37,1.27,A,CY10,2024-03-09,2024-03-26,36.32\n43.99,1.73,A,AX11,2024-03-23,2024-04-06,35.47\n54.69,1.97,C,CY12,2024-02-21,2024-03-03,46.43\n26.93,2.23,B,AX13,2024-03-27,2024-04-18,35.93\n55.55,3.7,A,BX14,2024-01-12,2024-01-23,39.28\n39.34,2.1,C,DZ15,2024-02-04,2024-02-16,34.47\n48.51,1.6,D,AX16,2024-01-17,2024-02-08,38.61\n44.21,2.97,A,BX17,2024-01-04,2024-01-28,39.04\n55.87,2.44,A,AX18,2024-03-19,2024-04-07,41.95\n56.16,2.2,B,AX19,2024-02-09,2024-02-26,41.16\n58.21,3.87,C,BX20,2024-03-06,2024-03-09,39.93\n57.73,1.18,C,BX21,2024-03-27,2024-04-10,46.05\n35.52,2.82,C,AX22,2024-01-20,2024-02-07,25.56\n52.59,2.75,C,CY23,2024-02-11,2024-02-19,37.51\n",
+      "data_dictionary.csv": "file,column,description,unit\nfacts.csv,x,\"Primary measurement\",unit\nfacts.csv,w,\"Observation weight\",unitless\nfacts.csv,grp,\"Segment\",\nfacts.csv,label,\"Record label\",\nfacts.csv,start,\"Start date\",\nfacts.csv,end,\"End date\",\nfacts.csv,y,\"Secondary measurement\",unit\n"
+    },
+    "answer": 28.037573188405794,
+    "tol": 0.015,
+    "type": "table.ood_covariance"
+  },
+  {
+    "id": "o1_030",
+    "objective": "Join fact.csv and dim.csv on the entity key. Compute numerator measure divided by denominator measure for each joined row belonging to a region 'North'. What is the mean of these ratios? Round to 2 decimals.",
+    "files": {
+      "fact.csv": "k,num\nK04,25.22\nK11,66.73\nK11,33.06\nK12,64.26\nK13,27.97\nK00,24.36\nK07,71.68\nK11,94.08\nK02,15.78\nK09,66.72\nK10,116.67\nK11,34.28\nK06,91.86\nK04,29.37\nK12,71.04\nK07,113.73\nK03,73.42\nK08,17.01\nK07,66.85\nK10,114.1\nK08,22.01\nK09,66.91\nK10,109.1\nK08,70.27\nK01,80.3\nK13,99.29\nK05,65.98\nK00,81.43\nK03,64.17\nK01,116.03\nK09,118.43\nK11,86.62\nK04,44.25\nK02,89.06\nK12,43.93\nK11,36.88\n",
+      "dim.csv": "k,den,grp\nK00,2.53,North\nK01,12.0,South\nK02,10.69,South\nK03,10.83,North\nK04,3.71,North\nK05,11.68,South\nK06,2.66,North\nK07,10.36,South\nK08,8.07,South\nK09,8.83,North\nK10,7.77,North\nK11,10.33,South\nK12,2.31,South\nK13,10.26,South\n",
+      "data_dictionary.csv": "file,column,description,unit\nfact.csv,k,\"Entity key\",\nfact.csv,num,\"Numerator measure\",unit\ndim.csv,k,\"Entity key\",\ndim.csv,den,\"Denominator measure\",unit\ndim.csv,grp,\"Region\",\n"
+    },
+    "answer": 13.427234060320453,
+    "tol": 0.015,
+    "type": "table.ood_join_derive"
+  },
+  {
+    "id": "o1_031",
+    "objective": "What is the interquartile range (75th percentile minus 25th percentile) of the primary measurement over all records in facts.csv? Round to 2 decimals.",
+    "files": {
+      "facts.csv": "x,w,grp,label,start,end,y\n31.24,1.25,D,CY0,2024-03-24,2024-03-27,31.48\n55.1,3.94,B,AY1,2024-04-04,2024-04-11,43.49\n49.64,2.48,D,CY2,2024-03-13,2024-03-29,47.83\n38.46,1.06,B,BX3,2024-01-31,2024-02-23,32.6\n29.85,1.09,D,AX4,2024-03-10,2024-03-21,20.56\n38.9,1.36,B,CY5,2024-01-13,2024-01-16,27.99\n46.81,3.78,B,AY6,2024-04-06,2024-04-18,36.99\n60.41,0.82,D,BX7,2024-01-29,2024-02-11,39.13\n55.61,3.29,C,BX8,2024-01-21,2024-02-08,39.55\n36.3,1.47,D,CY9,2024-01-08,2024-01-14,23.77\n60.15,1.27,B,CY10,2024-03-11,2024-03-22,39.15\n48.99,3.7,B,CY11,2024-02-24,2024-03-06,28.45\n58.7,0.65,A,AY12,2024-02-24,2024-02-29,43.23\n51.87,2.64,C,DZ13,2024-03-27,2024-04-09,41.28\n53.81,0.66,B,CY14,2024-01-19,2024-02-13,37.39\n79.39,3.5,C,CY15,2024-03-15,2024-03-20,54.07\n48.66,0.84,B,BX16,2024-03-19,2024-03-29,37.19\n42.28,3.16,D,AY17,2024-01-15,2024-01-21,38.41\n56.2,2.31,B,BX18,2024-01-13,2024-02-11,36.73\n65.7,1.35,D,AY19,2024-01-18,2024-02-12,53.59\n62.86,1.54,B,AX20,2024-03-15,2024-03-18,43.61\n51.67,1.67,D,AX21,2024-02-11,2024-02-24,34.23\n43.16,3.56,C,AX22,2024-03-08,2024-03-21,35.39\n53.81,3.43,C,BX23,2024-02-20,2024-03-15,45.79\n",
+      "data_dictionary.csv": "file,column,description,unit\nfacts.csv,x,\"Primary measurement\",unit\nfacts.csv,w,\"Observation weight\",unitless\nfacts.csv,grp,\"Segment\",\nfacts.csv,label,\"Record label\",\nfacts.csv,start,\"Start date\",\nfacts.csv,end,\"End date\",\nfacts.csv,y,\"Secondary measurement\",unit\n"
+    },
+    "answer": 13.885000000000005,
+    "tol": 0.015,
+    "type": "table.ood_iqr"
+  },
+  {
+    "id": "o1_032",
+    "objective": "Using facts.csv and its data dictionary, compute the weighted mean of the primary measurement, using observation weight as the weight. Ignore rows missing either value. Report it with 2 decimals.",
+    "files": {
+      "facts.csv": "x,w,grp,label,start,end,y\n31.24,1.25,D,CY0,2024-03-24,2024-03-27,31.48\n55.1,3.94,B,AY1,2024-04-04,2024-04-11,43.49\n49.64,2.48,D,CY2,2024-03-13,2024-03-29,47.83\n38.46,1.06,B,BX3,2024-01-31,2024-02-23,32.6\n29.85,1.09,D,AX4,2024-03-10,2024-03-21,20.56\n38.9,1.36,B,CY5,2024-01-13,2024-01-16,27.99\n46.81,3.78,B,AY6,2024-04-06,2024-04-18,36.99\n60.41,0.82,D,BX7,2024-01-29,2024-02-11,39.13\n55.61,3.29,C,BX8,2024-01-21,2024-02-08,39.55\n36.3,1.47,D,CY9,2024-01-08,2024-01-14,23.77\n60.15,1.27,B,CY10,2024-03-11,2024-03-22,39.15\n48.99,3.7,B,CY11,2024-02-24,2024-03-06,28.45\n58.7,0.65,A,AY12,2024-02-24,2024-02-29,43.23\n51.87,2.64,C,DZ13,2024-03-27,2024-04-09,41.28\n53.81,0.66,B,CY14,2024-01-19,2024-02-13,37.39\n79.39,3.5,C,CY15,2024-03-15,2024-03-20,54.07\n48.66,0.84,B,BX16,2024-03-19,2024-03-29,37.19\n42.28,3.16,D,AY17,2024-01-15,2024-01-21,38.41\n56.2,2.31,B,BX18,2024-01-13,2024-02-11,36.73\n65.7,1.35,D,AY19,2024-01-18,2024-02-12,53.59\n62.86,1.54,B,AX20,2024-03-15,2024-03-18,43.61\n51.67,1.67,D,AX21,2024-02-11,2024-02-24,34.23\n43.16,3.56,C,AX22,2024-03-08,2024-03-21,35.39\n53.81,3.43,C,BX23,2024-02-20,2024-03-15,45.79\n",
+      "data_dictionary.csv": "file,column,description,unit\nfacts.csv,x,\"Primary measurement\",unit\nfacts.csv,w,\"Observation weight\",unitless\nfacts.csv,grp,\"Segment\",\nfacts.csv,label,\"Record label\",\nfacts.csv,start,\"Start date\",\nfacts.csv,end,\"End date\",\nfacts.csv,y,\"Secondary measurement\",unit\n"
+    },
+    "answer": 51.725452577725314,
+    "tol": 0.015,
+    "type": "table.ood_weighted_mean"
+  },
+  {
+    "id": "o1_033",
+    "objective": "What is the mean primary measurement for segment 'A' minus the mean primary measurement for segment 'B' in facts.csv? Round to 2 decimals.",
+    "files": {
+      "facts.csv": "x,w,grp,label,start,end,y\n31.24,1.25,D,CY0,2024-03-24,2024-03-27,31.48\n55.1,3.94,B,AY1,2024-04-04,2024-04-11,43.49\n49.64,2.48,D,CY2,2024-03-13,2024-03-29,47.83\n38.46,1.06,B,BX3,2024-01-31,2024-02-23,32.6\n29.85,1.09,D,AX4,2024-03-10,2024-03-21,20.56\n38.9,1.36,B,CY5,2024-01-13,2024-01-16,27.99\n46.81,3.78,B,AY6,2024-04-06,2024-04-18,36.99\n60.41,0.82,D,BX7,2024-01-29,2024-02-11,39.13\n55.61,3.29,C,BX8,2024-01-21,2024-02-08,39.55\n36.3,1.47,D,CY9,2024-01-08,2024-01-14,23.77\n60.15,1.27,B,CY10,2024-03-11,2024-03-22,39.15\n48.99,3.7,B,CY11,2024-02-24,2024-03-06,28.45\n58.7,0.65,A,AY12,2024-02-24,2024-02-29,43.23\n51.87,2.64,C,DZ13,2024-03-27,2024-04-09,41.28\n53.81,0.66,B,CY14,2024-01-19,2024-02-13,37.39\n79.39,3.5,C,CY15,2024-03-15,2024-03-20,54.07\n48.66,0.84,B,BX16,2024-03-19,2024-03-29,37.19\n42.28,3.16,D,AY17,2024-01-15,2024-01-21,38.41\n56.2,2.31,B,BX18,2024-01-13,2024-02-11,36.73\n65.7,1.35,D,AY19,2024-01-18,2024-02-12,53.59\n62.86,1.54,B,AX20,2024-03-15,2024-03-18,43.61\n51.67,1.67,D,AX21,2024-02-11,2024-02-24,34.23\n43.16,3.56,C,AX22,2024-03-08,2024-03-21,35.39\n53.81,3.43,C,BX23,2024-02-20,2024-03-15,45.79\n",
+      "data_dictionary.csv": "file,column,description,unit\nfacts.csv,x,\"Primary measurement\",unit\nfacts.csv,w,\"Observation weight\",unitless\nfacts.csv,grp,\"Segment\",\nfacts.csv,label,\"Record label\",\nfacts.csv,start,\"Start date\",\nfacts.csv,end,\"End date\",\nfacts.csv,y,\"Secondary measurement\",unit\n"
+    },
+    "answer": 7.706000000000003,
+    "tol": 0.015,
+    "type": "table.ood_group_diff"
+  },
+  {
+    "id": "o1_034",
+    "objective": "What is the mean primary measurement for records whose segment is either 'A' or 'C' in facts.csv? Round to 2 decimals.",
+    "files": {
+      "facts.csv": "x,w,grp,label,start,end,y\n31.24,1.25,D,CY0,2024-03-24,2024-03-27,31.48\n55.1,3.94,B,AY1,2024-04-04,2024-04-11,43.49\n49.64,2.48,D,CY2,2024-03-13,2024-03-29,47.83\n38.46,1.06,B,BX3,2024-01-31,2024-02-23,32.6\n29.85,1.09,D,AX4,2024-03-10,2024-03-21,20.56\n38.9,1.36,B,CY5,2024-01-13,2024-01-16,27.99\n46.81,3.78,B,AY6,2024-04-06,2024-04-18,36.99\n60.41,0.82,D,BX7,2024-01-29,2024-02-11,39.13\n55.61,3.29,C,BX8,2024-01-21,2024-02-08,39.55\n36.3,1.47,D,CY9,2024-01-08,2024-01-14,23.77\n60.15,1.27,B,CY10,2024-03-11,2024-03-22,39.15\n48.99,3.7,B,CY11,2024-02-24,2024-03-06,28.45\n58.7,0.65,A,AY12,2024-02-24,2024-02-29,43.23\n51.87,2.64,C,DZ13,2024-03-27,2024-04-09,41.28\n53.81,0.66,B,CY14,2024-01-19,2024-02-13,37.39\n79.39,3.5,C,CY15,2024-03-15,2024-03-20,54.07\n48.66,0.84,B,BX16,2024-03-19,2024-03-29,37.19\n42.28,3.16,D,AY17,2024-01-15,2024-01-21,38.41\n56.2,2.31,B,BX18,2024-01-13,2024-02-11,36.73\n65.7,1.35,D,AY19,2024-01-18,2024-02-12,53.59\n62.86,1.54,B,AX20,2024-03-15,2024-03-18,43.61\n51.67,1.67,D,AX21,2024-02-11,2024-02-24,34.23\n43.16,3.56,C,AX22,2024-03-08,2024-03-21,35.39\n53.81,3.43,C,BX23,2024-02-20,2024-03-15,45.79\n",
+      "data_dictionary.csv": "file,column,description,unit\nfacts.csv,x,\"Primary measurement\",unit\nfacts.csv,w,\"Observation weight\",unitless\nfacts.csv,grp,\"Segment\",\nfacts.csv,label,\"Record label\",\nfacts.csv,start,\"Start date\",\nfacts.csv,end,\"End date\",\nfacts.csv,y,\"Secondary measurement\",unit\n"
+    },
+    "answer": 57.09,
+    "tol": 0.015,
+    "type": "table.ood_membership"
+  },
+  {
+    "id": "o1_035",
+    "objective": "How many records in facts.csv have a record label that starts with 'A'? Give a whole number.",
+    "files": {
+      "facts.csv": "x,w,grp,label,start,end,y\n31.24,1.25,D,CY0,2024-03-24,2024-03-27,31.48\n55.1,3.94,B,AY1,2024-04-04,2024-04-11,43.49\n49.64,2.48,D,CY2,2024-03-13,2024-03-29,47.83\n38.46,1.06,B,BX3,2024-01-31,2024-02-23,32.6\n29.85,1.09,D,AX4,2024-03-10,2024-03-21,20.56\n38.9,1.36,B,CY5,2024-01-13,2024-01-16,27.99\n46.81,3.78,B,AY6,2024-04-06,2024-04-18,36.99\n60.41,0.82,D,BX7,2024-01-29,2024-02-11,39.13\n55.61,3.29,C,BX8,2024-01-21,2024-02-08,39.55\n36.3,1.47,D,CY9,2024-01-08,2024-01-14,23.77\n60.15,1.27,B,CY10,2024-03-11,2024-03-22,39.15\n48.99,3.7,B,CY11,2024-02-24,2024-03-06,28.45\n58.7,0.65,A,AY12,2024-02-24,2024-02-29,43.23\n51.87,2.64,C,DZ13,2024-03-27,2024-04-09,41.28\n53.81,0.66,B,CY14,2024-01-19,2024-02-13,37.39\n79.39,3.5,C,CY15,2024-03-15,2024-03-20,54.07\n48.66,0.84,B,BX16,2024-03-19,2024-03-29,37.19\n42.28,3.16,D,AY17,2024-01-15,2024-01-21,38.41\n56.2,2.31,B,BX18,2024-01-13,2024-02-11,36.73\n65.7,1.35,D,AY19,2024-01-18,2024-02-12,53.59\n62.86,1.54,B,AX20,2024-03-15,2024-03-18,43.61\n51.67,1.67,D,AX21,2024-02-11,2024-02-24,34.23\n43.16,3.56,C,AX22,2024-03-08,2024-03-21,35.39\n53.81,3.43,C,BX23,2024-02-20,2024-03-15,45.79\n",
+      "data_dictionary.csv": "file,column,description,unit\nfacts.csv,x,\"Primary measurement\",unit\nfacts.csv,w,\"Observation weight\",unitless\nfacts.csv,grp,\"Segment\",\nfacts.csv,label,\"Record label\",\nfacts.csv,start,\"Start date\",\nfacts.csv,end,\"End date\",\nfacts.csv,y,\"Secondary measurement\",unit\n"
+    },
+    "answer": 9.0,
+    "tol": 1e-06,
+    "type": "table.ood_string"
+  },
+  {
+    "id": "o1_036",
+    "objective": "For each row of facts.csv, compute the number of days from the start date to the end date. What is the mean duration? Round to 2 decimals.",
+    "files": {
+      "facts.csv": "x,w,grp,label,start,end,y\n31.24,1.25,D,CY0,2024-03-24,2024-03-27,31.48\n55.1,3.94,B,AY1,2024-04-04,2024-04-11,43.49\n49.64,2.48,D,CY2,2024-03-13,2024-03-29,47.83\n38.46,1.06,B,BX3,2024-01-31,2024-02-23,32.6\n29.85,1.09,D,AX4,2024-03-10,2024-03-21,20.56\n38.9,1.36,B,CY5,2024-01-13,2024-01-16,27.99\n46.81,3.78,B,AY6,2024-04-06,2024-04-18,36.99\n60.41,0.82,D,BX7,2024-01-29,2024-02-11,39.13\n55.61,3.29,C,BX8,2024-01-21,2024-02-08,39.55\n36.3,1.47,D,CY9,2024-01-08,2024-01-14,23.77\n60.15,1.27,B,CY10,2024-03-11,2024-03-22,39.15\n48.99,3.7,B,CY11,2024-02-24,2024-03-06,28.45\n58.7,0.65,A,AY12,2024-02-24,2024-02-29,43.23\n51.87,2.64,C,DZ13,2024-03-27,2024-04-09,41.28\n53.81,0.66,B,CY14,2024-01-19,2024-02-13,37.39\n79.39,3.5,C,CY15,2024-03-15,2024-03-20,54.07\n48.66,0.84,B,BX16,2024-03-19,2024-03-29,37.19\n42.28,3.16,D,AY17,2024-01-15,2024-01-21,38.41\n56.2,2.31,B,BX18,2024-01-13,2024-02-11,36.73\n65.7,1.35,D,AY19,2024-01-18,2024-02-12,53.59\n62.86,1.54,B,AX20,2024-03-15,2024-03-18,43.61\n51.67,1.67,D,AX21,2024-02-11,2024-02-24,34.23\n43.16,3.56,C,AX22,2024-03-08,2024-03-21,35.39\n53.81,3.43,C,BX23,2024-02-20,2024-03-15,45.79\n",
+      "data_dictionary.csv": "file,column,description,unit\nfacts.csv,x,\"Primary measurement\",unit\nfacts.csv,w,\"Observation weight\",unitless\nfacts.csv,grp,\"Segment\",\nfacts.csv,label,\"Record label\",\nfacts.csv,start,\"Start date\",\nfacts.csv,end,\"End date\",\nfacts.csv,y,\"Secondary measurement\",unit\n"
+    },
+    "answer": 12.708333333333334,
+    "tol": 0.015,
+    "type": "table.ood_date_delta"
+  },
+  {
+    "id": "o1_037",
+    "objective": "What is the mean of the 3 largest distinct primary measurement values in facts.csv? Round to 2 decimals.",
+    "files": {
+      "facts.csv": "x,w,grp,label,start,end,y\n31.24,1.25,D,CY0,2024-03-24,2024-03-27,31.48\n55.1,3.94,B,AY1,2024-04-04,2024-04-11,43.49\n49.64,2.48,D,CY2,2024-03-13,2024-03-29,47.83\n38.46,1.06,B,BX3,2024-01-31,2024-02-23,32.6\n29.85,1.09,D,AX4,2024-03-10,2024-03-21,20.56\n38.9,1.36,B,CY5,2024-01-13,2024-01-16,27.99\n46.81,3.78,B,AY6,2024-04-06,2024-04-18,36.99\n60.41,0.82,D,BX7,2024-01-29,2024-02-11,39.13\n55.61,3.29,C,BX8,2024-01-21,2024-02-08,39.55\n36.3,1.47,D,CY9,2024-01-08,2024-01-14,23.77\n60.15,1.27,B,CY10,2024-03-11,2024-03-22,39.15\n48.99,3.7,B,CY11,2024-02-24,2024-03-06,28.45\n58.7,0.65,A,AY12,2024-02-24,2024-02-29,43.23\n51.87,2.64,C,DZ13,2024-03-27,2024-04-09,41.28\n53.81,0.66,B,CY14,2024-01-19,2024-02-13,37.39\n79.39,3.5,C,CY15,2024-03-15,2024-03-20,54.07\n48.66,0.84,B,BX16,2024-03-19,2024-03-29,37.19\n42.28,3.16,D,AY17,2024-01-15,2024-01-21,38.41\n56.2,2.31,B,BX18,2024-01-13,2024-02-11,36.73\n65.7,1.35,D,AY19,2024-01-18,2024-02-12,53.59\n62.86,1.54,B,AX20,2024-03-15,2024-03-18,43.61\n51.67,1.67,D,AX21,2024-02-11,2024-02-24,34.23\n43.16,3.56,C,AX22,2024-03-08,2024-03-21,35.39\n53.81,3.43,C,BX23,2024-02-20,2024-03-15,45.79\n",
+      "data_dictionary.csv": "file,column,description,unit\nfacts.csv,x,\"Primary measurement\",unit\nfacts.csv,w,\"Observation weight\",unitless\nfacts.csv,grp,\"Segment\",\nfacts.csv,label,\"Record label\",\nfacts.csv,start,\"Start date\",\nfacts.csv,end,\"End date\",\nfacts.csv,y,\"Secondary measurement\",unit\n"
+    },
+    "answer": 69.31666666666666,
+    "tol": 0.015,
+    "type": "table.ood_topk"
+  },
+  {
+    "id": "o1_038",
+    "objective": "What percentage of the total primary measurement is contributed by segment 'A' in facts.csv? Round to 2 decimals.",
+    "files": {
+      "facts.csv": "x,w,grp,label,start,end,y\n31.24,1.25,D,CY0,2024-03-24,2024-03-27,31.48\n55.1,3.94,B,AY1,2024-04-04,2024-04-11,43.49\n49.64,2.48,D,CY2,2024-03-13,2024-03-29,47.83\n38.46,1.06,B,BX3,2024-01-31,2024-02-23,32.6\n29.85,1.09,D,AX4,2024-03-10,2024-03-21,20.56\n38.9,1.36,B,CY5,2024-01-13,2024-01-16,27.99\n46.81,3.78,B,AY6,2024-04-06,2024-04-18,36.99\n60.41,0.82,D,BX7,2024-01-29,2024-02-11,39.13\n55.61,3.29,C,BX8,2024-01-21,2024-02-08,39.55\n36.3,1.47,D,CY9,2024-01-08,2024-01-14,23.77\n60.15,1.27,B,CY10,2024-03-11,2024-03-22,39.15\n48.99,3.7,B,CY11,2024-02-24,2024-03-06,28.45\n58.7,0.65,A,AY12,2024-02-24,2024-02-29,43.23\n51.87,2.64,C,DZ13,2024-03-27,2024-04-09,41.28\n53.81,0.66,B,CY14,2024-01-19,2024-02-13,37.39\n79.39,3.5,C,CY15,2024-03-15,2024-03-20,54.07\n48.66,0.84,B,BX16,2024-03-19,2024-03-29,37.19\n42.28,3.16,D,AY17,2024-01-15,2024-01-21,38.41\n56.2,2.31,B,BX18,2024-01-13,2024-02-11,36.73\n65.7,1.35,D,AY19,2024-01-18,2024-02-12,53.59\n62.86,1.54,B,AX20,2024-03-15,2024-03-18,43.61\n51.67,1.67,D,AX21,2024-02-11,2024-02-24,34.23\n43.16,3.56,C,AX22,2024-03-08,2024-03-21,35.39\n53.81,3.43,C,BX23,2024-02-20,2024-03-15,45.79\n",
+      "data_dictionary.csv": "file,column,description,unit\nfacts.csv,x,\"Primary measurement\",unit\nfacts.csv,w,\"Observation weight\",unitless\nfacts.csv,grp,\"Segment\",\nfacts.csv,label,\"Record label\",\nfacts.csv,start,\"Start date\",\nfacts.csv,end,\"End date\",\nfacts.csv,y,\"Secondary measurement\",unit\n"
+    },
+    "answer": 4.813171855654042,
+    "tol": 0.015,
+    "type": "table.ood_share"
+  },
+  {
+    "id": "o1_039",
+    "objective": "What is the sample covariance between the primary measurement and the secondary measurement in facts.csv? Round to 2 decimals.",
+    "files": {
+      "facts.csv": "x,w,grp,label,start,end,y\n31.24,1.25,D,CY0,2024-03-24,2024-03-27,31.48\n55.1,3.94,B,AY1,2024-04-04,2024-04-11,43.49\n49.64,2.48,D,CY2,2024-03-13,2024-03-29,47.83\n38.46,1.06,B,BX3,2024-01-31,2024-02-23,32.6\n29.85,1.09,D,AX4,2024-03-10,2024-03-21,20.56\n38.9,1.36,B,CY5,2024-01-13,2024-01-16,27.99\n46.81,3.78,B,AY6,2024-04-06,2024-04-18,36.99\n60.41,0.82,D,BX7,2024-01-29,2024-02-11,39.13\n55.61,3.29,C,BX8,2024-01-21,2024-02-08,39.55\n36.3,1.47,D,CY9,2024-01-08,2024-01-14,23.77\n60.15,1.27,B,CY10,2024-03-11,2024-03-22,39.15\n48.99,3.7,B,CY11,2024-02-24,2024-03-06,28.45\n58.7,0.65,A,AY12,2024-02-24,2024-02-29,43.23\n51.87,2.64,C,DZ13,2024-03-27,2024-04-09,41.28\n53.81,0.66,B,CY14,2024-01-19,2024-02-13,37.39\n79.39,3.5,C,CY15,2024-03-15,2024-03-20,54.07\n48.66,0.84,B,BX16,2024-03-19,2024-03-29,37.19\n42.28,3.16,D,AY17,2024-01-15,2024-01-21,38.41\n56.2,2.31,B,BX18,2024-01-13,2024-02-11,36.73\n65.7,1.35,D,AY19,2024-01-18,2024-02-12,53.59\n62.86,1.54,B,AX20,2024-03-15,2024-03-18,43.61\n51.67,1.67,D,AX21,2024-02-11,2024-02-24,34.23\n43.16,3.56,C,AX22,2024-03-08,2024-03-21,35.39\n53.81,3.43,C,BX23,2024-02-20,2024-03-15,45.79\n",
+      "data_dictionary.csv": "file,column,description,unit\nfacts.csv,x,\"Primary measurement\",unit\nfacts.csv,w,\"Observation weight\",unitless\nfacts.csv,grp,\"Segment\",\nfacts.csv,label,\"Record label\",\nfacts.csv,start,\"Start date\",\nfacts.csv,end,\"End date\",\nfacts.csv,y,\"Secondary measurement\",unit\n"
+    },
+    "answer": 77.45424528985508,
+    "tol": 0.015,
+    "type": "table.ood_covariance"
+  },
+  {
+    "id": "o1_040",
+    "objective": "Join fact.csv and dim.csv on the entity key. Compute numerator measure divided by denominator measure for each joined row belonging to a region 'North'. What is the mean of these ratios? Round to 2 decimals.",
+    "files": {
+      "fact.csv": "k,num\nK02,16.45\nK07,63.19\nK11,88.18\nK07,81.01\nK13,107.84\nK11,64.45\nK12,49.06\nK05,94.07\nK08,51.77\nK07,39.56\nK02,115.91\nK08,71.1\nK11,72.64\nK01,75.23\nK08,106.15\nK08,78.48\nK05,75.39\nK06,23.69\nK05,19.65\nK01,97.83\nK06,115.34\nK00,84.74\nK12,45.32\nK08,13.87\nK09,33.32\nK11,60.11\nK01,61.89\nK13,99.65\nK08,87.58\nK01,39.73\nK07,21.37\nK01,79.19\nK04,98.39\nK07,115.22\nK09,77.5\nK01,38.8\n",
+      "dim.csv": "k,den,grp\nK00,6.58,South\nK01,5.3,South\nK02,2.83,South\nK03,6.91,South\nK04,7.21,North\nK05,7.69,South\nK06,10.42,South\nK07,7.39,North\nK08,11.58,North\nK09,10.64,North\nK10,7.25,South\nK11,11.86,North\nK12,6.32,North\nK13,4.41,North\n",
+      "data_dictionary.csv": "file,column,description,unit\nfact.csv,k,\"Entity key\",\nfact.csv,num,\"Numerator measure\",unit\ndim.csv,k,\"Entity key\",\ndim.csv,den,\"Denominator measure\",unit\ndim.csv,grp,\"Region\",\n"
+    },
+    "answer": 8.580540121055426,
+    "tol": 0.015,
+    "type": "table.ood_join_derive"
+  },
+  {
+    "id": "o1_041",
+    "objective": "What is the interquartile range (75th percentile minus 25th percentile) of the primary measurement over all records in facts.csv? Round to 2 decimals.",
+    "files": {
+      "facts.csv": "x,w,grp,label,start,end,y\n64.76,3.95,C,BX0,2024-03-04,2024-03-18,44.15\n41.64,3.36,A,AX1,2024-01-15,2024-02-07,27.25\n46.49,3.57,A,DZ2,2024-02-16,2024-03-16,38.67\n52.93,1.56,B,CY3,2024-01-30,2024-02-28,35.47\n44.5,1.78,D,CY4,2024-03-24,2024-04-06,33.22\n51.75,3.54,D,DZ5,2024-03-22,2024-04-15,27.65\n54.52,2.18,D,AX6,2024-03-16,2024-04-12,31.33\n39.01,3.2,A,AX7,2024-01-16,2024-02-14,28.92\n64.29,1.8,B,AY8,2024-03-18,2024-04-14,45.41\n45.83,2.52,A,CY9,2024-02-08,2024-03-04,42.3\n33.14,3.28,D,AY10,2024-02-06,2024-02-22,33.79\n27.76,2.3,D,DZ11,2024-02-03,2024-02-11,18.79\n44.46,1.14,D,CY12,2024-02-18,2024-03-08,37.3\n44.45,2.51,D,CY13,2024-02-17,2024-03-15,31.63\n49.88,1.25,A,AX14,2024-01-18,2024-02-07,25.04\n63.42,2.44,C,AY15,2024-01-23,2024-01-29,45.9\n48.9,1.48,C,AX16,2024-02-22,2024-03-20,40.63\n71.1,2.36,D,AX17,2024-01-01,2024-01-08,49.3\n59.98,1.81,A,AY18,2024-01-08,2024-01-21,48.71\n16.01,0.85,C,BX19,2024-03-07,2024-03-20,14.61\n55.14,2.76,A,AY20,2024-01-30,2024-02-07,33.64\n64.22,3.99,B,CY21,2024-03-02,2024-03-23,48.55\n28.05,2.12,B,AY22,2024-03-19,2024-03-26,33.19\n65.07,1.66,B,DZ23,2024-02-08,2024-02-19,43.63\n",
+      "data_dictionary.csv": "file,column,description,unit\nfacts.csv,x,\"Primary measurement\",unit\nfacts.csv,w,\"Observation weight\",unitless\nfacts.csv,grp,\"Segment\",\nfacts.csv,label,\"Record label\",\nfacts.csv,start,\"Start date\",\nfacts.csv,end,\"End date\",\nfacts.csv,y,\"Secondary measurement\",unit\n"
+    },
+    "answer": 17.092499999999994,
+    "tol": 0.015,
+    "type": "table.ood_iqr"
+  },
+  {
+    "id": "o1_042",
+    "objective": "Using facts.csv and its data dictionary, compute the weighted mean of the primary measurement, using observation weight as the weight. Ignore rows missing either value. Report it with 2 decimals.",
+    "files": {
+      "facts.csv": "x,w,grp,label,start,end,y\n64.76,3.95,C,BX0,2024-03-04,2024-03-18,44.15\n41.64,3.36,A,AX1,2024-01-15,2024-02-07,27.25\n46.49,3.57,A,DZ2,2024-02-16,2024-03-16,38.67\n52.93,1.56,B,CY3,2024-01-30,2024-02-28,35.47\n44.5,1.78,D,CY4,2024-03-24,2024-04-06,33.22\n51.75,3.54,D,DZ5,2024-03-22,2024-04-15,27.65\n54.52,2.18,D,AX6,2024-03-16,2024-04-12,31.33\n39.01,3.2,A,AX7,2024-01-16,2024-02-14,28.92\n64.29,1.8,B,AY8,2024-03-18,2024-04-14,45.41\n45.83,2.52,A,CY9,2024-02-08,2024-03-04,42.3\n33.14,3.28,D,AY10,2024-02-06,2024-02-22,33.79\n27.76,2.3,D,DZ11,2024-02-03,2024-02-11,18.79\n44.46,1.14,D,CY12,2024-02-18,2024-03-08,37.3\n44.45,2.51,D,CY13,2024-02-17,2024-03-15,31.63\n49.88,1.25,A,AX14,2024-01-18,2024-02-07,25.04\n63.42,2.44,C,AY15,2024-01-23,2024-01-29,45.9\n48.9,1.48,C,AX16,2024-02-22,2024-03-20,40.63\n71.1,2.36,D,AX17,2024-01-01,2024-01-08,49.3\n59.98,1.81,A,AY18,2024-01-08,2024-01-21,48.71\n16.01,0.85,C,BX19,2024-03-07,2024-03-20,14.61\n55.14,2.76,A,AY20,2024-01-30,2024-02-07,33.64\n64.22,3.99,B,CY21,2024-03-02,2024-03-23,48.55\n28.05,2.12,B,AY22,2024-03-19,2024-03-26,33.19\n65.07,1.66,B,DZ23,2024-02-08,2024-02-19,43.63\n",
+      "data_dictionary.csv": "file,column,description,unit\nfacts.csv,x,\"Primary measurement\",unit\nfacts.csv,w,\"Observation weight\",unitless\nfacts.csv,grp,\"Segment\",\nfacts.csv,label,\"Record label\",\nfacts.csv,start,\"Start date\",\nfacts.csv,end,\"End date\",\nfacts.csv,y,\"Secondary measurement\",unit\n"
+    },
+    "answer": 50.0208900888347,
+    "tol": 0.015,
+    "type": "table.ood_weighted_mean"
+  },
+  {
+    "id": "o1_043",
+    "objective": "What is the mean primary measurement for segment 'A' minus the mean primary measurement for segment 'B' in facts.csv? Round to 2 decimals.",
+    "files": {
+      "facts.csv": "x,w,grp,label,start,end,y\n64.76,3.95,C,BX0,2024-03-04,2024-03-18,44.15\n41.64,3.36,A,AX1,2024-01-15,2024-02-07,27.25\n46.49,3.57,A,DZ2,2024-02-16,2024-03-16,38.67\n52.93,1.56,B,CY3,2024-01-30,2024-02-28,35.47\n44.5,1.78,D,CY4,2024-03-24,2024-04-06,33.22\n51.75,3.54,D,DZ5,2024-03-22,2024-04-15,27.65\n54.52,2.18,D,AX6,2024-03-16,2024-04-12,31.33\n39.01,3.2,A,AX7,2024-01-16,2024-02-14,28.92\n64.29,1.8,B,AY8,2024-03-18,2024-04-14,45.41\n45.83,2.52,A,CY9,2024-02-08,2024-03-04,42.3\n33.14,3.28,D,AY10,2024-02-06,2024-02-22,33.79\n27.76,2.3,D,DZ11,2024-02-03,2024-02-11,18.79\n44.46,1.14,D,CY12,2024-02-18,2024-03-08,37.3\n44.45,2.51,D,CY13,2024-02-17,2024-03-15,31.63\n49.88,1.25,A,AX14,2024-01-18,2024-02-07,25.04\n63.42,2.44,C,AY15,2024-01-23,2024-01-29,45.9\n48.9,1.48,C,AX16,2024-02-22,2024-03-20,40.63\n71.1,2.36,D,AX17,2024-01-01,2024-01-08,49.3\n59.98,1.81,A,AY18,2024-01-08,2024-01-21,48.71\n16.01,0.85,C,BX19,2024-03-07,2024-03-20,14.61\n55.14,2.76,A,AY20,2024-01-30,2024-02-07,33.64\n64.22,3.99,B,CY21,2024-03-02,2024-03-23,48.55\n28.05,2.12,B,AY22,2024-03-19,2024-03-26,33.19\n65.07,1.66,B,DZ23,2024-02-08,2024-02-19,43.63\n",
+      "data_dictionary.csv": "file,column,description,unit\nfacts.csv,x,\"Primary measurement\",unit\nfacts.csv,w,\"Observation weight\",unitless\nfacts.csv,grp,\"Segment\",\nfacts.csv,label,\"Record label\",\nfacts.csv,start,\"Start date\",\nfacts.csv,end,\"End date\",\nfacts.csv,y,\"Secondary measurement\",unit\n"
+    },
+    "answer": -6.630571428571429,
+    "tol": 0.015,
+    "type": "table.ood_group_diff"
+  },
+  {
+    "id": "o1_044",
+    "objective": "What is the mean primary measurement for records whose segment is either 'A' or 'C' in facts.csv? Round to 2 decimals.",
+    "files": {
+      "facts.csv": "x,w,grp,label,start,end,y\n64.76,3.95,C,BX0,2024-03-04,2024-03-18,44.15\n41.64,3.36,A,AX1,2024-01-15,2024-02-07,27.25\n46.49,3.57,A,DZ2,2024-02-16,2024-03-16,38.67\n52.93,1.56,B,CY3,2024-01-30,2024-02-28,35.47\n44.5,1.78,D,CY4,2024-03-24,2024-04-06,33.22\n51.75,3.54,D,DZ5,2024-03-22,2024-04-15,27.65\n54.52,2.18,D,AX6,2024-03-16,2024-04-12,31.33\n39.01,3.2,A,AX7,2024-01-16,2024-02-14,28.92\n64.29,1.8,B,AY8,2024-03-18,2024-04-14,45.41\n45.83,2.52,A,CY9,2024-02-08,2024-03-04,42.3\n33.14,3.28,D,AY10,2024-02-06,2024-02-22,33.79\n27.76,2.3,D,DZ11,2024-02-03,2024-02-11,18.79\n44.46,1.14,D,CY12,2024-02-18,2024-03-08,37.3\n44.45,2.51,D,CY13,2024-02-17,2024-03-15,31.63\n49.88,1.25,A,AX14,2024-01-18,2024-02-07,25.04\n63.42,2.44,C,AY15,2024-01-23,2024-01-29,45.9\n48.9,1.48,C,AX16,2024-02-22,2024-03-20,40.63\n71.1,2.36,D,AX17,2024-01-01,2024-01-08,49.3\n59.98,1.81,A,AY18,2024-01-08,2024-01-21,48.71\n16.01,0.85,C,BX19,2024-03-07,2024-03-20,14.61\n55.14,2.76,A,AY20,2024-01-30,2024-02-07,33.64\n64.22,3.99,B,CY21,2024-03-02,2024-03-23,48.55\n28.05,2.12,B,AY22,2024-03-19,2024-03-26,33.19\n65.07,1.66,B,DZ23,2024-02-08,2024-02-19,43.63\n",
+      "data_dictionary.csv": "file,column,description,unit\nfacts.csv,x,\"Primary measurement\",unit\nfacts.csv,w,\"Observation weight\",unitless\nfacts.csv,grp,\"Segment\",\nfacts.csv,label,\"Record label\",\nfacts.csv,start,\"Start date\",\nfacts.csv,end,\"End date\",\nfacts.csv,y,\"Secondary measurement\",unit\n"
+    },
+    "answer": 48.27818181818182,
+    "tol": 0.015,
+    "type": "table.ood_membership"
+  },
+  {
+    "id": "o1_045",
+    "objective": "How many records in facts.csv have a record label that starts with 'A'? Give a whole number.",
+    "files": {
+      "facts.csv": "x,w,grp,label,start,end,y\n64.76,3.95,C,BX0,2024-03-04,2024-03-18,44.15\n41.64,3.36,A,AX1,2024-01-15,2024-02-07,27.25\n46.49,3.57,A,DZ2,2024-02-16,2024-03-16,38.67\n52.93,1.56,B,CY3,2024-01-30,2024-02-28,35.47\n44.5,1.78,D,CY4,2024-03-24,2024-04-06,33.22\n51.75,3.54,D,DZ5,2024-03-22,2024-04-15,27.65\n54.52,2.18,D,AX6,2024-03-16,2024-04-12,31.33\n39.01,3.2,A,AX7,2024-01-16,2024-02-14,28.92\n64.29,1.8,B,AY8,2024-03-18,2024-04-14,45.41\n45.83,2.52,A,CY9,2024-02-08,2024-03-04,42.3\n33.14,3.28,D,AY10,2024-02-06,2024-02-22,33.79\n27.76,2.3,D,DZ11,2024-02-03,2024-02-11,18.79\n44.46,1.14,D,CY12,2024-02-18,2024-03-08,37.3\n44.45,2.51,D,CY13,2024-02-17,2024-03-15,31.63\n49.88,1.25,A,AX14,2024-01-18,2024-02-07,25.04\n63.42,2.44,C,AY15,2024-01-23,2024-01-29,45.9\n48.9,1.48,C,AX16,2024-02-22,2024-03-20,40.63\n71.1,2.36,D,AX17,2024-01-01,2024-01-08,49.3\n59.98,1.81,A,AY18,2024-01-08,2024-01-21,48.71\n16.01,0.85,C,BX19,2024-03-07,2024-03-20,14.61\n55.14,2.76,A,AY20,2024-01-30,2024-02-07,33.64\n64.22,3.99,B,CY21,2024-03-02,2024-03-23,48.55\n28.05,2.12,B,AY22,2024-03-19,2024-03-26,33.19\n65.07,1.66,B,DZ23,2024-02-08,2024-02-19,43.63\n",
+      "data_dictionary.csv": "file,column,description,unit\nfacts.csv,x,\"Primary measurement\",unit\nfacts.csv,w,\"Observation weight\",unitless\nfacts.csv,grp,\"Segment\",\nfacts.csv,label,\"Record label\",\nfacts.csv,start,\"Start date\",\nfacts.csv,end,\"End date\",\nfacts.csv,y,\"Secondary measurement\",unit\n"
+    },
+    "answer": 12.0,
+    "tol": 1e-06,
+    "type": "table.ood_string"
+  },
+  {
+    "id": "o1_046",
+    "objective": "For each row of facts.csv, compute the number of days from the start date to the end date. What is the mean duration? Round to 2 decimals.",
+    "files": {
+      "facts.csv": "x,w,grp,label,start,end,y\n64.76,3.95,C,BX0,2024-03-04,2024-03-18,44.15\n41.64,3.36,A,AX1,2024-01-15,2024-02-07,27.25\n46.49,3.57,A,DZ2,2024-02-16,2024-03-16,38.67\n52.93,1.56,B,CY3,2024-01-30,2024-02-28,35.47\n44.5,1.78,D,CY4,2024-03-24,2024-04-06,33.22\n51.75,3.54,D,DZ5,2024-03-22,2024-04-15,27.65\n54.52,2.18,D,AX6,2024-03-16,2024-04-12,31.33\n39.01,3.2,A,AX7,2024-01-16,2024-02-14,28.92\n64.29,1.8,B,AY8,2024-03-18,2024-04-14,45.41\n45.83,2.52,A,CY9,2024-02-08,2024-03-04,42.3\n33.14,3.28,D,AY10,2024-02-06,2024-02-22,33.79\n27.76,2.3,D,DZ11,2024-02-03,2024-02-11,18.79\n44.46,1.14,D,CY12,2024-02-18,2024-03-08,37.3\n44.45,2.51,D,CY13,2024-02-17,2024-03-15,31.63\n49.88,1.25,A,AX14,2024-01-18,2024-02-07,25.04\n63.42,2.44,C,AY15,2024-01-23,2024-01-29,45.9\n48.9,1.48,C,AX16,2024-02-22,2024-03-20,40.63\n71.1,2.36,D,AX17,2024-01-01,2024-01-08,49.3\n59.98,1.81,A,AY18,2024-01-08,2024-01-21,48.71\n16.01,0.85,C,BX19,2024-03-07,2024-03-20,14.61\n55.14,2.76,A,AY20,2024-01-30,2024-02-07,33.64\n64.22,3.99,B,CY21,2024-03-02,2024-03-23,48.55\n28.05,2.12,B,AY22,2024-03-19,2024-03-26,33.19\n65.07,1.66,B,DZ23,2024-02-08,2024-02-19,43.63\n",
+      "data_dictionary.csv": "file,column,description,unit\nfacts.csv,x,\"Primary measurement\",unit\nfacts.csv,w,\"Observation weight\",unitless\nfacts.csv,grp,\"Segment\",\nfacts.csv,label,\"Record label\",\nfacts.csv,start,\"Start date\",\nfacts.csv,end,\"End date\",\nfacts.csv,y,\"Secondary measurement\",unit\n"
+    },
+    "answer": 18.458333333333332,
+    "tol": 0.015,
+    "type": "table.ood_date_delta"
+  },
+  {
+    "id": "o1_047",
+    "objective": "What is the mean of the 3 largest distinct primary measurement values in facts.csv? Round to 2 decimals.",
+    "files": {
+      "facts.csv": "x,w,grp,label,start,end,y\n64.76,3.95,C,BX0,2024-03-04,2024-03-18,44.15\n41.64,3.36,A,AX1,2024-01-15,2024-02-07,27.25\n46.49,3.57,A,DZ2,2024-02-16,2024-03-16,38.67\n52.93,1.56,B,CY3,2024-01-30,2024-02-28,35.47\n44.5,1.78,D,CY4,2024-03-24,2024-04-06,33.22\n51.75,3.54,D,DZ5,2024-03-22,2024-04-15,27.65\n54.52,2.18,D,AX6,2024-03-16,2024-04-12,31.33\n39.01,3.2,A,AX7,2024-01-16,2024-02-14,28.92\n64.29,1.8,B,AY8,2024-03-18,2024-04-14,45.41\n45.83,2.52,A,CY9,2024-02-08,2024-03-04,42.3\n33.14,3.28,D,AY10,2024-02-06,2024-02-22,33.79\n27.76,2.3,D,DZ11,2024-02-03,2024-02-11,18.79\n44.46,1.14,D,CY12,2024-02-18,2024-03-08,37.3\n44.45,2.51,D,CY13,2024-02-17,2024-03-15,31.63\n49.88,1.25,A,AX14,2024-01-18,2024-02-07,25.04\n63.42,2.44,C,AY15,2024-01-23,2024-01-29,45.9\n48.9,1.48,C,AX16,2024-02-22,2024-03-20,40.63\n71.1,2.36,D,AX17,2024-01-01,2024-01-08,49.3\n59.98,1.81,A,AY18,2024-01-08,2024-01-21,48.71\n16.01,0.85,C,BX19,2024-03-07,2024-03-20,14.61\n55.14,2.76,A,AY20,2024-01-30,2024-02-07,33.64\n64.22,3.99,B,CY21,2024-03-02,2024-03-23,48.55\n28.05,2.12,B,AY22,2024-03-19,2024-03-26,33.19\n65.07,1.66,B,DZ23,2024-02-08,2024-02-19,43.63\n",
+      "data_dictionary.csv": "file,column,description,unit\nfacts.csv,x,\"Primary measurement\",unit\nfacts.csv,w,\"Observation weight\",unitless\nfacts.csv,grp,\"Segment\",\nfacts.csv,label,\"Record label\",\nfacts.csv,start,\"Start date\",\nfacts.csv,end,\"End date\",\nfacts.csv,y,\"Secondary measurement\",unit\n"
+    },
+    "answer": 66.97666666666667,
+    "tol": 0.015,
+    "type": "table.ood_topk"
+  },
+  {
+    "id": "o1_048",
+    "objective": "What percentage of the total primary measurement is contributed by segment 'A' in facts.csv? Round to 2 decimals.",
+    "files": {
+      "facts.csv": "x,w,grp,label,start,end,y\n64.76,3.95,C,BX0,2024-03-04,2024-03-18,44.15\n41.64,3.36,A,AX1,2024-01-15,2024-02-07,27.25\n46.49,3.57,A,DZ2,2024-02-16,2024-03-16,38.67\n52.93,1.56,B,CY3,2024-01-30,2024-02-28,35.47\n44.5,1.78,D,CY4,2024-03-24,2024-04-06,33.22\n51.75,3.54,D,DZ5,2024-03-22,2024-04-15,27.65\n54.52,2.18,D,AX6,2024-03-16,2024-04-12,31.33\n39.01,3.2,A,AX7,2024-01-16,2024-02-14,28.92\n64.29,1.8,B,AY8,2024-03-18,2024-04-14,45.41\n45.83,2.52,A,CY9,2024-02-08,2024-03-04,42.3\n33.14,3.28,D,AY10,2024-02-06,2024-02-22,33.79\n27.76,2.3,D,DZ11,2024-02-03,2024-02-11,18.79\n44.46,1.14,D,CY12,2024-02-18,2024-03-08,37.3\n44.45,2.51,D,CY13,2024-02-17,2024-03-15,31.63\n49.88,1.25,A,AX14,2024-01-18,2024-02-07,25.04\n63.42,2.44,C,AY15,2024-01-23,2024-01-29,45.9\n48.9,1.48,C,AX16,2024-02-22,2024-03-20,40.63\n71.1,2.36,D,AX17,2024-01-01,2024-01-08,49.3\n59.98,1.81,A,AY18,2024-01-08,2024-01-21,48.71\n16.01,0.85,C,BX19,2024-03-07,2024-03-20,14.61\n55.14,2.76,A,AY20,2024-01-30,2024-02-07,33.64\n64.22,3.99,B,CY21,2024-03-02,2024-03-23,48.55\n28.05,2.12,B,AY22,2024-03-19,2024-03-26,33.19\n65.07,1.66,B,DZ23,2024-02-08,2024-02-19,43.63\n",
+      "data_dictionary.csv": "file,column,description,unit\nfacts.csv,x,\"Primary measurement\",unit\nfacts.csv,w,\"Observation weight\",unitless\nfacts.csv,grp,\"Segment\",\nfacts.csv,label,\"Record label\",\nfacts.csv,start,\"Start date\",\nfacts.csv,end,\"End date\",\nfacts.csv,y,\"Secondary measurement\",unit\n"
+    },
+    "answer": 28.707211415951754,
+    "tol": 0.015,
+    "type": "table.ood_share"
+  },
+  {
+    "id": "o1_049",
+    "objective": "What is the sample covariance between the primary measurement and the secondary measurement in facts.csv? Round to 2 decimals.",
+    "files": {
+      "facts.csv": "x,w,grp,label,start,end,y\n64.76,3.95,C,BX0,2024-03-04,2024-03-18,44.15\n41.64,3.36,A,AX1,2024-01-15,2024-02-07,27.25\n46.49,3.57,A,DZ2,2024-02-16,2024-03-16,38.67\n52.93,1.56,B,CY3,2024-01-30,2024-02-28,35.47\n44.5,1.78,D,CY4,2024-03-24,2024-04-06,33.22\n51.75,3.54,D,DZ5,2024-03-22,2024-04-15,27.65\n54.52,2.18,D,AX6,2024-03-16,2024-04-12,31.33\n39.01,3.2,A,AX7,2024-01-16,2024-02-14,28.92\n64.29,1.8,B,AY8,2024-03-18,2024-04-14,45.41\n45.83,2.52,A,CY9,2024-02-08,2024-03-04,42.3\n33.14,3.28,D,AY10,2024-02-06,2024-02-22,33.79\n27.76,2.3,D,DZ11,2024-02-03,2024-02-11,18.79\n44.46,1.14,D,CY12,2024-02-18,2024-03-08,37.3\n44.45,2.51,D,CY13,2024-02-17,2024-03-15,31.63\n49.88,1.25,A,AX14,2024-01-18,2024-02-07,25.04\n63.42,2.44,C,AY15,2024-01-23,2024-01-29,45.9\n48.9,1.48,C,AX16,2024-02-22,2024-03-20,40.63\n71.1,2.36,D,AX17,2024-01-01,2024-01-08,49.3\n59.98,1.81,A,AY18,2024-01-08,2024-01-21,48.71\n16.01,0.85,C,BX19,2024-03-07,2024-03-20,14.61\n55.14,2.76,A,AY20,2024-01-30,2024-02-07,33.64\n64.22,3.99,B,CY21,2024-03-02,2024-03-23,48.55\n28.05,2.12,B,AY22,2024-03-19,2024-03-26,33.19\n65.07,1.66,B,DZ23,2024-02-08,2024-02-19,43.63\n",
+      "data_dictionary.csv": "file,column,description,unit\nfacts.csv,x,\"Primary measurement\",unit\nfacts.csv,w,\"Observation weight\",unitless\nfacts.csv,grp,\"Segment\",\nfacts.csv,label,\"Record label\",\nfacts.csv,start,\"Start date\",\nfacts.csv,end,\"End date\",\nfacts.csv,y,\"Secondary measurement\",unit\n"
+    },
+    "answer": 103.7869956521739,
+    "tol": 0.015,
+    "type": "table.ood_covariance"
+  },
+  {
+    "id": "o1_050",
+    "objective": "Join fact.csv and dim.csv on the entity key. Compute numerator measure divided by denominator measure for each joined row belonging to a region 'North'. What is the mean of these ratios? Round to 2 decimals.",
+    "files": {
+      "fact.csv": "k,num\nK06,57.71\nK06,78.37\nK13,88.95\nK00,119.57\nK08,17.85\nK13,17.14\nK08,37.76\nK00,47.04\nK06,23.02\nK13,38.29\nK08,107.07\nK03,47.75\nK12,61.97\nK08,70.45\nK05,44.22\nK02,103.4\nK01,23.6\nK09,50.69\nK10,86.96\nK12,75.21\nK11,18.96\nK11,49.57\nK12,77.6\nK11,56.18\nK00,76.45\nK10,85.76\nK00,87.51\nK03,102.01\nK02,18.26\nK04,117.89\nK09,79.58\nK00,84.47\nK01,117.67\nK05,118.38\nK13,29.29\nK05,115.06\n",
+      "dim.csv": "k,den,grp\nK00,8.63,North\nK01,2.2,North\nK02,3.18,South\nK03,3.38,South\nK04,3.36,South\nK05,9.56,South\nK06,4.2,South\nK07,10.01,South\nK08,11.79,North\nK09,11.65,South\nK10,2.2,South\nK11,11.41,South\nK12,6.52,South\nK13,10.47,North\n",
+      "data_dictionary.csv": "file,column,description,unit\nfact.csv,k,\"Entity key\",\nfact.csv,num,\"Numerator measure\",unit\ndim.csv,k,\"Entity key\",\ndim.csv,den,\"Denominator measure\",unit\ndim.csv,grp,\"Region\",\n"
+    },
+    "answer": 9.911151046238604,
+    "tol": 0.015,
+    "type": "table.ood_join_derive"
+  },
+  {
+    "id": "o1_051",
+    "objective": "What is the interquartile range (75th percentile minus 25th percentile) of the primary measurement over all records in facts.csv? Round to 2 decimals.",
+    "files": {
+      "facts.csv": "x,w,grp,label,start,end,y\n55.69,2.79,C,AY0,2024-03-12,2024-03-19,37.38\n51.84,1.39,C,CY1,2024-02-14,2024-03-04,51.32\n57.34,3.83,D,CY2,2024-02-21,2024-02-24,38.51\n35.46,1.91,A,CY3,2024-01-18,2024-02-02,30.4\n47.97,2.29,B,AY4,2024-02-10,2024-02-24,37.93\n26.47,3.26,A,AY5,2024-02-02,2024-02-08,23.8\n51.15,3.51,B,AX6,2024-01-17,2024-02-13,47.2\n46.69,2.73,D,BX7,2024-02-11,2024-02-19,38.56\n44.26,1.17,C,BX8,2024-04-07,2024-04-23,37.51\n43.56,1.46,C,AX9,2024-02-15,2024-02-20,38.64\n59.94,1.09,C,DZ10,2024-01-29,2024-02-11,48.98\n48.07,2.14,A,AY11,2024-01-24,2024-02-04,36.5\n53.86,3.04,C,AX12,2024-02-03,2024-02-13,35.98\n41.92,1.02,B,BX13,2024-02-12,2024-02-25,33.48\n47.08,1.72,B,BX14,2024-04-01,2024-04-16,30.81\n46.02,3.44,B,CY15,2024-04-09,2024-05-02,39.58\n62.22,2.12,C,DZ16,2024-03-24,2024-04-17,58.53\n56.81,3.57,D,CY17,2024-04-06,2024-04-17,41.09\n40.62,1.73,D,BX18,2024-02-14,2024-02-28,36.53\n73.26,1.54,A,BX19,2024-02-16,2024-02-27,48.79\n45.91,3.65,A,DZ20,2024-01-21,2024-01-23,32.58\n67.55,3.34,B,AX21,2024-02-25,2024-02-27,39.89\n56.34,3.97,B,CY22,2024-01-19,2024-01-26,41.13\n33.87,2.43,D,DZ23,2024-02-01,2024-02-10,30.48\n",
+      "data_dictionary.csv": "file,column,description,unit\nfacts.csv,x,\"Primary measurement\",unit\nfacts.csv,w,\"Observation weight\",unitless\nfacts.csv,grp,\"Segment\",\nfacts.csv,label,\"Record label\",\nfacts.csv,start,\"Start date\",\nfacts.csv,end,\"End date\",\nfacts.csv,y,\"Secondary measurement\",unit\n"
+    },
+    "answer": 12.372500000000002,
+    "tol": 0.015,
+    "type": "table.ood_iqr"
+  },
+  {
+    "id": "o1_052",
+    "objective": "Using facts.csv and its data dictionary, compute the weighted mean of the primary measurement, using observation weight as the weight. Ignore rows missing either value. Report it with 2 decimals.",
+    "files": {
+      "facts.csv": "x,w,grp,label,start,end,y\n55.69,2.79,C,AY0,2024-03-12,2024-03-19,37.38\n51.84,1.39,C,CY1,2024-02-14,2024-03-04,51.32\n57.34,3.83,D,CY2,2024-02-21,2024-02-24,38.51\n35.46,1.91,A,CY3,2024-01-18,2024-02-02,30.4\n47.97,2.29,B,AY4,2024-02-10,2024-02-24,37.93\n26.47,3.26,A,AY5,2024-02-02,2024-02-08,23.8\n51.15,3.51,B,AX6,2024-01-17,2024-02-13,47.2\n46.69,2.73,D,BX7,2024-02-11,2024-02-19,38.56\n44.26,1.17,C,BX8,2024-04-07,2024-04-23,37.51\n43.56,1.46,C,AX9,2024-02-15,2024-02-20,38.64\n59.94,1.09,C,DZ10,2024-01-29,2024-02-11,48.98\n48.07,2.14,A,AY11,2024-01-24,2024-02-04,36.5\n53.86,3.04,C,AX12,2024-02-03,2024-02-13,35.98\n41.92,1.02,B,BX13,2024-02-12,2024-02-25,33.48\n47.08,1.72,B,BX14,2024-04-01,2024-04-16,30.81\n46.02,3.44,B,CY15,2024-04-09,2024-05-02,39.58\n62.22,2.12,C,DZ16,2024-03-24,2024-04-17,58.53\n56.81,3.57,D,CY17,2024-04-06,2024-04-17,41.09\n40.62,1.73,D,BX18,2024-02-14,2024-02-28,36.53\n73.26,1.54,A,BX19,2024-02-16,2024-02-27,48.79\n45.91,3.65,A,DZ20,2024-01-21,2024-01-23,32.58\n67.55,3.34,B,AX21,2024-02-25,2024-02-27,39.89\n56.34,3.97,B,CY22,2024-01-19,2024-01-26,41.13\n33.87,2.43,D,DZ23,2024-02-01,2024-02-10,30.48\n",
+      "data_dictionary.csv": "file,column,description,unit\nfacts.csv,x,\"Primary measurement\",unit\nfacts.csv,w,\"Observation weight\",unitless\nfacts.csv,grp,\"Segment\",\nfacts.csv,label,\"Record label\",\nfacts.csv,start,\"Start date\",\nfacts.csv,end,\"End date\",\nfacts.csv,y,\"Secondary measurement\",unit\n"
+    },
+    "answer": 50.12269360838689,
+    "tol": 0.015,
+    "type": "table.ood_weighted_mean"
+  },
+  {
+    "id": "o1_053",
+    "objective": "What is the mean primary measurement for segment 'A' minus the mean primary measurement for segment 'B' in facts.csv? Round to 2 decimals.",
+    "files": {
+      "facts.csv": "x,w,grp,label,start,end,y\n55.69,2.79,C,AY0,2024-03-12,2024-03-19,37.38\n51.84,1.39,C,CY1,2024-02-14,2024-03-04,51.32\n57.34,3.83,D,CY2,2024-02-21,2024-02-24,38.51\n35.46,1.91,A,CY3,2024-01-18,2024-02-02,30.4\n47.97,2.29,B,AY4,2024-02-10,2024-02-24,37.93\n26.47,3.26,A,AY5,2024-02-02,2024-02-08,23.8\n51.15,3.51,B,AX6,2024-01-17,2024-02-13,47.2\n46.69,2.73,D,BX7,2024-02-11,2024-02-19,38.56\n44.26,1.17,C,BX8,2024-04-07,2024-04-23,37.51\n43.56,1.46,C,AX9,2024-02-15,2024-02-20,38.64\n59.94,1.09,C,DZ10,2024-01-29,2024-02-11,48.98\n48.07,2.14,A,AY11,2024-01-24,2024-02-04,36.5\n53.86,3.04,C,AX12,2024-02-03,2024-02-13,35.98\n41.92,1.02,B,BX13,2024-02-12,2024-02-25,33.48\n47.08,1.72,B,BX14,2024-04-01,2024-04-16,30.81\n46.02,3.44,B,CY15,2024-04-09,2024-05-02,39.58\n62.22,2.12,C,DZ16,2024-03-24,2024-04-17,58.53\n56.81,3.57,D,CY17,2024-04-06,2024-04-17,41.09\n40.62,1.73,D,BX18,2024-02-14,2024-02-28,36.53\n73.26,1.54,A,BX19,2024-02-16,2024-02-27,48.79\n45.91,3.65,A,DZ20,2024-01-21,2024-01-23,32.58\n67.55,3.34,B,AX21,2024-02-25,2024-02-27,39.89\n56.34,3.97,B,CY22,2024-01-19,2024-01-26,41.13\n33.87,2.43,D,DZ23,2024-02-01,2024-02-10,30.48\n",
+      "data_dictionary.csv": "file,column,description,unit\nfacts.csv,x,\"Primary measurement\",unit\nfacts.csv,w,\"Observation weight\",unitless\nfacts.csv,grp,\"Segment\",\nfacts.csv,label,\"Record label\",\nfacts.csv,start,\"Start date\",\nfacts.csv,end,\"End date\",\nfacts.csv,y,\"Secondary measurement\",unit\n"
+    },
+    "answer": -5.313142857142857,
+    "tol": 0.015,
+    "type": "table.ood_group_diff"
+  },
+  {
+    "id": "o1_054",
+    "objective": "What is the mean primary measurement for records whose segment is either 'A' or 'C' in facts.csv? Round to 2 decimals.",
+    "files": {
+      "facts.csv": "x,w,grp,label,start,end,y\n55.69,2.79,C,AY0,2024-03-12,2024-03-19,37.38\n51.84,1.39,C,CY1,2024-02-14,2024-03-04,51.32\n57.34,3.83,D,CY2,2024-02-21,2024-02-24,38.51\n35.46,1.91,A,CY3,2024-01-18,2024-02-02,30.4\n47.97,2.29,B,AY4,2024-02-10,2024-02-24,37.93\n26.47,3.26,A,AY5,2024-02-02,2024-02-08,23.8\n51.15,3.51,B,AX6,2024-01-17,2024-02-13,47.2\n46.69,2.73,D,BX7,2024-02-11,2024-02-19,38.56\n44.26,1.17,C,BX8,2024-04-07,2024-04-23,37.51\n43.56,1.46,C,AX9,2024-02-15,2024-02-20,38.64\n59.94,1.09,C,DZ10,2024-01-29,2024-02-11,48.98\n48.07,2.14,A,AY11,2024-01-24,2024-02-04,36.5\n53.86,3.04,C,AX12,2024-02-03,2024-02-13,35.98\n41.92,1.02,B,BX13,2024-02-12,2024-02-25,33.48\n47.08,1.72,B,BX14,2024-04-01,2024-04-16,30.81\n46.02,3.44,B,CY15,2024-04-09,2024-05-02,39.58\n62.22,2.12,C,DZ16,2024-03-24,2024-04-17,58.53\n56.81,3.57,D,CY17,2024-04-06,2024-04-17,41.09\n40.62,1.73,D,BX18,2024-02-14,2024-02-28,36.53\n73.26,1.54,A,BX19,2024-02-16,2024-02-27,48.79\n45.91,3.65,A,DZ20,2024-01-21,2024-01-23,32.58\n67.55,3.34,B,AX21,2024-02-25,2024-02-27,39.89\n56.34,3.97,B,CY22,2024-01-19,2024-01-26,41.13\n33.87,2.43,D,DZ23,2024-02-01,2024-02-10,30.48\n",
+      "data_dictionary.csv": "file,column,description,unit\nfacts.csv,x,\"Primary measurement\",unit\nfacts.csv,w,\"Observation weight\",unitless\nfacts.csv,grp,\"Segment\",\nfacts.csv,label,\"Record label\",\nfacts.csv,start,\"Start date\",\nfacts.csv,end,\"End date\",\nfacts.csv,y,\"Secondary measurement\",unit\n"
+    },
+    "answer": 50.044999999999995,
+    "tol": 0.015,
+    "type": "table.ood_membership"
+  },
+  {
+    "id": "o1_055",
+    "objective": "How many records in facts.csv have a record label that starts with 'A'? Give a whole number.",
+    "files": {
+      "facts.csv": "x,w,grp,label,start,end,y\n55.69,2.79,C,AY0,2024-03-12,2024-03-19,37.38\n51.84,1.39,C,CY1,2024-02-14,2024-03-04,51.32\n57.34,3.83,D,CY2,2024-02-21,2024-02-24,38.51\n35.46,1.91,A,CY3,2024-01-18,2024-02-02,30.4\n47.97,2.29,B,AY4,2024-02-10,2024-02-24,37.93\n26.47,3.26,A,AY5,2024-02-02,2024-02-08,23.8\n51.15,3.51,B,AX6,2024-01-17,2024-02-13,47.2\n46.69,2.73,D,BX7,2024-02-11,2024-02-19,38.56\n44.26,1.17,C,BX8,2024-04-07,2024-04-23,37.51\n43.56,1.46,C,AX9,2024-02-15,2024-02-20,38.64\n59.94,1.09,C,DZ10,2024-01-29,2024-02-11,48.98\n48.07,2.14,A,AY11,2024-01-24,2024-02-04,36.5\n53.86,3.04,C,AX12,2024-02-03,2024-02-13,35.98\n41.92,1.02,B,BX13,2024-02-12,2024-02-25,33.48\n47.08,1.72,B,BX14,2024-04-01,2024-04-16,30.81\n46.02,3.44,B,CY15,2024-04-09,2024-05-02,39.58\n62.22,2.12,C,DZ16,2024-03-24,2024-04-17,58.53\n56.81,3.57,D,CY17,2024-04-06,2024-04-17,41.09\n40.62,1.73,D,BX18,2024-02-14,2024-02-28,36.53\n73.26,1.54,A,BX19,2024-02-16,2024-02-27,48.79\n45.91,3.65,A,DZ20,2024-01-21,2024-01-23,32.58\n67.55,3.34,B,AX21,2024-02-25,2024-02-27,39.89\n56.34,3.97,B,CY22,2024-01-19,2024-01-26,41.13\n33.87,2.43,D,DZ23,2024-02-01,2024-02-10,30.48\n",
+      "data_dictionary.csv": "file,column,description,unit\nfacts.csv,x,\"Primary measurement\",unit\nfacts.csv,w,\"Observation weight\",unitless\nfacts.csv,grp,\"Segment\",\nfacts.csv,label,\"Record label\",\nfacts.csv,start,\"Start date\",\nfacts.csv,end,\"End date\",\nfacts.csv,y,\"Secondary measurement\",unit\n"
+    },
+    "answer": 8.0,
+    "tol": 1e-06,
+    "type": "table.ood_string"
+  },
+  {
+    "id": "o1_056",
+    "objective": "For each row of facts.csv, compute the number of days from the start date to the end date. What is the mean duration? Round to 2 decimals.",
+    "files": {
+      "facts.csv": "x,w,grp,label,start,end,y\n55.69,2.79,C,AY0,2024-03-12,2024-03-19,37.38\n51.84,1.39,C,CY1,2024-02-14,2024-03-04,51.32\n57.34,3.83,D,CY2,2024-02-21,2024-02-24,38.51\n35.46,1.91,A,CY3,2024-01-18,2024-02-02,30.4\n47.97,2.29,B,AY4,2024-02-10,2024-02-24,37.93\n26.47,3.26,A,AY5,2024-02-02,2024-02-08,23.8\n51.15,3.51,B,AX6,2024-01-17,2024-02-13,47.2\n46.69,2.73,D,BX7,2024-02-11,2024-02-19,38.56\n44.26,1.17,C,BX8,2024-04-07,2024-04-23,37.51\n43.56,1.46,C,AX9,2024-02-15,2024-02-20,38.64\n59.94,1.09,C,DZ10,2024-01-29,2024-02-11,48.98\n48.07,2.14,A,AY11,2024-01-24,2024-02-04,36.5\n53.86,3.04,C,AX12,2024-02-03,2024-02-13,35.98\n41.92,1.02,B,BX13,2024-02-12,2024-02-25,33.48\n47.08,1.72,B,BX14,2024-04-01,2024-04-16,30.81\n46.02,3.44,B,CY15,2024-04-09,2024-05-02,39.58\n62.22,2.12,C,DZ16,2024-03-24,2024-04-17,58.53\n56.81,3.57,D,CY17,2024-04-06,2024-04-17,41.09\n40.62,1.73,D,BX18,2024-02-14,2024-02-28,36.53\n73.26,1.54,A,BX19,2024-02-16,2024-02-27,48.79\n45.91,3.65,A,DZ20,2024-01-21,2024-01-23,32.58\n67.55,3.34,B,AX21,2024-02-25,2024-02-27,39.89\n56.34,3.97,B,CY22,2024-01-19,2024-01-26,41.13\n33.87,2.43,D,DZ23,2024-02-01,2024-02-10,30.48\n",
+      "data_dictionary.csv": "file,column,description,unit\nfacts.csv,x,\"Primary measurement\",unit\nfacts.csv,w,\"Observation weight\",unitless\nfacts.csv,grp,\"Segment\",\nfacts.csv,label,\"Record label\",\nfacts.csv,start,\"Start date\",\nfacts.csv,end,\"End date\",\nfacts.csv,y,\"Secondary measurement\",unit\n"
+    },
+    "answer": 11.875,
+    "tol": 0.015,
+    "type": "table.ood_date_delta"
+  },
+  {
+    "id": "o1_057",
+    "objective": "What is the mean of the 3 largest distinct primary measurement values in facts.csv? Round to 2 decimals.",
+    "files": {
+      "facts.csv": "x,w,grp,label,start,end,y\n55.69,2.79,C,AY0,2024-03-12,2024-03-19,37.38\n51.84,1.39,C,CY1,2024-02-14,2024-03-04,51.32\n57.34,3.83,D,CY2,2024-02-21,2024-02-24,38.51\n35.46,1.91,A,CY3,2024-01-18,2024-02-02,30.4\n47.97,2.29,B,AY4,2024-02-10,2024-02-24,37.93\n26.47,3.26,A,AY5,2024-02-02,2024-02-08,23.8\n51.15,3.51,B,AX6,2024-01-17,2024-02-13,47.2\n46.69,2.73,D,BX7,2024-02-11,2024-02-19,38.56\n44.26,1.17,C,BX8,2024-04-07,2024-04-23,37.51\n43.56,1.46,C,AX9,2024-02-15,2024-02-20,38.64\n59.94,1.09,C,DZ10,2024-01-29,2024-02-11,48.98\n48.07,2.14,A,AY11,2024-01-24,2024-02-04,36.5\n53.86,3.04,C,AX12,2024-02-03,2024-02-13,35.98\n41.92,1.02,B,BX13,2024-02-12,2024-02-25,33.48\n47.08,1.72,B,BX14,2024-04-01,2024-04-16,30.81\n46.02,3.44,B,CY15,2024-04-09,2024-05-02,39.58\n62.22,2.12,C,DZ16,2024-03-24,2024-04-17,58.53\n56.81,3.57,D,CY17,2024-04-06,2024-04-17,41.09\n40.62,1.73,D,BX18,2024-02-14,2024-02-28,36.53\n73.26,1.54,A,BX19,2024-02-16,2024-02-27,48.79\n45.91,3.65,A,DZ20,2024-01-21,2024-01-23,32.58\n67.55,3.34,B,AX21,2024-02-25,2024-02-27,39.89\n56.34,3.97,B,CY22,2024-01-19,2024-01-26,41.13\n33.87,2.43,D,DZ23,2024-02-01,2024-02-10,30.48\n",
+      "data_dictionary.csv": "file,column,description,unit\nfacts.csv,x,\"Primary measurement\",unit\nfacts.csv,w,\"Observation weight\",unitless\nfacts.csv,grp,\"Segment\",\nfacts.csv,label,\"Record label\",\nfacts.csv,start,\"Start date\",\nfacts.csv,end,\"End date\",\nfacts.csv,y,\"Secondary measurement\",unit\n"
+    },
+    "answer": 67.67666666666666,
+    "tol": 0.015,
+    "type": "table.ood_topk"
+  },
+  {
+    "id": "o1_058",
+    "objective": "What percentage of the total primary measurement is contributed by segment 'A' in facts.csv? Round to 2 decimals.",
+    "files": {
+      "facts.csv": "x,w,grp,label,start,end,y\n55.69,2.79,C,AY0,2024-03-12,2024-03-19,37.38\n51.84,1.39,C,CY1,2024-02-14,2024-03-04,51.32\n57.34,3.83,D,CY2,2024-02-21,2024-02-24,38.51\n35.46,1.91,A,CY3,2024-01-18,2024-02-02,30.4\n47.97,2.29,B,AY4,2024-02-10,2024-02-24,37.93\n26.47,3.26,A,AY5,2024-02-02,2024-02-08,23.8\n51.15,3.51,B,AX6,2024-01-17,2024-02-13,47.2\n46.69,2.73,D,BX7,2024-02-11,2024-02-19,38.56\n44.26,1.17,C,BX8,2024-04-07,2024-04-23,37.51\n43.56,1.46,C,AX9,2024-02-15,2024-02-20,38.64\n59.94,1.09,C,DZ10,2024-01-29,2024-02-11,48.98\n48.07,2.14,A,AY11,2024-01-24,2024-02-04,36.5\n53.86,3.04,C,AX12,2024-02-03,2024-02-13,35.98\n41.92,1.02,B,BX13,2024-02-12,2024-02-25,33.48\n47.08,1.72,B,BX14,2024-04-01,2024-04-16,30.81\n46.02,3.44,B,CY15,2024-04-09,2024-05-02,39.58\n62.22,2.12,C,DZ16,2024-03-24,2024-04-17,58.53\n56.81,3.57,D,CY17,2024-04-06,2024-04-17,41.09\n40.62,1.73,D,BX18,2024-02-14,2024-02-28,36.53\n73.26,1.54,A,BX19,2024-02-16,2024-02-27,48.79\n45.91,3.65,A,DZ20,2024-01-21,2024-01-23,32.58\n67.55,3.34,B,AX21,2024-02-25,2024-02-27,39.89\n56.34,3.97,B,CY22,2024-01-19,2024-01-26,41.13\n33.87,2.43,D,DZ23,2024-02-01,2024-02-10,30.48\n",
+      "data_dictionary.csv": "file,column,description,unit\nfacts.csv,x,\"Primary measurement\",unit\nfacts.csv,w,\"Observation weight\",unitless\nfacts.csv,grp,\"Segment\",\nfacts.csv,label,\"Record label\",\nfacts.csv,start,\"Start date\",\nfacts.csv,end,\"End date\",\nfacts.csv,y,\"Secondary measurement\",unit\n"
+    },
+    "answer": 19.195074964402377,
+    "tol": 0.015,
+    "type": "table.ood_share"
+  },
+  {
+    "id": "o1_059",
+    "objective": "What is the sample covariance between the primary measurement and the secondary measurement in facts.csv? Round to 2 decimals.",
+    "files": {
+      "facts.csv": "x,w,grp,label,start,end,y\n55.69,2.79,C,AY0,2024-03-12,2024-03-19,37.38\n51.84,1.39,C,CY1,2024-02-14,2024-03-04,51.32\n57.34,3.83,D,CY2,2024-02-21,2024-02-24,38.51\n35.46,1.91,A,CY3,2024-01-18,2024-02-02,30.4\n47.97,2.29,B,AY4,2024-02-10,2024-02-24,37.93\n26.47,3.26,A,AY5,2024-02-02,2024-02-08,23.8\n51.15,3.51,B,AX6,2024-01-17,2024-02-13,47.2\n46.69,2.73,D,BX7,2024-02-11,2024-02-19,38.56\n44.26,1.17,C,BX8,2024-04-07,2024-04-23,37.51\n43.56,1.46,C,AX9,2024-02-15,2024-02-20,38.64\n59.94,1.09,C,DZ10,2024-01-29,2024-02-11,48.98\n48.07,2.14,A,AY11,2024-01-24,2024-02-04,36.5\n53.86,3.04,C,AX12,2024-02-03,2024-02-13,35.98\n41.92,1.02,B,BX13,2024-02-12,2024-02-25,33.48\n47.08,1.72,B,BX14,2024-04-01,2024-04-16,30.81\n46.02,3.44,B,CY15,2024-04-09,2024-05-02,39.58\n62.22,2.12,C,DZ16,2024-03-24,2024-04-17,58.53\n56.81,3.57,D,CY17,2024-04-06,2024-04-17,41.09\n40.62,1.73,D,BX18,2024-02-14,2024-02-28,36.53\n73.26,1.54,A,BX19,2024-02-16,2024-02-27,48.79\n45.91,3.65,A,DZ20,2024-01-21,2024-01-23,32.58\n67.55,3.34,B,AX21,2024-02-25,2024-02-27,39.89\n56.34,3.97,B,CY22,2024-01-19,2024-01-26,41.13\n33.87,2.43,D,DZ23,2024-02-01,2024-02-10,30.48\n",
+      "data_dictionary.csv": "file,column,description,unit\nfacts.csv,x,\"Primary measurement\",unit\nfacts.csv,w,\"Observation weight\",unitless\nfacts.csv,grp,\"Segment\",\nfacts.csv,label,\"Record label\",\nfacts.csv,start,\"Start date\",\nfacts.csv,end,\"End date\",\nfacts.csv,y,\"Secondary measurement\",unit\n"
+    },
+    "answer": 59.63225362318842,
+    "tol": 0.015,
+    "type": "table.ood_covariance"
+  },
+  {
+    "id": "o1_060",
+    "objective": "Join fact.csv and dim.csv on the entity key. Compute numerator measure divided by denominator measure for each joined row belonging to a region 'North'. What is the mean of these ratios? Round to 2 decimals.",
+    "files": {
+      "fact.csv": "k,num\nK05,51.91\nK07,43.36\nK05,14.27\nK09,46.35\nK11,28.43\nK07,29.74\nK03,34.32\nK06,49.6\nK13,82.55\nK11,41.19\nK00,56.83\nK12,70.58\nK09,106.57\nK06,65.17\nK13,57.91\nK12,64.46\nK11,21.56\nK11,94.75\nK02,47.88\nK09,93.34\nK09,81.36\nK04,64.0\nK04,54.47\nK03,24.16\nK08,58.2\nK00,10.89\nK10,32.02\nK08,97.06\nK02,84.95\nK09,109.65\nK01,36.26\nK02,18.22\nK06,37.47\nK00,31.62\nK10,76.07\nK11,81.61\n",
+      "dim.csv": "k,den,grp\nK00,7.12,North\nK01,8.87,South\nK02,8.31,North\nK03,4.34,South\nK04,5.5,South\nK05,5.94,North\nK06,6.99,North\nK07,4.9,North\nK08,8.51,South\nK09,9.93,South\nK10,3.62,North\nK11,2.27,South\nK12,7.39,North\nK13,8.39,South\n",
+      "data_dictionary.csv": "file,column,description,unit\nfact.csv,k,\"Entity key\",\nfact.csv,num,\"Numerator measure\",unit\ndim.csv,k,\"Entity key\",\ndim.csv,den,\"Denominator measure\",unit\ndim.csv,grp,\"Region\",\n"
+    },
+    "answer": 7.535356919265869,
+    "tol": 0.015,
+    "type": "table.ood_join_derive"
+  },
+  {
+    "id": "o1_061",
+    "objective": "What is the interquartile range (75th percentile minus 25th percentile) of the primary measurement over all records in facts.csv? Round to 2 decimals.",
+    "files": {
+      "facts.csv": "x,w,grp,label,start,end,y\n58.49,2.55,C,DZ0,2024-03-26,2024-04-06,44.71\n56.8,0.77,A,AY1,2024-03-17,2024-03-20,46.95\n66.84,1.6,D,AY2,2024-03-02,2024-03-03,48.29\n40.28,0.9,B,DZ3,2024-04-05,2024-04-11,26.98\n40.66,0.6,B,BX4,2024-03-04,2024-03-18,33.54\n32.71,0.79,B,DZ5,2024-02-07,2024-02-10,19.79\n60.08,1.59,A,DZ6,2024-01-19,2024-02-03,54.87\n50.61,2.43,D,BX7,2024-01-05,2024-02-03,46.22\n40.61,2.56,C,CY8,2024-02-27,2024-03-02,40.83\n62.08,3.62,B,AX9,2024-02-27,2024-03-15,64.6\n12.4,1.54,D,AX10,2024-01-15,2024-01-26,8.37\n41.25,2.8,A,BX11,2024-03-20,2024-03-22,39.97\n45.25,1.09,C,DZ12,2024-03-05,2024-03-15,34.54\n62.43,3.85,A,BX13,2024-03-31,2024-04-03,52.68\n49.91,1.46,D,BX14,2024-03-19,2024-03-20,27.07\n52.52,1.15,C,AX15,2024-02-01,2024-02-23,39.19\n62.69,3.57,B,AX16,2024-02-13,2024-02-23,45.1\n28.55,2.38,A,BX17,2024-02-13,2024-03-04,22.71\n51.92,1.03,A,AY18,2024-02-03,2024-02-28,42.26\n66.65,1.65,D,CY19,2024-02-08,2024-03-07,50.17\n59.77,1.91,C,AX20,2024-01-25,2024-02-08,46.21\n52.5,3.19,C,CY21,2024-03-02,2024-03-04,41.92\n60.42,2.01,A,DZ22,2024-02-01,2024-02-05,37.26\n73.45,1.43,D,AX23,2024-04-08,2024-04-25,46.28\n",
+      "data_dictionary.csv": "file,column,description,unit\nfacts.csv,x,\"Primary measurement\",unit\nfacts.csv,w,\"Observation weight\",unitless\nfacts.csv,grp,\"Segment\",\nfacts.csv,label,\"Record label\",\nfacts.csv,start,\"Start date\",\nfacts.csv,end,\"End date\",\nfacts.csv,y,\"Secondary measurement\",unit\n"
+    },
+    "answer": 19.7325,
+    "tol": 0.015,
+    "type": "table.ood_iqr"
+  },
+  {
+    "id": "o1_062",
+    "objective": "Using facts.csv and its data dictionary, compute the weighted mean of the primary measurement, using observation weight as the weight. Ignore rows missing either value. Report it with 2 decimals.",
+    "files": {
+      "facts.csv": "x,w,grp,label,start,end,y\n58.49,2.55,C,DZ0,2024-03-26,2024-04-06,44.71\n56.8,0.77,A,AY1,2024-03-17,2024-03-20,46.95\n66.84,1.6,D,AY2,2024-03-02,2024-03-03,48.29\n40.28,0.9,B,DZ3,2024-04-05,2024-04-11,26.98\n40.66,0.6,B,BX4,2024-03-04,2024-03-18,33.54\n32.71,0.79,B,DZ5,2024-02-07,2024-02-10,19.79\n60.08,1.59,A,DZ6,2024-01-19,2024-02-03,54.87\n50.61,2.43,D,BX7,2024-01-05,2024-02-03,46.22\n40.61,2.56,C,CY8,2024-02-27,2024-03-02,40.83\n62.08,3.62,B,AX9,2024-02-27,2024-03-15,64.6\n12.4,1.54,D,AX10,2024-01-15,2024-01-26,8.37\n41.25,2.8,A,BX11,2024-03-20,2024-03-22,39.97\n45.25,1.09,C,DZ12,2024-03-05,2024-03-15,34.54\n62.43,3.85,A,BX13,2024-03-31,2024-04-03,52.68\n49.91,1.46,D,BX14,2024-03-19,2024-03-20,27.07\n52.52,1.15,C,AX15,2024-02-01,2024-02-23,39.19\n62.69,3.57,B,AX16,2024-02-13,2024-02-23,45.1\n28.55,2.38,A,BX17,2024-02-13,2024-03-04,22.71\n51.92,1.03,A,AY18,2024-02-03,2024-02-28,42.26\n66.65,1.65,D,CY19,2024-02-08,2024-03-07,50.17\n59.77,1.91,C,AX20,2024-01-25,2024-02-08,46.21\n52.5,3.19,C,CY21,2024-03-02,2024-03-04,41.92\n60.42,2.01,A,DZ22,2024-02-01,2024-02-05,37.26\n73.45,1.43,D,AX23,2024-04-08,2024-04-25,46.28\n",
+      "data_dictionary.csv": "file,column,description,unit\nfacts.csv,x,\"Primary measurement\",unit\nfacts.csv,w,\"Observation weight\",unitless\nfacts.csv,grp,\"Segment\",\nfacts.csv,label,\"Record label\",\nfacts.csv,start,\"Start date\",\nfacts.csv,end,\"End date\",\nfacts.csv,y,\"Secondary measurement\",unit\n"
+    },
+    "answer": 52.816343877770606,
+    "tol": 0.015,
+    "type": "table.ood_weighted_mean"
+  },
+  {
+    "id": "o1_063",
+    "objective": "What is the mean primary measurement for segment 'A' minus the mean primary measurement for segment 'B' in facts.csv? Round to 2 decimals.",
+    "files": {
+      "facts.csv": "x,w,grp,label,start,end,y\n58.49,2.55,C,DZ0,2024-03-26,2024-04-06,44.71\n56.8,0.77,A,AY1,2024-03-17,2024-03-20,46.95\n66.84,1.6,D,AY2,2024-03-02,2024-03-03,48.29\n40.28,0.9,B,DZ3,2024-04-05,2024-04-11,26.98\n40.66,0.6,B,BX4,2024-03-04,2024-03-18,33.54\n32.71,0.79,B,DZ5,2024-02-07,2024-02-10,19.79\n60.08,1.59,A,DZ6,2024-01-19,2024-02-03,54.87\n50.61,2.43,D,BX7,2024-01-05,2024-02-03,46.22\n40.61,2.56,C,CY8,2024-02-27,2024-03-02,40.83\n62.08,3.62,B,AX9,2024-02-27,2024-03-15,64.6\n12.4,1.54,D,AX10,2024-01-15,2024-01-26,8.37\n41.25,2.8,A,BX11,2024-03-20,2024-03-22,39.97\n45.25,1.09,C,DZ12,2024-03-05,2024-03-15,34.54\n62.43,3.85,A,BX13,2024-03-31,2024-04-03,52.68\n49.91,1.46,D,BX14,2024-03-19,2024-03-20,27.07\n52.52,1.15,C,AX15,2024-02-01,2024-02-23,39.19\n62.69,3.57,B,AX16,2024-02-13,2024-02-23,45.1\n28.55,2.38,A,BX17,2024-02-13,2024-03-04,22.71\n51.92,1.03,A,AY18,2024-02-03,2024-02-28,42.26\n66.65,1.65,D,CY19,2024-02-08,2024-03-07,50.17\n59.77,1.91,C,AX20,2024-01-25,2024-02-08,46.21\n52.5,3.19,C,CY21,2024-03-02,2024-03-04,41.92\n60.42,2.01,A,DZ22,2024-02-01,2024-02-05,37.26\n73.45,1.43,D,AX23,2024-04-08,2024-04-25,46.28\n",
+      "data_dictionary.csv": "file,column,description,unit\nfacts.csv,x,\"Primary measurement\",unit\nfacts.csv,w,\"Observation weight\",unitless\nfacts.csv,grp,\"Segment\",\nfacts.csv,label,\"Record label\",\nfacts.csv,start,\"Start date\",\nfacts.csv,end,\"End date\",\nfacts.csv,y,\"Secondary measurement\",unit\n"
+    },
+    "answer": 3.9517142857142886,
+    "tol": 0.015,
+    "type": "table.ood_group_diff"
+  },
+  {
+    "id": "o1_064",
+    "objective": "What is the mean primary measurement for records whose segment is either 'A' or 'C' in facts.csv? Round to 2 decimals.",
+    "files": {
+      "facts.csv": "x,w,grp,label,start,end,y\n58.49,2.55,C,DZ0,2024-03-26,2024-04-06,44.71\n56.8,0.77,A,AY1,2024-03-17,2024-03-20,46.95\n66.84,1.6,D,AY2,2024-03-02,2024-03-03,48.29\n40.28,0.9,B,DZ3,2024-04-05,2024-04-11,26.98\n40.66,0.6,B,BX4,2024-03-04,2024-03-18,33.54\n32.71,0.79,B,DZ5,2024-02-07,2024-02-10,19.79\n60.08,1.59,A,DZ6,2024-01-19,2024-02-03,54.87\n50.61,2.43,D,BX7,2024-01-05,2024-02-03,46.22\n40.61,2.56,C,CY8,2024-02-27,2024-03-02,40.83\n62.08,3.62,B,AX9,2024-02-27,2024-03-15,64.6\n12.4,1.54,D,AX10,2024-01-15,2024-01-26,8.37\n41.25,2.8,A,BX11,2024-03-20,2024-03-22,39.97\n45.25,1.09,C,DZ12,2024-03-05,2024-03-15,34.54\n62.43,3.85,A,BX13,2024-03-31,2024-04-03,52.68\n49.91,1.46,D,BX14,2024-03-19,2024-03-20,27.07\n52.52,1.15,C,AX15,2024-02-01,2024-02-23,39.19\n62.69,3.57,B,AX16,2024-02-13,2024-02-23,45.1\n28.55,2.38,A,BX17,2024-02-13,2024-03-04,22.71\n51.92,1.03,A,AY18,2024-02-03,2024-02-28,42.26\n66.65,1.65,D,CY19,2024-02-08,2024-03-07,50.17\n59.77,1.91,C,AX20,2024-01-25,2024-02-08,46.21\n52.5,3.19,C,CY21,2024-03-02,2024-03-04,41.92\n60.42,2.01,A,DZ22,2024-02-01,2024-02-05,37.26\n73.45,1.43,D,AX23,2024-04-08,2024-04-25,46.28\n",
+      "data_dictionary.csv": "file,column,description,unit\nfacts.csv,x,\"Primary measurement\",unit\nfacts.csv,w,\"Observation weight\",unitless\nfacts.csv,grp,\"Segment\",\nfacts.csv,label,\"Record label\",\nfacts.csv,start,\"Start date\",\nfacts.csv,end,\"End date\",\nfacts.csv,y,\"Secondary measurement\",unit\n"
+    },
+    "answer": 51.583846153846146,
+    "tol": 0.015,
+    "type": "table.ood_membership"
+  },
+  {
+    "id": "o1_065",
+    "objective": "How many records in facts.csv have a record label that starts with 'A'? Give a whole number.",
+    "files": {
+      "facts.csv": "x,w,grp,label,start,end,y\n58.49,2.55,C,DZ0,2024-03-26,2024-04-06,44.71\n56.8,0.77,A,AY1,2024-03-17,2024-03-20,46.95\n66.84,1.6,D,AY2,2024-03-02,2024-03-03,48.29\n40.28,0.9,B,DZ3,2024-04-05,2024-04-11,26.98\n40.66,0.6,B,BX4,2024-03-04,2024-03-18,33.54\n32.71,0.79,B,DZ5,2024-02-07,2024-02-10,19.79\n60.08,1.59,A,DZ6,2024-01-19,2024-02-03,54.87\n50.61,2.43,D,BX7,2024-01-05,2024-02-03,46.22\n40.61,2.56,C,CY8,2024-02-27,2024-03-02,40.83\n62.08,3.62,B,AX9,2024-02-27,2024-03-15,64.6\n12.4,1.54,D,AX10,2024-01-15,2024-01-26,8.37\n41.25,2.8,A,BX11,2024-03-20,2024-03-22,39.97\n45.25,1.09,C,DZ12,2024-03-05,2024-03-15,34.54\n62.43,3.85,A,BX13,2024-03-31,2024-04-03,52.68\n49.91,1.46,D,BX14,2024-03-19,2024-03-20,27.07\n52.52,1.15,C,AX15,2024-02-01,2024-02-23,39.19\n62.69,3.57,B,AX16,2024-02-13,2024-02-23,45.1\n28.55,2.38,A,BX17,2024-02-13,2024-03-04,22.71\n51.92,1.03,A,AY18,2024-02-03,2024-02-28,42.26\n66.65,1.65,D,CY19,2024-02-08,2024-03-07,50.17\n59.77,1.91,C,AX20,2024-01-25,2024-02-08,46.21\n52.5,3.19,C,CY21,2024-03-02,2024-03-04,41.92\n60.42,2.01,A,DZ22,2024-02-01,2024-02-05,37.26\n73.45,1.43,D,AX23,2024-04-08,2024-04-25,46.28\n",
+      "data_dictionary.csv": "file,column,description,unit\nfacts.csv,x,\"Primary measurement\",unit\nfacts.csv,w,\"Observation weight\",unitless\nfacts.csv,grp,\"Segment\",\nfacts.csv,label,\"Record label\",\nfacts.csv,start,\"Start date\",\nfacts.csv,end,\"End date\",\nfacts.csv,y,\"Secondary measurement\",unit\n"
+    },
+    "answer": 9.0,
+    "tol": 1e-06,
+    "type": "table.ood_string"
+  },
+  {
+    "id": "o1_066",
+    "objective": "For each row of facts.csv, compute the number of days from the start date to the end date. What is the mean duration? Round to 2 decimals.",
+    "files": {
+      "facts.csv": "x,w,grp,label,start,end,y\n58.49,2.55,C,DZ0,2024-03-26,2024-04-06,44.71\n56.8,0.77,A,AY1,2024-03-17,2024-03-20,46.95\n66.84,1.6,D,AY2,2024-03-02,2024-03-03,48.29\n40.28,0.9,B,DZ3,2024-04-05,2024-04-11,26.98\n40.66,0.6,B,BX4,2024-03-04,2024-03-18,33.54\n32.71,0.79,B,DZ5,2024-02-07,2024-02-10,19.79\n60.08,1.59,A,DZ6,2024-01-19,2024-02-03,54.87\n50.61,2.43,D,BX7,2024-01-05,2024-02-03,46.22\n40.61,2.56,C,CY8,2024-02-27,2024-03-02,40.83\n62.08,3.62,B,AX9,2024-02-27,2024-03-15,64.6\n12.4,1.54,D,AX10,2024-01-15,2024-01-26,8.37\n41.25,2.8,A,BX11,2024-03-20,2024-03-22,39.97\n45.25,1.09,C,DZ12,2024-03-05,2024-03-15,34.54\n62.43,3.85,A,BX13,2024-03-31,2024-04-03,52.68\n49.91,1.46,D,BX14,2024-03-19,2024-03-20,27.07\n52.52,1.15,C,AX15,2024-02-01,2024-02-23,39.19\n62.69,3.57,B,AX16,2024-02-13,2024-02-23,45.1\n28.55,2.38,A,BX17,2024-02-13,2024-03-04,22.71\n51.92,1.03,A,AY18,2024-02-03,2024-02-28,42.26\n66.65,1.65,D,CY19,2024-02-08,2024-03-07,50.17\n59.77,1.91,C,AX20,2024-01-25,2024-02-08,46.21\n52.5,3.19,C,CY21,2024-03-02,2024-03-04,41.92\n60.42,2.01,A,DZ22,2024-02-01,2024-02-05,37.26\n73.45,1.43,D,AX23,2024-04-08,2024-04-25,46.28\n",
+      "data_dictionary.csv": "file,column,description,unit\nfacts.csv,x,\"Primary measurement\",unit\nfacts.csv,w,\"Observation weight\",unitless\nfacts.csv,grp,\"Segment\",\nfacts.csv,label,\"Record label\",\nfacts.csv,start,\"Start date\",\nfacts.csv,end,\"End date\",\nfacts.csv,y,\"Secondary measurement\",unit\n"
+    },
+    "answer": 11.333333333333334,
+    "tol": 0.015,
+    "type": "table.ood_date_delta"
+  },
+  {
+    "id": "o1_067",
+    "objective": "What is the mean of the 3 largest distinct primary measurement values in facts.csv? Round to 2 decimals.",
+    "files": {
+      "facts.csv": "x,w,grp,label,start,end,y\n58.49,2.55,C,DZ0,2024-03-26,2024-04-06,44.71\n56.8,0.77,A,AY1,2024-03-17,2024-03-20,46.95\n66.84,1.6,D,AY2,2024-03-02,2024-03-03,48.29\n40.28,0.9,B,DZ3,2024-04-05,2024-04-11,26.98\n40.66,0.6,B,BX4,2024-03-04,2024-03-18,33.54\n32.71,0.79,B,DZ5,2024-02-07,2024-02-10,19.79\n60.08,1.59,A,DZ6,2024-01-19,2024-02-03,54.87\n50.61,2.43,D,BX7,2024-01-05,2024-02-03,46.22\n40.61,2.56,C,CY8,2024-02-27,2024-03-02,40.83\n62.08,3.62,B,AX9,2024-02-27,2024-03-15,64.6\n12.4,1.54,D,AX10,2024-01-15,2024-01-26,8.37\n41.25,2.8,A,BX11,2024-03-20,2024-03-22,39.97\n45.25,1.09,C,DZ12,2024-03-05,2024-03-15,34.54\n62.43,3.85,A,BX13,2024-03-31,2024-04-03,52.68\n49.91,1.46,D,BX14,2024-03-19,2024-03-20,27.07\n52.52,1.15,C,AX15,2024-02-01,2024-02-23,39.19\n62.69,3.57,B,AX16,2024-02-13,2024-02-23,45.1\n28.55,2.38,A,BX17,2024-02-13,2024-03-04,22.71\n51.92,1.03,A,AY18,2024-02-03,2024-02-28,42.26\n66.65,1.65,D,CY19,2024-02-08,2024-03-07,50.17\n59.77,1.91,C,AX20,2024-01-25,2024-02-08,46.21\n52.5,3.19,C,CY21,2024-03-02,2024-03-04,41.92\n60.42,2.01,A,DZ22,2024-02-01,2024-02-05,37.26\n73.45,1.43,D,AX23,2024-04-08,2024-04-25,46.28\n",
+      "data_dictionary.csv": "file,column,description,unit\nfacts.csv,x,\"Primary measurement\",unit\nfacts.csv,w,\"Observation weight\",unitless\nfacts.csv,grp,\"Segment\",\nfacts.csv,label,\"Record label\",\nfacts.csv,start,\"Start date\",\nfacts.csv,end,\"End date\",\nfacts.csv,y,\"Secondary measurement\",unit\n"
+    },
+    "answer": 68.98,
+    "tol": 0.015,
+    "type": "table.ood_topk"
+  },
+  {
+    "id": "o1_068",
+    "objective": "What percentage of the total primary measurement is contributed by segment 'A' in facts.csv? Round to 2 decimals.",
+    "files": {
+      "facts.csv": "x,w,grp,label,start,end,y\n58.49,2.55,C,DZ0,2024-03-26,2024-04-06,44.71\n56.8,0.77,A,AY1,2024-03-17,2024-03-20,46.95\n66.84,1.6,D,AY2,2024-03-02,2024-03-03,48.29\n40.28,0.9,B,DZ3,2024-04-05,2024-04-11,26.98\n40.66,0.6,B,BX4,2024-03-04,2024-03-18,33.54\n32.71,0.79,B,DZ5,2024-02-07,2024-02-10,19.79\n60.08,1.59,A,DZ6,2024-01-19,2024-02-03,54.87\n50.61,2.43,D,BX7,2024-01-05,2024-02-03,46.22\n40.61,2.56,C,CY8,2024-02-27,2024-03-02,40.83\n62.08,3.62,B,AX9,2024-02-27,2024-03-15,64.6\n12.4,1.54,D,AX10,2024-01-15,2024-01-26,8.37\n41.25,2.8,A,BX11,2024-03-20,2024-03-22,39.97\n45.25,1.09,C,DZ12,2024-03-05,2024-03-15,34.54\n62.43,3.85,A,BX13,2024-03-31,2024-04-03,52.68\n49.91,1.46,D,BX14,2024-03-19,2024-03-20,27.07\n52.52,1.15,C,AX15,2024-02-01,2024-02-23,39.19\n62.69,3.57,B,AX16,2024-02-13,2024-02-23,45.1\n28.55,2.38,A,BX17,2024-02-13,2024-03-04,22.71\n51.92,1.03,A,AY18,2024-02-03,2024-02-28,42.26\n66.65,1.65,D,CY19,2024-02-08,2024-03-07,50.17\n59.77,1.91,C,AX20,2024-01-25,2024-02-08,46.21\n52.5,3.19,C,CY21,2024-03-02,2024-03-04,41.92\n60.42,2.01,A,DZ22,2024-02-01,2024-02-05,37.26\n73.45,1.43,D,AX23,2024-04-08,2024-04-25,46.28\n",
+      "data_dictionary.csv": "file,column,description,unit\nfacts.csv,x,\"Primary measurement\",unit\nfacts.csv,w,\"Observation weight\",unitless\nfacts.csv,grp,\"Segment\",\nfacts.csv,label,\"Record label\",\nfacts.csv,start,\"Start date\",\nfacts.csv,end,\"End date\",\nfacts.csv,y,\"Secondary measurement\",unit\n"
+    },
+    "answer": 29.413200745400253,
+    "tol": 0.015,
+    "type": "table.ood_share"
+  },
+  {
+    "id": "o1_069",
+    "objective": "What is the sample covariance between the primary measurement and the secondary measurement in facts.csv? Round to 2 decimals.",
+    "files": {
+      "facts.csv": "x,w,grp,label,start,end,y\n58.49,2.55,C,DZ0,2024-03-26,2024-04-06,44.71\n56.8,0.77,A,AY1,2024-03-17,2024-03-20,46.95\n66.84,1.6,D,AY2,2024-03-02,2024-03-03,48.29\n40.28,0.9,B,DZ3,2024-04-05,2024-04-11,26.98\n40.66,0.6,B,BX4,2024-03-04,2024-03-18,33.54\n32.71,0.79,B,DZ5,2024-02-07,2024-02-10,19.79\n60.08,1.59,A,DZ6,2024-01-19,2024-02-03,54.87\n50.61,2.43,D,BX7,2024-01-05,2024-02-03,46.22\n40.61,2.56,C,CY8,2024-02-27,2024-03-02,40.83\n62.08,3.62,B,AX9,2024-02-27,2024-03-15,64.6\n12.4,1.54,D,AX10,2024-01-15,2024-01-26,8.37\n41.25,2.8,A,BX11,2024-03-20,2024-03-22,39.97\n45.25,1.09,C,DZ12,2024-03-05,2024-03-15,34.54\n62.43,3.85,A,BX13,2024-03-31,2024-04-03,52.68\n49.91,1.46,D,BX14,2024-03-19,2024-03-20,27.07\n52.52,1.15,C,AX15,2024-02-01,2024-02-23,39.19\n62.69,3.57,B,AX16,2024-02-13,2024-02-23,45.1\n28.55,2.38,A,BX17,2024-02-13,2024-03-04,22.71\n51.92,1.03,A,AY18,2024-02-03,2024-02-28,42.26\n66.65,1.65,D,CY19,2024-02-08,2024-03-07,50.17\n59.77,1.91,C,AX20,2024-01-25,2024-02-08,46.21\n52.5,3.19,C,CY21,2024-03-02,2024-03-04,41.92\n60.42,2.01,A,DZ22,2024-02-01,2024-02-05,37.26\n73.45,1.43,D,AX23,2024-04-08,2024-04-25,46.28\n",
+      "data_dictionary.csv": "file,column,description,unit\nfacts.csv,x,\"Primary measurement\",unit\nfacts.csv,w,\"Observation weight\",unitless\nfacts.csv,grp,\"Segment\",\nfacts.csv,label,\"Record label\",\nfacts.csv,start,\"Start date\",\nfacts.csv,end,\"End date\",\nfacts.csv,y,\"Secondary measurement\",unit\n"
+    },
+    "answer": 146.5775788043478,
+    "tol": 0.015,
+    "type": "table.ood_covariance"
+  },
+  {
+    "id": "o1_070",
+    "objective": "Join fact.csv and dim.csv on the entity key. Compute numerator measure divided by denominator measure for each joined row belonging to a region 'North'. What is the mean of these ratios? Round to 2 decimals.",
+    "files": {
+      "fact.csv": "k,num\nK13,81.9\nK00,12.18\nK05,77.84\nK00,44.5\nK09,57.52\nK06,78.65\nK06,36.28\nK03,23.2\nK03,53.94\nK03,11.91\nK11,111.36\nK10,43.04\nK04,103.22\nK13,71.1\nK00,100.91\nK06,95.29\nK01,50.19\nK03,68.19\nK10,84.41\nK04,50.39\nK10,110.4\nK12,40.82\nK06,106.2\nK09,79.61\nK01,80.01\nK10,101.6\nK04,97.18\nK02,77.48\nK07,34.19\nK10,42.5\nK13,71.69\nK08,21.5\nK03,35.13\nK05,82.29\nK11,32.81\nK12,104.57\n",
+      "dim.csv": "k,den,grp\nK00,8.27,South\nK01,2.34,South\nK02,3.3,North\nK03,2.9,North\nK04,3.93,South\nK05,4.46,South\nK06,4.2,South\nK07,10.76,North\nK08,3.85,South\nK09,2.96,North\nK10,2.67,South\nK11,2.94,South\nK12,10.15,South\nK13,10.3,South\n",
+      "data_dictionary.csv": "file,column,description,unit\nfact.csv,k,\"Entity key\",\nfact.csv,num,\"Numerator measure\",unit\ndim.csv,k,\"Entity key\",\ndim.csv,den,\"Denominator measure\",unit\ndim.csv,grp,\"Region\",\n"
+    },
+    "answer": 15.47983140375462,
+    "tol": 0.015,
+    "type": "table.ood_join_derive"
+  },
+  {
+    "id": "o1_071",
+    "objective": "What is the interquartile range (75th percentile minus 25th percentile) of the primary measurement over all records in facts.csv? Round to 2 decimals.",
+    "files": {
+      "facts.csv": "x,w,grp,label,start,end,y\n45.71,1.4,A,DZ0,2024-01-29,2024-02-02,34.57\n25.49,1.71,A,AX1,2024-01-17,2024-02-11,23.09\n60.63,2.37,C,AX2,2024-04-02,2024-04-29,40.02\n45.09,2.78,C,DZ3,2024-01-16,2024-01-17,27.1\n62.62,3.84,B,AY4,2024-02-24,2024-02-25,43.98\n72.78,2.07,C,CY5,2024-02-27,2024-03-13,50.5\n63.28,2.62,D,CY6,2024-03-14,2024-03-15,46.48\n67.09,1.34,D,BX7,2024-04-01,2024-04-12,52.9\n45.7,1.26,C,BX8,2024-02-09,2024-03-08,35.81\n63.44,1.4,C,CY9,2024-02-23,2024-03-18,45.91\n45.96,2.67,A,AY10,2024-01-01,2024-01-20,41.62\n58.22,2.01,A,DZ11,2024-01-07,2024-01-23,55.58\n45.61,3.57,C,AX12,2024-03-15,2024-04-03,31.74\n52.13,0.91,C,CY13,2024-03-25,2024-04-08,39.06\n72.49,1.98,B,BX14,2024-01-08,2024-01-16,46.17\n34.59,3.8,A,AY15,2024-03-11,2024-03-26,32.5\n48.95,1.89,C,DZ16,2024-03-01,2024-03-04,34.61\n61.53,2.4,A,AX17,2024-02-24,2024-03-01,40.31\n52.02,1.13,A,DZ18,2024-03-07,2024-03-10,37.29\n49.11,3.62,C,CY19,2024-04-01,2024-04-25,38.47\n50.78,3.04,C,AX20,2024-02-02,2024-02-22,32.03\n48.21,0.68,A,AY21,2024-01-09,2024-02-04,29.92\n82.3,2.7,A,DZ22,2024-02-28,2024-03-04,58.69\n35.2,3.31,C,CY23,2024-02-17,2024-02-22,34.19\n",
+      "data_dictionary.csv": "file,column,description,unit\nfacts.csv,x,\"Primary measurement\",unit\nfacts.csv,w,\"Observation weight\",unitless\nfacts.csv,grp,\"Segment\",\nfacts.csv,label,\"Record label\",\nfacts.csv,start,\"Start date\",\nfacts.csv,end,\"End date\",\nfacts.csv,y,\"Secondary measurement\",unit\n"
+    },
+    "answer": 17.077499999999993,
+    "tol": 0.015,
+    "type": "table.ood_iqr"
+  },
+  {
+    "id": "o1_072",
+    "objective": "Using facts.csv and its data dictionary, compute the weighted mean of the primary measurement, using observation weight as the weight. Ignore rows missing either value. Report it with 2 decimals.",
+    "files": {
+      "facts.csv": "x,w,grp,label,start,end,y\n45.71,1.4,A,DZ0,2024-01-29,2024-02-02,34.57\n25.49,1.71,A,AX1,2024-01-17,2024-02-11,23.09\n60.63,2.37,C,AX2,2024-04-02,2024-04-29,40.02\n45.09,2.78,C,DZ3,2024-01-16,2024-01-17,27.1\n62.62,3.84,B,AY4,2024-02-24,2024-02-25,43.98\n72.78,2.07,C,CY5,2024-02-27,2024-03-13,50.5\n63.28,2.62,D,CY6,2024-03-14,2024-03-15,46.48\n67.09,1.34,D,BX7,2024-04-01,2024-04-12,52.9\n45.7,1.26,C,BX8,2024-02-09,2024-03-08,35.81\n63.44,1.4,C,CY9,2024-02-23,2024-03-18,45.91\n45.96,2.67,A,AY10,2024-01-01,2024-01-20,41.62\n58.22,2.01,A,DZ11,2024-01-07,2024-01-23,55.58\n45.61,3.57,C,AX12,2024-03-15,2024-04-03,31.74\n52.13,0.91,C,CY13,2024-03-25,2024-04-08,39.06\n72.49,1.98,B,BX14,2024-01-08,2024-01-16,46.17\n34.59,3.8,A,AY15,2024-03-11,2024-03-26,32.5\n48.95,1.89,C,DZ16,2024-03-01,2024-03-04,34.61\n61.53,2.4,A,AX17,2024-02-24,2024-03-01,40.31\n52.02,1.13,A,DZ18,2024-03-07,2024-03-10,37.29\n49.11,3.62,C,CY19,2024-04-01,2024-04-25,38.47\n50.78,3.04,C,AX20,2024-02-02,2024-02-22,32.03\n48.21,0.68,A,AY21,2024-01-09,2024-02-04,29.92\n82.3,2.7,A,DZ22,2024-02-28,2024-03-04,58.69\n35.2,3.31,C,CY23,2024-02-17,2024-02-22,34.19\n",
+      "data_dictionary.csv": "file,column,description,unit\nfacts.csv,x,\"Primary measurement\",unit\nfacts.csv,w,\"Observation weight\",unitless\nfacts.csv,grp,\"Segment\",\nfacts.csv,label,\"Record label\",\nfacts.csv,start,\"Start date\",\nfacts.csv,end,\"End date\",\nfacts.csv,y,\"Secondary measurement\",unit\n"
+    },
+    "answer": 53.16386605504587,
+    "tol": 0.015,
+    "type": "table.ood_weighted_mean"
+  },
+  {
+    "id": "o1_073",
+    "objective": "What is the mean primary measurement for segment 'A' minus the mean primary measurement for segment 'B' in facts.csv? Round to 2 decimals.",
+    "files": {
+      "facts.csv": "x,w,grp,label,start,end,y\n45.71,1.4,A,DZ0,2024-01-29,2024-02-02,34.57\n25.49,1.71,A,AX1,2024-01-17,2024-02-11,23.09\n60.63,2.37,C,AX2,2024-04-02,2024-04-29,40.02\n45.09,2.78,C,DZ3,2024-01-16,2024-01-17,27.1\n62.62,3.84,B,AY4,2024-02-24,2024-02-25,43.98\n72.78,2.07,C,CY5,2024-02-27,2024-03-13,50.5\n63.28,2.62,D,CY6,2024-03-14,2024-03-15,46.48\n67.09,1.34,D,BX7,2024-04-01,2024-04-12,52.9\n45.7,1.26,C,BX8,2024-02-09,2024-03-08,35.81\n63.44,1.4,C,CY9,2024-02-23,2024-03-18,45.91\n45.96,2.67,A,AY10,2024-01-01,2024-01-20,41.62\n58.22,2.01,A,DZ11,2024-01-07,2024-01-23,55.58\n45.61,3.57,C,AX12,2024-03-15,2024-04-03,31.74\n52.13,0.91,C,CY13,2024-03-25,2024-04-08,39.06\n72.49,1.98,B,BX14,2024-01-08,2024-01-16,46.17\n34.59,3.8,A,AY15,2024-03-11,2024-03-26,32.5\n48.95,1.89,C,DZ16,2024-03-01,2024-03-04,34.61\n61.53,2.4,A,AX17,2024-02-24,2024-03-01,40.31\n52.02,1.13,A,DZ18,2024-03-07,2024-03-10,37.29\n49.11,3.62,C,CY19,2024-04-01,2024-04-25,38.47\n50.78,3.04,C,AX20,2024-02-02,2024-02-22,32.03\n48.21,0.68,A,AY21,2024-01-09,2024-02-04,29.92\n82.3,2.7,A,DZ22,2024-02-28,2024-03-04,58.69\n35.2,3.31,C,CY23,2024-02-17,2024-02-22,34.19\n",
+      "data_dictionary.csv": "file,column,description,unit\nfacts.csv,x,\"Primary measurement\",unit\nfacts.csv,w,\"Observation weight\",unitless\nfacts.csv,grp,\"Segment\",\nfacts.csv,label,\"Record label\",\nfacts.csv,start,\"Start date\",\nfacts.csv,end,\"End date\",\nfacts.csv,y,\"Secondary measurement\",unit\n"
+    },
+    "answer": -17.107222222222212,
+    "tol": 0.015,
+    "type": "table.ood_group_diff"
+  },
+  {
+    "id": "o1_074",
+    "objective": "What is the mean primary measurement for records whose segment is either 'A' or 'C' in facts.csv? Round to 2 decimals.",
+    "files": {
+      "facts.csv": "x,w,grp,label,start,end,y\n45.71,1.4,A,DZ0,2024-01-29,2024-02-02,34.57\n25.49,1.71,A,AX1,2024-01-17,2024-02-11,23.09\n60.63,2.37,C,AX2,2024-04-02,2024-04-29,40.02\n45.09,2.78,C,DZ3,2024-01-16,2024-01-17,27.1\n62.62,3.84,B,AY4,2024-02-24,2024-02-25,43.98\n72.78,2.07,C,CY5,2024-02-27,2024-03-13,50.5\n63.28,2.62,D,CY6,2024-03-14,2024-03-15,46.48\n67.09,1.34,D,BX7,2024-04-01,2024-04-12,52.9\n45.7,1.26,C,BX8,2024-02-09,2024-03-08,35.81\n63.44,1.4,C,CY9,2024-02-23,2024-03-18,45.91\n45.96,2.67,A,AY10,2024-01-01,2024-01-20,41.62\n58.22,2.01,A,DZ11,2024-01-07,2024-01-23,55.58\n45.61,3.57,C,AX12,2024-03-15,2024-04-03,31.74\n52.13,0.91,C,CY13,2024-03-25,2024-04-08,39.06\n72.49,1.98,B,BX14,2024-01-08,2024-01-16,46.17\n34.59,3.8,A,AY15,2024-03-11,2024-03-26,32.5\n48.95,1.89,C,DZ16,2024-03-01,2024-03-04,34.61\n61.53,2.4,A,AX17,2024-02-24,2024-03-01,40.31\n52.02,1.13,A,DZ18,2024-03-07,2024-03-10,37.29\n49.11,3.62,C,CY19,2024-04-01,2024-04-25,38.47\n50.78,3.04,C,AX20,2024-02-02,2024-02-22,32.03\n48.21,0.68,A,AY21,2024-01-09,2024-02-04,29.92\n82.3,2.7,A,DZ22,2024-02-28,2024-03-04,58.69\n35.2,3.31,C,CY23,2024-02-17,2024-02-22,34.19\n",
+      "data_dictionary.csv": "file,column,description,unit\nfacts.csv,x,\"Primary measurement\",unit\nfacts.csv,w,\"Observation weight\",unitless\nfacts.csv,grp,\"Segment\",\nfacts.csv,label,\"Record label\",\nfacts.csv,start,\"Start date\",\nfacts.csv,end,\"End date\",\nfacts.csv,y,\"Secondary measurement\",unit\n"
+    },
+    "answer": 51.1725,
+    "tol": 0.015,
+    "type": "table.ood_membership"
+  },
+  {
+    "id": "o1_075",
+    "objective": "How many records in facts.csv have a record label that starts with 'A'? Give a whole number.",
+    "files": {
+      "facts.csv": "x,w,grp,label,start,end,y\n45.71,1.4,A,DZ0,2024-01-29,2024-02-02,34.57\n25.49,1.71,A,AX1,2024-01-17,2024-02-11,23.09\n60.63,2.37,C,AX2,2024-04-02,2024-04-29,40.02\n45.09,2.78,C,DZ3,2024-01-16,2024-01-17,27.1\n62.62,3.84,B,AY4,2024-02-24,2024-02-25,43.98\n72.78,2.07,C,CY5,2024-02-27,2024-03-13,50.5\n63.28,2.62,D,CY6,2024-03-14,2024-03-15,46.48\n67.09,1.34,D,BX7,2024-04-01,2024-04-12,52.9\n45.7,1.26,C,BX8,2024-02-09,2024-03-08,35.81\n63.44,1.4,C,CY9,2024-02-23,2024-03-18,45.91\n45.96,2.67,A,AY10,2024-01-01,2024-01-20,41.62\n58.22,2.01,A,DZ11,2024-01-07,2024-01-23,55.58\n45.61,3.57,C,AX12,2024-03-15,2024-04-03,31.74\n52.13,0.91,C,CY13,2024-03-25,2024-04-08,39.06\n72.49,1.98,B,BX14,2024-01-08,2024-01-16,46.17\n34.59,3.8,A,AY15,2024-03-11,2024-03-26,32.5\n48.95,1.89,C,DZ16,2024-03-01,2024-03-04,34.61\n61.53,2.4,A,AX17,2024-02-24,2024-03-01,40.31\n52.02,1.13,A,DZ18,2024-03-07,2024-03-10,37.29\n49.11,3.62,C,CY19,2024-04-01,2024-04-25,38.47\n50.78,3.04,C,AX20,2024-02-02,2024-02-22,32.03\n48.21,0.68,A,AY21,2024-01-09,2024-02-04,29.92\n82.3,2.7,A,DZ22,2024-02-28,2024-03-04,58.69\n35.2,3.31,C,CY23,2024-02-17,2024-02-22,34.19\n",
+      "data_dictionary.csv": "file,column,description,unit\nfacts.csv,x,\"Primary measurement\",unit\nfacts.csv,w,\"Observation weight\",unitless\nfacts.csv,grp,\"Segment\",\nfacts.csv,label,\"Record label\",\nfacts.csv,start,\"Start date\",\nfacts.csv,end,\"End date\",\nfacts.csv,y,\"Secondary measurement\",unit\n"
+    },
+    "answer": 9.0,
+    "tol": 1e-06,
+    "type": "table.ood_string"
+  },
+  {
+    "id": "o1_076",
+    "objective": "For each row of facts.csv, compute the number of days from the start date to the end date. What is the mean duration? Round to 2 decimals.",
+    "files": {
+      "facts.csv": "x,w,grp,label,start,end,y\n45.71,1.4,A,DZ0,2024-01-29,2024-02-02,34.57\n25.49,1.71,A,AX1,2024-01-17,2024-02-11,23.09\n60.63,2.37,C,AX2,2024-04-02,2024-04-29,40.02\n45.09,2.78,C,DZ3,2024-01-16,2024-01-17,27.1\n62.62,3.84,B,AY4,2024-02-24,2024-02-25,43.98\n72.78,2.07,C,CY5,2024-02-27,2024-03-13,50.5\n63.28,2.62,D,CY6,2024-03-14,2024-03-15,46.48\n67.09,1.34,D,BX7,2024-04-01,2024-04-12,52.9\n45.7,1.26,C,BX8,2024-02-09,2024-03-08,35.81\n63.44,1.4,C,CY9,2024-02-23,2024-03-18,45.91\n45.96,2.67,A,AY10,2024-01-01,2024-01-20,41.62\n58.22,2.01,A,DZ11,2024-01-07,2024-01-23,55.58\n45.61,3.57,C,AX12,2024-03-15,2024-04-03,31.74\n52.13,0.91,C,CY13,2024-03-25,2024-04-08,39.06\n72.49,1.98,B,BX14,2024-01-08,2024-01-16,46.17\n34.59,3.8,A,AY15,2024-03-11,2024-03-26,32.5\n48.95,1.89,C,DZ16,2024-03-01,2024-03-04,34.61\n61.53,2.4,A,AX17,2024-02-24,2024-03-01,40.31\n52.02,1.13,A,DZ18,2024-03-07,2024-03-10,37.29\n49.11,3.62,C,CY19,2024-04-01,2024-04-25,38.47\n50.78,3.04,C,AX20,2024-02-02,2024-02-22,32.03\n48.21,0.68,A,AY21,2024-01-09,2024-02-04,29.92\n82.3,2.7,A,DZ22,2024-02-28,2024-03-04,58.69\n35.2,3.31,C,CY23,2024-02-17,2024-02-22,34.19\n",
+      "data_dictionary.csv": "file,column,description,unit\nfacts.csv,x,\"Primary measurement\",unit\nfacts.csv,w,\"Observation weight\",unitless\nfacts.csv,grp,\"Segment\",\nfacts.csv,label,\"Record label\",\nfacts.csv,start,\"Start date\",\nfacts.csv,end,\"End date\",\nfacts.csv,y,\"Secondary measurement\",unit\n"
+    },
+    "answer": 13.333333333333334,
+    "tol": 0.015,
+    "type": "table.ood_date_delta"
+  },
+  {
+    "id": "o1_077",
+    "objective": "What is the mean of the 3 largest distinct primary measurement values in facts.csv? Round to 2 decimals.",
+    "files": {
+      "facts.csv": "x,w,grp,label,start,end,y\n45.71,1.4,A,DZ0,2024-01-29,2024-02-02,34.57\n25.49,1.71,A,AX1,2024-01-17,2024-02-11,23.09\n60.63,2.37,C,AX2,2024-04-02,2024-04-29,40.02\n45.09,2.78,C,DZ3,2024-01-16,2024-01-17,27.1\n62.62,3.84,B,AY4,2024-02-24,2024-02-25,43.98\n72.78,2.07,C,CY5,2024-02-27,2024-03-13,50.5\n63.28,2.62,D,CY6,2024-03-14,2024-03-15,46.48\n67.09,1.34,D,BX7,2024-04-01,2024-04-12,52.9\n45.7,1.26,C,BX8,2024-02-09,2024-03-08,35.81\n63.44,1.4,C,CY9,2024-02-23,2024-03-18,45.91\n45.96,2.67,A,AY10,2024-01-01,2024-01-20,41.62\n58.22,2.01,A,DZ11,2024-01-07,2024-01-23,55.58\n45.61,3.57,C,AX12,2024-03-15,2024-04-03,31.74\n52.13,0.91,C,CY13,2024-03-25,2024-04-08,39.06\n72.49,1.98,B,BX14,2024-01-08,2024-01-16,46.17\n34.59,3.8,A,AY15,2024-03-11,2024-03-26,32.5\n48.95,1.89,C,DZ16,2024-03-01,2024-03-04,34.61\n61.53,2.4,A,AX17,2024-02-24,2024-03-01,40.31\n52.02,1.13,A,DZ18,2024-03-07,2024-03-10,37.29\n49.11,3.62,C,CY19,2024-04-01,2024-04-25,38.47\n50.78,3.04,C,AX20,2024-02-02,2024-02-22,32.03\n48.21,0.68,A,AY21,2024-01-09,2024-02-04,29.92\n82.3,2.7,A,DZ22,2024-02-28,2024-03-04,58.69\n35.2,3.31,C,CY23,2024-02-17,2024-02-22,34.19\n",
+      "data_dictionary.csv": "file,column,description,unit\nfacts.csv,x,\"Primary measurement\",unit\nfacts.csv,w,\"Observation weight\",unitless\nfacts.csv,grp,\"Segment\",\nfacts.csv,label,\"Record label\",\nfacts.csv,start,\"Start date\",\nfacts.csv,end,\"End date\",\nfacts.csv,y,\"Secondary measurement\",unit\n"
+    },
+    "answer": 75.85666666666667,
+    "tol": 0.015,
+    "type": "table.ood_topk"
+  },
+  {
+    "id": "o1_078",
+    "objective": "What percentage of the total primary measurement is contributed by segment 'A' in facts.csv? Round to 2 decimals.",
+    "files": {
+      "facts.csv": "x,w,grp,label,start,end,y\n45.71,1.4,A,DZ0,2024-01-29,2024-02-02,34.57\n25.49,1.71,A,AX1,2024-01-17,2024-02-11,23.09\n60.63,2.37,C,AX2,2024-04-02,2024-04-29,40.02\n45.09,2.78,C,DZ3,2024-01-16,2024-01-17,27.1\n62.62,3.84,B,AY4,2024-02-24,2024-02-25,43.98\n72.78,2.07,C,CY5,2024-02-27,2024-03-13,50.5\n63.28,2.62,D,CY6,2024-03-14,2024-03-15,46.48\n67.09,1.34,D,BX7,2024-04-01,2024-04-12,52.9\n45.7,1.26,C,BX8,2024-02-09,2024-03-08,35.81\n63.44,1.4,C,CY9,2024-02-23,2024-03-18,45.91\n45.96,2.67,A,AY10,2024-01-01,2024-01-20,41.62\n58.22,2.01,A,DZ11,2024-01-07,2024-01-23,55.58\n45.61,3.57,C,AX12,2024-03-15,2024-04-03,31.74\n52.13,0.91,C,CY13,2024-03-25,2024-04-08,39.06\n72.49,1.98,B,BX14,2024-01-08,2024-01-16,46.17\n34.59,3.8,A,AY15,2024-03-11,2024-03-26,32.5\n48.95,1.89,C,DZ16,2024-03-01,2024-03-04,34.61\n61.53,2.4,A,AX17,2024-02-24,2024-03-01,40.31\n52.02,1.13,A,DZ18,2024-03-07,2024-03-10,37.29\n49.11,3.62,C,CY19,2024-04-01,2024-04-25,38.47\n50.78,3.04,C,AX20,2024-02-02,2024-02-22,32.03\n48.21,0.68,A,AY21,2024-01-09,2024-02-04,29.92\n82.3,2.7,A,DZ22,2024-02-28,2024-03-04,58.69\n35.2,3.31,C,CY23,2024-02-17,2024-02-22,34.19\n",
+      "data_dictionary.csv": "file,column,description,unit\nfacts.csv,x,\"Primary measurement\",unit\nfacts.csv,w,\"Observation weight\",unitless\nfacts.csv,grp,\"Segment\",\nfacts.csv,label,\"Record label\",\nfacts.csv,start,\"Start date\",\nfacts.csv,end,\"End date\",\nfacts.csv,y,\"Secondary measurement\",unit\n"
+    },
+    "answer": 35.225341950299864,
+    "tol": 0.015,
+    "type": "table.ood_share"
+  },
+  {
+    "id": "o1_079",
+    "objective": "What is the sample covariance between the primary measurement and the secondary measurement in facts.csv? Round to 2 decimals.",
+    "files": {
+      "facts.csv": "x,w,grp,label,start,end,y\n45.71,1.4,A,DZ0,2024-01-29,2024-02-02,34.57\n25.49,1.71,A,AX1,2024-01-17,2024-02-11,23.09\n60.63,2.37,C,AX2,2024-04-02,2024-04-29,40.02\n45.09,2.78,C,DZ3,2024-01-16,2024-01-17,27.1\n62.62,3.84,B,AY4,2024-02-24,2024-02-25,43.98\n72.78,2.07,C,CY5,2024-02-27,2024-03-13,50.5\n63.28,2.62,D,CY6,2024-03-14,2024-03-15,46.48\n67.09,1.34,D,BX7,2024-04-01,2024-04-12,52.9\n45.7,1.26,C,BX8,2024-02-09,2024-03-08,35.81\n63.44,1.4,C,CY9,2024-02-23,2024-03-18,45.91\n45.96,2.67,A,AY10,2024-01-01,2024-01-20,41.62\n58.22,2.01,A,DZ11,2024-01-07,2024-01-23,55.58\n45.61,3.57,C,AX12,2024-03-15,2024-04-03,31.74\n52.13,0.91,C,CY13,2024-03-25,2024-04-08,39.06\n72.49,1.98,B,BX14,2024-01-08,2024-01-16,46.17\n34.59,3.8,A,AY15,2024-03-11,2024-03-26,32.5\n48.95,1.89,C,DZ16,2024-03-01,2024-03-04,34.61\n61.53,2.4,A,AX17,2024-02-24,2024-03-01,40.31\n52.02,1.13,A,DZ18,2024-03-07,2024-03-10,37.29\n49.11,3.62,C,CY19,2024-04-01,2024-04-25,38.47\n50.78,3.04,C,AX20,2024-02-02,2024-02-22,32.03\n48.21,0.68,A,AY21,2024-01-09,2024-02-04,29.92\n82.3,2.7,A,DZ22,2024-02-28,2024-03-04,58.69\n35.2,3.31,C,CY23,2024-02-17,2024-02-22,34.19\n",
+      "data_dictionary.csv": "file,column,description,unit\nfacts.csv,x,\"Primary measurement\",unit\nfacts.csv,w,\"Observation weight\",unitless\nfacts.csv,grp,\"Segment\",\nfacts.csv,label,\"Record label\",\nfacts.csv,start,\"Start date\",\nfacts.csv,end,\"End date\",\nfacts.csv,y,\"Secondary measurement\",unit\n"
+    },
+    "answer": 101.69897427536233,
+    "tol": 0.015,
+    "type": "table.ood_covariance"
+  },
+  {
+    "id": "o1_080",
+    "objective": "Join fact.csv and dim.csv on the entity key. Compute numerator measure divided by denominator measure for each joined row belonging to a region 'North'. What is the mean of these ratios? Round to 2 decimals.",
+    "files": {
+      "fact.csv": "k,num\nK06,97.58\nK07,55.21\nK03,71.21\nK11,98.52\nK03,61.98\nK04,67.99\nK03,107.63\nK06,112.77\nK13,60.66\nK13,87.26\nK09,65.93\nK06,98.48\nK00,79.03\nK04,90.14\nK01,62.38\nK00,95.98\nK07,74.94\nK00,103.52\nK00,29.37\nK12,73.8\nK11,51.3\nK02,61.18\nK08,58.2\nK03,15.58\nK07,50.34\nK03,46.0\nK04,102.79\nK08,39.6\nK05,112.45\nK05,68.23\nK13,81.3\nK05,60.37\nK04,103.35\nK07,105.9\nK03,18.8\nK03,22.29\n",
+      "dim.csv": "k,den,grp\nK00,9.06,South\nK01,6.62,South\nK02,6.09,North\nK03,8.73,North\nK04,2.9,South\nK05,10.51,North\nK06,9.06,South\nK07,4.94,North\nK08,9.96,South\nK09,2.78,North\nK10,5.04,South\nK11,10.22,South\nK12,10.18,North\nK13,4.78,North\n",
+      "data_dictionary.csv": "file,column,description,unit\nfact.csv,k,\"Entity key\",\nfact.csv,num,\"Numerator measure\",unit\ndim.csv,k,\"Entity key\",\ndim.csv,den,\"Denominator measure\",unit\ndim.csv,grp,\"Region\",\n"
+    },
+    "answer": 10.461010278669898,
+    "tol": 0.015,
+    "type": "table.ood_join_derive"
+  }
+]

@@ -1,0 +1,11 @@
+# Évaluation locale déterministe, tests et notebooks
+numpy
+pandas
+scipy
+scikit-learn==1.8.0
+sympy
+pytest
+jupyter
+nbformat
+nbconvert
+matplotlib

@@ -1,0 +1,83 @@
+--- test1:Agent
++++ minimal:Agent
+@@ -167,7 +167,8 @@
+                     if left() < 2.5:
+                         return
+                     codes = [extract_code(o) for o in outs]
+-                    vals = run_codes_many(codes, p["dfs"], min(EXEC_TIMEOUT + 1.5, left() - 0.5), p["obj"])
++                    batch_timeout = min(max(EXEC_TIMEOUT + 1.5, CODE_TIMEOUT * len(codes) + 2.0), left() - 0.5)
++                    vals = run_codes_many(codes, p["dfs"], batch_timeout, p["obj"])
+                     for v in vals:
+                         if v is not None:
+                             p["c"].append((v, weight))
+--- test1:Agent.solve
++++ minimal:Agent.solve
+@@ -123,7 +123,8 @@
+                     if left() < 2.5:
+                         return
+                     codes = [extract_code(o) for o in outs]
+-                    vals = run_codes_many(codes, p["dfs"], min(EXEC_TIMEOUT + 1.5, left() - 0.5), p["obj"])
++                    batch_timeout = min(max(EXEC_TIMEOUT + 1.5, CODE_TIMEOUT * len(codes) + 2.0), left() - 0.5)
++                    vals = run_codes_many(codes, p["dfs"], batch_timeout, p["obj"])
+                     for v in vals:
+                         if v is not None:
+                             p["c"].append((v, weight))
+--- test1:CODE_TIMEOUT
++++ minimal:CODE_TIMEOUT
+@@ -0,0 +1 @@
++CODE_TIMEOUT = 1.5--- test1:run_code
++++ minimal:run_code
+@@ -14,6 +14,12 @@
+ pd.read_csv = _fake_read_csv(_dfs_local, _extra)
+ dfs = _dfs_local
+ answer = None
++import signal as __signal
++def __dsh_alarm(signum, frame):
++    raise TimeoutError("generated program timeout")
++__old_alarm = __signal.getsignal(__signal.SIGALRM)
++__signal.signal(__signal.SIGALRM, __dsh_alarm)
++__signal.setitimer(__signal.ITIMER_REAL, __CODE_TIMEOUT__)
+ try:
+ __CODE__
+     RESULT = to_float(answer)
+@@ -26,8 +32,10 @@
+         pass
+     raise
+ finally:
++    __signal.setitimer(__signal.ITIMER_REAL, 0)
++    __signal.signal(__signal.SIGALRM, __old_alarm)
+     pd.read_csv = _orig_read_csv
+-""".replace("__CODE__", body)
++""".replace("__CODE_TIMEOUT__", repr(CODE_TIMEOUT)).replace("__CODE__", body)
+         result = dsh.run_python(full_code, files=[state_path], timeout_s=max(0.5, float(timeout)),
+                                 mem_limit_mb=768, max_output=6000)
+         if result.ok:
+--- test1:run_codes_many
++++ minimal:run_codes_many
+@@ -25,8 +25,24 @@
+         pd.read_csv = _orig
+ """.replace("__BODY__", body)
+             chunks.append(chunk)
+-        calls=", ".join(f"__candidate_{i}()" for i in range(len(codes)))
+-        full_code=_sandbox_header(obj, dfs)+"\n"+"\n".join(chunks)+f"\nRESULT = [{calls}]\n"
++        guard = f"""
++import signal as __signal
++def __call_with_timeout(fn, seconds):
++    def __alarm(signum, frame):
++        raise TimeoutError("candidate timeout")
++    old = __signal.getsignal(__signal.SIGALRM)
++    __signal.signal(__signal.SIGALRM, __alarm)
++    __signal.setitimer(__signal.ITIMER_REAL, max(0.05, float(seconds)))
++    try:
++        return fn()
++    except BaseException:
++        return None
++    finally:
++        __signal.setitimer(__signal.ITIMER_REAL, 0)
++        __signal.signal(__signal.SIGALRM, old)
++"""
++        calls=", ".join(f"__call_with_timeout(__candidate_{i}, {CODE_TIMEOUT!r})" for i in range(len(codes)))
++        full_code=_sandbox_header(obj, dfs)+"\n"+guard+"\n"+"\n".join(chunks)+f"\nRESULT = [{calls}]\n"
+         result=dsh.run_python(full_code, files=[state_path], timeout_s=max(0.8,float(timeout)),
+                               mem_limit_mb=768, max_output=2000)
+         if not result.ok or not isinstance(result.value, list):
