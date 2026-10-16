@@ -152,42 +152,6 @@ def main():
         per_type.to_csv(DIAG_OUT / "forced_fallback_qwen_by_type.csv", index=False)
     df.to_csv(DIAG_OUT / "forced_fallback_qwen_per_task.csv", index=False)
 
-    lines = [
-        "# H5 — Stage3 forced-fallback Qwen (80 Tables)\n",
-        f"**Cache:** `{path.name}` ({'REAL_QWEN' if real else 'SYNTHETIC_OR_PARTIAL'})\n",
-        f"**Source:** {source}\n",
-        f"**Platform:** {platform.platform()}\n",
-        "## By executor\n",
-        per_exec.to_markdown(index=False)
-        if hasattr(per_exec, "to_markdown")
-        else per_exec.to_string(index=False),
-        "",
-        "## Stage3 by table family\n",
-        per_type.to_markdown(index=False)
-        if len(per_type) and hasattr(per_type, "to_markdown")
-        else (per_type.to_string(index=False) if len(per_type) else "_n/a_"),
-        "",
-        "## repair_gain\n",
-        "**NOT RUN** — requires a second generation pass with `DSH_NO_REPAIR` "
-        "(generate_cache currently stores greedy+samples only, not repair).\n",
-        "## Interpretation\n",
-    ]
-    if not real:
-        lines.append("- Synthetic/partial cache → **do not** use for GO.\n")
-    else:
-        s3 = per_exec[per_exec.executor.str.contains("stage3")]
-        if len(s3):
-            row = s3.iloc[0]
-            lines.append(
-                f"- Stage3 vote_accuracy ≈ **{row['vote_accuracy']:.3f}** "
-                f"oracle_greedy_plus4 ≈ **{row['oracle_greedy_plus4']:.3f}** "
-                f"on forced-fallback public Tables.\n"
-            )
-            lines.append(
-                "- This is the missing baseline for private Tables LLM path attribution.\n"
-            )
-
-    # Prefer simple markdown table without tabulate dependency
     def df_md(frame):
         if frame is None or not len(frame):
             return "_empty_"

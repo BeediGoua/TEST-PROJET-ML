@@ -1,4 +1,4 @@
-"""GO/NO-GO for TEST3-recovery — requires H1–H6 gates (no submission file)."""
+"""Phase A GO/NO-GO — READY_FOR_END_TO_END_COLAB_V2 (never GO for TEST3 submission)."""
 from __future__ import annotations
 
 import csv
@@ -6,6 +6,7 @@ from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
 OUT = HERE / "results"
+AUDIT = HERE.parents[0]
 
 
 def read_csv(name):
@@ -22,145 +23,153 @@ def fnum(x):
         return None
 
 
-def has_real_section(name: str, needle: str = "REAL_QWEN") -> bool:
+def exists_ok(name: str) -> bool:
     p = OUT / name
-    return p.exists() and needle in p.read_text(encoding="utf-8")
+    if not p.exists():
+        return False
+    text = p.read_text(encoding="utf-8")[:500]
+    return "**NOT RUN:**" not in text or name == "E2T_PROBES.md"
 
 
 def main():
-    contract = read_csv("executor_contract.csv")
-    ff = read_csv("forced_fallback_summary.csv")
-    rules = read_csv("rules_ablation_summary.csv")
-    timing = read_csv("batch_timing.csv")
-    agree = read_csv("executor_agreement_summary.csv")
-    h1 = OUT / "QWEN_PATTERN_FREQ.md"
-    h5 = OUT / "FORCED_FALLBACK_QWEN.md"
-    h3 = OUT / "ALIAS_VS_IMPORTLIB.md"
-    h4 = OUT / "BATCH_ORDER.md"
-    h6 = OUT / "TEST2_DECOMPOSITION.md"
+    cache_md = OUT / "CACHE_DEEP_ANALYSIS.md"
+    e2t_md = OUT / "E2T_PROBES.md"
+    realistic = read_csv("realistic_timeout_summary.csv")
+    hybrid_md = OUT / "HYBRID_TEST1_REPLAY.md"
+    rng_md = AUDIT / "RNG_PROTOCOL.md"
+    e2t_baked = (HERE / "experimental" / "test1_e2t_dsh.py").exists()
+    phase_a_report = AUDIT / "PHASE_A_AFTER_COLAB_REPORT.md"
 
-    def contract_ok(agent, probe="import_pandas", fix="False"):
-        for r in contract:
-            if r["agent"] == agent and r["probe"] == probe and r["wrapper_alias_fix"] == fix:
-                return r["ok"] == "True"
-        return None
-
-    e2_agree = None
-    for r in agree:
-        if r.get("executor") == "E2_alias":
-            e2_agree = fnum(r.get("agree_rate"))
+    e2t_agree = None
+    e2t_contam = None
+    for r in realistic:
+        if r.get("executor") == "E2T":
+            e2t_agree = fnum(r.get("agree_e0_finite"))
+            e2t_contam = fnum(r.get("contamination_tasks"))
             break
 
-    h1_real = has_real_section("QWEN_PATTERN_FREQ.md")
-    h5_real = has_real_section("FORCED_FALLBACK_QWEN.md")
-    h2_real = has_real_section("EXECUTOR_AGREEMENT.md")
-    h3_real = has_real_section("ALIAS_VS_IMPORTLIB.md")
-    h4_done = (OUT / "BATCH_ORDER.md").exists() and "**NOT RUN:**" not in (OUT / "BATCH_ORDER.md").read_text(encoding="utf-8")[:400]
-    h6_real = has_real_section("TEST2_DECOMPOSITION.md")
+    loop_not_run = False
+    probes_non_skip_pass = False
+    if e2t_md.exists():
+        text = e2t_md.read_text(encoding="utf-8")
+        loop_not_run = "infinite_loop" in text and "NOT RUN" in text
+        probes_non_skip_pass = "Non-skip PASS:** True" in text or "Non-skip PASS:**True" in text
 
-    h4_sensitive = False
-    if (OUT / "BATCH_ORDER.md").exists():
-        h4_sensitive = "CROSS-TASK BATCHING IS DANGEROUS" in (OUT / "BATCH_ORDER.md").read_text(encoding="utf-8")
+    # Alias arm neutralized
+    gpu_src = (AUDIT / "gpu_experiments.py").read_text(encoding="utf-8")
+    alias_ok = (
+        "test2_batch_alias_NOT_IMPLEMENTED" in gpu_src
+        and "test2_batch_alias'" not in gpu_src.split("executors=")[1].split("]")[0]
+        if "executors=" in gpu_src
+        else False
+    )
+    # simpler: default executors list must not include bare test2_batch_alias
+    alias_ok = "test2_batch_alias_NOT_IMPLEMENTED" in gpu_src and (
+        "'test2_batch_alias'" not in gpu_src
+        or gpu_src.count("'test2_batch_alias'") <= gpu_src.count("test2_batch_alias_NOT_IMPLEMENTED")
+    )
+    # Check default list explicitly
+    default_list_clean = "test2_batch_alias'" not in "".join(
+        gpu_src.split("executors=")[1].split("]")[0]
+    ) if "executors=" in gpu_src else False
+    alias_ok = "test2_batch_alias_NOT_IMPLEMENTED" in gpu_src and default_list_clean
+
+    rng_ok = rng_md.exists() and "v2_seed_per_batch" in rng_md.read_text(encoding="utf-8")
+    protocol_in_gpu = "protocol_version" in gpu_src and "v2_seed_per_batch" in gpu_src
 
     checks = [
-        ("Stage3 deterministic parity (public Tables 80/80)", True, "MEASURED prior"),
-        ("Stage3 import_pandas PASS", contract_ok("stage3") is True, "MEASURED"),
-        ("TEST1 samples import_pandas FAIL", contract_ok("test1") is False, "MEASURED"),
-        ("TEST2 + alias fix PASS", contract_ok("test2", fix="True") is True, "MEASURED"),
-        ("H1 Qwen pattern freqs (REAL cache)", h1_real, "REQUIRED"),
-        ("H2 E2 agree_rate ≥ 0.99 on REAL cache", bool(h2_real and e2_agree is not None and e2_agree >= 0.99), "REQUIRED"),
-        ("H3 alias vs importlib decision documented", h3.exists() if hasattr(h3, "exists") else (OUT / "ALIAS_VS_IMPORTLIB.md").exists(), "REQUIRED"),
-        ("H3 REAL cache bake-off", h3_real, "REQUIRED"),
-        ("H4 batch-order probe run", h4_done, "REQUIRED"),
-        ("H4 no order sensitivity (or batch forbidden)", h4_done and not h4_sensitive, "REQUIRED"),
-        ("H5 forced-fallback Qwen REAL", h5_real, "REQUIRED"),
-        ("H6 TEST2 decomposition REAL", h6_real, "REQUIRED"),
-        ("Linux/GPU p95 < 40s documented", False, "NOT RUN"),
-        ("Scanner conformité", False, "NOT RUN"),
+        ("Cache deep analysis delivered", cache_md.exists(), "PHASE_A"),
+        ("E2T baked (test1_e2t_dsh.py)", e2t_baked, "PHASE_A"),
+        ("E2T probes non-timeout PASS", probes_non_skip_pass, "PHASE_A"),
+        (
+            "E2T agree≥99% under outer 6.5s",
+            bool(e2t_agree is not None and e2t_agree >= 0.99),
+            "PHASE_A",
+        ),
+        (
+            "E2T known contamination = 0",
+            bool(e2t_contam is not None and e2t_contam == 0),
+            "PHASE_A",
+        ),
+        ("Hybrid TEST1 documented", hybrid_md.exists(), "PHASE_A"),
+        ("Fake test2 alias arm neutralized", alias_ok, "PHASE_A"),
+        ("RNG / protocol_version documented", rng_ok and protocol_in_gpu, "PHASE_A"),
+        ("PHASE_A report present", phase_a_report.exists(), "PHASE_A"),
+        (
+            "Timeout-loop listed as V2 gate if NOT RUN",
+            (not loop_not_run) or (phase_a_report.exists() and "infinite_loop" in phase_a_report.read_text(encoding="utf-8")),
+            "PHASE_A",
+        ),
         ("No TEST3 submission file created", True, "POLICY"),
+        ("No GO for TEST3 submission", True, "POLICY"),
     ]
 
-    required = [(n, ok, lvl) for n, ok, lvl in checks if lvl == "REQUIRED"]
-    go = all(ok for _, ok, _ in required)
+    required = [(n, ok, lvl) for n, ok, lvl in checks if lvl == "PHASE_A"]
+    ready = all(ok for _, ok, _ in required)
+    verdict = "READY_FOR_END_TO_END_COLAB_V2" if ready else "NO-GO"
 
-    lines = []
-    lines.append("# GO / NO-GO — TEST3-recovery (pre-submission)\n")
-    lines.append("## Decision\n")
-    lines.append(f"**{'GO' if go else 'NO-GO'} for building/submitting TEST3-recovery.**\n")
-    if not go:
+    lines = [
+        "# Phase A — GO / NO-GO (Colab V2 gate)\n",
+        "## Decision\n",
+        f"**{verdict}**\n",
+        "",
+        "This is **not** a GO for TEST3 submission. Submission remains forbidden until a separate "
+        "end-to-end Colab V2 recovery under `Agent.solve` BUDGET=29.\n",
+    ]
+    if not ready:
         lines.append("### Why NO-GO\n")
-        for n, ok, lvl in required:
+        for n, ok, _ in required:
             if not ok:
                 lines.append(f"- FAIL: {n}")
         lines.append("")
+
+    if loop_not_run:
         lines.append(
-            "Harness scripts `07`–`12` are in place. Fill gates by running "
-            "`colab_forced_fallback.ipynb` (Linux+CUDA), downloading `generations_*.json` "
-            "+ replay CSV into `audit_independent/results/`, then re-running `07`–`12`.\n"
+            "**V2 gate:** `infinite_loop` probe NOT RUN on Windows — must PASS as first Colab V2 cell.\n"
         )
 
-    lines.append("## Checklist H1–H6\n")
-    lines.append("| Check | Result | Level |")
-    lines.append("|---|---|---|")
+    lines += [
+        "## Phase A checklist\n",
+        "| Check | Result | Level |",
+        "|---|---|---|",
+    ]
     for name, ok, level in checks:
         lines.append(f"| {name} | {'PASS' if ok else 'FAIL/MISSING'} | {level} |")
 
-    lines.append("\n## Artefact presence\n")
+    if e2t_agree is not None:
+        lines.append(
+            f"\n## Snapshot\n- E2T agree_e0_finite = **{e2t_agree:.4f}**\n"
+            f"- E2T contamination_tasks = **{e2t_contam}**\n"
+        )
+
+    lines += [
+        "\n## Artefacts\n",
+    ]
     for name in [
-        "QWEN_PATTERN_FREQ.md",
-        "EXECUTOR_AGREEMENT.md",
-        "ALIAS_VS_IMPORTLIB.md",
-        "BATCH_ORDER.md",
-        "FORCED_FALLBACK_QWEN.md",
-        "TEST2_DECOMPOSITION.md",
+        "CACHE_DEEP_ANALYSIS.md",
+        "E2T_PROBES.md",
+        "REALISTIC_TIMEOUT_REPLAY.md",
+        "HYBRID_TEST1_REPLAY.md",
         "GO_NOGO.md",
     ]:
         p = OUT / name
-        status = "present" if p.exists() else "missing"
-        if p.exists() and "**NOT RUN:**" in p.read_text(encoding="utf-8")[:500]:
-            status = "present (NOT RUN body)"
-        lines.append(f"- `{name}`: {status}")
+        lines.append(f"- `{name}`: {'present' if p.exists() else 'missing'}")
+    lines.append(f"- `../RNG_PROTOCOL.md`: {'present' if rng_md.exists() else 'missing'}")
+    lines.append(
+        f"- `../PHASE_A_AFTER_COLAB_REPORT.md`: {'present' if phase_a_report.exists() else 'missing'}"
+    )
 
-    if e2_agree is not None:
-        lines.append(f"\n## H2 snapshot\n- E2_alias agree_rate = **{e2_agree:.4f}**\n")
-
-    lines.append("\n## Frozen TEST3-recovery spec (only if GO)\n")
-    lines.append("```")
-    lines.append("STAGE3-COMPLIANT-RECOVERY")
-    lines.append("Model: Qwen2.5-Coder-1.5B exact")
-    lines.append("Rules/Prompt/Fits/No-files/Tables/Vote: Stage3 EXACT")
-    lines.append("BUDGET 29 / MAX_NEW 500 / NSAMP 4 / default vote 0")
-    lines.append("ONLY change: E2 executor (__dsh_pd alias) if H2/H3 PASS")
-    lines.append("FORBIDDEN: calc_safe_v2, extended rules, reject-zero, default=1,")
-    lines.append("           Qwen3, new prompts, inter-task batch")
-    lines.append("```\n")
-
-    lines.append("## Prior CPU diagnostic (still valid)\n")
-    lines.append("| Agent | import_pandas contract |")
-    lines.append("|---|---|")
-    for agent, fix in [("stage3", "False"), ("test1", "False"), ("test2", "False"), ("test2", "True"), ("faithful", "False")]:
-        ok = contract_ok(agent, fix=fix)
-        lines.append(f"| {agent} fix={fix} | {ok} |")
-
-    if rules:
-        lines.append("\n## Rules ablation snapshot\n")
-        for r in rules:
-            if r.get("family") == "table" and not str(r.get("config", "")).startswith("shadow"):
-                lines.append(
-                    f"- `{r['config']}`: covered {r['covered']}/{r['n']}, "
-                    f"correct {r['correct']}, wrong {r['wrong']}"
-                )
-        lines.append("")
-
-    lines.append("\n## Next action\n")
-    lines.append("1. Keep NO-GO until all REQUIRED gates PASS on a REAL_QWEN cache.")
-    lines.append("2. Colab: `audit_independent/colab_forced_fallback.ipynb` → download cache+replay.")
-    lines.append("3. Local: `python make_synthetic_cache.py` is smoke-only; then `07`…`12`, `06_go_nogo.py`.")
-    lines.append("4. Only after GO: bake one Stage3+E2 agent file — not before.\n")
+    lines += [
+        "\n## Next (outside Phase A)\n",
+        "1. Colab V2: timeout-loop probe first, then real `Agent.solve` BUDGET=29.\n",
+        "2. Forced-fallback No-files + Tables Stage3 vs Stage3+E2T.\n",
+        "3. Only after recovery: Improvement Benchmark on the 14 dead tasks.\n",
+        "4. **Never** treat Phase A READY as permission to submit TEST3.\n",
+    ]
 
     text = "\n".join(lines)
     (OUT / "GO_NOGO.md").write_text(text, encoding="utf-8")
-    (HERE.parents[0] / "GO_NOGO.md").write_text(text, encoding="utf-8")
+    (AUDIT / "GO_NOGO.md").write_text(text, encoding="utf-8")
     print(text)
 
 

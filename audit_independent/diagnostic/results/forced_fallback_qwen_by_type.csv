@@ -1,0 +1,6 @@
+type,tasks,greedy_accuracy,oracle_greedy_plus4,vote_accuracy,execution_rate
+table.derive,16,0.5625,0.75,0.75,0.45
+table.filter,16,0.75,0.8125,0.75,0.8125
+table.group,16,0.3125,0.75,0.75,0.4
+table.join,16,0.25,0.875,0.75,0.425
+table.stat,16,0.625,0.9375,0.9375,0.6875

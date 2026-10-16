@@ -249,24 +249,142 @@ def build_e4_importlib() -> Path:
     return out
 
 
+E2T_MANY = r'''
+def run_codes_many(codes, dfs, timeout, obj=""):
+    """E2T: E2 + per-candidate SIGALRM 1.5s inside one dsh child (Linux).
+
+    Same as E2 (__dsh_pd, fresh dfs, SyntaxError precompile, one child) plus
+    individual ITIMER_REAL so a hung candidate returns None without killing siblings.
+    """
+    import dsh
+    if not codes:
+        return []
+    root = tempfile.mkdtemp(prefix="dsh_e2t_many_")
+    try:
+        state_path = _write_sandbox_state(dfs, root)
+        chunks = []
+        for i, code in enumerate(codes):
+            raw = (code or "").strip()
+            syntax_error = ""
+            if not raw:
+                syntax_error = "empty"
+            else:
+                try:
+                    compile(raw, "<generated>", "exec")
+                    compile("def __dsh_probe():\n" + textwrap.indent(raw, "    "),
+                            "<generated-wrapper>", "exec")
+                except SyntaxError:
+                    syntax_error = "syntax"
+            if syntax_error:
+                chunks.append(f"\ndef __candidate_{i}():\n    return None\n")
+                continue
+            body = textwrap.indent(raw, "            ")
+            chunk = f"""
+def __candidate_{i}():
+    import signal as __dsh_signal
+    dfs = _fresh_dfs()
+    _extra = {{"data_dictionary": _DICTIONARY}} if _DICTIONARY is not None else {{}}
+    _orig = __dsh_pd.read_csv
+    __dsh_pd.read_csv = _fake_read_csv(dfs, _extra)
+    answer = None
+    __dsh_has_alarm = hasattr(__dsh_signal, "SIGALRM")
+    __dsh_prev = None
+    def __dsh_on_alarm(__dsh_signum, __dsh_frame):
+        raise TimeoutError("__dsh_candidate_timeout")
+    try:
+        if __dsh_has_alarm:
+            __dsh_prev = __dsh_signal.signal(__dsh_signal.SIGALRM, __dsh_on_alarm)
+            if hasattr(__dsh_signal, "setitimer"):
+                __dsh_signal.setitimer(__dsh_signal.ITIMER_REAL, 1.5)
+            else:
+                __dsh_signal.alarm(2)
+        try:
+__BODY__
+            return to_float(answer)
+        except BaseException:
+            return None
+    finally:
+        if __dsh_has_alarm:
+            try:
+                if hasattr(__dsh_signal, "setitimer"):
+                    __dsh_signal.setitimer(__dsh_signal.ITIMER_REAL, 0)
+                else:
+                    __dsh_signal.alarm(0)
+            except Exception:
+                pass
+            try:
+                if __dsh_prev is not None:
+                    __dsh_signal.signal(__dsh_signal.SIGALRM, __dsh_prev)
+            except Exception:
+                pass
+        __dsh_pd.read_csv = _orig
+""".replace("__BODY__", body)
+            chunks.append(chunk)
+        calls = ", ".join(f"__candidate_{i}()" for i in range(len(codes)))
+        full_code = (
+            "import pandas as __dsh_pd\n"
+            + _sandbox_header(obj, dfs)
+            + "\n"
+            + "\n".join(chunks)
+            + f"\nRESULT = [{calls}]\n"
+        )
+        result = dsh.run_python(
+            full_code,
+            files=[state_path],
+            timeout_s=max(0.8, float(timeout)),
+            mem_limit_mb=768,
+            max_output=2000,
+        )
+        if not result.ok or not isinstance(result.value, list):
+            return [None] * len(codes)
+        vals = []
+        for v in result.value:
+            vals.append(to_float(v) if v is not None else None)
+        return vals + [None] * max(0, len(codes) - len(vals))
+    except BaseException:
+        return [None] * len(codes)
+    finally:
+        shutil.rmtree(root, ignore_errors=True)
+'''
+
+
+def build_test1_e2t() -> Path:
+    """E2 + per-candidate SIGALRM; greedy path same as E2 alias."""
+    # Start from alias bake then replace many
+    alias_path = build_test1_alias()
+    src = alias_path.read_text(encoding="utf-8")
+    marker = 'def run_codes_many(codes, dfs, timeout, obj=""):'
+    end = "\ndef to_float(v):"
+    i = src.find(marker)
+    j = src.find(end, i)
+    if i < 0 or j < 0:
+        raise RuntimeError("cannot locate run_codes_many in alias source")
+    new_src = src[:i] + E2T_MANY + "\n" + src[j:]
+    out = EXP / "test1_e2t_dsh.py"
+    out.write_text(new_src, encoding="utf-8")
+    return out
+
+
 def update_readme():
     (EXP / "README_experimental.md").write_text(
-        "# Experimental copies (pre-TEST3)\n\n"
-        "- `stage3_faithful_dsh.py` — TEST1 + one child per sample (correctness oracle; slow).\n"
-        "- `test1_alias_dsh.py` — **E2 candidate**: TEST1 + `__dsh_pd` + SyntaxError "
-        "pre-compile isolation (one child for N samples).\n"
-        "- `executor_e4_importlib.py` — **E4**: Stage3 helpers + importlib module-scope load.\n"
+        "# Experimental copies (Phase A)\n\n"
+        "- `stage3_faithful_dsh.py` — per-sample children (slow oracle).\n"
+        "- `test1_alias_dsh.py` — **E2**: `__dsh_pd` + SyntaxError isolation.\n"
+        "- `test1_e2t_dsh.py` — **E2T**: E2 + SIGALRM 1.5s per candidate (Linux).\n"
+        "- `executor_e4_importlib.py` — **E4** importlib oracle.\n"
         "\n"
-        "No submission artifacts. TEST3-recovery only after H1–H6 gates pass on REAL Qwen.\n",
+        "No submission. Colab V2 only after Phase A gates.\n",
         encoding="utf-8",
     )
 
 
 def main():
     a = build_test1_alias()
+    c = build_test1_e2t()
     b = build_e4_importlib()
     update_readme()
     print("wrote", a)
+    print("wrote", c)
     print("wrote", b)
 
 

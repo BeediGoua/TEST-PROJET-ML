@@ -1,10 +1,8 @@
-# Experimental copies (pre-TEST3)
+# Experimental copies (Phase A)
 
-- `stage3_faithful_dsh.py` — TEST1 + one child per sample (correctness oracle; slow).
-- `test1_alias_dsh.py` — **E2 candidate**: TEST1 + `__dsh_pd` + SyntaxError pre-compile
-  isolation (one child for N samples). Smoke: pandas OK, siblings kept on SyntaxError.
-- `executor_e4_importlib.py` — **E4**: Stage3 helpers + importlib module-scope load (in-process).
+- `stage3_faithful_dsh.py` — per-sample children (slow oracle).
+- `test1_alias_dsh.py` — **E2**: `__dsh_pd` + SyntaxError isolation.
+- `test1_e2t_dsh.py` — **E2T**: E2 + SIGALRM 1.5s per candidate (Linux).
+- `executor_e4_importlib.py` — **E4** importlib oracle.
 
-Rebuild: `python diagnostic/build_experimental.py`
-
-No submission artifacts. TEST3-recovery only after H1–H6 gates pass on a REAL Qwen cache.
+No submission. Colab V2 only after Phase A gates.

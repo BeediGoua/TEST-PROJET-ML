@@ -15,7 +15,15 @@ def require_gpu():
     if platform.system()!='Linux':
         raise RuntimeError('NOT RUN: Linux required for official subprocess and alarm semantics.')
 
-def generate_cache(model='Qwen/Qwen2.5-Coder-1.5B-Instruct',prompt_agent='stage3',seed=0):
+def generate_cache(model='Qwen/Qwen2.5-Coder-1.5B-Instruct',prompt_agent='stage3',seed=0,
+                   protocol_version='v1_seed_once'):
+    """Generate frozen Qwen cache. Do not silently reuse after protocol_version changes.
+
+    protocol_version:
+      - v1_seed_once: torch.manual_seed(seed) once before all batches (legacy cache 34d6ece55b3c092a)
+      - v2_seed_per_batch: reserved for Colab V2 — seed each generate batch like Stage3 solve
+        (manual_seed(0) per Agent.solve). Changing this string MUST change the cache key.
+    """
     require_gpu();dsh=official()
     from src.evaluation.core import _materialize_all
     m=load(prompt_agent);m.MODEL=model
@@ -23,12 +31,17 @@ def generate_cache(model='Qwen/Qwen2.5-Coder-1.5B-Instruct',prompt_agent='stage3
     torch.manual_seed(seed)
     agent=m.Agent()
     tasks=[t for t in json.loads((HANDOFF/'dev.json').read_text(encoding='utf-8')) if t['type'].startswith('table.')]
-    config=dict(model=model,revision=dsh.cached_revision(model),prompt_agent=prompt_agent,seed=seed,max_new=m.MAX_NEW,samples=4,temperature=.5,
+    config=dict(model=model,revision=dsh.cached_revision(model),prompt_agent=prompt_agent,seed=seed,
+                protocol_version=protocol_version,max_new=m.MAX_NEW,samples=4,temperature=.5,
                 artifact_sha256=hashlib.sha256((HANDOFF/FILES[prompt_agent]).read_bytes()).hexdigest(),
                 dev_sha256=hashlib.sha256((HANDOFF/'dev.json').read_bytes()).hexdigest(),torch=torch.__version__,platform=platform.platform())
     key=hashlib.sha256(json.dumps(config,sort_keys=True).encode()).hexdigest()[:16]
     path=OUT/f'generations_{key}.json'
     if path.exists():return path
+    if protocol_version=='v2_seed_per_batch':
+        raise NotImplementedError(
+            'v2_seed_per_batch is reserved for Colab V2; implement seed-per-batch then regenerate. '
+            'Do not reuse generations_34d6ece55b3c092a under this protocol.')
     rows=[]
     with tempfile.TemporaryDirectory(prefix='audit_gpu_') as td:
         filemap=_materialize_all(tasks,td)
@@ -61,14 +74,15 @@ def replay_cache(path,timeout=15.):
         filemap=_materialize_all(tasks,td)
         for tid in dict.fromkeys(r['id'] for r in cache['rows']):
             task=byid[tid];programs=[r for r in cache['rows'] if r['id']==tid]
-            executors=['stage3','test1_single','test1_many','test1_alias_many','minimal_many','test2_batch','test2_batch_alias','e4_importlib']
+            # Default arms only — no ambiguous fake alias. Legacy name kept in loader as NOT_IMPLEMENTED.
+            executors=['stage3','test1_single','test1_many','test1_alias_many','minimal_many','test2_batch','e4_importlib']
             for executor in executors:
                 m=_load_executor_module(executor)
                 if m is None:continue
                 dfs,dico=prep.load_task(task['objective'],filemap[tid])
                 if len(dfs)>=2:prep.align_keys(dfs,dico)
                 begin=time.perf_counter()
-                if executor in ('test2_batch','test2_batch_alias'):
+                if executor in ('test2_batch',):
                     vals=m.run_code_batch([dict(code=r['code'],dfs=dfs,obj=task['objective']) for r in programs],timeout)
                 elif executor.endswith('_many') or executor=='test1_alias_many':
                     raw=m.run_codes_many([r['code'] for r in programs],dfs,timeout,task['objective'])
@@ -109,11 +123,10 @@ def _load_executor_module(executor):
             path=Path(__file__).resolve().parent/'diagnostic'/'experimental'/'test1_alias_dsh.py'
         spec=importlib.util.spec_from_file_location('test1_alias',path)
         m=importlib.util.module_from_spec(spec);spec.loader.exec_module(m);return m
-    if executor=='test2_batch_alias':
-        # Submitted TEST2 module; caller must wrap dsh with alias outside — here use plain TEST2.
-        # Alias is applied by diagnostic install_dsh in H2/H6; for official Linux replay keep TEST2 as-is
-        # and rely on diagnostic 08/12 for alias arms. Still expose the arm name for schema stability.
-        return load('test2')
+    if executor in ('test2_batch_alias','test2_batch_alias_NOT_IMPLEMENTED'):
+        # NOT IMPLEMENTED: harness never injects __dsh_pd into TEST2. Do not use in default replay.
+        # Kept only so old CSVs mentioning the name remain interpretable as a stub arm.
+        return None
     label=executor.split('_')[0]
     if label=='minimal':
         return load('minimal')

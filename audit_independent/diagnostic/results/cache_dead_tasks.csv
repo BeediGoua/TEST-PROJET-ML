@@ -1,0 +1,344 @@
+id,type,objective,gold,tol,cause,error_kind,greedy_value,greedy_error,sample_values,sample_errors,greedy_code,sample0_code
+d_006,table.group,admissions.csv lists hospital stays; data_dictionary.csv describes its columns. Compute the total amount billed for each department. What is the largest of these values (in thousand euros)? Report it with 2 decimals.,30.73,0.015,join,execution,,KeyError: 'dpt',"[None, None, None, None]","[""KeyError: 'stay_no'"", 'KeyError: ""None of [Index([\'Identifier\', \'Department\'], dtype=\'object\')] are in the [columns]""', 'KeyError: ""None of [Index([\'dpt\', \'amt_k\'], dtype=\'object\')] are in the [columns]""', 'KeyError: ""None of [Index([\'dpt\', \'amt_k\'], dtype=\'object\')] are in the [columns]""']","import pandas as pd
+
+# Load data
+data = pd.read_csv('admissions.csv')
+data_dict = pd.read_csv('data_dictionary.csv')
+
+# Filter by department
+department_data = data[data['dpt'].isin(data_dict['dpt'])]
+
+# Calculate total amount billed per department
+total_amounts = department_data.groupby('dpt')['amt_k'].sum()
+
+# Find the largest total amount billed
+largest_total = total_amounts.max().values[0]
+
+# Format the result to two decimal places
+formatted_largest_total = ""{:.2f}"".format(largest_total)
+
+# Set the answer
+answer = formatted_largest_total","import pandas as pd
+
+d = pd.read_csv('data_dictionary.csv')
+df = pd.read_csv('admissions.csv', parse_dates=['admit'])
+
+d = d.merge(df[['stay_no', 'dpt']], on='stay_no')
+
+total_amounts = d.groupby('dpt')['amt_k'].sum().reset_index()
+
+largest_total_amount = total_amounts['amt_k'].max()
+
+answer = round(largest_total_amount, 2)"
+d_021,table.filter,"Among the shipments with a load weight strictly greater than 515.5 kg, what percentage have a distance strictly greater than 910 km? Count only the shipments whose distance is recorded. Report it with 2 decimals.",21.43,0.015,wrong_filter,mixed,12.0,nan,"[12.0, None, 100.0, 100.0]","['nan', ""NameError: name 'd' is not defined"", 'nan', 'nan']","import pandas as pd
+
+# Load the data
+df = pd.read_csv('consignments.csv')
+
+# Filter shipments with weight > 515.5 kg and distance > 910 km
+filtered_df = df[(df['WGT_KG'] > 515.5) & (df['d'] > 910)]
+
+# Calculate the percentage
+percentage = filtered_df.shape[0] / df.shape[0] * 100
+
+# Round the result to 2 decimal places
+answer = round(percentage, 2)","d = dfs['consignments']
+d = d[(d['WGT_KG'] > 515.5) & (d['d'] > 910)]
+answer = len(d) / len(dfs['consignments']) * 100"
+d_024,table.group,"You are given pupils of four secondary schools in students.csv, with a data dictionary. Rank the year of the date of birth values by the mean mathematics mark, from highest (rank 1) to lowest. What is the rank of 2015? Missing values are written 'NA'. Ignore values that are missing or not recorded. ",4.0,1e-06,date,mixed,,"ValueError: answer missing, non-numeric, or non-finite","[None, None, 277.0, None]","['IndexError: index 0 is out of bounds for axis 0 with size 0', 'ValueError: answer missing, non-numeric, or non-finite', 'nan', 'ValueError: answer missing, non-numeric, or non-finite']","import pandas as pd
+from sklearn.impute import SimpleImputer
+
+# Load the dataset
+df = pd.read_csv('students.csv')
+
+# Replace -1 with NaN
+df.replace(-1, pd.NA, inplace=True)
+
+# Filter out missing values
+df.dropna(inplace=True)
+
+# Compute the mean of the mathematics marks
+marks_mean = df[df['class'] == '5A']['mat'].mean()
+
+# Sort the DataFrame by the mean of the mathematics marks in descending order
+sorted_df = df.sort_values(by='mat', ascending=False)
+
+# Find the rank of 2015
+rank_2015 = sorted_df[sorted_df['BORN'].dt.year == 2015].index + 1
+
+# Print the result
+print(rank_2015)","import pandas as pd
+from scipy import stats
+
+def clean_numeric(series):
+    return series.replace(-1, pd.NA)
+
+df = pd.read_csv('students.csv')
+df['BORN'] = pd.to_datetime(df['BORN'], errors='coerce')
+df['mat'] = df['mat'].replace(-1, pd.NA)
+df['lit'] = df['lit'].replace(-1, pd.NA)
+df['absn'] = df['absn'].replace(-1, pd.NA)
+
+# Filter and group by year of birth
+filtered_df = df[df['BORN'].dt.year.isin([2015])]
+grouped_df = filtered_df.groupby('BORN').agg({'mat': 'mean'}).reset_index()
+
+# Rank the ranks
+grouped_df['rank'] = grouped_df['mat'].rank(method='dense', ascending=False)
+
+# Find the rank of 2015
+rank_2015 = grouped_df[grouped_df['BORN'] == 2015]['rank'].values[0]
+
+print(rank_2015)"
+d_029,table.derive,hospital_stays.csv lists hospital stays; data_dictionary.csv describes its columns. The hospital opened a new wing in 2022. Consider the daily cost (the amount billed divided by the length of stay) (the amount billed is in thousand euros). What is its median over the stays with a number of procedure,1536.79,0.015,date,mixed,1.54,nan,"[132778285714285.7, None, None, None]","['nan', 'ValueError: answer missing, non-numeric, or non-finite', ""AttributeError: 'float' object has no attribute 'round'"", ""KeyError: 'daily_costs'""]","import pandas as pd
+
+# Load data
+data = pd.read_csv('hospital_stays.csv', sep=';', decimal=',')
+data['daily_cost'] = data['chg'] / data['DUR']
+
+# Filter stays with more than 2 procedures
+filtered_data = data[data['n_proc'] > 2]
+
+# Calculate median daily cost
+median_daily_cost = filtered_data['daily_cost'].median()
+
+# Round the result to 2 decimal places
+answer = round(median_daily_cost, 2)","import pandas as pd
+
+# Load data
+data = pd.read_csv('hospital_stays.csv', sep=';', decimal=',')
+data['DUR'] = pd.to_timedelta(data['DUR'], errors='coerce').dt.total_seconds() / 86400  # Convert duration to days
+data['cost_per_day'] = data['chg'] / data['DUR']
+
+# Filter stays with more than 2 procedures
+filtered_data = data[data['n_proc'] > 2]
+
+# Calculate median cost per day
+median_cost_per_day = filtered_data['cost_per_day'].median()
+
+# Round the result to 2 decimal places
+answer = round(median_cost_per_day, 2)"
+d_035,table.stat,What is the median monthly rent over all flats (in euros)? Round your answer to 2 decimal places.,943.0,0.015,date,execution,,AttributeError: 'float' object has no attribute 'round',"[None, None, None, None]","[""KeyError: 'rent_m'"", ""AttributeError: 'float' object has no attribute 'round'"", ""AttributeError: 'float' object has no attribute 'round'"", ""AttributeError: 'float' object has no attribute 'round'""]","import pandas as pd
+
+df = pd.read_csv('flats.csv')
+median_rent = df['RENT_M'].median().round(2)
+answer = median_rent","import pandas as pd
+from statistics import median
+
+dfs['flats'] = pd.read_csv('flats.csv')
+answer = round(median(dfs['rent_m']), 2)"
+d_059,table.group,"You are given hospital stays in hospital_stays.csv, with a data dictionary. Visiting hours are from 2 pm to 8 pm. Rank the department values by the mean amount billed, from highest (rank 1) to lowest. What is the rank of the cardiology department? The value -1 in the amount billed column means not r",1.0,1e-06,missing_values,execution,,KeyError: 'CAR',"[None, None, None, None]","[""TypeError: unsupported operand type(s) for &: 'str' and 'DatetimeArray'"", 'ValueError: answer missing, non-numeric, or non-finite', 'ValueError: attempt to get argmax of an empty sequence', 'IndexError: index 0 is out of bounds for axis 0 with size 0']","import pandas as pd
+from sklearn.preprocessing import LabelEncoder
+
+# Load the data
+df = pd.read_csv('hospital_stays.csv')
+
+# Replace -1 with NaN
+df.replace(-1, pd.NA, inplace=True)
+
+# Convert categorical variables to numerical using LabelEncoder
+le = LabelEncoder()
+df['dept_cd'] = le.fit_transform(df['dept_cd'])
+
+# Filter visits between 2 pm and 8 pm
+df = df[(df['adm_dt'].dt.hour >= 14) & (df['adm_dt'].dt.hour < 20)]
+
+# Calculate the mean amount billed per department
+department_means = df.groupby('dept_cd')['chg'].mean()
+
+# Get the rank of the cardiology department
+rank_cardiology = department_means.loc['CAR'].rank(method='dense', ascending=False)
+
+# Set the answer
+answer = int(rank_cardiology)","import pandas as pd
+df = dfs['hospital_stays']
+df['chg'] = df['chg'].replace(-1, pd.NA)
+df['duration'] = df['dur'].apply(lambda x: x / 24 if x > 0 else 0)
+df = df[df['adm_dt'] >= '2022-09-02' & df['adm_dt'] <= '2022-09-04']
+df['dept_code'] = df['dept_cd'].map({'CAR': 1, 'NEU': 2, 'ORT': 3, 'PED': 4, 'ONC': 5, 'GER': 6})
+df['amount_billed'] = df['chg'] * df['duration']
+result = df.groupby('dept_code')['amount_billed'].mean().sort_values(ascending=False)
+answer = result.loc[1]"
+d_092,table.join,shipments.csv lists shipments of a haulage company; data_dictionary.csv describes its columns. What is the median load weight of the shipments that belong to a carrier with a price per kilometre of at least 1.36 euros per km (in kg)? The carrier codes are upper case in shipments.csv and lower case i,707.4,0.015,aggregation,mixed,,NameError: name 'hauliers' is not defined,"[None, None, 527.5, None]","['IndexingError: Unalignable boolean Series provided as indexer (index of the boolean Series and of the indexed object do not match).', ""NameError: name 'hauliers' is not defined"", 'nan', ""NameError: name 'hauliers' is not defined""]","m = dfs['shipments'][dfs['shipments']['co'].isin(hauliers[hauliers['eur_km'] >= 1.36]['CARRIER'])]
+answer = m['mass'].median()","m = dfs['shipments'][dfs['hauliers']['eur_km'] >= 1.36]
+median_load_weight = m['mass'].median()
+answer = round(median_load_weight, 2)"
+d_100,table.derive,The attached files describe shipments of a haulage company. Consider the load per kilometre (the load weight divided by the distance). What is its median over the shipments with a delivery date in August 2023 (in kg per km)? Give the answer rounded to 2 decimal places.,1.31,0.015,date,mixed,,AttributeError: 'float' object has no attribute 'round',"[None, None, None, 1.0]","[""AttributeError: 'float' object has no attribute 'round'"", ""KeyError: 'out'"", ""AttributeError: 'float' object has no attribute 'round'"", 'nan']","import pandas as pd
+
+df = pd.read_csv('shipments.csv')
+df = df[df['out'].dt.month == 8]
+df['load_per_km'] = df['wgt_kg'] / df['D']
+median_load_per_km = df['load_per_km'].median().round(2)
+answer = median_load_per_km","import pandas as pd
+
+df = pd.read_csv('shipments.csv')
+df = df[df['out'].dt.month == 8]
+median_load_per_km = df['wgt_kg'] / df['D'].median().round(2)
+print(median_load_per_km)"
+d_105,table.group,Fuel prices rose during the period. Compute the total distance for each year of the shipment date. Consider only the shipments with a delivery date in November 2022. What is the largest of these values (in km)? Dates in deliveries.csv are in DD/MM/YYYY format. Missing values are left empty. Leave mi,4436.0,1e-06,date,mixed,,AttributeError: 'float' object has no attribute 'astype',"[None, None, 975.0, None]","[""AttributeError: 'float' object has no attribute 'values'"", 'ValueError: answer missing, non-numeric, or non-finite', 'nan', ""AttributeError: 'float' object has no attribute 'item'""]","import pandas as pd
+
+df = dfs['deliveries']
+df['ship_dt'] = pd.to_datetime(df['ship_dt'], dayfirst=True)
+df['d_del'] = pd.to_datetime(df['d_del'], dayfirst=True)
+
+# Filter shipments with delivery date in November 2022
+filtered_df = df[(df['ship_dt'].dt.month == 11) & (df['ship_dt'].dt.year == 2022)]
+
+# Calculate total distance per year
+total_distance_per_year = filtered_df.groupby(filtered_df['ship_dt'].dt.year)['route'].sum()
+
+# Find the largest value
+largest_value = total_distance_per_year.max().astype(int)
+
+answer = largest_value","import pandas as pd
+
+df = dfs['deliveries']
+df['ship_dt'] = pd.to_datetime(df['ship_dt'], dayfirst=True)
+df['d_del'] = pd.to_datetime(df['d_del'], dayfirst=True)
+
+# Filter shipments in November 2022
+df = df[(df['ship_dt'].dt.month == 11) & (df['ship_dt'].dt.year == 2022)]
+
+# Calculate total distance per year
+yearly_distances = df.groupby(df['ship_dt'].dt.year)['route'].sum()
+
+# Find the maximum distance
+max_distance = yearly_distances.max().values[0]
+
+answer = max_distance"
+d_112,table.filter,"You are given pupils of four secondary schools in grades.csv, with a data dictionary. Among the pupils of the Victor Hugo school, what percentage have a mathematics mark strictly less than 12.6 points? Count only the pupils whose mathematics mark is recorded. Missing values are left empty. Values th",73.42,0.015,missing_values,reasoning,64.44,nan,"[64.44, 64.44, 64.44, 64.44]","['nan', 'nan', 'nan', 'nan']","import pandas as pd
+from sklearn.preprocessing import LabelEncoder
+
+# Load the data
+df = pd.read_csv('grades.csv')
+
+# Replace -1 with NaN
+df.replace(-1, pd.NA, inplace=True)
+
+# Encode categorical variables
+le = LabelEncoder()
+df['uai'] = le.fit_transform(df['uai'])
+df['CLASS'] = le.fit_transform(df['CLASS'])
+
+# Filter students from Victor Hugo school
+victor_hugo_students = df[df['uai'] == 1]
+
+# Calculate the percentage of students with a mathematics mark < 12.6
+percentage_less_than_12_6 = (victor_hugo_students[victor_hugo_students['MAT'] < 12.6].shape[0] / victor_hugo_students.shape[0]) * 100
+
+# Round the result to 2 decimal places
+answer = round(percentage_less_than_12_6, 2)","import pandas as pd
+
+# Load the grades dataframe from the csv file
+df = pd.read_csv('grades.csv')
+
+# Filter the dataframe for pupils of Victor Hugo's school (code 'E02')
+victor_hugo_df = df[df['uai'] == 'E02']
+
+# Replace -1 with NaN in the MAT column
+victor_hugo_df['MAT'] = victor_hugo_df['MAT'].replace(-1, pd.NA)
+
+# Compute the percentage of pupils with a mathematics mark less than 12.6 points
+percentage_less_than_12_6 = (victor_hugo_df['MAT'] < 12.6).sum() / len(victor_hugo_df) * 100
+
+# Round the result to two decimal places
+answer = round(percentage_less_than_12_6, 2)"
+d_124,table.filter,"Two depots share a maintenance team. Among the shipments whose carrier is 'TransNord', what fraction (between 0 and 1) have a delivery date on or after April 3, 2023? Report it with 3 decimals.",0.333,0.0015,date,mixed,1.0,nan,"[1.0, None, None, 1.0]","['nan', ""AttributeError: 'float' object has no attribute 'round'"", 'ZeroDivisionError: division by zero', 'nan']","import pandas as pd
+
+df = pd.read_csv('deliveries.csv')
+df = df[df['carr'] == 'TransNord']
+df = df[df['SHIP_DT'] >= '2023-04-03']
+answer = len(df[df['d_del'] >= '2023-04-03']) / len(df[df['carr'] == 'TransNord'])","import pandas as pd
+
+d = dfs['deliveries']
+d = d[(d['carr'].str.lower() == 'transnord') & 
+        (pd.to_datetime(d['SHIP_DT']) >= pd.to_datetime('2023-04-03'))]
+answer = len(d) / len(d[d['carr'].str.lower() == 'transnord'])
+print(round(answer, 3))"
+d_129,table.derive,"You are given consumer loans of a bank in loans.csv, with a data dictionary. Consider the debt-to-income ratio (the amount borrowed divided by the annual income). What is its median over the loans? Missing values are written '-'. The value -1 in the amount borrowed column means not recorded. Values ",0.95,0.015,missing_values,mixed,,"ValueError: answer missing, non-numeric, or non-finite","[0.67, None, None, None]","['nan', 'ValueError: answer missing, non-numeric, or non-finite', 'ValueError: answer missing, non-numeric, or non-finite', ""AttributeError: 'float' object has no attribute 'round'""]","import pandas as pd
+from scipy import stats
+
+df = pd.read_csv('loans.csv')
+df['princ'] = df['princ'].replace(-1, pd.NA)
+df['REV'] = df['REV'].replace(-1, pd.NA)
+
+# Compute the debt-to-income ratio
+df['DTR'] = df['princ'] / df['REV']
+
+# Filter out missing values
+df = df.dropna(subset=['DTR'])
+
+# Calculate the median
+median_dtr = df['DTR'].median()
+
+print(round(median_dtr, 2))","import pandas as pd
+import numpy as np
+
+# Load the data into a DataFrame
+df = pd.read_csv('loans.csv')
+
+# Replace -1 with NaN in the 'princ' column
+df['princ'] = df['princ'].replace(-1, np.nan)
+
+# Compute the median of the debt-to-income ratio
+median_ratio = df[df['princ'].notna()].loc[:, 'princ'] / df[df['princ'].notna()].loc[:, 'REV']
+
+# Round the result to 2 decimal places
+answer = median_ratio.round(2)[0]"
+d_165,table.derive,stays.csv lists hospital stays; data_dictionary.csv describes its columns. Consider the number of procedures per day of stay. What is its median over the stays (in procedures per day)? stays.csv uses ';' to separate columns and a comma as the decimal mark. Missing values are written '-'. Leave missi,0.5,0.015,date,execution,,AttributeError: 'float' object has no attribute 'round',"[None, None, None, None]","[""AttributeError: 'float' object has no attribute 'round'"", ""KeyError: 'column_code'"", ""AttributeError: 'Index' object has no attribute 'day'"", 'IntCastingNaNError: Cannot convert non-finite values (NA or inf) to integer']","import pandas as pd
+
+# Load the data
+data = pd.read_csv('stays.csv', sep=';', decimal=',')
+data = data.dropna(subset=['px'])  # Remove rows with missing px values
+
+# Calculate the total number of procedures per day
+procedures_per_day = data.groupby('admit')['px'].sum()
+
+# Calculate the median
+median_procedures_per_day = procedures_per_day.median().round(2)
+
+answer = median_procedures_per_day","import pandas as pd
+import numpy as np
+
+# Load data from CSV files
+data_dict = pd.read_csv('data_dictionary.csv')
+stays = pd.read_csv('stays.csv', sep=';', decimal=',', na_values='-')
+
+# Filter stays by department 'ORT'
+stays = stays[stays['dpt'] == 'ORT']
+
+# Convert 'stay_len' to integer
+stays['stay_len'] = stays['stay_len'].astype(int)
+
+# Calculate number of procedures per day
+procedures_per_day = stays.groupby('admit')['px'].transform('sum') / stays.groupby('admit')['stay_len'].transform('sum')
+
+# Compute median
+median_procedures_per_day = procedures_per_day.median().round(2)
+
+answer = median_procedures_per_day"
+d_166,table.join,orders.csv lists orders of a retail chain; data_dictionary.csv describes its columns. The web shop was redesigned in spring. What is the median amount paid of the orders that belong to a customer whose customer segment is 'student' (in euros)? Missing values are left empty. Values that are not recor,127.07,0.015,join,mixed,98.44,nan,"[None, None, None, None]","[""KeyError: 'src'"", ""NameError: name 'orders' is not defined"", ""KeyError: 'seg'"", 'ValueError: Data must be 1-dimensional, got ndarray of shape (160, 2) instead']","import pandas as pd
+import numpy as np
+
+# Load data
+orders = pd.read_csv('orders.csv')
+clients = pd.read_csv('clients.csv')
+
+# Filter students
+students = clients[clients['seg'] == 'student']
+
+# Merge orders with students
+merged = orders.merge(students, left_on='cid', right_on='client_ref', how='left')
+
+# Replace -1 with NaN
+merged.replace(-1, np.nan, inplace=True)
+
+# Compute median amount paid
+median_amount = merged['amt'].dropna().median()
+
+# Round to 2 decimal places
+answer = round(median_amount, 2)","m = dfs['orders'][dfs['src'] == 'web']
+m['amt'].fillna(value=np.nan, inplace=True)
+m = m.loc[m['seg'] == 'student', :]
+m = m.groupby('cid')['amt'].median().reset_index(name='med_amount')
+answer = m['med_amount'].iloc[0]"

@@ -1,0 +1,11 @@
+category,count
+numeric,222
+AttributeError,55
+KeyError,45
+missing_answer,40
+other,13
+NameError,7
+non_finite,7
+TypeError,6
+IndexError,4
+SyntaxError,1

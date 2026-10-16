@@ -1,0 +1,6 @@
+arm,vote_accuracy,n,warning
+faithful_hybrid_TEST1,0.5125,80,NOT the private TEST1 104/120; many-path contaminated
+recovery_E2T,0.8125,80,
+stage3_baseline,0.8125,80,
+"Gain(recovery,faithful)",,24,gain=25 loss=1
+"Gain(recovery,stage3)",,0,gain=0 loss=0
