@@ -1,3 +1,21 @@
+# TEST-PROJET-ML (`projects`)
+
+Pack DS-Harness pour audit local + expérience Colab GPU (forced-fallback Qwen).
+
+## Colab (forced-fallback 80 Tables)
+
+1. Runtime → GPU T4  
+2. Ouvrir `audit_independent/colab_forced_fallback.ipynb` depuis ce repo  
+3. Régler :
+
+```python
+PROJECT_ROOT = Path('/content/TEST-PROJET-ML')  # racine de ce dépôt (= dossier projects)
+```
+
+Si tu clones dans `/content/TEST-PROJET-ML`, la racine **est** déjà le contenu de `projects/` (CODEX_AUDIT_HANDOFF, audit_independent, src au même niveau).
+
+---
+
 # DS-Harness — pack expérimental reproductible
 
 Ce dépôt est la version **nettoyée, testée et reproductible** du projet DS-Harness. Il sépare clairement le matériel officiel, le champion privé réellement observé, les candidates expérimentales, les benchmarks de robustesse et les résultats régénérables.
@@ -65,6 +83,8 @@ scripts/                  commandes reproductibles
 src/evaluation/           protocole d'évaluation unique
 tests/                    tests de non-régression
 archive/original_notes/   anciens rapports, conservés mais sortis du flux principal
+audit_independent/        audit Codex + Colab forced-fallback + diagnostic H1–H6
+CODEX_AUDIT_HANDOFF/      agents soumis hashés + dev.json
 ```
 
 ## Important sur l'ancien ZIP
@@ -85,4 +105,4 @@ Dans `projects.zip`, `ds-harness/agent.py` était strictement identique à `stag
 - 0 mismatch prompt/runtime détecté ;
 - pas de `exec(...)` détecté par l'audit statique.
 
-**Verdict : READY FOR FULL QWEN TEST-RUN**, pas encore champion privé.
+**Verdict pré-TEST3 :** harness H1–H6 prêt ; **NO-GO** soumission jusqu’au cache Qwen Colab (`audit_independent/colab_forced_fallback.ipynb`).
