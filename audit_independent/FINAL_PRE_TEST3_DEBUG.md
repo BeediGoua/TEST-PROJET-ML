@@ -32,9 +32,21 @@ So previous `acc_a=1.0 / acc_b=1.0` on 80 Tables is almost certainly **80/80 rul
   - `deterministic_count=0`, `llm_live_count=8`
   - `greedy_generation_seconds > 1`
 
-### Required Colab action
+### Colab re-instrument (MEASURED 2026-10-16) — **VALID** for forced-fallback path
 
-Re-run instrumented B2 (cell in `COLAB_FINAL_DEBUG_CELLS.md`). Until that PASS, **ignore** prior B2.
+Single-agent E2T, batch of 8 Tables, `DSH_FORCE_FALLBACK=1`:
+
+| metric | value |
+|---|---:|
+| deterministic_count | **0** |
+| llm_live_count | **8** |
+| greedy_generation_seconds | **10.81** |
+| greedy_outputs_count | 8 |
+| repair_count | 3 |
+| sample_outputs_count | 0 (adaptive skip / budget) |
+| total_seconds | **28.16** |
+
+Previous `0.36s / 80/80` remains **INVALID**. This instrument proves real LLM fallback works after the `_force_fallback` fix. Full 80-task Stage3-vs-E2T accuracy under true fallback still optional (VRAM: one agent at a time).
 
 ---
 
