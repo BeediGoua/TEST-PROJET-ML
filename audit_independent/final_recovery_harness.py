@@ -210,15 +210,19 @@ def b1_cache_replay(e2t, stage3, cache, tasks_by_id, filemap, outer=7.5):
 
 
 def uncovered_nofiles(stage3_mod, all_tasks):
+    """Public No-files = empty `files` (dev types calc.*). Uncovered = calc_rules None."""
+    import math
+
     out = []
     for t in all_tasks:
-        if not str(t.get("type", "")).startswith("nofile"):
+        # NOT type "nofile*" — router uses empty files → kind nofile; JSON types are calc.*
+        if t.get("files"):
             continue
         try:
             rv = stage3_mod.calc_rules(t["objective"])
         except Exception:
             rv = None
-        if rv is None or not (isinstance(rv, (int, float)) and __import__("math").isfinite(rv)):
+        if rv is None or not (isinstance(rv, (int, float)) and math.isfinite(float(rv))):
             out.append(t)
     return out
 
