@@ -275,8 +275,19 @@ def run_solve_compare(label_a, agent_a, label_b, agent_b, tasks, batch_size=8, f
         max_batch_a=float(df.time_a.max()),
         max_batch_b=float(df.time_b.max()),
     )
+    # Always persist before optional STOP (so diagnostics survive a failed gate)
+    safe = f"final_solve_{label_a}_vs_{label_b}".replace(" ", "_")
+    df.to_csv(OUT / f"{safe}.csv", index=False)
     if acc_b + 1e-12 < acc_a:
-        stop(f"solve {label_b} acc {acc_b:.4f} < {label_a} {acc_a:.4f}")
+        lost = df[(df.a_ok == True) & (df.b_ok == False)]
+        (OUT / f"{safe}_LOST.md").write_text(
+            lost.to_string(index=False) if len(lost) else "(none)",
+            encoding="utf-8",
+        )
+        stop(
+            f"solve {label_b} acc {acc_b:.4f} < {label_a} {acc_a:.4f} "
+            f"(lost={len(lost)}; see {safe}.csv)"
+        )
     mark(f"solve_{label_b}_vs_{label_a}", **summary)
     return df, summary
 
