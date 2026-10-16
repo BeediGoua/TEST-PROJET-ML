@@ -70,19 +70,19 @@ Previous `0.36s / 80/80` remains **INVALID**. This instrument proves real LLM fa
 
 `0.0` = empty vote default in `solve()`, not a wrong numeric from E2T.
 
-### Stage3 KO → E2T OK (expected 1)
+### Stage3 KO → E2T OK (1) — MEASURED Colab
 
-**NOT TESTED in report body** — CSV was not on disk at first STOP; diagnostic cell should list it.  
-Math: \(39 - 4 + g = 36\) ⇒ **g = 1**. Colab must print that id.
+| id | gold | Stage3 | E2T |
+|---|---:|---:|---:|
+| **d_123** | 27.0 | **13.0** (wrong) | **27.0** (correct) |
+
+Net: \(39 - 4 + 1 = 36\). E2T is not strictly worse everywhere — it **wins 1** and **loses 4** (all losses = vote default `0.0` = no finite candidate).
 
 ### Counterfactual / classification
 
-**NOT TESTED yet** (needs Colab cell §2): replay Stage3 codes on E2T and E2T codes on Stage3 for each flip → tag GENERATION / EXECUTOR / TIMING / REPAIR / VOTE.
+**NOT TESTED yet** (optional next): replay Stage3-generated codes on E2T for the 4 losses.
 
-Hypotheses pending that replay:
-
-- Dates (d_026, d_076): often sandbox/datetime or failed gen under dsh.
-- d_065 count / d_143 pop std: gen or `np.std` ddof / missing answer under dsh.
+Working hypothesis on losses: **GENERATION or TIMING/BUDGET/REPAIR** (empty candidate list → 0.0), not “wrong numeric from E2T”. Gain d_123 suggests E2T sampling/exec can beat Stage3 on at least one nofile.
 
 ---
 
